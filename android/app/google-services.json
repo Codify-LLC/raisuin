@@ -1,0 +1,142 @@
+{
+  "project_info": {
+    "project_number": "997321868188",
+    "project_id": "teachnear",
+    "storage_bucket": "teachnear.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:997321868188:android:e653015fc3812c407a7e59",
+        "android_client_info": {
+          "package_name": "com.mycompany.parents"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "997321868188-e7rhgejal28fnldkkdp6c540c2cftblf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.parents",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "997321868188-4enjnt0p3ar80nqkuv9os5t5q52jvla1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjWt0pvGCvHfFil04WQsTqdXFUEchUcD8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "997321868188-4enjnt0p3ar80nqkuv9os5t5q52jvla1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "997321868188-6vacqcibc3qb6fj8luha69h5956iskc7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.raisunjobsfinal"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:997321868188:android:34f4780a5018d6457a7e59",
+        "android_client_info": {
+          "package_name": "com.mycompany.raisunjobsfinal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "997321868188-4enjnt0p3ar80nqkuv9os5t5q52jvla1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjWt0pvGCvHfFil04WQsTqdXFUEchUcD8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "997321868188-4enjnt0p3ar80nqkuv9os5t5q52jvla1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "997321868188-6vacqcibc3qb6fj8luha69h5956iskc7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.raisunjobsfinal"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:997321868188:android:3a96103021202f967a7e59",
+        "android_client_info": {
+          "package_name": "com.teachnear.candidate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "997321868188-96lhq5olhefm433050u2tsrse0f2jk96.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.teachnear.candidate",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "997321868188-ljrvu2vhq50iq8el23i5da6gnjd73up6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.teachnear.candidate",
+            "certificate_hash": "d952e4a9de55f5da28f16af6bf7c65dd9e6fb716"
+          }
+        },
+        {
+          "client_id": "997321868188-4enjnt0p3ar80nqkuv9os5t5q52jvla1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjWt0pvGCvHfFil04WQsTqdXFUEchUcD8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "997321868188-4enjnt0p3ar80nqkuv9os5t5q52jvla1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "997321868188-6vacqcibc3qb6fj8luha69h5956iskc7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.raisunjobsfinal"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

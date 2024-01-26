@@ -1,0 +1,74 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "users",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "profile_type",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "preferred_posting",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "seeking_job_post",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "gender",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "salary_range.from",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "users",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "work_experience",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "seeking_job_type",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "education.educationType",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "education.degree",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "education.subject",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "salary_range.from",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "messages",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "chat",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "sent_on",
+          "order": "DESCENDING"
+        }
+      ]
+    }
+  ]
+}
