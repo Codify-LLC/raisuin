@@ -1,9 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'applied_for_jobs_model.dart';
 export 'applied_for_jobs_model.dart';
@@ -52,12 +50,12 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
 
     return Container(
       width: double.infinity,
-      constraints: BoxConstraints(
+      constraints: const BoxConstraints(
         maxWidth: 600.0,
       ),
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
           bottomRight: Radius.circular(0.0),
           topLeft: Radius.circular(20.0),
@@ -69,7 +67,7 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 12.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 12.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -92,14 +90,14 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
             color: FlutterFlowTheme.of(context).accent3,
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -114,12 +112,12 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 5.0, 0.0),
                             child: Container(
                               decoration: BoxDecoration(
@@ -131,12 +129,12 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
                                 ),
                               ),
                               child: Padding(
-                                padding: EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(8.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 4.0, 0.0),
                                       child: Text(
                                         'Select All',
@@ -153,7 +151,7 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
                               ),
                             ),
                           ),
-                          if (_model.candidateSelected.length > 0)
+                          if (_model.candidateSelected.isNotEmpty)
                             Container(
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context).tertiary,
@@ -163,7 +161,7 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
                                 ),
                               ),
                               child: Padding(
-                                padding: EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(8.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
@@ -174,7 +172,7 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
                                       size: 16.0,
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           4.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         '${_model.candidateSelected.length.toString()} Selected',
@@ -202,14 +200,14 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
             child: ListView(
               padding: EdgeInsets.zero,
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 14.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 14.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -221,7 +219,7 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
                             width: 60.0,
                             height: 60.0,
                             clipBehavior: Clip.antiAlias,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                             ),
                             child: Image.network(
@@ -233,7 +231,7 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
                           ),
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   10.0, 0.0, 0.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -245,7 +243,7 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
                                         FlutterFlowTheme.of(context).bodyMedium,
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 4.0, 0.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -259,7 +257,7 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
                                         Expanded(
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     2.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               'UG(CS), PG (MCA), B.Ed,.',
@@ -281,7 +279,7 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 4.0, 0.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -295,7 +293,7 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
                                         Expanded(
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     2.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               'Coimbatore, TN',
@@ -375,7 +373,7 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
                         ],
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             0.0, 12.0, 0.0, 14.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -391,9 +389,9 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
                                 ),
                               ),
                               child: Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
-                                  padding: EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.all(8.0),
                                   child: Text(
                                     'Female',
                                     style: FlutterFlowTheme.of(context)
@@ -408,7 +406,7 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   4.0, 0.0, 0.0, 0.0),
                               child: Container(
                                 decoration: BoxDecoration(
@@ -420,7 +418,7 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.all(8.0),
                                   child: Text(
                                     'Age 26',
                                     style: FlutterFlowTheme.of(context)
@@ -435,7 +433,7 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   4.0, 0.0, 0.0, 0.0),
                               child: Container(
                                 decoration: BoxDecoration(
@@ -447,7 +445,7 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.all(8.0),
                                   child: Text(
                                     '₹ 30,000 - ₹ 40,000',
                                     style: FlutterFlowTheme.of(context)
@@ -463,7 +461,7 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
                             ),
                             Expanded(
                               child: Align(
-                                alignment: AlignmentDirectional(1.0, 0.0),
+                                alignment: const AlignmentDirectional(1.0, 0.0),
                                 child: SvgPicture.asset(
                                   'assets/images/heart.svg',
                                   width: 24.0,
@@ -495,22 +493,22 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
                 color: FlutterFlowTheme.of(context).accent3,
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 30.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 30.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Container(
                       height: 50.0,
-                      constraints: BoxConstraints(
+                      constraints: const BoxConstraints(
                         maxWidth: 198.0,
                       ),
                       decoration: BoxDecoration(
-                        color: Color(0xFFDD3568),
+                        color: const Color(0xFFDD3568),
                         borderRadius: BorderRadius.circular(40.0),
                       ),
                       child: Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Text(
                           'Send Message',
                           style:
@@ -525,7 +523,7 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
                     ),
                     Container(
                       height: 50.0,
-                      constraints: BoxConstraints(
+                      constraints: const BoxConstraints(
                         maxWidth: 130.0,
                       ),
                       decoration: BoxDecoration(
@@ -533,7 +531,7 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
                         borderRadius: BorderRadius.circular(40.0),
                       ),
                       child: Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Text(
                           'Send Mail',
                           style:

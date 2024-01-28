@@ -4,11 +4,9 @@ import '/components/loading_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:text_search/text_search.dart';
 import 'chat_model.dart';
@@ -85,13 +83,13 @@ class _ChatWidgetState extends State<ChatWidget> {
                 },
               ),
               title: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                 child: TextFormField(
                   controller: _model.textController,
                   focusNode: _model.textFieldFocusNode,
                   onChanged: (_) => EasyDebounce.debounce(
                     '_model.textController',
-                    Duration(milliseconds: 2000),
+                    const Duration(milliseconds: 2000),
                     () async {
                       await queryMessagesRecordOnce()
                           .then(
@@ -100,7 +98,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                               records
                                   .map(
                                     (record) => TextSearchItem.fromTerms(
-                                        record, [record.textMessage!]),
+                                        record, [record.textMessage]),
                                   )
                                   .toList(),
                             )
@@ -154,13 +152,12 @@ class _ChatWidgetState extends State<ChatWidget> {
               ),
               actions: [
                 Visibility(
-                  visible: _model.textController.text != null &&
-                      _model.textController.text != '',
+                  visible: _model.textController.text != '',
                   child: Align(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
                       child: FlutterFlowIconButton(
                         borderRadius: 20.0,
                         borderWidth: 1.0,
@@ -184,18 +181,17 @@ class _ChatWidgetState extends State<ChatWidget> {
             ),
             body: Builder(
               builder: (context) {
-                if (_model.textController.text != null &&
-                    _model.textController.text != '') {
+                if (_model.textController.text != '') {
                   return Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(6.0, 12.0, 6.0, 44.0),
+                        const EdgeInsetsDirectional.fromSTEB(6.0, 12.0, 6.0, 44.0),
                     child: ListView(
                       padding: EdgeInsets.zero,
                       primary: false,
                       scrollDirection: Axis.vertical,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               8.0, 0.0, 8.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -214,7 +210,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       12.0, 0.0, 0.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -237,7 +233,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 4.0, 0.0, 0.0),
                                             child: Text(
                                               'user@domainname.com',
@@ -249,8 +245,8 @@ class _ChatWidgetState extends State<ChatWidget> {
                                         ],
                                       ),
                                     ]
-                                        .divide(SizedBox(height: 5.0))
-                                        .around(SizedBox(height: 5.0)),
+                                        .divide(const SizedBox(height: 5.0))
+                                        .around(const SizedBox(height: 5.0)),
                                   ),
                                 ),
                               ),
@@ -286,7 +282,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                       List<ChatsRecord> listViewChatsRecordList =
                           snapshot.data!;
                       if (listViewChatsRecordList.isEmpty) {
-                        return LoadingWidget();
+                        return const LoadingWidget();
                       }
                       return ListView.builder(
                         padding: EdgeInsets.zero,
@@ -297,7 +293,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                           final listViewChatsRecord =
                               listViewChatsRecordList[listViewIndex];
                           return Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 8.0, 0.0, 8.0, 0.0),
                             child: StreamBuilder<UsersRecord>(
                               stream: UsersRecord.getDocument(
@@ -366,7 +362,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                       Expanded(
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -392,7 +388,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 4.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -406,8 +402,8 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                 ],
                                               ),
                                             ]
-                                                .divide(SizedBox(height: 5.0))
-                                                .around(SizedBox(height: 5.0)),
+                                                .divide(const SizedBox(height: 5.0))
+                                                .around(const SizedBox(height: 5.0)),
                                           ),
                                         ),
                                       ),

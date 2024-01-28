@@ -1,7 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
-import '/backend/schema/structs/index.dart';
 import '/components/update_or_delete_widget.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -11,14 +10,10 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/upload_data.dart';
-import 'dart:io';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'update_ad_model.dart';
@@ -95,7 +90,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: Color(0xFFF9FAFC),
+            backgroundColor: const Color(0xFFF9FAFC),
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -119,7 +114,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                   : FocusScope.of(context).unfocus(),
               child: Scaffold(
                 key: scaffoldKey,
-                backgroundColor: Color(0xFFF9FAFC),
+                backgroundColor: const Color(0xFFF9FAFC),
                 appBar: AppBar(
                   backgroundColor:
                       FlutterFlowTheme.of(context).primaryBackground,
@@ -134,7 +129,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                   actions: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -143,7 +138,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                         onTap: () async {
                           context.pushNamed('homePage');
                         },
-                        child: Icon(
+                        child: const Icon(
                           Icons.close,
                           color: Colors.black,
                           size: 24.0,
@@ -173,7 +168,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                         key: _model.formKey,
                         autovalidateMode: AutovalidateMode.disabled,
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
                           child: SingleChildScrollView(
                             child: Column(
@@ -190,10 +185,10 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                       ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 18.0, 0.0, 24.0),
                                   child: FlutterFlowChoiceChips(
-                                    options: [
+                                    options: const [
                                       ChipData('Teaching'),
                                       ChipData('Non Teaching')
                                     ],
@@ -215,7 +210,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                           .primaryText,
                                       iconSize: 18.0,
                                       labelPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               14.0, 6.0, 14.0, 8.0),
                                       elevation: 0.0,
                                     ),
@@ -234,7 +229,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                           .primaryText,
                                       iconSize: 18.0,
                                       labelPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               14.0, 6.0, 14.0, 8.0),
                                       elevation: 0.0,
                                     ),
@@ -261,7 +256,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                       ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       8.0, 8.0, 8.0, 8.0),
                                   child: TextFormField(
                                     controller:
@@ -335,7 +330,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                       ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 5.0, 23.0),
                                   child: TextFormField(
                                     controller:
@@ -373,7 +368,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                             BorderRadius.circular(10.0),
                                       ),
                                       errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -381,7 +376,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                             BorderRadius.circular(10.0),
                                       ),
                                       focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -389,7 +384,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                             BorderRadius.circular(10.0),
                                       ),
                                       contentPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               10.0, 3.0, 10.0, 3.0),
                                     ),
                                     style:
@@ -410,10 +405,10 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                       ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 18.0, 0.0, 31.0),
                                   child: FlutterFlowChoiceChips(
-                                    options: [
+                                    options: const [
                                       ChipData('School'),
                                       ChipData('Institution'),
                                       ChipData('Coaching Center')
@@ -436,7 +431,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                           .primaryText,
                                       iconSize: 18.0,
                                       labelPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               14.0, 6.0, 14.0, 8.0),
                                       elevation: 0.0,
                                     ),
@@ -455,7 +450,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                           .primaryText,
                                       iconSize: 18.0,
                                       labelPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               14.0, 6.0, 14.0, 8.0),
                                       elevation: 0.0,
                                     ),
@@ -483,10 +478,10 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                       ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 18.0, 0.0, 31.0),
                                   child: FlutterFlowChoiceChips(
-                                    options: [
+                                    options: const [
                                       ChipData('Full Time'),
                                       ChipData('Part Time'),
                                       ChipData('Freelance')
@@ -509,7 +504,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                           .primaryText,
                                       iconSize: 18.0,
                                       labelPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               14.0, 6.0, 14.0, 8.0),
                                       elevation: 0.0,
                                     ),
@@ -528,7 +523,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                           .primaryText,
                                       iconSize: 18.0,
                                       labelPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               14.0, 6.0, 14.0, 8.0),
                                       elevation: 0.0,
                                     ),
@@ -555,10 +550,10 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                       ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 18.0, 0.0, 31.0),
                                   child: FlutterFlowChoiceChips(
-                                    options: [
+                                    options: const [
                                       ChipData('Day / Regular'),
                                       ChipData('Evening only')
                                     ],
@@ -580,7 +575,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                           .primaryText,
                                       iconSize: 18.0,
                                       labelPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               14.0, 6.0, 14.0, 8.0),
                                       elevation: 0.0,
                                     ),
@@ -599,7 +594,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                           .primaryText,
                                       iconSize: 18.0,
                                       labelPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               14.0, 6.0, 14.0, 8.0),
                                       elevation: 0.0,
                                     ),
@@ -725,15 +720,15 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                       ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 0.0),
                                   child: Container(
                                     height: 50.0,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       color: Color(0xFFFFF0F5),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           10.0, 0.0, 10.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -832,7 +827,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                                   ),
                                                 ),
                                               );
-                                            }).divide(SizedBox(width: 20.0)),
+                                            }).divide(const SizedBox(width: 20.0)),
                                           ),
                                         );
                                       },
@@ -935,11 +930,11 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                       },
                                     ),
                                   ]
-                                      .divide(SizedBox(width: 20.0))
-                                      .around(SizedBox(width: 20.0)),
+                                      .divide(const SizedBox(width: 20.0))
+                                      .around(const SizedBox(width: 20.0)),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 12.0),
                                   child: Text(
                                     'Salary(Per Month) *',
@@ -952,7 +947,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 23.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -974,7 +969,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                           ),
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     5.0, 0.0, 5.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -992,7 +987,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                                       Expanded(
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       8.0,
                                                                       0.0,
@@ -1084,13 +1079,13 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                                     Container(
                                                       width: 40.0,
                                                       height: 50.0,
-                                                      decoration: BoxDecoration(
+                                                      decoration: const BoxDecoration(
                                                         color:
                                                             Color(0xFFF3F5F7),
                                                       ),
                                                       child: Align(
                                                         alignment:
-                                                            AlignmentDirectional(
+                                                            const AlignmentDirectional(
                                                                 0.0, 0.0),
                                                         child: Text(
                                                           'TO',
@@ -1129,7 +1124,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                                       Expanded(
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       8.0,
                                                                       0.0,
@@ -1215,10 +1210,10 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                       ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 18.0, 0.0, 31.0),
                                   child: FlutterFlowChoiceChips(
-                                    options: [
+                                    options: const [
                                       ChipData('Accommodation'),
                                       ChipData('Travel'),
                                       ChipData('Food')
@@ -1241,12 +1236,12 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                           .primaryText,
                                       iconSize: 18.0,
                                       labelPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               14.0, 6.0, 14.0, 8.0),
                                       elevation: 0.0,
                                     ),
                                     unselectedChipStyle: ChipStyle(
-                                      backgroundColor: Color(0xFFF3F5F7),
+                                      backgroundColor: const Color(0xFFF3F5F7),
                                       textStyle: FlutterFlowTheme.of(context)
                                           .bodySmall
                                           .override(
@@ -1259,7 +1254,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                           .primaryText,
                                       iconSize: 18.0,
                                       labelPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               14.0, 6.0, 14.0, 8.0),
                                       elevation: 0.0,
                                     ),
@@ -1287,7 +1282,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                       ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 10.0),
                                   child: FlutterFlowPlacePicker(
                                     iOSGoogleMapsApiKey:
@@ -1320,7 +1315,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                                 .tertiary,
                                           ),
                                       elevation: 2.0,
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Colors.transparent,
                                         width: 1.0,
                                       ),
@@ -1338,15 +1333,15 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                       ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 0.0),
                                   child: Container(
                                     decoration: BoxDecoration(
-                                      color: Color(0xFFFFF0F5),
+                                      color: const Color(0xFFFFF0F5),
                                       borderRadius: BorderRadius.circular(5.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           10.0, 0.0, 10.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -1355,7 +1350,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                         children: [
                                           Expanded(
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 8.0, 0.0, 8.0),
                                               child: Text(
                                                 'You only receive applications and suggestions\n from selected location.\nThis will include candidates who are located and looking for a job in your state / district.',
@@ -1378,7 +1373,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 10.0),
                                   child: FlutterFlowPlacePicker(
                                     iOSGoogleMapsApiKey:
@@ -1411,7 +1406,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                                 .tertiary,
                                           ),
                                       elevation: 2.0,
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Colors.transparent,
                                         width: 1.0,
                                       ),
@@ -1456,7 +1451,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                   ],
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 23.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -1464,7 +1459,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 10.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
@@ -1485,7 +1480,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                                       (_model.gender == 'All')
                                                   ? FlutterFlowTheme.of(context)
                                                       .secondaryBackground
-                                                  : Color(0xFFF3F5F7),
+                                                  : const Color(0xFFF3F5F7),
                                               borderRadius:
                                                   BorderRadius.circular(5.0),
                                               border: Border.all(
@@ -1495,11 +1490,11 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                                     ? FlutterFlowTheme.of(
                                                             context)
                                                         .primaryText
-                                                    : Color(0xFFF3F5F7),
+                                                    : const Color(0xFFF3F5F7),
                                               ),
                                             ),
                                             child: Padding(
-                                              padding: EdgeInsets.all(5.0),
+                                              padding: const EdgeInsets.all(5.0),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
@@ -1528,7 +1523,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 10.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
@@ -1549,7 +1544,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                                       (_model.gender == 'All')
                                                   ? FlutterFlowTheme.of(context)
                                                       .secondaryBackground
-                                                  : Color(0xFFF3F5F7),
+                                                  : const Color(0xFFF3F5F7),
                                               borderRadius:
                                                   BorderRadius.circular(5.0),
                                               border: Border.all(
@@ -1559,11 +1554,11 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                                     ? FlutterFlowTheme.of(
                                                             context)
                                                         .primaryText
-                                                    : Color(0xFFF3F5F7),
+                                                    : const Color(0xFFF3F5F7),
                                               ),
                                             ),
                                             child: Padding(
-                                              padding: EdgeInsets.all(5.0),
+                                              padding: const EdgeInsets.all(5.0),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
@@ -1610,7 +1605,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                                     (_model.gender == 'All')
                                                 ? FlutterFlowTheme.of(context)
                                                     .secondaryBackground
-                                                : Color(0xFFF3F5F7),
+                                                : const Color(0xFFF3F5F7),
                                             borderRadius:
                                                 BorderRadius.circular(5.0),
                                             border: Border.all(
@@ -1619,11 +1614,11 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                                       (_model.gender == 'All')
                                                   ? FlutterFlowTheme.of(context)
                                                       .primaryText
-                                                  : Color(0xFFF3F5F7),
+                                                  : const Color(0xFFF3F5F7),
                                             ),
                                           ),
                                           child: Padding(
-                                            padding: EdgeInsets.all(5.0),
+                                            padding: const EdgeInsets.all(5.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -1668,7 +1663,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                     Expanded(
                                       flex: 2,
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 10.0, 10.0, 10.0),
                                         child: FlutterFlowDropDown<String>(
                                           controller:
@@ -1679,7 +1674,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                                     .educationRequired
                                                     .educationType,
                                           ),
-                                          options: [
+                                          options: const [
                                             'Undergraduate',
                                             'Postgraduate',
                                             'Doctrate'
@@ -1712,7 +1707,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                           borderWidth: 0.0,
                                           borderRadius: 10.0,
                                           margin:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 4.0, 16.0, 4.0),
                                           hidesUnderline: true,
                                           isSearchable: false,
@@ -1723,13 +1718,13 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                     Expanded(
                                       flex: 3,
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 10.0, 0.0, 10.0),
                                         child: Container(
                                           width:
                                               MediaQuery.sizeOf(context).width *
                                                   1.0,
-                                          decoration: BoxDecoration(),
+                                          decoration: const BoxDecoration(),
                                           child: StreamBuilder<
                                               List<
                                                   GeneralSettingsConfigRecord>>(
@@ -1809,7 +1804,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                                 hintText: 'Degree',
                                                 searchHintText:
                                                     'Search for a state...',
-                                                icon: Icon(
+                                                icon: const Icon(
                                                   Icons.keyboard_arrow_down,
                                                   size: 15.0,
                                                 ),
@@ -1822,7 +1817,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                                         .accent3,
                                                 borderWidth: 0.0,
                                                 borderRadius: 10.0,
-                                                margin: EdgeInsetsDirectional
+                                                margin: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         12.0, 4.0, 12.0, 4.0),
                                                 hidesUnderline: true,
@@ -1845,13 +1840,13 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                     Expanded(
                                       flex: 3,
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 10.0, 0.0, 10.0),
                                         child: Container(
                                           width:
                                               MediaQuery.sizeOf(context).width *
                                                   1.0,
-                                          decoration: BoxDecoration(),
+                                          decoration: const BoxDecoration(),
                                           child: FlutterFlowDropDown<String>(
                                             controller: _model
                                                     .specializationValueController ??=
@@ -1861,7 +1856,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                                       .educationRequired
                                                       .subject,
                                             ),
-                                            options: ['PHONE'],
+                                            options: const ['PHONE'],
                                             onChanged: (val) => setState(() =>
                                                 _model.specializationValue =
                                                     val),
@@ -1889,7 +1884,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                             hintText: 'Subject',
                                             searchHintText:
                                                 'Search for a state...',
-                                            icon: Icon(
+                                            icon: const Icon(
                                               Icons.keyboard_arrow_down,
                                               size: 15.0,
                                             ),
@@ -1903,7 +1898,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                             borderWidth: 0.0,
                                             borderRadius: 10.0,
                                             margin:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 4.0, 12.0, 4.0),
                                             hidesUnderline: true,
                                             disabled: (_model.levelValue ==
@@ -1924,7 +1919,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 15.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -1966,7 +1961,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   5.0, 0.0, 5.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -1983,7 +1978,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     8.0,
                                                                     0.0,
@@ -2076,12 +2071,12 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                                   Container(
                                                     width: 40.0,
                                                     height: 50.0,
-                                                    decoration: BoxDecoration(
+                                                    decoration: const BoxDecoration(
                                                       color: Color(0xFFF3F5F7),
                                                     ),
                                                     child: Align(
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Text(
                                                         'TO',
@@ -2119,7 +2114,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     8.0,
                                                                     0.0,
@@ -2196,7 +2191,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                   ],
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 14.0, 0.0, 0.0),
                                   child: Text(
                                     'Experience Required *',
@@ -2209,10 +2204,10 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 18.0, 0.0, 31.0),
                                   child: FlutterFlowChoiceChips(
-                                    options: [
+                                    options: const [
                                       ChipData('Any'),
                                       ChipData('Freshers'),
                                       ChipData('Experienced')
@@ -2235,12 +2230,12 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                           .primaryText,
                                       iconSize: 18.0,
                                       labelPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               14.0, 6.0, 14.0, 8.0),
                                       elevation: 0.0,
                                     ),
                                     unselectedChipStyle: ChipStyle(
-                                      backgroundColor: Color(0xFFF3F5F7),
+                                      backgroundColor: const Color(0xFFF3F5F7),
                                       textStyle: FlutterFlowTheme.of(context)
                                           .bodySmall
                                           .override(
@@ -2253,7 +2248,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                           .primaryText,
                                       iconSize: 18.0,
                                       labelPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               14.0, 6.0, 14.0, 8.0),
                                       elevation: 0.0,
                                     ),
@@ -2281,10 +2276,10 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                       ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 18.0, 0.0, 31.0),
                                   child: FlutterFlowChoiceChips(
-                                    options: [
+                                    options: const [
                                       ChipData('No'),
                                       ChipData('Basic'),
                                       ChipData('Intermediate'),
@@ -2308,7 +2303,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                           .primaryText,
                                       iconSize: 18.0,
                                       labelPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               14.0, 6.0, 14.0, 8.0),
                                       elevation: 0.0,
                                     ),
@@ -2327,7 +2322,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                           .primaryText,
                                       iconSize: 18.0,
                                       labelPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               14.0, 6.0, 14.0, 8.0),
                                       elevation: 0.0,
                                     ),
@@ -2355,10 +2350,10 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                       ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 18.0, 0.0, 31.0),
                                   child: FlutterFlowChoiceChips(
-                                    options: [
+                                    options: const [
                                       ChipData('Other'),
                                       ChipData('+Tamil'),
                                       ChipData('+Mayalam'),
@@ -2382,12 +2377,12 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                           .primaryText,
                                       iconSize: 18.0,
                                       labelPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               14.0, 6.0, 14.0, 8.0),
                                       elevation: 0.0,
                                     ),
                                     unselectedChipStyle: ChipStyle(
-                                      backgroundColor: Color(0xFFF3F5F7),
+                                      backgroundColor: const Color(0xFFF3F5F7),
                                       textStyle: FlutterFlowTheme.of(context)
                                           .bodySmall
                                           .override(
@@ -2400,7 +2395,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                           .primaryText,
                                       iconSize: 18.0,
                                       labelPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               14.0, 6.0, 14.0, 8.0),
                                       elevation: 0.0,
                                     ),
@@ -2508,8 +2503,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                                   .lookingJobForSelectedStates,
                                           clearUnsetFields: false,
                                         ),
-                                        logo: _model.uploadedFileUrl1 != null &&
-                                                _model.uploadedFileUrl1 != ''
+                                        logo: _model.uploadedFileUrl1 != ''
                                             ? _model.uploadedFileUrl1
                                             : updateAdAdsRecord.logo,
                                       ),
@@ -2536,9 +2530,9 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                   text: 'Continue',
                                   options: FFButtonOptions(
                                     height: 45.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color:
                                         FlutterFlowTheme.of(context).tertiary,
@@ -2549,7 +2543,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                           color: Colors.white,
                                         ),
                                     elevation: 3.0,
-                                    borderSide: BorderSide(
+                                    borderSide: const BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),
@@ -2557,8 +2551,8 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                   ),
                                 ),
                               ]
-                                  .addToStart(SizedBox(height: 20.0))
-                                  .addToEnd(SizedBox(height: 20.0)),
+                                  .addToStart(const SizedBox(height: 20.0))
+                                  .addToEnd(const SizedBox(height: 20.0)),
                             ),
                           ),
                         ),

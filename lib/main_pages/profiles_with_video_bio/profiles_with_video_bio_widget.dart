@@ -6,11 +6,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/main_pages/navigation/navigation_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:provider/provider.dart';
 import 'profiles_with_video_bio_model.dart';
@@ -28,15 +26,15 @@ class ProfilesWithVideoBioWidget extends StatefulWidget {
     String? monthlySalaryRangeFrom,
     String? monthlySalaryRangeTo,
     bool? filtered,
-  })  : this.jobType = jobType ?? '',
-        this.educationType = educationType ?? '',
-        this.educationDegree = educationDegree ?? '',
-        this.educationSubject = educationSubject ?? '',
-        this.workExperienceFrom = workExperienceFrom ?? '',
-        this.workExperienceTo = workExperienceTo ?? '',
-        this.monthlySalaryRangeFrom = monthlySalaryRangeFrom ?? '',
-        this.monthlySalaryRangeTo = monthlySalaryRangeTo ?? '',
-        this.filtered = filtered ?? false;
+  })  : jobType = jobType ?? '',
+        educationType = educationType ?? '',
+        educationDegree = educationDegree ?? '',
+        educationSubject = educationSubject ?? '',
+        workExperienceFrom = workExperienceFrom ?? '',
+        workExperienceTo = workExperienceTo ?? '',
+        monthlySalaryRangeFrom = monthlySalaryRangeFrom ?? '',
+        monthlySalaryRangeTo = monthlySalaryRangeTo ?? '',
+        filtered = filtered ?? false;
 
   final String jobType;
   final String educationType;
@@ -99,7 +97,7 @@ class _ProfilesWithVideoBioWidgetState
               : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: Color(0xFFF9FAFC),
+            backgroundColor: const Color(0xFFF9FAFC),
             appBar: AppBar(
               backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
               automaticallyImplyLeading: false,
@@ -117,7 +115,7 @@ class _ProfilesWithVideoBioWidgetState
                   size: 24.0,
                 ),
               ),
-              title: Container(
+              title: SizedBox(
                 width: MediaQuery.sizeOf(context).width * 1.0,
                 child: TextFormField(
                   controller: _model.textController,
@@ -128,28 +126,28 @@ class _ProfilesWithVideoBioWidgetState
                     hintText: 'Search',
                     hintStyle: FlutterFlowTheme.of(context).bodySmall,
                     enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Color(0x00000000),
                         width: 1.0,
                       ),
                       borderRadius: BorderRadius.circular(50.0),
                     ),
                     focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Color(0x00000000),
                         width: 1.0,
                       ),
                       borderRadius: BorderRadius.circular(50.0),
                     ),
                     errorBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Color(0x00000000),
                         width: 1.0,
                       ),
                       borderRadius: BorderRadius.circular(50.0),
                     ),
                     focusedErrorBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Color(0x00000000),
                         width: 1.0,
                       ),
@@ -163,9 +161,9 @@ class _ProfilesWithVideoBioWidgetState
                       _model.textControllerValidator.asValidator(context),
                 ),
               ),
-              actions: [],
+              actions: const [],
               bottom: PreferredSize(
-                preferredSize: Size.fromHeight(70.0),
+                preferredSize: const Size.fromHeight(70.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -183,12 +181,12 @@ class _ProfilesWithVideoBioWidgetState
                             ),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(8.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 4.0, 0.0),
                                   child: Text(
                                     'Bulk Selection',
@@ -210,7 +208,7 @@ class _ProfilesWithVideoBioWidgetState
                             ),
                           ),
                         ),
-                        if (_model.savedCandidates.length > 0)
+                        if (_model.savedCandidates.isNotEmpty)
                           Container(
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context).tertiary,
@@ -220,7 +218,7 @@ class _ProfilesWithVideoBioWidgetState
                               ),
                             ),
                             child: Padding(
-                              padding: EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all(8.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
@@ -231,7 +229,7 @@ class _ProfilesWithVideoBioWidgetState
                                     size: 16.0,
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         4.0, 0.0, 0.0, 0.0),
                                     child: Text(
                                       '${_model.savedCandidates.length.toString()} Selected',
@@ -250,11 +248,11 @@ class _ProfilesWithVideoBioWidgetState
                             ),
                           ),
                       ]
-                          .divide(SizedBox(width: 4.0))
-                          .addToStart(SizedBox(width: 16.0))
-                          .addToEnd(SizedBox(width: 16.0)),
+                          .divide(const SizedBox(width: 4.0))
+                          .addToStart(const SizedBox(width: 16.0))
+                          .addToEnd(const SizedBox(width: 16.0)),
                     ),
-                  ].divide(SizedBox(height: 8.0)),
+                  ].divide(const SizedBox(height: 8.0)),
                 ),
               ),
               centerTitle: true,
@@ -280,7 +278,7 @@ class _ProfilesWithVideoBioWidgetState
                                   isEqualTo: 'true',
                                 ),
                           ),
-                          padding: EdgeInsets.fromLTRB(
+                          padding: const EdgeInsets.fromLTRB(
                             0,
                             20.0,
                             0,
@@ -289,7 +287,7 @@ class _ProfilesWithVideoBioWidgetState
                           shrinkWrap: true,
                           reverse: false,
                           scrollDirection: Axis.vertical,
-                          separatorBuilder: (_, __) => SizedBox(height: 8.0),
+                          separatorBuilder: (_, __) => const SizedBox(height: 8.0),
                           builderDelegate:
                               PagedChildBuilderDelegate<UsersRecord>(
                             // Customize what your widget looks like when it's loading the first page.
@@ -349,7 +347,7 @@ class _ProfilesWithVideoBioWidgetState
                                           width: 60.0,
                                           height: 60.0,
                                           clipBehavior: Clip.antiAlias,
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                             shape: BoxShape.circle,
                                           ),
                                           child: Image.network(
@@ -368,7 +366,7 @@ class _ProfilesWithVideoBioWidgetState
                                         Expanded(
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 0.0, 0.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -383,7 +381,7 @@ class _ProfilesWithVideoBioWidgetState
                                                       .bodyMedium,
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 4.0, 0.0, 0.0),
                                                   child: Row(
@@ -400,7 +398,7 @@ class _ProfilesWithVideoBioWidgetState
                                                       Expanded(
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       2.0,
                                                                       0.0,
@@ -457,7 +455,7 @@ class _ProfilesWithVideoBioWidgetState
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 4.0, 0.0, 0.0),
                                                   child: Row(
@@ -474,7 +472,7 @@ class _ProfilesWithVideoBioWidgetState
                                                       Expanded(
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       2.0,
                                                                       0.0,
@@ -541,8 +539,8 @@ class _ProfilesWithVideoBioWidgetState
                                           ),
                                         ),
                                       ]
-                                          .addToStart(SizedBox(width: 20.0))
-                                          .addToEnd(SizedBox(width: 20.0)),
+                                          .addToStart(const SizedBox(width: 20.0))
+                                          .addToEnd(const SizedBox(width: 20.0)),
                                     ),
                                     Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -568,10 +566,10 @@ class _ProfilesWithVideoBioWidgetState
                                                 ),
                                               ),
                                               child: Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Padding(
-                                                  padding: EdgeInsets.all(8.0),
+                                                  padding: const EdgeInsets.all(8.0),
                                                   child: Text(
                                                     listViewUsersRecord.gender,
                                                     style: FlutterFlowTheme.of(
@@ -588,7 +586,7 @@ class _ProfilesWithVideoBioWidgetState
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(4.0, 0.0, 0.0, 0.0),
                                               child: Container(
                                                 decoration: BoxDecoration(
@@ -605,7 +603,7 @@ class _ProfilesWithVideoBioWidgetState
                                                   ),
                                                 ),
                                                 child: Padding(
-                                                  padding: EdgeInsets.all(8.0),
+                                                  padding: const EdgeInsets.all(8.0),
                                                   child: Text(
                                                     'Age ${functions.dateStringAgeCalculator(listViewUsersRecord.dob!.toString()).toString()}',
                                                     style: FlutterFlowTheme.of(
@@ -622,7 +620,7 @@ class _ProfilesWithVideoBioWidgetState
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(4.0, 0.0, 0.0, 0.0),
                                               child: Container(
                                                 decoration: BoxDecoration(
@@ -639,7 +637,7 @@ class _ProfilesWithVideoBioWidgetState
                                                   ),
                                                 ),
                                                 child: Padding(
-                                                  padding: EdgeInsets.all(8.0),
+                                                  padding: const EdgeInsets.all(8.0),
                                                   child: Text(
                                                     '₹ ${listViewUsersRecord.salaryRange.from.toString()}-  ₹ ${listViewUsersRecord.salaryRange.to.toString()}',
                                                     style: FlutterFlowTheme.of(
@@ -660,7 +658,7 @@ class _ProfilesWithVideoBioWidgetState
                                         Expanded(
                                           child: Align(
                                             alignment:
-                                                AlignmentDirectional(1.0, 0.0),
+                                                const AlignmentDirectional(1.0, 0.0),
                                             child: ToggleIcon(
                                               onPressed: () async {
                                                 setState(
@@ -679,7 +677,7 @@ class _ProfilesWithVideoBioWidgetState
                                                 );
                                                 if ((currentUserDocument
                                                             ?.savedCandidates
-                                                            ?.toList() ??
+                                                            .toList() ??
                                                         [])
                                                     .contains(
                                                         listViewUsersRecord
@@ -734,8 +732,8 @@ class _ProfilesWithVideoBioWidgetState
                                           ),
                                         ),
                                       ]
-                                          .addToStart(SizedBox(width: 20.0))
-                                          .addToEnd(SizedBox(width: 20.0)),
+                                          .addToStart(const SizedBox(width: 20.0))
+                                          .addToEnd(const SizedBox(width: 20.0)),
                                     ),
                                     Divider(
                                       height: 1.0,
@@ -744,8 +742,8 @@ class _ProfilesWithVideoBioWidgetState
                                           FlutterFlowTheme.of(context).accent3,
                                     ),
                                   ]
-                                      .divide(SizedBox(height: 8.0))
-                                      .addToStart(SizedBox(height: 8.0)),
+                                      .divide(const SizedBox(height: 8.0))
+                                      .addToStart(const SizedBox(height: 8.0)),
                                 ),
                               );
                             },
@@ -791,7 +789,7 @@ class _ProfilesWithVideoBioWidgetState
                                       widget.monthlySalaryRangeFrom),
                                 ),
                           ),
-                          padding: EdgeInsets.fromLTRB(
+                          padding: const EdgeInsets.fromLTRB(
                             0,
                             20.0,
                             0,
@@ -800,7 +798,7 @@ class _ProfilesWithVideoBioWidgetState
                           shrinkWrap: true,
                           reverse: false,
                           scrollDirection: Axis.vertical,
-                          separatorBuilder: (_, __) => SizedBox(height: 8.0),
+                          separatorBuilder: (_, __) => const SizedBox(height: 8.0),
                           builderDelegate:
                               PagedChildBuilderDelegate<UsersRecord>(
                             // Customize what your widget looks like when it's loading the first page.
@@ -833,8 +831,7 @@ class _ProfilesWithVideoBioWidgetState
                                   .listViewPagingController2!
                                   .itemList![listViewIndex];
                               return Visibility(
-                                visible: (widget.monthlySalaryRangeTo == null ||
-                                        widget.monthlySalaryRangeTo == '') ||
+                                visible: (widget.monthlySalaryRangeTo == '') ||
                                     ((int.tryParse(
                                             widget.monthlySalaryRangeTo))! <=
                                         listViewUsersRecord.salaryRange.to),
@@ -868,7 +865,7 @@ class _ProfilesWithVideoBioWidgetState
                                             width: 60.0,
                                             height: 60.0,
                                             clipBehavior: Clip.antiAlias,
-                                            decoration: BoxDecoration(
+                                            decoration: const BoxDecoration(
                                               shape: BoxShape.circle,
                                             ),
                                             child: Image.network(
@@ -886,7 +883,7 @@ class _ProfilesWithVideoBioWidgetState
                                           ),
                                           Expanded(
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       10.0, 0.0, 0.0, 0.0),
                                               child: Column(
@@ -903,7 +900,7 @@ class _ProfilesWithVideoBioWidgetState
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 4.0,
                                                                 0.0, 0.0),
                                                     child: Row(
@@ -920,7 +917,7 @@ class _ProfilesWithVideoBioWidgetState
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         2.0,
                                                                         0.0,
@@ -978,7 +975,7 @@ class _ProfilesWithVideoBioWidgetState
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 4.0,
                                                                 0.0, 0.0),
                                                     child: Row(
@@ -995,7 +992,7 @@ class _ProfilesWithVideoBioWidgetState
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         2.0,
                                                                         0.0,
@@ -1064,8 +1061,8 @@ class _ProfilesWithVideoBioWidgetState
                                             ),
                                           ),
                                         ]
-                                            .addToStart(SizedBox(width: 20.0))
-                                            .addToEnd(SizedBox(width: 20.0)),
+                                            .addToStart(const SizedBox(width: 20.0))
+                                            .addToEnd(const SizedBox(width: 20.0)),
                                       ),
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -1093,11 +1090,11 @@ class _ProfilesWithVideoBioWidgetState
                                                 ),
                                                 child: Align(
                                                   alignment:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsets.all(8.0),
+                                                        const EdgeInsets.all(8.0),
                                                     child: Text(
                                                       listViewUsersRecord
                                                           .gender,
@@ -1115,7 +1112,7 @@ class _ProfilesWithVideoBioWidgetState
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         4.0, 0.0, 0.0, 0.0),
                                                 child: Container(
@@ -1135,7 +1132,7 @@ class _ProfilesWithVideoBioWidgetState
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsets.all(8.0),
+                                                        const EdgeInsets.all(8.0),
                                                     child: Text(
                                                       'Age ${functions.dateStringAgeCalculator(listViewUsersRecord.dob!.toString()).toString()}',
                                                       style: FlutterFlowTheme
@@ -1152,7 +1149,7 @@ class _ProfilesWithVideoBioWidgetState
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         4.0, 0.0, 0.0, 0.0),
                                                 child: Container(
@@ -1172,11 +1169,11 @@ class _ProfilesWithVideoBioWidgetState
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsets.all(8.0),
+                                                        const EdgeInsets.all(8.0),
                                                     child: AuthUserStreamWidget(
                                                       builder: (context) =>
                                                           Text(
-                                                        '₹${currentUserDocument?.salaryRange?.from?.toString()}-  ₹ ${listViewUsersRecord.salaryRange.to.toString()}',
+                                                        '₹${currentUserDocument?.salaryRange.from.toString()}-  ₹ ${listViewUsersRecord.salaryRange.to.toString()}',
                                                         style: FlutterFlowTheme
                                                                 .of(context)
                                                             .bodyMedium
@@ -1197,7 +1194,7 @@ class _ProfilesWithVideoBioWidgetState
                                           ),
                                           Expanded(
                                             child: Align(
-                                              alignment: AlignmentDirectional(
+                                              alignment: const AlignmentDirectional(
                                                   1.0, 0.0),
                                               child: ToggleIcon(
                                                 onPressed: () async {
@@ -1206,7 +1203,7 @@ class _ProfilesWithVideoBioWidgetState
                                                           !_model.filtered);
                                                   if ((currentUserDocument
                                                               ?.savedCandidates
-                                                              ?.toList() ??
+                                                              .toList() ??
                                                           [])
                                                       .contains(
                                                           listViewUsersRecord
@@ -1259,8 +1256,8 @@ class _ProfilesWithVideoBioWidgetState
                                             ),
                                           ),
                                         ]
-                                            .addToStart(SizedBox(width: 20.0))
-                                            .addToEnd(SizedBox(width: 20.0)),
+                                            .addToStart(const SizedBox(width: 20.0))
+                                            .addToEnd(const SizedBox(width: 20.0)),
                                       ),
                                       Divider(
                                         height: 1.0,
@@ -1269,8 +1266,8 @@ class _ProfilesWithVideoBioWidgetState
                                             .accent3,
                                       ),
                                     ]
-                                        .divide(SizedBox(height: 12.0))
-                                        .addToStart(SizedBox(height: 12.0)),
+                                        .divide(const SizedBox(height: 12.0))
+                                        .addToStart(const SizedBox(height: 12.0)),
                                   ),
                                 ),
                               );
@@ -1281,7 +1278,7 @@ class _ProfilesWithVideoBioWidgetState
                     },
                   ),
                 ),
-                if (_model.savedCandidates.length > 0)
+                if (_model.savedCandidates.isNotEmpty)
                   Column(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -1303,9 +1300,9 @@ class _ProfilesWithVideoBioWidgetState
                             options: FFButtonOptions(
                               width: 198.0,
                               height: 50.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).tertiary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -1315,7 +1312,7 @@ class _ProfilesWithVideoBioWidgetState
                                     color: Colors.white,
                                   ),
                               elevation: 3.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -1330,9 +1327,9 @@ class _ProfilesWithVideoBioWidgetState
                             options: FFButtonOptions(
                               width: MediaQuery.sizeOf(context).width * 0.359,
                               height: 50.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).secondaryText,
                               textStyle: FlutterFlowTheme.of(context)
@@ -1343,7 +1340,7 @@ class _ProfilesWithVideoBioWidgetState
                                     fontSize: 14.0,
                                   ),
                               elevation: 3.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -1353,13 +1350,13 @@ class _ProfilesWithVideoBioWidgetState
                         ],
                       ),
                     ]
-                        .divide(SizedBox(height: 8.0))
-                        .addToEnd(SizedBox(height: 8.0)),
+                        .divide(const SizedBox(height: 8.0))
+                        .addToEnd(const SizedBox(height: 8.0)),
                   ),
                 wrapWithModel(
                   model: _model.navigationModel,
                   updateCallback: () => setState(() {}),
-                  child: NavigationWidget(),
+                  child: const NavigationWidget(),
                 ),
               ],
             ),

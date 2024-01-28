@@ -4,12 +4,7 @@ import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'message_component_model.dart';
 export 'message_component_model.dart';
@@ -93,7 +88,7 @@ class _MessageComponentWidgetState extends State<MessageComponentWidget> {
                     width: 40.0,
                     height: 40.0,
                     clipBehavior: Clip.antiAlias,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                     ),
                     child: Image.network(
@@ -108,7 +103,7 @@ class _MessageComponentWidgetState extends State<MessageComponentWidget> {
                 builder: (context) {
                   if (widget.video != null && widget.video != '') {
                     return Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: FlutterFlowVideoPlayer(
                         path: widget.video!,
                         videoType: VideoType.network,
@@ -123,7 +118,7 @@ class _MessageComponentWidgetState extends State<MessageComponentWidget> {
                     );
                   } else if (widget.photo != null && widget.photo != '') {
                     return Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -168,7 +163,7 @@ class _MessageComponentWidgetState extends State<MessageComponentWidget> {
                       widget.textMessage != '') {
                     return Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 15.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 15.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -184,13 +179,13 @@ class _MessageComponentWidgetState extends State<MessageComponentWidget> {
                               borderRadius: BorderRadius.circular(12.0),
                             ),
                             child: Padding(
-                              padding: EdgeInsets.all(10.0),
+                              padding: const EdgeInsets.all(10.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Align(
-                                    alignment: AlignmentDirectional(-1.0, -1.0),
+                                    alignment: const AlignmentDirectional(-1.0, -1.0),
                                     child: Text(
                                       widget.textMessage!,
                                       style: FlutterFlowTheme.of(context)
@@ -252,9 +247,9 @@ class _MessageComponentWidgetState extends State<MessageComponentWidget> {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Align(
-                                alignment: AlignmentDirectional(-1.0, -1.0),
+                                alignment: const AlignmentDirectional(-1.0, -1.0),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     '- INTERVIEW',
@@ -279,9 +274,9 @@ class _MessageComponentWidgetState extends State<MessageComponentWidget> {
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
                               Align(
-                                alignment: AlignmentDirectional(-1.0, 0.0),
+                                alignment: const AlignmentDirectional(-1.0, 0.0),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 0.0, 0.0),
                                   child: Container(
                                     width: 109.0,
@@ -294,7 +289,7 @@ class _MessageComponentWidgetState extends State<MessageComponentWidget> {
                                       ),
                                     ),
                                     child: Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment: const AlignmentDirectional(0.0, 0.0),
                                       child: Text(
                                         columnInterviewsRecord.interviewMode,
                                         style: FlutterFlowTheme.of(context)
@@ -330,18 +325,18 @@ class _MessageComponentWidgetState extends State<MessageComponentWidget> {
                                               'yMMMd',
                                               columnInterviewsRecord
                                                   .interviewDate!),
-                                          style: TextStyle(),
+                                          style: const TextStyle(),
                                         )
                                       ],
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),
                                   ),
-                                ].addToStart(SizedBox(width: 20.0)),
+                                ].addToStart(const SizedBox(width: 20.0)),
                               ),
                             ]
-                                .divide(SizedBox(height: 20.0))
-                                .around(SizedBox(height: 20.0)),
+                                .divide(const SizedBox(height: 20.0))
+                                .around(const SizedBox(height: 20.0)),
                           );
                         },
                       ),
@@ -349,14 +344,14 @@ class _MessageComponentWidgetState extends State<MessageComponentWidget> {
                   }
                 },
               ),
-            ].divide(SizedBox(width: 10.0)).around(SizedBox(width: 10.0)),
+            ].divide(const SizedBox(width: 10.0)).around(const SizedBox(width: 10.0)),
           );
         } else {
           return Builder(
             builder: (context) {
               if (widget.photo != null && widget.photo != '') {
                 return Align(
-                  alignment: AlignmentDirectional(1.0, 0.0),
+                  alignment: const AlignmentDirectional(1.0, 0.0),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
                     child: Image.network(
@@ -370,7 +365,7 @@ class _MessageComponentWidgetState extends State<MessageComponentWidget> {
                 );
               } else if (widget.video != null && widget.video != '') {
                 return Align(
-                  alignment: AlignmentDirectional(1.0, 0.0),
+                  alignment: const AlignmentDirectional(1.0, 0.0),
                   child: FlutterFlowVideoPlayer(
                     path: widget.video!,
                     videoType: VideoType.network,
@@ -385,10 +380,10 @@ class _MessageComponentWidgetState extends State<MessageComponentWidget> {
                 );
               } else {
                 return Align(
-                  alignment: AlignmentDirectional(1.0, 1.0),
+                  alignment: const AlignmentDirectional(1.0, 1.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
                     child: Container(
                       constraints: BoxConstraints(
                         maxWidth: MediaQuery.sizeOf(context).width * 0.8,
@@ -399,14 +394,14 @@ class _MessageComponentWidgetState extends State<MessageComponentWidget> {
                         shape: BoxShape.rectangle,
                       ),
                       child: Padding(
-                        padding: EdgeInsets.all(10.0),
+                        padding: const EdgeInsets.all(10.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 50.0, 0.0),
                               child: Text(
                                 valueOrDefault<String>(

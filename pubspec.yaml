@@ -33,6 +33,7 @@ dependencies:
   cloud_firestore_web: 3.8.5
   collection: 1.17.2
   dart_geohash : 2.0.2
+  dio :
   dropdown_button2: 2.3.9
   easy_debounce: 2.0.1
   equatable: 2.0.5
@@ -71,6 +72,7 @@ dependencies:
   hive: 2.2.3
   hive_flutter: 1.1.0
   hive_listener: 1.2.1
+  image :
   image_picker: 1.0.4
   image_picker_android: 0.8.8
   image_picker_for_web: 3.0.1

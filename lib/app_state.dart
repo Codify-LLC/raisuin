@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
-import 'backend/api_requests/api_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 
@@ -34,10 +31,10 @@ class FFAppState extends ChangeNotifier {
 
   DocumentReference? _userRef;
   DocumentReference? get userRef => _userRef;
-  set userRef(DocumentReference? _value) {
-    _userRef = _value;
-    _value != null
-        ? prefs.setString('ff_userRef', _value.path)
+  set userRef(DocumentReference? value) {
+    _userRef = value;
+    value != null
+        ? prefs.setString('ff_userRef', value.path)
         : prefs.remove('ff_userRef');
   }
 }

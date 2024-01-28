@@ -1,18 +1,6 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'dart:ui';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart'
-    as smooth_page_indicator;
 import 'sign_in_widget.dart' show SignInWidget;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class SignInModel extends FlutterFlowModel<SignInWidget> {
   ///  Local state fields for this page.
@@ -42,10 +30,12 @@ class SignInModel extends FlutterFlowModel<SignInWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     passVisibility = false;
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     emailFocusNode?.dispose();

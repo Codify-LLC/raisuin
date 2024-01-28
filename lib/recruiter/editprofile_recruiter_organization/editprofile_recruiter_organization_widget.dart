@@ -4,9 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'editprofile_recruiter_organization_model.dart';
 export 'editprofile_recruiter_organization_model.dart';
@@ -59,12 +57,12 @@ class _EditprofileRecruiterOrganizationWidgetState
     context.watch<FFAppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
       child: Container(
         height: double.infinity,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             bottomLeft: Radius.circular(0.0),
             bottomRight: Radius.circular(0.0),
             topLeft: Radius.circular(20.0),
@@ -76,7 +74,7 @@ class _EditprofileRecruiterOrganizationWidgetState
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20.0, 25.0, 20.0, 15.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(20.0, 25.0, 20.0, 15.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -88,7 +86,7 @@ class _EditprofileRecruiterOrganizationWidgetState
                           fontWeight: FontWeight.w500,
                         ),
                   ),
-                  Icon(
+                  const Icon(
                     Icons.close,
                     color: Colors.black,
                     size: 24.0,
@@ -103,10 +101,10 @@ class _EditprofileRecruiterOrganizationWidgetState
             ),
             Expanded(
               child: Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Container(
                   height: double.infinity,
-                  constraints: BoxConstraints(
+                  constraints: const BoxConstraints(
                     maxWidth: 600.0,
                   ),
                   decoration: BoxDecoration(
@@ -114,14 +112,14 @@ class _EditprofileRecruiterOrganizationWidgetState
                   ),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 10.0),
                             child: Text(
                               'your photo',
@@ -135,7 +133,7 @@ class _EditprofileRecruiterOrganizationWidgetState
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 5.0, 0.0, 0.0),
                             child: Container(
                               width: 140.0,
@@ -147,13 +145,13 @@ class _EditprofileRecruiterOrganizationWidgetState
                               child: Stack(
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 20.0, 20.0),
                                     child: Container(
                                       width: 120.0,
                                       height: 120.0,
                                       clipBehavior: Clip.antiAlias,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                       ),
                                       child: SvgPicture.asset(
@@ -163,7 +161,7 @@ class _EditprofileRecruiterOrganizationWidgetState
                                     ),
                                   ),
                                   Align(
-                                    alignment: AlignmentDirectional(0.85, 0.46),
+                                    alignment: const AlignmentDirectional(0.85, 0.46),
                                     child: FlutterFlowIconButton(
                                       borderColor: Colors.transparent,
                                       borderRadius: 30.0,
@@ -187,7 +185,7 @@ class _EditprofileRecruiterOrganizationWidgetState
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 23.0, 0.0, 10.0),
                             child: Text(
                               'Display name',
@@ -227,20 +225,20 @@ class _EditprofileRecruiterOrganizationWidgetState
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
-                              contentPadding: EdgeInsetsDirectional.fromSTEB(
+                              contentPadding: const EdgeInsetsDirectional.fromSTEB(
                                   10.0, 3.0, 10.0, 3.0),
                             ),
                             style: FlutterFlowTheme.of(context).bodyMedium,
@@ -249,7 +247,7 @@ class _EditprofileRecruiterOrganizationWidgetState
                                 .asValidator(context),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 23.0, 0.0, 10.0),
                             child: Text(
                               'Profile Type',
@@ -263,10 +261,10 @@ class _EditprofileRecruiterOrganizationWidgetState
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 8.0, 0.0, 8.0),
                             child: FlutterFlowChoiceChips(
-                              options: [
+                              options: const [
                                 ChipData('School'),
                                 ChipData('Institution'),
                                 ChipData('Individual')
@@ -287,7 +285,7 @@ class _EditprofileRecruiterOrganizationWidgetState
                                 iconColor:
                                     FlutterFlowTheme.of(context).primaryText,
                                 iconSize: 0.0,
-                                labelPadding: EdgeInsetsDirectional.fromSTEB(
+                                labelPadding: const EdgeInsetsDirectional.fromSTEB(
                                     14.0, 6.0, 14.0, 8.0),
                                 elevation: 0.0,
                               ),
@@ -305,7 +303,7 @@ class _EditprofileRecruiterOrganizationWidgetState
                                 iconColor:
                                     FlutterFlowTheme.of(context).primaryText,
                                 iconSize: 18.0,
-                                labelPadding: EdgeInsetsDirectional.fromSTEB(
+                                labelPadding: const EdgeInsetsDirectional.fromSTEB(
                                     14.0, 6.0, 14.0, 8.0),
                                 elevation: 0.0,
                               ),
@@ -321,7 +319,7 @@ class _EditprofileRecruiterOrganizationWidgetState
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 23.0, 0.0, 10.0),
                             child: Text(
                               'School Name',
@@ -361,20 +359,20 @@ class _EditprofileRecruiterOrganizationWidgetState
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               errorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               focusedErrorBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
-                              contentPadding: EdgeInsetsDirectional.fromSTEB(
+                              contentPadding: const EdgeInsetsDirectional.fromSTEB(
                                   10.0, 3.0, 10.0, 3.0),
                             ),
                             style: FlutterFlowTheme.of(context).bodyMedium,
@@ -383,7 +381,7 @@ class _EditprofileRecruiterOrganizationWidgetState
                                 .asValidator(context),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 23.0, 0.0, 10.0),
                             child: Text(
                               'Your Role',
@@ -397,7 +395,7 @@ class _EditprofileRecruiterOrganizationWidgetState
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 15.0),
                             child: TextFormField(
                               controller: _model.textController3,
@@ -426,20 +424,20 @@ class _EditprofileRecruiterOrganizationWidgetState
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
                                 errorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
-                                contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                contentPadding: const EdgeInsetsDirectional.fromSTEB(
                                     10.0, 3.0, 10.0, 3.0),
                               ),
                               style: FlutterFlowTheme.of(context).bodyMedium,
@@ -471,7 +469,7 @@ class _EditprofileRecruiterOrganizationWidgetState
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -482,15 +480,15 @@ class _EditprofileRecruiterOrganizationWidgetState
                       },
                       child: Container(
                         height: 50.0,
-                        constraints: BoxConstraints(
+                        constraints: const BoxConstraints(
                           maxWidth: 337.0,
                         ),
                         decoration: BoxDecoration(
-                          color: Color(0xFFDD3568),
+                          color: const Color(0xFFDD3568),
                           borderRadius: BorderRadius.circular(40.0),
                         ),
                         child: Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Text(
                             'Update',
                             style: FlutterFlowTheme.of(context)

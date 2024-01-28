@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'dart:typed_data';
-import '../schema/structs/index.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
@@ -21,7 +19,7 @@ class RazorPayGroup {
 
 class CreateCustomerCall {
   Future<ApiCallResponse> call() async {
-    final ffApiRequestBody = '''
+    const ffApiRequestBody = '''
 {
   "name":"Gaurav Kumar",
   "email":"gaurav.kumar@example.com",
@@ -52,7 +50,7 @@ class CreateCustomerCall {
 
 class CreateSubscriptionsCall {
   Future<ApiCallResponse> call() async {
-    final ffApiRequestBody = '''
+    const ffApiRequestBody = '''
 {
   "plan_id":"{plan_id}",
   "total_count":6,
@@ -102,7 +100,7 @@ class CheckRecruiterSubscriptionCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'check Recruiter Subscription',
-      apiUrl: 'https://nodejs-production-466d.up.railway.app/rCheck/${userID}',
+      apiUrl: 'https://nodejs-production-466d.up.railway.app/rCheck/$userID',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -172,7 +170,7 @@ class GetCandidateMatchingCall {
 
 class GeneratepdfCall {
   static Future<ApiCallResponse> call() async {
-    final ffApiRequestBody = '''
+    const ffApiRequestBody = '''
 {
 "title" : "Test",
 "content" : "It works",
@@ -230,7 +228,7 @@ class NewUserProfileSetFieldsCall {
     return ApiManager.instance.makeApiCall(
       callName: 'New User Profile Set Fields',
       apiUrl:
-          'https://nodejs-production-466d.up.railway.app/newrecruiterprofileset/${userID}',
+          'https://nodejs-production-466d.up.railway.app/newrecruiterprofileset/$userID',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -251,8 +249,8 @@ class InstamojoCreatePaymentLinkCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "userid": "${userID}",
-  "paymentplan": "${paymentPlan}"
+  "userid": "$userID",
+  "paymentplan": "$paymentPlan"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Instamojo Create Payment Link',
@@ -400,7 +398,7 @@ class SaveCandidatesCall {
     return ApiManager.instance.makeApiCall(
       callName: 'Save Candidates',
       apiUrl:
-          'https://nodejs-production-466d.up.railway.app/candidatesave/${candidateid}/${recruiterid}',
+          'https://nodejs-production-466d.up.railway.app/candidatesave/$candidateid/$recruiterid',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
@@ -493,10 +491,10 @@ class SendBulkMessagesToCandidatesCall {
 
     final ffApiRequestBody = '''
 {
-  "recruiterid": "${recruiterid}",
-  "candidateList": ${candidates},
-  "message": "${message}",
-  "userid": "${userid}"
+  "recruiterid": "$recruiterid",
+  "candidateList": $candidates,
+  "message": "$message",
+  "userid": "$userid"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Send Bulk Messages to Candidates',
@@ -520,16 +518,16 @@ class SendBulkEMailCandidatesCall {
     String? subject = '',
     String? recruiterid = '',
     List<String>? candidatesList,
-    dynamic? dataJson,
+    dynamic dataJson,
   }) async {
     final candidates = _serializeList(candidatesList);
     final data = _serializeJson(dataJson);
     final ffApiRequestBody = '''
 {
-  "recruiterid": "${recruiterid}",
-  "candidateList": ${candidates},
-  "data": ${data},
-  "subject": "${subject}"
+  "recruiterid": "$recruiterid",
+  "candidateList": $candidates,
+  "data": $data,
+  "subject": "$subject"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Send Bulk EMail Candidates',
@@ -557,10 +555,10 @@ class CcAvenueCheckoutCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "package": "${plan}",
+  "package": "$plan",
   "appName": "recruiter",
-  "customerid": "${supabaseid}",
-  "environment": "${env}"
+  "customerid": "$supabaseid",
+  "environment": "$env"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'cc avenue checkout',

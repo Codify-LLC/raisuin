@@ -1,11 +1,9 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'recent_transactions_model.dart';
 export 'recent_transactions_model.dart';
@@ -78,7 +76,7 @@ class _RecentTransactionsWidgetState extends State<RecentTransactionsWidget> {
                   context.pop();
                 },
               ),
-              actions: [],
+              actions: const [],
               centerTitle: true,
               elevation: 0.0,
             ),
@@ -91,7 +89,7 @@ class _RecentTransactionsWidgetState extends State<RecentTransactionsWidget> {
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
                       child: Text(
                         'Recent Orders',
                         style: FlutterFlowTheme.of(context)
@@ -104,7 +102,7 @@ class _RecentTransactionsWidgetState extends State<RecentTransactionsWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(24.0, 4.0, 0.0, 0.0),
                       child: Text(
                         'Below are your most recent orders',
                         textAlign: TextAlign.start,
@@ -112,7 +110,7 @@ class _RecentTransactionsWidgetState extends State<RecentTransactionsWidget> {
                       ),
                     ),
                     ListView(
-                      padding: EdgeInsets.fromLTRB(
+                      padding: const EdgeInsets.fromLTRB(
                         0,
                         24.0,
                         0,
@@ -122,7 +120,7 @@ class _RecentTransactionsWidgetState extends State<RecentTransactionsWidget> {
                       scrollDirection: Axis.vertical,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               16.0, 0.0, 16.0, 14.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -134,7 +132,7 @@ class _RecentTransactionsWidgetState extends State<RecentTransactionsWidget> {
                                     width: 60.0,
                                     height: 60.0,
                                     clipBehavior: Clip.antiAlias,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                       shape: BoxShape.circle,
                                     ),
                                     child: SvgPicture.asset(
@@ -144,7 +142,7 @@ class _RecentTransactionsWidgetState extends State<RecentTransactionsWidget> {
                                   ),
                                   Expanded(
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           10.0, 8.0, 0.0, 8.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -158,7 +156,7 @@ class _RecentTransactionsWidgetState extends State<RecentTransactionsWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 4.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -174,7 +172,7 @@ class _RecentTransactionsWidgetState extends State<RecentTransactionsWidget> {
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(2.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -204,7 +202,7 @@ class _RecentTransactionsWidgetState extends State<RecentTransactionsWidget> {
                                 ],
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 14.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -223,9 +221,9 @@ class _RecentTransactionsWidgetState extends State<RecentTransactionsWidget> {
                                       ),
                                       child: Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: Padding(
-                                          padding: EdgeInsets.all(8.0),
+                                          padding: const EdgeInsets.all(8.0),
                                           child: Text(
                                             'Female',
                                             style: FlutterFlowTheme.of(context)
@@ -240,7 +238,7 @@ class _RecentTransactionsWidgetState extends State<RecentTransactionsWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           4.0, 0.0, 0.0, 0.0),
                                       child: Container(
                                         decoration: BoxDecoration(
@@ -254,7 +252,7 @@ class _RecentTransactionsWidgetState extends State<RecentTransactionsWidget> {
                                           ),
                                         ),
                                         child: Padding(
-                                          padding: EdgeInsets.all(8.0),
+                                          padding: const EdgeInsets.all(8.0),
                                           child: Text(
                                             'Paid',
                                             style: FlutterFlowTheme.of(context)
@@ -276,7 +274,7 @@ class _RecentTransactionsWidgetState extends State<RecentTransactionsWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     4.0, 0.0, 0.0, 0.0),
                                             child: Container(
                                               decoration: BoxDecoration(
@@ -292,7 +290,7 @@ class _RecentTransactionsWidgetState extends State<RecentTransactionsWidget> {
                                                 ),
                                               ),
                                               child: Padding(
-                                                padding: EdgeInsets.all(8.0),
+                                                padding: const EdgeInsets.all(8.0),
                                                 child: Text(
                                                   'Download Invoice',
                                                   style: FlutterFlowTheme.of(

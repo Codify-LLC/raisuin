@@ -1,6 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 import '/components/video_player_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -8,14 +7,11 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -158,14 +154,14 @@ class _DetailedprofilecandidateWidgetState
                                       children: [
                                         Container(
                                           width: double.infinity,
-                                          constraints: BoxConstraints(
+                                          constraints: const BoxConstraints(
                                             maxHeight: 390.0,
                                           ),
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryBackground,
                                           ),
-                                          child: Container(
+                                          child: SizedBox(
                                             width: MediaQuery.sizeOf(context)
                                                     .width *
                                                 1.0,
@@ -176,7 +172,7 @@ class _DetailedprofilecandidateWidgetState
                                               children: [
                                                 Align(
                                                   alignment:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Image.network(
                                                     getCORSProxyUrl(
@@ -196,11 +192,11 @@ class _DetailedprofilecandidateWidgetState
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      AlignmentDirectional(
+                                                      const AlignmentDirectional(
                                                           0.0, 1.0),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 45.0),
                                                     child: Builder(
@@ -250,7 +246,7 @@ class _DetailedprofilecandidateWidgetState
                                                                         backgroundColor:
                                                                             Colors.transparent,
                                                                         alignment:
-                                                                            AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                            const AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                                                         child:
                                                                             WebViewAware(
                                                                           child:
@@ -284,7 +280,7 @@ class _DetailedprofilecandidateWidgetState
                                                                   child:
                                                                       Padding(
                                                                     padding:
-                                                                        EdgeInsets.all(
+                                                                        const EdgeInsets.all(
                                                                             8.0),
                                                                     child: Text(
                                                                       videosItem
@@ -324,7 +320,7 @@ class _DetailedprofilecandidateWidgetState
                                                       .secondaryBackground,
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       20.0, 16.0, 20.0, 0.0),
                                               child: Row(
@@ -337,13 +333,13 @@ class _DetailedprofilecandidateWidgetState
                                                     height: 60.0,
                                                     clipBehavior:
                                                         Clip.antiAlias,
-                                                    decoration: BoxDecoration(
+                                                    decoration: const BoxDecoration(
                                                       shape: BoxShape.circle,
                                                     ),
                                                     child: CachedNetworkImage(
-                                                      fadeInDuration: Duration(
+                                                      fadeInDuration: const Duration(
                                                           milliseconds: 500),
-                                                      fadeOutDuration: Duration(
+                                                      fadeOutDuration: const Duration(
                                                           milliseconds: 500),
                                                       imageUrl: getCORSProxyUrl(
                                                         detailedprofilecandidateUsersRecord
@@ -355,7 +351,7 @@ class _DetailedprofilecandidateWidgetState
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   10.0,
                                                                   0.0,
@@ -377,7 +373,7 @@ class _DetailedprofilecandidateWidgetState
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         4.0,
@@ -400,7 +396,7 @@ class _DetailedprofilecandidateWidgetState
                                                                 Expanded(
                                                                   child:
                                                                       Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             2.0,
                                                                             0.0,
@@ -429,7 +425,7 @@ class _DetailedprofilecandidateWidgetState
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         4.0,
@@ -452,7 +448,7 @@ class _DetailedprofilecandidateWidgetState
                                                                 Expanded(
                                                                   child:
                                                                       Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             2.0,
                                                                             0.0,
@@ -487,7 +483,7 @@ class _DetailedprofilecandidateWidgetState
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       20.0, 0.0, 20.0, 0.0),
                                               child: Row(
@@ -512,11 +508,11 @@ class _DetailedprofilecandidateWidgetState
                                                     ),
                                                     child: Align(
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsets.all(8.0),
+                                                            const EdgeInsets.all(8.0),
                                                         child: Text(
                                                           detailedprofilecandidateUsersRecord
                                                               .gender,
@@ -537,7 +533,7 @@ class _DetailedprofilecandidateWidgetState
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(4.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Container(
@@ -556,7 +552,7 @@ class _DetailedprofilecandidateWidgetState
                                                       ),
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsets.all(8.0),
+                                                            const EdgeInsets.all(8.0),
                                                         child: Text(
                                                           'Age ${functions.dateStringAgeCalculator(detailedprofilecandidateUsersRecord.dob!.toString()).toString()}',
                                                           style: FlutterFlowTheme
@@ -576,7 +572,7 @@ class _DetailedprofilecandidateWidgetState
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(4.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Container(
@@ -595,7 +591,7 @@ class _DetailedprofilecandidateWidgetState
                                                       ),
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsets.all(8.0),
+                                                            const EdgeInsets.all(8.0),
                                                         child: Text(
                                                           '₹ ${detailedprofilecandidateUsersRecord.salaryRange.from.toString()} - ₹ ${detailedprofilecandidateUsersRecord.salaryRange.to.toString()}',
                                                           style: FlutterFlowTheme
@@ -627,11 +623,11 @@ class _DetailedprofilecandidateWidgetState
                                                             .width *
                                                         0.9,
                                                 height: 45.0,
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         24.0, 0.0, 24.0, 0.0),
                                                 iconPadding:
-                                                    EdgeInsetsDirectional
+                                                    const EdgeInsetsDirectional
                                                         .fromSTEB(
                                                             0.0, 0.0, 0.0, 0.0),
                                                 color:
@@ -658,8 +654,8 @@ class _DetailedprofilecandidateWidgetState
                                               ),
                                             ),
                                           ]
-                                              .divide(SizedBox(height: 15.0))
-                                              .addToEnd(SizedBox(height: 20.0)),
+                                              .divide(const SizedBox(height: 15.0))
+                                              .addToEnd(const SizedBox(height: 20.0)),
                                         ),
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -674,12 +670,12 @@ class _DetailedprofilecandidateWidgetState
                                                           0.9,
                                                   maxHeight: 500.0,
                                                 ),
-                                                decoration: BoxDecoration(),
+                                                decoration: const BoxDecoration(),
                                                 child: Column(
                                                   children: [
                                                     Align(
                                                       alignment:
-                                                          Alignment(0.0, 0),
+                                                          const Alignment(0.0, 0),
                                                       child: TabBar(
                                                         isScrollable: true,
                                                         labelColor:
@@ -687,7 +683,7 @@ class _DetailedprofilecandidateWidgetState
                                                                     context)
                                                                 .tertiary,
                                                         unselectedLabelColor:
-                                                            Color(0x80001451),
+                                                            const Color(0x80001451),
                                                         labelStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -699,12 +695,12 @@ class _DetailedprofilecandidateWidgetState
                                                                       14.0,
                                                                 ),
                                                         unselectedLabelStyle:
-                                                            TextStyle(),
+                                                            const TextStyle(),
                                                         indicatorColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .tertiary,
-                                                        tabs: [
+                                                        tabs: const [
                                                           Tab(
                                                             text: 'PERSONAL',
                                                           ),
@@ -733,7 +729,7 @@ class _DetailedprofilecandidateWidgetState
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         20.0,
                                                                         20.0,
@@ -748,7 +744,7 @@ class _DetailedprofilecandidateWidgetState
                                                                       .start,
                                                               children: [
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -798,7 +794,7 @@ class _DetailedprofilecandidateWidgetState
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -848,7 +844,7 @@ class _DetailedprofilecandidateWidgetState
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -902,7 +898,7 @@ class _DetailedprofilecandidateWidgetState
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -952,7 +948,7 @@ class _DetailedprofilecandidateWidgetState
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1002,7 +998,7 @@ class _DetailedprofilecandidateWidgetState
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1054,7 +1050,7 @@ class _DetailedprofilecandidateWidgetState
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1104,7 +1100,7 @@ class _DetailedprofilecandidateWidgetState
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1154,7 +1150,7 @@ class _DetailedprofilecandidateWidgetState
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1204,7 +1200,7 @@ class _DetailedprofilecandidateWidgetState
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -1258,7 +1254,7 @@ class _DetailedprofilecandidateWidgetState
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         20.0,
                                                                         28.0,
@@ -1288,7 +1284,7 @@ class _DetailedprofilecandidateWidgetState
                                                                         educationHistory[
                                                                             educationHistoryIndex];
                                                                     return Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
@@ -1299,7 +1295,7 @@ class _DetailedprofilecandidateWidgetState
                                                                             MainAxisSize.max,
                                                                         children: [
                                                                           Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 0.0,
                                                                                 0.0,
                                                                                 0.0,
@@ -1320,7 +1316,7 @@ class _DetailedprofilecandidateWidgetState
                                                                                 ),
                                                                                 Expanded(
                                                                                   child: Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                                                                                     child: Column(
                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1330,7 +1326,7 @@ class _DetailedprofilecandidateWidgetState
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                         ),
                                                                                         Padding(
-                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                                                           child: Row(
                                                                                             mainAxisSize: MainAxisSize.max,
                                                                                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -1341,7 +1337,7 @@ class _DetailedprofilecandidateWidgetState
                                                                                               ),
                                                                                               Expanded(
                                                                                                 child: Padding(
-                                                                                                  padding: EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 0.0),
+                                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 0.0),
                                                                                                   child: Text(
                                                                                                     '${educationHistoryItem.educationType}  ${educationHistoryItem.degree}',
                                                                                                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1357,7 +1353,7 @@ class _DetailedprofilecandidateWidgetState
                                                                                           ),
                                                                                         ),
                                                                                         Padding(
-                                                                                          padding: EdgeInsetsDirectional.fromSTEB(2.0, 4.0, 0.0, 0.0),
+                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(2.0, 4.0, 0.0, 0.0),
                                                                                           child: Text(
                                                                                             '${educationHistoryItem.year.from?.toString()} - ${educationHistoryItem.year.to?.toString()}',
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -1393,7 +1389,7 @@ class _DetailedprofilecandidateWidgetState
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         20.0,
                                                                         28.0,
@@ -1425,7 +1421,7 @@ class _DetailedprofilecandidateWidgetState
                                                                         workExperience[
                                                                             workExperienceIndex];
                                                                     return Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           0.0,
                                                                           0.0,
@@ -1438,7 +1434,7 @@ class _DetailedprofilecandidateWidgetState
                                                                             CrossAxisAlignment.start,
                                                                         children: [
                                                                           Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 0.0,
                                                                                 0.0,
                                                                                 0.0,
@@ -1459,7 +1455,7 @@ class _DetailedprofilecandidateWidgetState
                                                                                 ),
                                                                                 Expanded(
                                                                                   child: Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                                                                                     child: Column(
                                                                                       mainAxisSize: MainAxisSize.max,
                                                                                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -1469,7 +1465,7 @@ class _DetailedprofilecandidateWidgetState
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium,
                                                                                         ),
                                                                                         Padding(
-                                                                                          padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                                                                                           child: Row(
                                                                                             mainAxisSize: MainAxisSize.max,
                                                                                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -1496,7 +1492,7 @@ class _DetailedprofilecandidateWidgetState
                                                                             ),
                                                                           ),
                                                                           Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 0.0,
                                                                                 0.0,
                                                                                 0.0,
@@ -1512,7 +1508,7 @@ class _DetailedprofilecandidateWidgetState
                                                                                   ),
                                                                             ),
                                                                           ),
-                                                                          Divider(
+                                                                          const Divider(
                                                                             height:
                                                                                 1.0,
                                                                             thickness:
@@ -1558,7 +1554,7 @@ class _DetailedprofilecandidateWidgetState
                                             .accent3,
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             24.0, 9.0, 24.0, 30.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -1597,8 +1593,8 @@ class _DetailedprofilecandidateWidgetState
                                                                       detailedprofilecandidateUsersRecord
                                                                           .reference))
                                                               .toList()
-                                                              ?.first
-                                                              ?.reference,
+                                                              .first
+                                                              .reference,
                                                           ParamType
                                                               .DocumentReference,
                                                         ),
@@ -1653,11 +1649,11 @@ class _DetailedprofilecandidateWidgetState
                                                 text: 'Chat',
                                                 options: FFButtonOptions(
                                                   height: 46.0,
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           24.0, 0.0, 24.0, 0.0),
                                                   iconPadding:
-                                                      EdgeInsetsDirectional
+                                                      const EdgeInsetsDirectional
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
                                                   color: FlutterFlowTheme.of(
@@ -1672,7 +1668,7 @@ class _DetailedprofilecandidateWidgetState
                                                             color: Colors.white,
                                                           ),
                                                   elevation: 3.0,
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Colors.transparent,
                                                     width: 1.0,
                                                   ),
@@ -1683,7 +1679,7 @@ class _DetailedprofilecandidateWidgetState
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 0.0, 10.0, 0.0),
                                               child: FlutterFlowIconButton(
@@ -1717,7 +1713,7 @@ class _DetailedprofilecandidateWidgetState
                                                 borderRadius: 20.0,
                                                 borderWidth: 1.0,
                                                 buttonSize: 40.0,
-                                                fillColor: Color(0xFF1BD741),
+                                                fillColor: const Color(0xFF1BD741),
                                                 icon: FaIcon(
                                                   FontAwesomeIcons.whatsapp,
                                                   color: FlutterFlowTheme.of(
@@ -1731,8 +1727,8 @@ class _DetailedprofilecandidateWidgetState
                                                 },
                                               ),
                                           ]
-                                              .divide(SizedBox(width: 10.0))
-                                              .around(SizedBox(width: 10.0)),
+                                              .divide(const SizedBox(width: 10.0))
+                                              .around(const SizedBox(width: 10.0)),
                                         ),
                                       ),
                                     ],
@@ -1741,7 +1737,7 @@ class _DetailedprofilecandidateWidgetState
                               ],
                             ),
                             Padding(
-                              padding: EdgeInsets.all(20.0),
+                              padding: const EdgeInsets.all(20.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -1759,9 +1755,9 @@ class _DetailedprofilecandidateWidgetState
                                     shape: BoxShape.circle,
                                   ),
                                   child: Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           8.0, 0.0, 0.0, 0.0),
                                       child: Icon(
                                         Icons.arrow_back_ios,

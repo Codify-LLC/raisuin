@@ -11,12 +11,9 @@ import '/recruiter/recruiter_profiles/send_message/send_message_widget.dart';
 import '/recruiter/send_email_message/send_email_message_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'savedprofile_model.dart';
@@ -71,9 +68,9 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
               : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: Color(0xFFF9FAFC),
+            backgroundColor: const Color(0xFFF9FAFC),
             appBar: AppBar(
-              backgroundColor: Color(0xFFF9FAFC),
+              backgroundColor: const Color(0xFFF9FAFC),
               automaticallyImplyLeading: false,
               leading: FlutterFlowIconButton(
                 borderColor: Colors.transparent,
@@ -97,7 +94,7 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                       fontSize: 16.0,
                     ),
               ),
-              actions: [],
+              actions: const [],
               centerTitle: true,
               elevation: 2.0,
             ),
@@ -108,7 +105,7 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                   child: Container(
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         bottomLeft: Radius.circular(0.0),
                         bottomRight: Radius.circular(0.0),
                         topLeft: Radius.circular(20.0),
@@ -120,7 +117,7 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
                           child: Container(
                             width: double.infinity,
@@ -133,11 +130,11 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 0.0),
                                   child: AuthUserStreamWidget(
                                     builder: (context) => Text(
-                                      'Total Results: ${(currentUserDocument?.savedCandidates?.toList() ?? []).length.toString()}',
+                                      'Total Results: ${(currentUserDocument?.savedCandidates.toList() ?? []).length.toString()}',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -149,12 +146,12 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 8.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      if (_model.selectedCandidates.length > 0)
+                                      if (_model.selectedCandidates.isNotEmpty)
                                         FFButtonWidget(
                                           onPressed: () async {
                                             setState(() {
@@ -163,17 +160,17 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                                           },
                                           text:
                                               '${_model.selectedCandidates.length.toString()} Selected',
-                                          icon: Icon(
+                                          icon: const Icon(
                                             Icons.check_circle,
                                             size: 16.0,
                                           ),
                                           options: FFButtonOptions(
                                             height: 31.0,
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     20.0, 0.0, 20.0, 0.0),
                                             iconPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
                                             color: FlutterFlowTheme.of(context)
                                                 .tertiary,
@@ -186,7 +183,7 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                                                       fontSize: 12.0,
                                                     ),
                                             elevation: 3.0,
-                                            borderSide: BorderSide(
+                                            borderSide: const BorderSide(
                                               color: Colors.transparent,
                                               width: 1.0,
                                             ),
@@ -203,14 +200,14 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                         ),
                         Expanded(
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 20.0, 20.0, 20.0, 0.0),
                             child: AuthUserStreamWidget(
                               builder: (context) => Builder(
                                 builder: (context) {
                                   final savedProfiles = (currentUserDocument
                                               ?.savedCandidates
-                                              ?.toList() ??
+                                              .toList() ??
                                           [])
                                       .toList();
                                   return ListView.builder(
@@ -222,7 +219,7 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                                       final savedProfilesItem =
                                           savedProfiles[savedProfilesIndex];
                                       return Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 14.0),
                                         child: StreamBuilder<UsersRecord>(
                                           stream: UsersRecord.getDocument(
@@ -279,11 +276,11 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                                                               image:
                                                                   CachedNetworkImage(
                                                                 fadeInDuration:
-                                                                    Duration(
+                                                                    const Duration(
                                                                         milliseconds:
                                                                             500),
                                                                 fadeOutDuration:
-                                                                    Duration(
+                                                                    const Duration(
                                                                         milliseconds:
                                                                             500),
                                                                 imageUrl:
@@ -313,18 +310,18 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                                                           clipBehavior:
                                                               Clip.antiAlias,
                                                           decoration:
-                                                              BoxDecoration(
+                                                              const BoxDecoration(
                                                             shape:
                                                                 BoxShape.circle,
                                                           ),
                                                           child:
                                                               CachedNetworkImage(
                                                             fadeInDuration:
-                                                                Duration(
+                                                                const Duration(
                                                                     milliseconds:
                                                                         500),
                                                             fadeOutDuration:
-                                                                Duration(
+                                                                const Duration(
                                                                     milliseconds:
                                                                         500),
                                                             imageUrl:
@@ -339,7 +336,7 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     10.0,
                                                                     0.0,
@@ -361,7 +358,7 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           4.0,
@@ -384,7 +381,7 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                                                                   Expanded(
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           2.0,
                                                                           0.0,
                                                                           0.0,
@@ -408,7 +405,7 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           4.0,
@@ -431,7 +428,7 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                                                                   Expanded(
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           2.0,
                                                                           0.0,
                                                                           0.0,
@@ -507,7 +504,7 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   12.0,
@@ -539,11 +536,11 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                                                             ),
                                                             child: Align(
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       0.0, 0.0),
                                                               child: Padding(
                                                                 padding:
-                                                                    EdgeInsets
+                                                                    const EdgeInsets
                                                                         .all(
                                                                             8.0),
                                                                 child: Text(
@@ -566,7 +563,7 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         4.0,
                                                                         0.0,
@@ -591,7 +588,7 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                                                               ),
                                                               child: Padding(
                                                                 padding:
-                                                                    EdgeInsets
+                                                                    const EdgeInsets
                                                                         .all(
                                                                             8.0),
                                                                 child: Text(
@@ -613,7 +610,7 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         4.0,
                                                                         0.0,
@@ -638,7 +635,7 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                                                               ),
                                                               child: Padding(
                                                                 padding:
-                                                                    EdgeInsets
+                                                                    const EdgeInsets
                                                                         .all(
                                                                             8.0),
                                                                 child: Text(
@@ -694,7 +691,7 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                     ),
                   ),
                 ),
-                if (_model.selectedCandidates.length > 0)
+                if (_model.selectedCandidates.isNotEmpty)
                   Container(
                     width: double.infinity,
                     height: 66.0,
@@ -748,9 +745,9 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                                 text: 'Send Message ',
                                 options: FFButtonOptions(
                                   height: 50.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).tertiary,
                                   textStyle: FlutterFlowTheme.of(context)
@@ -761,7 +758,7 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                                         fontSize: 14.0,
                                       ),
                                   elevation: 3.0,
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
@@ -802,9 +799,9 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                                 options: FFButtonOptions(
                                   width: 135.0,
                                   height: 51.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
@@ -816,7 +813,7 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                                         fontSize: 14.0,
                                       ),
                                   elevation: 3.0,
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
@@ -832,7 +829,7 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                 wrapWithModel(
                   model: _model.navigationModel,
                   updateCallback: () => setState(() {}),
-                  child: NavigationWidget(),
+                  child: const NavigationWidget(),
                 ),
               ],
             ),
