@@ -1,7 +1,6 @@
 // Automatic FlutterFlow imports
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
-import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom widgets
@@ -17,6 +16,7 @@ import 'dart:ui' as ui;
 import 'package:google_maps_flutter/google_maps_flutter.dart' as googleMaps;
 import 'package:dio/dio.dart';
 import 'package:image/image.dart' as img; // Import the image package
+import '../../backend/api_requests/api_calls.dart';
 
 class CustomMap extends StatefulWidget {
   const CustomMap({
@@ -105,7 +105,7 @@ class _CustomMapState extends State<CustomMap> {
 
   Future<googleMaps.BitmapDescriptor> _createMarkerIcon(
     Uint8List imageFile, {
-    int size = 25,
+    int size = 50,
     bool addBorder = true,
     Color borderColor = const Color.fromARGB(255, 0, 0, 0),
     double borderSize = 10,
@@ -158,9 +158,10 @@ class _CustomMapState extends State<CustomMap> {
   }
 
   Future<Uint8List> getMarkerBytes(String photoUrl) async {
-    final response = await Dio().get(
-        "https://asia-south1-teachnear.cloudfunctions.net/corsProxy?url=$photoUrl",
-        options: Options(responseType: ResponseType.bytes));
-    return response.data;
+    final ApiCallResponse apiCall = await GetImageByteDataCall.call(
+      url:
+          'https://qph.cf2.quoracdn.net/main-qimg-03079801643d6897d4654fc4c81833b6-lq',
+    );
+    return apiCall.response!.bodyBytes;
   }
 }
