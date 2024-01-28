@@ -158,8 +158,9 @@ class _CustomMapState extends State<CustomMap> {
   }
 
   Future<Uint8List> getMarkerBytes(String photoUrl) async {
-    final response = await Dio()
-        .get(photoUrl, options: Options(responseType: ResponseType.bytes));
+    final response = await Dio().get(
+        "https://asia-south1-teachnear.cloudfunctions.net/corsProxy?url=$photoUrl",
+        options: Options(responseType: ResponseType.bytes));
     return response.data;
   }
 }
