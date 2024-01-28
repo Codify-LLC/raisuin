@@ -85,7 +85,7 @@ class _CustomMapState extends State<CustomMap> {
           markers.add(googleMaps.Marker(
             markerId: googleMaps.MarkerId(latLng.hashCode.toString()),
             position: googleMaps.LatLng(latLng.latitude, latLng.longitude),
-            icon: iconBytes.isNotEmpty
+            icon: iconBytes != null
                 ? (await _createMarkerIcon(iconBytes))
                 : googleMaps.BitmapDescriptor.defaultMarkerWithHue(
                     googleMaps.BitmapDescriptor.hueAzure),
@@ -157,10 +157,14 @@ class _CustomMapState extends State<CustomMap> {
     return address.latLang ?? LatLng(0.0, 0.0);
   }
 
-  Future<Uint8List> getMarkerBytes(String photoUrl) async {
-    final ApiCallResponse apiCall = await GetImageByteDataCall.call(
-      url: photoUrl,
-    );
-    return apiCall.response!.bodyBytes;
+  Future<Uint8List?> getMarkerBytes(String photoUrl) async {
+    if (photoUrl.isNotEmpty) {
+      final ApiCallResponse apiCall = await GetImageByteDataCall.call(
+        url: photoUrl,
+      );
+      return Uint8List.fromList(apiCall.bodyText.codeUnits);
+    } else {
+      return null;
+    }
   }
 }
