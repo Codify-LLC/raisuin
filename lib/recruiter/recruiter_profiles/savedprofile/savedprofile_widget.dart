@@ -283,10 +283,7 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                                                                     const Duration(
                                                                         milliseconds:
                                                                             500),
-                                                                imageUrl:
-                                                                    getCORSProxyUrl(
-                                                                  '',
-                                                                ),
+                                                                imageUrl: '',
                                                                 fit: BoxFit
                                                                     .contain,
                                                               ),
@@ -324,10 +321,7 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                                                                 const Duration(
                                                                     milliseconds:
                                                                         500),
-                                                            imageUrl:
-                                                                getCORSProxyUrl(
-                                                              '',
-                                                            ),
+                                                            imageUrl: '',
                                                             fit: BoxFit.cover,
                                                           ),
                                                         ),

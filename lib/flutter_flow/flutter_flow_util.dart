@@ -342,16 +342,3 @@ extension StatefulWidgetExtensions on State<StatefulWidget> {
     }
   }
 }
-
-String getCORSProxyUrl(String path) {
-  if (!kIsWeb) {
-    return path;
-  }
-  // No need to use proxy for images that come from Firebase Storage.
-  if (path.contains('teachnear.appspot.com')) {
-    return path;
-  }
-  const proxyUrl =
-      'https://.region("asia-south1")-teachnear.cloudfunctions.net/corsProxy?url=';
-  return '$proxyUrl$path';
-}

@@ -296,10 +296,8 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                                                                         milliseconds:
                                                                             500),
                                                                 imageUrl:
-                                                                    getCORSProxyUrl(
-                                                                  columnUsersRecord
-                                                                      .photoUrl,
-                                                                ),
+                                                                    columnUsersRecord
+                                                                        .photoUrl,
                                                                 fit: BoxFit
                                                                     .contain,
                                                                 errorWidget: (context,
@@ -348,10 +346,8 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                                                                     milliseconds:
                                                                         500),
                                                             imageUrl:
-                                                                getCORSProxyUrl(
-                                                              columnUsersRecord
-                                                                  .photoUrl,
-                                                            ),
+                                                                columnUsersRecord
+                                                                    .photoUrl,
                                                             fit: BoxFit.cover,
                                                             errorWidget: (context,
                                                                     error,

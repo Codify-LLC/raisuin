@@ -103,11 +103,9 @@ class _ProfileEmployerWidgetState extends State<ProfileEmployerWidget> {
                               shape: BoxShape.circle,
                             ),
                             child: Image.network(
-                              getCORSProxyUrl(
-                                valueOrDefault<String>(
-                                  currentUserPhoto,
-                                  'https://static.vecteezy.com/system/resources/thumbnails/020/765/399/small/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg',
-                                ),
+                              valueOrDefault<String>(
+                                currentUserPhoto,
+                                'https://static.vecteezy.com/system/resources/thumbnails/020/765/399/small/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg',
                               ),
                               fit: BoxFit.cover,
                             ),

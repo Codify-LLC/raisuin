@@ -726,9 +726,7 @@ class _CreateAdWidgetState extends State<CreateAdWidget>
                                                       BorderRadius.circular(
                                                           8.0),
                                                   child: Image.network(
-                                                    getCORSProxyUrl(
-                                                      _model.uploadedFileUrl1,
-                                                    ),
+                                                    _model.uploadedFileUrl1,
                                                     width: MediaQuery.sizeOf(
                                                                 context)
                                                             .width *
@@ -997,9 +995,7 @@ class _CreateAdWidgetState extends State<CreateAdWidget>
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
                                                 child: Image.network(
-                                                  getCORSProxyUrl(
-                                                    imagesItem,
-                                                  ),
+                                                  imagesItem,
                                                   width: 118.0,
                                                   height: 102.0,
                                                   fit: BoxFit.cover,

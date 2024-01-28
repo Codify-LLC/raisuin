@@ -277,9 +277,7 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                                         shape: BoxShape.circle,
                                       ),
                                       child: Image.network(
-                                        getCORSProxyUrl(
-                                          resultsItem.photoUrl,
-                                        ),
+                                        resultsItem.photoUrl,
                                         fit: BoxFit.cover,
                                         errorBuilder:
                                             (context, error, stackTrace) =>

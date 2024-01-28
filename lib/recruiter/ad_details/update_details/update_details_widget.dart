@@ -164,21 +164,18 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
                                           shape: BoxShape.circle,
                                         ),
                                         child: Image.network(
-                                          getCORSProxyUrl(
-                                            () {
-                                              if (_model.uploadedFileUrl !=
-                                                      '') {
-                                                return _model.uploadedFileUrl;
-                                              } else if (updateDetailsUsersRecord
-                                                          .photoUrl !=
-                                                      '') {
-                                                return updateDetailsUsersRecord
-                                                    .photoUrl;
-                                              } else {
-                                                return 'https://firebasestorage.googleapis.com/v0/b/teachnear.appspot.com/o/appImages%2FEllipse_15.png?alt=media&token=8091626b-c632-4899-8615-909b59cb00bb&_gl=1*43b4ir*_ga*NDg3MzE0Mzk2LjE2NzE3MDc4MjA.*_ga_CW55HF8NVT*MTY4NjMzNTAxOS4xMDcuMS4xNjg2MzM1NDg1LjAuMC4w';
-                                              }
-                                            }(),
-                                          ),
+                                          () {
+                                            if (_model.uploadedFileUrl != '') {
+                                              return _model.uploadedFileUrl;
+                                            } else if (updateDetailsUsersRecord
+                                                        .photoUrl !=
+                                                    '') {
+                                              return updateDetailsUsersRecord
+                                                  .photoUrl;
+                                            } else {
+                                              return 'https://firebasestorage.googleapis.com/v0/b/teachnear.appspot.com/o/appImages%2FEllipse_15.png?alt=media&token=8091626b-c632-4899-8615-909b59cb00bb&_gl=1*43b4ir*_ga*NDg3MzE0Mzk2LjE2NzE3MDc4MjA.*_ga_CW55HF8NVT*MTY4NjMzNTAxOS4xMDcuMS4xNjg2MzM1NDg1LjAuMC4w';
+                                            }
+                                          }(),
                                           fit: BoxFit.cover,
                                         ),
                                       ),

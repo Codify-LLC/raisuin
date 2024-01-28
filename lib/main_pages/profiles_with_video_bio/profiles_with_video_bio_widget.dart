@@ -351,9 +351,7 @@ class _ProfilesWithVideoBioWidgetState
                                             shape: BoxShape.circle,
                                           ),
                                           child: Image.network(
-                                            getCORSProxyUrl(
-                                              listViewUsersRecord.photoUrl,
-                                            ),
+                                            listViewUsersRecord.photoUrl,
                                             fit: BoxFit.cover,
                                             errorBuilder:
                                                 (context, error, stackTrace) =>
@@ -869,9 +867,7 @@ class _ProfilesWithVideoBioWidgetState
                                               shape: BoxShape.circle,
                                             ),
                                             child: Image.network(
-                                              getCORSProxyUrl(
-                                                listViewUsersRecord.photoUrl,
-                                              ),
+                                              listViewUsersRecord.photoUrl,
                                               fit: BoxFit.cover,
                                               errorBuilder: (context, error,
                                                       stackTrace) =>

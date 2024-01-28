@@ -377,9 +377,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                                             fadeOutDuration:
                                                                                 const Duration(milliseconds: 500),
                                                                             imageUrl:
-                                                                                getCORSProxyUrl(
-                                                                              listViewAdsRecord.logo,
-                                                                            ),
+                                                                                listViewAdsRecord.logo,
                                                                             fit:
                                                                                 BoxFit.contain,
                                                                             errorWidget: (context, error, stackTrace) =>
@@ -423,10 +421,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                                         fadeOutDuration:
                                                                             const Duration(milliseconds: 500),
                                                                         imageUrl:
-                                                                            getCORSProxyUrl(
-                                                                          listViewAdsRecord
-                                                                              .logo,
-                                                                        ),
+                                                                            listViewAdsRecord.logo,
                                                                         fit: BoxFit
                                                                             .cover,
                                                                         errorWidget: (context,

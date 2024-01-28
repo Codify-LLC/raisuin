@@ -223,9 +223,7 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
                               shape: BoxShape.circle,
                             ),
                             child: Image.network(
-                              getCORSProxyUrl(
-                                '',
-                              ),
+                              '',
                               fit: BoxFit.cover,
                             ),
                           ),

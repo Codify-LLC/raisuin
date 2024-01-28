@@ -200,9 +200,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(26.0),
                                 child: Image.network(
-                                  getCORSProxyUrl(
-                                    'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60',
-                                  ),
+                                  'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60',
                                   width: 36.0,
                                   height: 36.0,
                                   fit: BoxFit.cover,
@@ -343,9 +341,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                         borderRadius:
                                             BorderRadius.circular(26.0),
                                         child: Image.network(
-                                          getCORSProxyUrl(
-                                            rowUsersRecord.photoUrl,
-                                          ),
+                                          rowUsersRecord.photoUrl,
                                           width: 36.0,
                                           height: 36.0,
                                           fit: BoxFit.cover,

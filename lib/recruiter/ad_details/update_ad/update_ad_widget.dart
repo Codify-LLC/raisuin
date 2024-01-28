@@ -697,9 +697,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                         borderRadius:
                                             BorderRadius.circular(8.0),
                                         child: Image.network(
-                                          getCORSProxyUrl(
-                                            updateAdAdsRecord.logo,
-                                          ),
+                                          updateAdAdsRecord.logo,
                                           width:
                                               MediaQuery.sizeOf(context).width *
                                                   0.8,
@@ -818,9 +816,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                                       BorderRadius.circular(
                                                           8.0),
                                                   child: Image.network(
-                                                    getCORSProxyUrl(
-                                                      imagesItem,
-                                                    ),
+                                                    imagesItem,
                                                     width: 118.0,
                                                     height: 102.0,
                                                     fit: BoxFit.cover,

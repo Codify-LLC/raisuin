@@ -180,9 +180,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                               child: Image.network(
-                                                getCORSProxyUrl(
-                                                  overviewImagesItem,
-                                                ),
+                                                overviewImagesItem,
                                                 width: 300.0,
                                                 height: 194.0,
                                                 fit: BoxFit.cover,
@@ -288,10 +286,9 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                                         milliseconds: 500),
                                                     fadeOutDuration: const Duration(
                                                         milliseconds: 500),
-                                                    imageUrl: getCORSProxyUrl(
-                                                      myjobadsdetailAdsRecord
-                                                          .logo,
-                                                    ),
+                                                    imageUrl:
+                                                        myjobadsdetailAdsRecord
+                                                            .logo,
                                                     fit: BoxFit.contain,
                                                     errorWidget: (context,
                                                             error,
@@ -324,9 +321,9 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                                     const Duration(milliseconds: 500),
                                                 fadeOutDuration:
                                                     const Duration(milliseconds: 500),
-                                                imageUrl: getCORSProxyUrl(
-                                                  myjobadsdetailAdsRecord.logo,
-                                                ),
+                                                imageUrl:
+                                                    myjobadsdetailAdsRecord
+                                                        .logo,
                                                 fit: BoxFit.cover,
                                                 errorWidget: (context, error,
                                                         stackTrace) =>

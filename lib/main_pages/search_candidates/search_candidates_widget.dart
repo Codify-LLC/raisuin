@@ -295,11 +295,9 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                                         shape: BoxShape.circle,
                                       ),
                                       child: Image.network(
-                                        getCORSProxyUrl(
-                                          valueOrDefault<String>(
-                                            searchresultItem.photoUrl,
-                                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvrcBgUuK4kTumtb_R2jjtcDcalBuGrqXsmrQNX_wUXA&s',
-                                          ),
+                                        valueOrDefault<String>(
+                                          searchresultItem.photoUrl,
+                                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvrcBgUuK4kTumtb_R2jjtcDcalBuGrqXsmrQNX_wUXA&s',
                                         ),
                                         fit: BoxFit.cover,
                                         errorBuilder:

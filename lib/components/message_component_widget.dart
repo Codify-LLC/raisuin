@@ -92,9 +92,7 @@ class _MessageComponentWidgetState extends State<MessageComponentWidget> {
                       shape: BoxShape.circle,
                     ),
                     child: Image.network(
-                      getCORSProxyUrl(
-                        circleImageUsersRecord.photoUrl,
-                      ),
+                      circleImageUsersRecord.photoUrl,
                     ),
                   );
                 },
@@ -131,9 +129,7 @@ class _MessageComponentWidgetState extends State<MessageComponentWidget> {
                               type: PageTransitionType.fade,
                               child: FlutterFlowExpandedImageView(
                                 image: Image.network(
-                                  getCORSProxyUrl(
-                                    widget.photo!,
-                                  ),
+                                  widget.photo!,
                                   fit: BoxFit.contain,
                                 ),
                                 allowRotation: false,
@@ -149,9 +145,7 @@ class _MessageComponentWidgetState extends State<MessageComponentWidget> {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8.0),
                             child: Image.network(
-                              getCORSProxyUrl(
-                                widget.photo!,
-                              ),
+                              widget.photo!,
                               width: MediaQuery.sizeOf(context).width * 0.8,
                               fit: BoxFit.cover,
                             ),
@@ -355,9 +349,7 @@ class _MessageComponentWidgetState extends State<MessageComponentWidget> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
                     child: Image.network(
-                      getCORSProxyUrl(
-                        widget.photo!,
-                      ),
+                      widget.photo!,
                       width: MediaQuery.sizeOf(context).width * 0.8,
                       fit: BoxFit.cover,
                     ),

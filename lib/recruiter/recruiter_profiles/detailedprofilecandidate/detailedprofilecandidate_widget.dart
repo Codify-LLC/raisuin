@@ -175,12 +175,10 @@ class _DetailedprofilecandidateWidgetState
                                                       const AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Image.network(
-                                                    getCORSProxyUrl(
-                                                      valueOrDefault<String>(
-                                                        detailedprofilecandidateUsersRecord
-                                                            .photoUrl,
-                                                        'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQAlAMBIgACEQEDEQH/xAAbAAEAAwEBAQEAAAAAAAAAAAAAAwQFAgYBB//EADQQAAICAQEFBQYFBQEAAAAAAAABAgMEEQUSITFRE0FCYXEiMlKBkbEzU2Kh0TSCkuHxI//EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oADAMBAAIRAxEAPwD9xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABzZONcdZMo23ys4cVHogLU8iuPDXV+RBLKm/dSS8+JXAEjvtfja9B21v5jIwBNHJtXNp+qJYZa8cdPQqADThOM1rFpnRlxbi9YvR+RboyVL2Z8JdeoFkAAAAAAAAAADmyari5SOjPyLO0n+lcgObLJWS1l/w4AAEd11dEd62WifJd7PmVfHHpc5c+5dWYNts7ZuVj1bA0LNq8X2VXzkcLatvirg/TVGeAlbWPtGm1qM12bfXl9S4eZNDZuW4yVNjbj4W+7yBWsAgFW8a9vSE+fcy0ZZex7e0hx95cGBMAAAAAAACHKnu1NLm+BQLGZLWxR7kiuAAAGPta1yyFX3QX7solnaP9bb6r7IrFQAAQAAHocWx249c3za4kpV2Xwwoer+7LRGglx57lqfc+DIgBqg4qlvVxfVHYAAAAABnZD1vkRkl/48/UjAAADJ2xS42RtS4NaN+Znno7qoXVSrmnuvoYWTjWY892a1XdLuYRCACgfUnKSilq3wSC56cTV2dhOuSuuXteGPTzAu0VqqmEF4VodgEUADAv4j1pXk2iYgw/wfmycAAAAAAoZS0ub6ohLeZDhGXTgVAAAAHycYzi4ySknzTQnJRjrJpLqytZtDHr8bk/0rUDizZlEnrFyh6M4Wya9fatk/khLasPDVJ+rSOVtZfkv/AC/0BcoxKaONcfa+J8WTFGO1KX70Zx/cs1ZNNz/87E3010f0AlAAAdwOox35KK72Bexlu0R+pKfEtFofQAAAAADmyKnBxfejNlFxbjLmjUK2XVvJzjzXPzQFNtJat6LqZuVtNJ7uOtX8T5fJFbOzJZEt2GqqXd19SoVHdls7Zb1knJ+ZwAEAAAAAFqjPup0Wu/D4ZfyauNlV5Eda37S5xfNGAdQnKElKLakuTRFekRaw6+Lm+S4IztmXPN9nTScfe6adTbilGKS5IK+gAAAAAAAAADC2tshybvxFxfGVa7/NfwYTWj0fNHuihn7LozNZadnZ8cVz9QPJgvZeysvG1fZ9pBeKHH9uZRKgAAgASU0W3y3aa5Tf6UFRlnBwrs2zdqjpFe9N8kaeHsGTanmS0XwQfH5s3Kqq6q1CqEYxXJJARYWJViUqupebb5yZYAIoAAAAAAAAAAAAAEF2Jj3/AItMJebXH6k4Azp7FwZPXs5R9Js5WwsFeGb/ALzTAFOvZeFW01jxbXxcfuWowjFaRikuiR0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//2Q==',
-                                                      ),
+                                                    valueOrDefault<String>(
+                                                      detailedprofilecandidateUsersRecord
+                                                          .photoUrl,
+                                                      'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQAlAMBIgACEQEDEQH/xAAbAAEAAwEBAQEAAAAAAAAAAAAAAwQFAgYBB//EADQQAAICAQEFBQYFBQEAAAAAAAABAgMEEQUSITFRE0FCYXEiMlKBkbEzU2Kh0TSCkuHxI//EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oADAMBAAIRAxEAPwD9xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABzZONcdZMo23ys4cVHogLU8iuPDXV+RBLKm/dSS8+JXAEjvtfja9B21v5jIwBNHJtXNp+qJYZa8cdPQqADThOM1rFpnRlxbi9YvR+RboyVL2Z8JdeoFkAAAAAAAAAADmyari5SOjPyLO0n+lcgObLJWS1l/w4AAEd11dEd62WifJd7PmVfHHpc5c+5dWYNts7ZuVj1bA0LNq8X2VXzkcLatvirg/TVGeAlbWPtGm1qM12bfXl9S4eZNDZuW4yVNjbj4W+7yBWsAgFW8a9vSE+fcy0ZZex7e0hx95cGBMAAAAAAACHKnu1NLm+BQLGZLWxR7kiuAAAGPta1yyFX3QX7solnaP9bb6r7IrFQAAQAAHocWx249c3za4kpV2Xwwoer+7LRGglx57lqfc+DIgBqg4qlvVxfVHYAAAAABnZD1vkRkl/48/UjAAADJ2xS42RtS4NaN+Znno7qoXVSrmnuvoYWTjWY892a1XdLuYRCACgfUnKSilq3wSC56cTV2dhOuSuuXteGPTzAu0VqqmEF4VodgEUADAv4j1pXk2iYgw/wfmycAAAAAAoZS0ub6ohLeZDhGXTgVAAAAHycYzi4ySknzTQnJRjrJpLqytZtDHr8bk/0rUDizZlEnrFyh6M4Wya9fatk/khLasPDVJ+rSOVtZfkv/AC/0BcoxKaONcfa+J8WTFGO1KX70Zx/cs1ZNNz/87E3010f0AlAAAdwOox35KK72Bexlu0R+pKfEtFofQAAAAADmyKnBxfejNlFxbjLmjUK2XVvJzjzXPzQFNtJat6LqZuVtNJ7uOtX8T5fJFbOzJZEt2GqqXd19SoVHdls7Zb1knJ+ZwAEAAAAAFqjPup0Wu/D4ZfyauNlV5Eda37S5xfNGAdQnKElKLakuTRFekRaw6+Lm+S4IztmXPN9nTScfe6adTbilGKS5IK+gAAAAAAAAADC2tshybvxFxfGVa7/NfwYTWj0fNHuihn7LozNZadnZ8cVz9QPJgvZeysvG1fZ9pBeKHH9uZRKgAAgASU0W3y3aa5Tf6UFRlnBwrs2zdqjpFe9N8kaeHsGTanmS0XwQfH5s3Kqq6q1CqEYxXJJARYWJViUqupebb5yZYAIoAAAAAAAAAAAAAEF2Jj3/AItMJebXH6k4Azp7FwZPXs5R9Js5WwsFeGb/ALzTAFOvZeFW01jxbXxcfuWowjFaRikuiR0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//2Q==',
                                                     ),
                                                     width: double.infinity,
                                                     height: MediaQuery.sizeOf(
@@ -341,10 +339,9 @@ class _DetailedprofilecandidateWidgetState
                                                           milliseconds: 500),
                                                       fadeOutDuration: const Duration(
                                                           milliseconds: 500),
-                                                      imageUrl: getCORSProxyUrl(
-                                                        detailedprofilecandidateUsersRecord
-                                                            .photoUrl,
-                                                      ),
+                                                      imageUrl:
+                                                          detailedprofilecandidateUsersRecord
+                                                              .photoUrl,
                                                       fit: BoxFit.cover,
                                                     ),
                                                   ),

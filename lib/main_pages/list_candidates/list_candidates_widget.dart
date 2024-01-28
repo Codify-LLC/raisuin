@@ -402,10 +402,8 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                 child:
                                                     FlutterFlowExpandedImageView(
                                                   image: Image.network(
-                                                    getCORSProxyUrl(
-                                                      listViewUsersRecord
-                                                          .photoUrl,
-                                                    ),
+                                                    listViewUsersRecord
+                                                        .photoUrl,
                                                     fit: BoxFit.contain,
                                                     errorBuilder: (context,
                                                             error,
@@ -434,9 +432,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                 shape: BoxShape.circle,
                                               ),
                                               child: Image.network(
-                                                getCORSProxyUrl(
-                                                  listViewUsersRecord.photoUrl,
-                                                ),
+                                                listViewUsersRecord.photoUrl,
                                                 fit: BoxFit.cover,
                                                 errorBuilder: (context, error,
                                                         stackTrace) =>
@@ -911,11 +907,9 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                 shape: BoxShape.circle,
                                               ),
                                               child: Image.network(
-                                                getCORSProxyUrl(
-                                                  valueOrDefault<String>(
-                                                    searchresultItem.photoUrl,
-                                                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvrcBgUuK4kTumtb_R2jjtcDcalBuGrqXsmrQNX_wUXA&s',
-                                                  ),
+                                                valueOrDefault<String>(
+                                                  searchresultItem.photoUrl,
+                                                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvrcBgUuK4kTumtb_R2jjtcDcalBuGrqXsmrQNX_wUXA&s',
                                                 ),
                                                 fit: BoxFit.cover,
                                                 errorBuilder: (context, error,
@@ -1422,9 +1416,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                               shape: BoxShape.circle,
                                             ),
                                             child: Image.network(
-                                              getCORSProxyUrl(
-                                                listViewUsersRecord.photoUrl,
-                                              ),
+                                              listViewUsersRecord.photoUrl,
                                               fit: BoxFit.cover,
                                               errorBuilder: (context, error,
                                                       stackTrace) =>

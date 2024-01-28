@@ -1024,9 +1024,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       BorderRadius.circular(
                                                           8.0),
                                                   child: Image.network(
-                                                    getCORSProxyUrl(
-                                                      rowUsersRecord.photoUrl,
-                                                    ),
+                                                    rowUsersRecord.photoUrl,
                                                     width: 210.0,
                                                     height: 100.0,
                                                     fit: BoxFit.cover,
@@ -1471,10 +1469,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                             ),
                                                             child:
                                                                 Image.network(
-                                                              getCORSProxyUrl(
-                                                                columnUsersRecord
-                                                                    .photoUrl,
-                                                              ),
+                                                              columnUsersRecord
+                                                                  .photoUrl,
                                                               fit: BoxFit
                                                                   .contain,
                                                               errorBuilder: (context,

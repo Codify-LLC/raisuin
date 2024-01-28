@@ -148,9 +148,7 @@ class _CandidateProfileCardWidgetState
                             child: CachedNetworkImage(
                               fadeInDuration: const Duration(milliseconds: 500),
                               fadeOutDuration: const Duration(milliseconds: 500),
-                              imageUrl: getCORSProxyUrl(
-                                columnUsersRecord.photoUrl,
-                              ),
+                              imageUrl: columnUsersRecord.photoUrl,
                               fit: BoxFit.cover,
                             ),
                           ),
