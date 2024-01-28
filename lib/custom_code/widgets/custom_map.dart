@@ -159,8 +159,7 @@ class _CustomMapState extends State<CustomMap> {
 
   Future<Uint8List> getMarkerBytes(String photoUrl) async {
     final ApiCallResponse apiCall = await GetImageByteDataCall.call(
-      url:
-          'https://qph.cf2.quoracdn.net/main-qimg-03079801643d6897d4654fc4c81833b6-lq',
+      url: photoUrl,
     );
     return apiCall.response!.bodyBytes;
   }
