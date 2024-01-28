@@ -10,7 +10,6 @@ import 'auth/firebase_auth/auth_util.dart';
 import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
-import 'flutter_flow/revenue_cat_util.dart' as revenue_cat;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,12 +22,6 @@ void main() async {
 
   final appState = FFAppState(); // Initialize FFAppState
   await appState.initializePersistedState();
-
-  await revenue_cat.initialize(
-    "",
-    "appcfc2530287",
-    loadDataAfterLaunch: true,
-  );
 
   runApp(ChangeNotifierProvider(
     create: (context) => appState,
@@ -56,9 +49,7 @@ class _MyAppState extends State<MyApp> {
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
 
-  final authUserSub = authenticatedUserStream.listen((user) {
-    revenue_cat.login(user?.uid);
-  });
+  final authUserSub = authenticatedUserStream.listen((_) {});
 
   @override
   void initState() {
