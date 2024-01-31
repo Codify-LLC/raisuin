@@ -11,7 +11,7 @@ class ChatModel extends FlutterFlowModel<ChatWidget> {
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
-  List<MessagesRecord> simpleSearchResults = [];
+  List<ChatsRecord> simpleSearchResults = [];
 
   /// Initialization and disposal methods.
 

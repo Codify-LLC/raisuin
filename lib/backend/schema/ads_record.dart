@@ -5,6 +5,7 @@ import 'package:collection/collection.dart';
 import '/backend/schema/util/firestore_util.dart';
 
 import 'index.dart';
+import '/flutter_flow/flutter_flow_util.dart';
 
 class AdsRecord extends FirestoreRecord {
   AdsRecord._(
@@ -123,6 +124,22 @@ class AdsRecord extends FirestoreRecord {
   List<String> get overviewImages => _overviewImages ?? const [];
   bool hasOverviewImages() => _overviewImages != null;
 
+  // "interview_mode" field.
+  String? _interviewMode;
+  String get interviewMode => _interviewMode ?? '';
+  bool hasInterviewMode() => _interviewMode != null;
+
+  // "interview_date" field.
+  FromToDateTimeStruct? _interviewDate;
+  FromToDateTimeStruct get interviewDate =>
+      _interviewDate ?? FromToDateTimeStruct();
+  bool hasInterviewDate() => _interviewDate != null;
+
+  // "total_vacancy" field.
+  int? _totalVacancy;
+  int get totalVacancy => _totalVacancy ?? 0;
+  bool hasTotalVacancy() => _totalVacancy != null;
+
   void _initializeFields() {
     _positionType = snapshotData['position_type'] as String?;
     _positionTitle = snapshotData['position_title'] as String?;
@@ -149,6 +166,10 @@ class AdsRecord extends FirestoreRecord {
     _candidatesApplied = getDataList(snapshotData['candidates_applied']);
     _logo = snapshotData['logo'] as String?;
     _overviewImages = getDataList(snapshotData['overview_images']);
+    _interviewMode = snapshotData['interview_mode'] as String?;
+    _interviewDate =
+        FromToDateTimeStruct.maybeFromMap(snapshotData['interview_date']);
+    _totalVacancy = castToType<int>(snapshotData['total_vacancy']);
   }
 
   static CollectionReference get collection =>
@@ -201,6 +222,9 @@ Map<String, dynamic> createAdsRecordData({
   ExperienceNeededStruct? experience,
   String? experienceType,
   String? logo,
+  String? interviewMode,
+  FromToDateTimeStruct? interviewDate,
+  int? totalVacancy,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -220,6 +244,9 @@ Map<String, dynamic> createAdsRecordData({
       'experience': ExperienceNeededStruct().toMap(),
       'experienceType': experienceType,
       'logo': logo,
+      'interview_mode': interviewMode,
+      'interview_date': FromToDateTimeStruct().toMap(),
+      'total_vacancy': totalVacancy,
     }.withoutNulls,
   );
 
@@ -239,6 +266,9 @@ Map<String, dynamic> createAdsRecordData({
 
   // Handle nested data for "experience" field.
   addExperienceNeededStructData(firestoreData, experience, 'experience');
+
+  // Handle nested data for "interview_date" field.
+  addFromToDateTimeStructData(firestoreData, interviewDate, 'interview_date');
 
   return firestoreData;
 }
@@ -269,7 +299,10 @@ class AdsRecordDocumentEquality implements Equality<AdsRecord> {
         listEquality.equals(e1?.regionalLanguage, e2?.regionalLanguage) &&
         listEquality.equals(e1?.candidatesApplied, e2?.candidatesApplied) &&
         e1?.logo == e2?.logo &&
-        listEquality.equals(e1?.overviewImages, e2?.overviewImages);
+        listEquality.equals(e1?.overviewImages, e2?.overviewImages) &&
+        e1?.interviewMode == e2?.interviewMode &&
+        e1?.interviewDate == e2?.interviewDate &&
+        e1?.totalVacancy == e2?.totalVacancy;
   }
 
   @override
@@ -294,7 +327,10 @@ class AdsRecordDocumentEquality implements Equality<AdsRecord> {
         e?.regionalLanguage,
         e?.candidatesApplied,
         e?.logo,
-        e?.overviewImages
+        e?.overviewImages,
+        e?.interviewMode,
+        e?.interviewDate,
+        e?.totalVacancy
       ]);
 
   @override

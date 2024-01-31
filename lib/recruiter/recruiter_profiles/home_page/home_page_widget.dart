@@ -36,6 +36,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (currentUserDisplayName == '') {
+        context.pushNamed('registration');
+      }
       setState(() {
         _model.savedCandidates =
             (currentUserDocument?.savedCandidates.toList() ?? [])
@@ -256,80 +259,105 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 0.0, 0.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 10.0, 0.0),
-                                    child: Container(
-                                      width: 100.0,
-                                      height: 60.0,
-                                      decoration: BoxDecoration(
-                                        gradient: const LinearGradient(
-                                          colors: [
-                                            Color(0xFFFCEFF3),
-                                            Color(0xFFCBF6FF)
-                                          ],
-                                          stops: [0.0, 1.0],
-                                          begin:
-                                              AlignmentDirectional(0.0, -1.0),
-                                          end: AlignmentDirectional(0, 1.0),
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                        border: Border.all(
-                                          color: const Color(0xFFCBF6FF),
+                              child: StreamBuilder<
+                                  List<GeneralSettingsConfigRecord>>(
+                                stream: queryGeneralSettingsConfigRecord(
+                                  singleRecord: true,
+                                ),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50.0,
+                                        height: 50.0,
+                                        child: CircularProgressIndicator(
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                          ),
                                         ),
                                       ),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    5.0, 0.0, 0.0, 0.0),
-                                            child: Text(
-                                              'Doctorates',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
+                                    );
+                                  }
+                                  List<GeneralSettingsConfigRecord>
+                                      rowGeneralSettingsConfigRecordList =
+                                      snapshot.data!;
+                                  // Return an empty Container when the item does not exist.
+                                  if (snapshot.data!.isEmpty) {
+                                    return Container();
+                                  }
+                                  final rowGeneralSettingsConfigRecord =
+                                      rowGeneralSettingsConfigRecordList
+                                              .isNotEmpty
+                                          ? rowGeneralSettingsConfigRecordList
+                                              .first
+                                          : null;
+                                  return Builder(
+                                    builder: (context) {
+                                      final degrees =
+                                          rowGeneralSettingsConfigRecord
+                                                  ?.degreeList
+                                                  .toList() ??
+                                              [];
+                                      return SingleChildScrollView(
+                                        scrollDirection: Axis.horizontal,
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children:
+                                              List.generate(degrees.length,
+                                                      (degreesIndex) {
+                                            final degreesItem =
+                                                degrees[degreesIndex];
+                                            return Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  degreesItem,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily: 'Sora',
                                                         fontSize: 12.0,
                                                       ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    5.0, 0.0, 0.0, 0.0),
-                                            child: Text(
-                                              ' Profiles',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'Sora',
-                                                    color: FlutterFlowTheme.of(
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          5.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    ' Profiles',
+                                                    style: FlutterFlowTheme.of(
                                                             context)
-                                                        .secondaryText,
-                                                    fontSize: 10.0,
-                                                    fontWeight: FontWeight.w300,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Sora',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          fontSize: 10.0,
+                                                          fontWeight:
+                                                              FontWeight.w300,
+                                                        ),
                                                   ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ]
-                                    .addToStart(const SizedBox(width: 20.0))
-                                    .addToEnd(const SizedBox(width: 20.0)),
+                                                ),
+                                              ].divide(const SizedBox(height: 10.0)),
+                                            );
+                                          })
+                                                  .divide(const SizedBox(width: 20.0))
+                                                  .around(
+                                                      const SizedBox(width: 20.0)),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                },
                               ),
                             ),
                             if (homePageAdsRecordList.isNotEmpty)

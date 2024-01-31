@@ -28,74 +28,6 @@ int dateStringAgeCalculator(String date) {
   return age;
 }
 
-dynamic buildEmailJson(
-  String recruiterName,
-  String mailMessge,
-) {
-  dynamic output = {"content": mailMessge, "recruiterName": recruiterName};
-  return output;
-}
-
-List<dynamic> markerCandiList(
-  String showCandidates,
-  List<dynamic> videoCandi,
-  List<dynamic> noVideoCandi,
-  List<dynamic> matchCandi,
-  String gender,
-  String eduLevel,
-  String state,
-) {
-  List<dynamic> filterCandi = [];
-  List<dynamic> candidateMaster = [];
-  candidateMaster.addAll(videoCandi);
-  candidateMaster.addAll(noVideoCandi);
-  candidateMaster.addAll(matchCandi);
-
-  Set<String> uniqueCandidateIds = Set<String>();
-  List<dynamic> uniqueCandi = [];
-
-  for (final candidate in candidateMaster) {
-    final String candidateId = candidate['candidateid'];
-    // Check if the candidateid is unique
-    if (uniqueCandidateIds.add(candidateId)) {
-      uniqueCandi.add(candidate);
-    }
-  }
-
-  if (showCandidates == "all") {
-    filterCandi = uniqueCandi;
-  } else if (showCandidates == "matched") {
-    Set<String> uniqueMatchedCandidateIds = Set<String>();
-    List<dynamic> uniqueMatchedCandi = [];
-
-    for (final candidate in matchCandi) {
-      final String candidateId = candidate['candidateid'];
-      // Check if the candidateid is unique
-      if (uniqueMatchedCandidateIds.add(candidateId)) {
-        uniqueMatchedCandi.add(candidate);
-      }
-    }
-
-    filterCandi = uniqueMatchedCandi;
-  }
-
-  if (gender != "all") {
-    filterCandi = filterCandi
-        .where((candidate) => candidate['gender'] == gender)
-        .toList();
-  }
-
-  if (eduLevel != "all") {
-    filterCandi = filterCandi
-        .where((candidate) =>
-            candidate['edulevel'] == eduLevel ||
-            candidate['highesteducationlevel'] == eduLevel)
-        .toList();
-  }
-
-  return filterCandi;
-}
-
 DateTime futureDateTime(
   DateTime time,
   int months,
@@ -130,13 +62,6 @@ List<String> replaceImageFromIndex(
   return List.from(images);
 }
 
-DateTime returnDates(int numberOfDays) {
-  // write a function that takes numberOfDays and return the date which is after numberOfDays
-  final now = DateTime.now();
-  final futureDate = now.add(Duration(days: numberOfDays));
-  return futureDate;
-}
-
 String listToString(List<String> listOfStrings) {
   // write a function that adds all the list item in the string with comma saperated
   return listOfStrings.join(',');
@@ -168,4 +93,22 @@ List<UsersRecord> joinToUserRefList(
 ) {
   // return a list by concatinating the list1 and list2
   return [...list1, ...list2];
+}
+
+bool maxSalaryComparsion(
+  int maxSalary,
+  int userSalary,
+) {
+  return userSalary <= maxSalary;
+}
+
+List<String> allTypesOfDegreeLevels() {
+  return [
+    'Undergraduate',
+    'Associate',
+    'Bachelor\'s',
+    'Master\'s',
+    'Doctorate',
+    'Professional',
+  ];
 }

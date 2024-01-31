@@ -28,6 +28,8 @@ class CreateAdModel extends FlutterFlowModel<CreateAdWidget> {
 
   String gender = 'All';
 
+  String interviewType = 'DIRECT';
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -142,6 +144,15 @@ class CreateAdModel extends FlutterFlowModel<CreateAdWidget> {
   // State field(s) for regionallanguageschips widget.
   List<String>? regionallanguageschipsValues;
   FormFieldController<List<String>>? regionallanguageschipsValueController;
+  // State field(s) for timeChoiceChip widget.
+  String? timeChoiceChipValue;
+  FormFieldController<List<String>>? timeChoiceChipValueController;
+  DateTime? datePicked1;
+  DateTime? datePicked2;
+  // State field(s) for totalVacancies widget.
+  FocusNode? totalVacanciesFocusNode;
+  TextEditingController? totalVacanciesController;
+  String? Function(BuildContext, String?)? totalVacanciesControllerValidator;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   AdsRecord? createdDoc;
 
@@ -179,6 +190,9 @@ class CreateAdModel extends FlutterFlowModel<CreateAdWidget> {
 
     exptoFocusNode?.dispose();
     exptoController?.dispose();
+
+    totalVacanciesFocusNode?.dispose();
+    totalVacanciesController?.dispose();
   }
 
   /// Action blocks are added here.

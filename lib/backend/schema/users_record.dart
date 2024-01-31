@@ -5,7 +5,6 @@ import 'package:collection/collection.dart';
 import '/backend/schema/util/firestore_util.dart';
 
 import 'index.dart';
-import '/flutter_flow/flutter_flow_util.dart';
 
 class UsersRecord extends FirestoreRecord {
   UsersRecord._(
@@ -65,11 +64,6 @@ class UsersRecord extends FirestoreRecord {
   bool get subscribed => _subscribed ?? false;
   bool hasSubscribed() => _subscribed != null;
 
-  // "ads_limit" field.
-  int? _adsLimit;
-  int get adsLimit => _adsLimit ?? 0;
-  bool hasAdsLimit() => _adsLimit != null;
-
   // "seeking_job_type" field.
   String? _seekingJobType;
   String get seekingJobType => _seekingJobType ?? '';
@@ -79,11 +73,6 @@ class UsersRecord extends FirestoreRecord {
   String? _gender;
   String get gender => _gender ?? '';
   bool hasGender() => _gender != null;
-
-  // "work_experience" field.
-  int? _workExperience;
-  int get workExperience => _workExperience ?? 0;
-  bool hasWorkExperience() => _workExperience != null;
 
   // "salary_range" field.
   SalaryRangeStruct? _salaryRange;
@@ -176,6 +165,11 @@ class UsersRecord extends FirestoreRecord {
   String get seekingJobPost => _seekingJobPost ?? '';
   bool hasSeekingJobPost() => _seekingJobPost != null;
 
+  // "ads" field.
+  AdsStruct? _ads;
+  AdsStruct get ads => _ads ?? AdsStruct();
+  bool hasAds() => _ads != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -188,10 +182,8 @@ class UsersRecord extends FirestoreRecord {
     _subscriptionActiveTill =
         snapshotData['subscriptionActiveTill'] as DateTime?;
     _subscribed = snapshotData['subscribed'] as bool?;
-    _adsLimit = castToType<int>(snapshotData['ads_limit']);
     _seekingJobType = snapshotData['seeking_job_type'] as String?;
     _gender = snapshotData['gender'] as String?;
-    _workExperience = castToType<int>(snapshotData['work_experience']);
     _salaryRange = SalaryRangeStruct.maybeFromMap(snapshotData['salary_range']);
     _dob = snapshotData['dob'] as DateTime?;
     _savedCandidates = getDataList(snapshotData['savedCandidates']);
@@ -222,6 +214,7 @@ class UsersRecord extends FirestoreRecord {
       AddressStruct.fromMap,
     );
     _seekingJobPost = snapshotData['seeking_job_post'] as String?;
+    _ads = AdsStruct.maybeFromMap(snapshotData['ads']);
   }
 
   static CollectionReference get collection =>
@@ -268,10 +261,8 @@ Map<String, dynamic> createUsersRecordData({
   AddressStruct? address,
   DateTime? subscriptionActiveTill,
   bool? subscribed,
-  int? adsLimit,
   String? seekingJobType,
   String? gender,
-  int? workExperience,
   SalaryRangeStruct? salaryRange,
   DateTime? dob,
   String? resume,
@@ -283,6 +274,7 @@ Map<String, dynamic> createUsersRecordData({
   bool? whatsapp,
   String? videoBio,
   String? seekingJobPost,
+  AdsStruct? ads,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -296,10 +288,8 @@ Map<String, dynamic> createUsersRecordData({
       'address': AddressStruct().toMap(),
       'subscriptionActiveTill': subscriptionActiveTill,
       'subscribed': subscribed,
-      'ads_limit': adsLimit,
       'seeking_job_type': seekingJobType,
       'gender': gender,
-      'work_experience': workExperience,
       'salary_range': SalaryRangeStruct().toMap(),
       'dob': dob,
       'resume': resume,
@@ -311,6 +301,7 @@ Map<String, dynamic> createUsersRecordData({
       'whatsapp': whatsapp,
       'video_bio': videoBio,
       'seeking_job_post': seekingJobPost,
+      'ads': AdsStruct().toMap(),
     }.withoutNulls,
   );
 
@@ -319,6 +310,9 @@ Map<String, dynamic> createUsersRecordData({
 
   // Handle nested data for "salary_range" field.
   addSalaryRangeStructData(firestoreData, salaryRange, 'salary_range');
+
+  // Handle nested data for "ads" field.
+  addAdsStructData(firestoreData, ads, 'ads');
 
   return firestoreData;
 }
@@ -339,10 +333,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.address == e2?.address &&
         e1?.subscriptionActiveTill == e2?.subscriptionActiveTill &&
         e1?.subscribed == e2?.subscribed &&
-        e1?.adsLimit == e2?.adsLimit &&
         e1?.seekingJobType == e2?.seekingJobType &&
         e1?.gender == e2?.gender &&
-        e1?.workExperience == e2?.workExperience &&
         e1?.salaryRange == e2?.salaryRange &&
         e1?.dob == e2?.dob &&
         listEquality.equals(e1?.savedCandidates, e2?.savedCandidates) &&
@@ -361,7 +353,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         listEquality.equals(e1?.viewedProfile, e2?.viewedProfile) &&
         e1?.videoBio == e2?.videoBio &&
         listEquality.equals(e1?.jobSeekDistrict, e2?.jobSeekDistrict) &&
-        e1?.seekingJobPost == e2?.seekingJobPost;
+        e1?.seekingJobPost == e2?.seekingJobPost &&
+        e1?.ads == e2?.ads;
   }
 
   @override
@@ -376,10 +369,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.address,
         e?.subscriptionActiveTill,
         e?.subscribed,
-        e?.adsLimit,
         e?.seekingJobType,
         e?.gender,
-        e?.workExperience,
         e?.salaryRange,
         e?.dob,
         e?.savedCandidates,
@@ -397,7 +388,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.viewedProfile,
         e?.videoBio,
         e?.jobSeekDistrict,
-        e?.seekingJobPost
+        e?.seekingJobPost,
+        e?.ads
       ]);
 
   @override

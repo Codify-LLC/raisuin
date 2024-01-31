@@ -1352,7 +1352,7 @@ class _DetailedprofilecandidateWidgetState
                                                                                         Padding(
                                                                                           padding: const EdgeInsetsDirectional.fromSTEB(2.0, 4.0, 0.0, 0.0),
                                                                                           child: Text(
-                                                                                            '${educationHistoryItem.year.from?.toString()} - ${educationHistoryItem.year.to?.toString()}',
+                                                                                            '${dateTimeFormat('yMMMd', educationHistoryItem.year.from)} - ${dateTimeFormat('yMMMd', educationHistoryItem.year.to)}',
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                   fontFamily: 'Sora',
                                                                                                   color: FlutterFlowTheme.of(context).primaryText,
@@ -1603,6 +1603,19 @@ class _DetailedprofilecandidateWidgetState
                                                             .doc();
                                                     await chatsRecordReference
                                                         .set({
+                                                      ...createChatsRecordData(
+                                                        user1Name:
+                                                            currentUserDisplayName,
+                                                        user1Gmail:
+                                                            detailedprofilecandidateUsersRecord
+                                                                .email,
+                                                        user2Name:
+                                                            detailedprofilecandidateUsersRecord
+                                                                .displayName,
+                                                        user2Gmail:
+                                                            detailedprofilecandidateUsersRecord
+                                                                .email,
+                                                      ),
                                                       ...mapToFirestore(
                                                         {
                                                           'users': functions
@@ -1616,6 +1629,19 @@ class _DetailedprofilecandidateWidgetState
                                                     _model.createdChat =
                                                         ChatsRecord
                                                             .getDocumentFromData({
+                                                      ...createChatsRecordData(
+                                                        user1Name:
+                                                            currentUserDisplayName,
+                                                        user1Gmail:
+                                                            detailedprofilecandidateUsersRecord
+                                                                .email,
+                                                        user2Name:
+                                                            detailedprofilecandidateUsersRecord
+                                                                .displayName,
+                                                        user2Gmail:
+                                                            detailedprofilecandidateUsersRecord
+                                                                .email,
+                                                      ),
                                                       ...mapToFirestore(
                                                         {
                                                           'users': functions

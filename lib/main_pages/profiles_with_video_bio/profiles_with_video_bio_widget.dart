@@ -753,11 +753,6 @@ class _ProfilesWithVideoBioWidgetState
                           pagingController: _model.setListViewController2(
                             UsersRecord.collection
                                 .where(
-                                  'work_experience',
-                                  isEqualTo:
-                                      int.tryParse(widget.workExperienceTo),
-                                )
-                                .where(
                                   'seeking_job_type',
                                   isEqualTo: widget.jobType != ''
                                       ? widget.jobType

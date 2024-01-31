@@ -43,12 +43,6 @@ class ListCandidatesModel extends FlutterFlowModel<ListCandidatesWidget> {
   final unfocusNode = FocusNode();
   // State field(s) for ListView widget.
 
-  PagingController<DocumentSnapshot?, UsersRecord>? listViewPagingController1;
-  Query? listViewPagingQuery1;
-  List<StreamSubscription?> listViewStreamSubscriptions1 = [];
-
-  // State field(s) for ListView widget.
-
   PagingController<DocumentSnapshot?, UsersRecord>? listViewPagingController3;
   Query? listViewPagingQuery3;
   List<StreamSubscription?> listViewStreamSubscriptions3 = [];
@@ -71,11 +65,6 @@ class ListCandidatesModel extends FlutterFlowModel<ListCandidatesWidget> {
   @override
   void dispose() {
     unfocusNode.dispose();
-    for (var s in listViewStreamSubscriptions1) {
-      s?.cancel();
-    }
-    listViewPagingController1?.dispose();
-
     for (var s in listViewStreamSubscriptions3) {
       s?.cancel();
     }
@@ -89,37 +78,6 @@ class ListCandidatesModel extends FlutterFlowModel<ListCandidatesWidget> {
   /// Action blocks are added here.
 
   /// Additional helper methods are added here.
-
-  PagingController<DocumentSnapshot?, UsersRecord> setListViewController1(
-    Query query, {
-    DocumentReference<Object?>? parent,
-  }) {
-    listViewPagingController1 ??= _createListViewController1(query, parent);
-    if (listViewPagingQuery1 != query) {
-      listViewPagingQuery1 = query;
-      listViewPagingController1?.refresh();
-    }
-    return listViewPagingController1!;
-  }
-
-  PagingController<DocumentSnapshot?, UsersRecord> _createListViewController1(
-    Query query,
-    DocumentReference<Object?>? parent,
-  ) {
-    final controller =
-        PagingController<DocumentSnapshot?, UsersRecord>(firstPageKey: null);
-    return controller
-      ..addPageRequestListener(
-        (nextPageMarker) => queryUsersRecordPage(
-          queryBuilder: (_) => listViewPagingQuery1 ??= query,
-          nextPageMarker: nextPageMarker,
-          streamSubscriptions: listViewStreamSubscriptions1,
-          controller: controller,
-          pageSize: 25,
-          isStream: true,
-        ),
-      );
-  }
 
   PagingController<DocumentSnapshot?, UsersRecord> setListViewController3(
     Query query, {

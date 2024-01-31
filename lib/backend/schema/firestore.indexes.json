@@ -31,10 +31,6 @@
       "queryScope": "COLLECTION",
       "fields": [
         {
-          "fieldPath": "work_experience",
-          "order": "ASCENDING"
-        },
-        {
           "fieldPath": "seeking_job_type",
           "order": "ASCENDING"
         },

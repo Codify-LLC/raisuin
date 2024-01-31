@@ -38,7 +38,6 @@ class _PaymentsuccessWidgetState extends State<PaymentsuccessWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await currentUserReference!.update(createUsersRecordData(
         subscriptionActiveTill: widget.validTill,
-        adsLimit: widget.adLimits,
         subscribed: true,
       ));
     });

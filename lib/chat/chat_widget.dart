@@ -91,14 +91,18 @@ class _ChatWidgetState extends State<ChatWidget> {
                     '_model.textController',
                     const Duration(milliseconds: 2000),
                     () async {
-                      await queryMessagesRecordOnce()
+                      await queryChatsRecordOnce()
                           .then(
                             (records) => _model.simpleSearchResults =
                                 TextSearch(
                               records
                                   .map(
                                     (record) => TextSearchItem.fromTerms(
-                                        record, [record.textMessage]),
+                                        record, [
+                                      record.user1Name,
+                                      record.user1Gmail,
+                                      record.user2Name,
+                                      record.user2Gmail]),
                                   )
                                   .toList(),
                             )
@@ -185,73 +189,116 @@ class _ChatWidgetState extends State<ChatWidget> {
                   return Padding(
                     padding:
                         const EdgeInsetsDirectional.fromSTEB(6.0, 12.0, 6.0, 44.0),
-                    child: ListView(
-                      padding: EdgeInsets.zero,
-                      primary: false,
-                      scrollDirection: Axis.vertical,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              8.0, 0.0, 8.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(26.0),
-                                child: Image.network(
-                                  'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHByb2ZpbGV8ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60',
-                                  width: 36.0,
-                                  height: 36.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      12.0, 0.0, 0.0, 0.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Username',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Sora',
-                                              fontSize: 14.0,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 4.0, 0.0, 0.0),
-                                            child: Text(
-                                              'user@domainname.com',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium,
-                                            ),
+                    child: Builder(
+                      builder: (context) {
+                        final searchResult =
+                            _model.simpleSearchResults.toList();
+                        return ListView.builder(
+                          padding: EdgeInsets.zero,
+                          primary: false,
+                          scrollDirection: Axis.vertical,
+                          itemCount: searchResult.length,
+                          itemBuilder: (context, searchResultIndex) {
+                            final searchResultItem =
+                                searchResult[searchResultIndex];
+                            return Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  8.0, 0.0, 8.0, 0.0),
+                              child: StreamBuilder<UsersRecord>(
+                                stream: UsersRecord.getDocument(searchResultItem
+                                    .users
+                                    .where((e) => e != currentUserReference)
+                                    .toList()
+                                    .first),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50.0,
+                                        height: 50.0,
+                                        child: CircularProgressIndicator(
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
                                           ),
-                                        ],
+                                        ),
                                       ),
-                                    ]
-                                        .divide(const SizedBox(height: 5.0))
-                                        .around(const SizedBox(height: 5.0)),
-                                  ),
-                                ),
+                                    );
+                                  }
+                                  final rowUsersRecord = snapshot.data!;
+                                  return Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(26.0),
+                                        child: Image.network(
+                                          rowUsersRecord.photoUrl,
+                                          width: 36.0,
+                                          height: 36.0,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  12.0, 0.0, 0.0, 0.0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                rowUsersRecord.displayName,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Sora',
+                                                          fontSize: 14.0,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 4.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      rowUsersRecord.email,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ]
+                                                .divide(const SizedBox(height: 5.0))
+                                                .around(const SizedBox(height: 5.0)),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                },
                               ),
-                            ],
-                          ),
-                        ),
-                      ],
+                            );
+                          },
+                        );
+                      },
                     ),
                   );
                 } else {

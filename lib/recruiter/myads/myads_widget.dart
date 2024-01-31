@@ -183,51 +183,17 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                   .fromSTEB(
                                                       0.0, 10.0, 0.0, 10.0),
                                               child: AuthUserStreamWidget(
-                                                builder: (context) =>
-                                                    FutureBuilder<int>(
-                                                  future: queryAdsRecordCount(
-                                                    queryBuilder: (adsRecord) =>
-                                                        adsRecord.where(
-                                                      'created_by',
-                                                      isEqualTo:
-                                                          currentUserReference,
-                                                    ),
-                                                  ),
-                                                  builder: (context, snapshot) {
-                                                    // Customize what your widget looks like when it's loading.
-                                                    if (!snapshot.hasData) {
-                                                      return Center(
-                                                        child: SizedBox(
-                                                          width: 50.0,
-                                                          height: 50.0,
-                                                          child:
-                                                              CircularProgressIndicator(
-                                                            valueColor:
-                                                                AlwaysStoppedAnimation<
-                                                                    Color>(
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .primary,
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      );
-                                                    }
-                                                    int textCount =
-                                                        snapshot.data!;
-                                                    return Text(
-                                                      '${textCount.toString()} Ads created | ${valueOrDefault(currentUserDocument?.adsLimit, 0).toString()}  left',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily: 'Sora',
-                                                            fontSize: 12.0,
-                                                            fontWeight:
-                                                                FontWeight.w300,
-                                                          ),
-                                                    );
-                                                  },
+                                                builder: (context) => Text(
+                                                  '${currentUserDocument?.ads.liveAds.toString()} Ads created | ${currentUserDocument?.ads.adsLeft.toString()}  left',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Sora',
+                                                        fontSize: 12.0,
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                      ),
                                                 ),
                                               ),
                                             ),

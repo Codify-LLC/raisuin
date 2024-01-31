@@ -19,8 +19,14 @@ class GeneralSettingsConfigRecord extends FirestoreRecord {
   List<String> get degreeList => _degreeList ?? const [];
   bool hasDegreeList() => _degreeList != null;
 
+  // "subjects" field.
+  List<String>? _subjects;
+  List<String> get subjects => _subjects ?? const [];
+  bool hasSubjects() => _subjects != null;
+
   void _initializeFields() {
     _degreeList = getDataList(snapshotData['degreeList']);
+    _subjects = getDataList(snapshotData['subjects']);
   }
 
   static CollectionReference get collection =>
@@ -75,12 +81,13 @@ class GeneralSettingsConfigRecordDocumentEquality
   bool equals(
       GeneralSettingsConfigRecord? e1, GeneralSettingsConfigRecord? e2) {
     const listEquality = ListEquality();
-    return listEquality.equals(e1?.degreeList, e2?.degreeList);
+    return listEquality.equals(e1?.degreeList, e2?.degreeList) &&
+        listEquality.equals(e1?.subjects, e2?.subjects);
   }
 
   @override
   int hash(GeneralSettingsConfigRecord? e) =>
-      const ListEquality().hash([e?.degreeList]);
+      const ListEquality().hash([e?.degreeList, e?.subjects]);
 
   @override
   bool isValidKey(Object? o) => o is GeneralSettingsConfigRecord;
