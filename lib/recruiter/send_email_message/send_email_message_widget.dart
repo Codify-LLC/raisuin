@@ -1,8 +1,14 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'send_email_message_model.dart';
 export 'send_email_message_model.dart';
 
@@ -52,12 +58,12 @@ class _SendEmailMessageWidgetState extends State<SendEmailMessageWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      constraints: const BoxConstraints(
+      constraints: BoxConstraints(
         maxWidth: 600.0,
       ),
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
           bottomRight: Radius.circular(0.0),
           topLeft: Radius.circular(20.0),
@@ -68,7 +74,7 @@ class _SendEmailMessageWidgetState extends State<SendEmailMessageWidget> {
         key: _model.formKey,
         autovalidateMode: AutovalidateMode.disabled,
         child: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,7 +113,7 @@ class _SendEmailMessageWidgetState extends State<SendEmailMessageWidget> {
                 style: FlutterFlowTheme.of(context).bodyMedium,
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                 child: TextFormField(
                   controller: _model.textController1,
                   focusNode: _model.textFieldFocusNode1,
@@ -116,7 +122,7 @@ class _SendEmailMessageWidgetState extends State<SendEmailMessageWidget> {
                     hintText: 'Subject..',
                     hintStyle: FlutterFlowTheme.of(context).bodySmall.override(
                           fontFamily: 'Sora',
-                          color: const Color(0x80001451),
+                          color: Color(0x80001451),
                         ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -133,14 +139,14 @@ class _SendEmailMessageWidgetState extends State<SendEmailMessageWidget> {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     errorBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Color(0x00000000),
                         width: 1.0,
                       ),
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     focusedErrorBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Color(0x00000000),
                         width: 1.0,
                       ),
@@ -157,7 +163,7 @@ class _SendEmailMessageWidgetState extends State<SendEmailMessageWidget> {
                 style: FlutterFlowTheme.of(context).bodyMedium,
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 16.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 16.0),
                 child: TextFormField(
                   controller: _model.textController2,
                   focusNode: _model.textFieldFocusNode2,
@@ -166,7 +172,7 @@ class _SendEmailMessageWidgetState extends State<SendEmailMessageWidget> {
                     hintText: 'Body Text..',
                     hintStyle: FlutterFlowTheme.of(context).bodySmall.override(
                           fontFamily: 'Sora',
-                          color: const Color(0x80001451),
+                          color: Color(0x80001451),
                         ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -183,14 +189,14 @@ class _SendEmailMessageWidgetState extends State<SendEmailMessageWidget> {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     errorBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Color(0x00000000),
                         width: 1.0,
                       ),
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     focusedErrorBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
+                      borderSide: BorderSide(
                         color: Color(0x00000000),
                         width: 1.0,
                       ),
@@ -213,14 +219,14 @@ class _SendEmailMessageWidgetState extends State<SendEmailMessageWidget> {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 30.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 30.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 20.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
@@ -257,9 +263,9 @@ class _SendEmailMessageWidgetState extends State<SendEmailMessageWidget> {
                               options: FFButtonOptions(
                                 width: MediaQuery.sizeOf(context).width * 1.0,
                                 height: 50.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).tertiary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -270,7 +276,7 @@ class _SendEmailMessageWidgetState extends State<SendEmailMessageWidget> {
                                       fontWeight: FontWeight.normal,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -284,7 +290,7 @@ class _SendEmailMessageWidgetState extends State<SendEmailMessageWidget> {
                   ),
                 ],
               ),
-            ].divide(const SizedBox(height: 20.0)).around(const SizedBox(height: 20.0)),
+            ].divide(SizedBox(height: 20.0)).around(SizedBox(height: 20.0)),
           ),
         ),
       ),

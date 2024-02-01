@@ -2,10 +2,14 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'verify_payment_model.dart';
 export 'verify_payment_model.dart';
 
@@ -38,8 +42,8 @@ class _VerifyPaymentWidgetState extends State<VerifyPaymentWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 400.ms,
-          begin: const Offset(3.0, 3.0),
-          end: const Offset(1.0, 1.0),
+          begin: Offset(3.0, 3.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -58,8 +62,8 @@ class _VerifyPaymentWidgetState extends State<VerifyPaymentWidget>
           curve: Curves.bounceOut,
           delay: 300.ms,
           duration: 300.ms,
-          begin: const Offset(0.6, 0.6),
-          end: const Offset(1.0, 1.0),
+          begin: Offset(0.6, 0.6),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -78,8 +82,8 @@ class _VerifyPaymentWidgetState extends State<VerifyPaymentWidget>
           curve: Curves.easeInOut,
           delay: 400.ms,
           duration: 400.ms,
-          begin: const Offset(0.0, 30.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(0.0, 30.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -136,9 +140,9 @@ class _VerifyPaymentWidgetState extends State<VerifyPaymentWidget>
                           FlutterFlowTheme.of(context).error,
                           FlutterFlowTheme.of(context).tertiary
                         ],
-                        stops: const [0.0, 0.5, 1.0],
-                        begin: const AlignmentDirectional(-1.0, -1.0),
-                        end: const AlignmentDirectional(1.0, 1.0),
+                        stops: [0.0, 0.5, 1.0],
+                        begin: AlignmentDirectional(-1.0, -1.0),
+                        end: AlignmentDirectional(1.0, 1.0),
                       ),
                     ),
                     child: Container(
@@ -147,12 +151,12 @@ class _VerifyPaymentWidgetState extends State<VerifyPaymentWidget>
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
-                            const Color(0x00FFFFFF),
+                            Color(0x00FFFFFF),
                             FlutterFlowTheme.of(context).secondaryBackground
                           ],
-                          stops: const [0.0, 1.0],
-                          begin: const AlignmentDirectional(0.0, -1.0),
-                          end: const AlignmentDirectional(0, 1.0),
+                          stops: [0.0, 1.0],
+                          begin: AlignmentDirectional(0.0, -1.0),
+                          end: AlignmentDirectional(0, 1.0),
                         ),
                       ),
                       child: Column(
@@ -167,7 +171,7 @@ class _VerifyPaymentWidgetState extends State<VerifyPaymentWidget>
                               shape: BoxShape.circle,
                             ),
                             child: Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: FlutterFlowTimer(
                                 initialTime: _model.timerMilliseconds,
                                 getDisplayTime: (value) =>
@@ -178,7 +182,7 @@ class _VerifyPaymentWidgetState extends State<VerifyPaymentWidget>
                                 ),
                                 controller: _model.timerController,
                                 updateStateInterval:
-                                    const Duration(milliseconds: 1000),
+                                    Duration(milliseconds: 1000),
                                 onChanged: (value, displayTime, shouldUpdate) {
                                   _model.timerMilliseconds = value;
                                   _model.timerValue = displayTime;
@@ -192,7 +196,7 @@ class _VerifyPaymentWidgetState extends State<VerifyPaymentWidget>
                           ).animateOnPageLoad(
                               animationsMap['containerOnPageLoadAnimation2']!),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 44.0, 8.0, 44.0, 0.0),
                             child: Text(
                               'Please check this page after making the payment.  it will auto refresh and proceed to appropriate section.',

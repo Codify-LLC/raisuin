@@ -1,9 +1,19 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/main_pages/navigation/navigation_widget.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'profiles_with_video_bio_widget.dart' show ProfilesWithVideoBioWidget;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:provider/provider.dart';
 
 class ProfilesWithVideoBioModel
     extends FlutterFlowModel<ProfilesWithVideoBioWidget> {
@@ -72,22 +82,16 @@ class ProfilesWithVideoBioModel
 
   /// Initialization and disposal methods.
 
-  @override
   void initState(BuildContext context) {
     navigationModel = createModel(context, () => NavigationModel());
   }
 
-  @override
   void dispose() {
     unfocusNode.dispose();
-    for (var s in listViewStreamSubscriptions1) {
-      s?.cancel();
-    }
+    listViewStreamSubscriptions1.forEach((s) => s?.cancel());
     listViewPagingController1?.dispose();
 
-    for (var s in listViewStreamSubscriptions2) {
-      s?.cancel();
-    }
+    listViewStreamSubscriptions2.forEach((s) => s?.cancel());
     listViewPagingController2?.dispose();
 
     navigationModel.dispose();

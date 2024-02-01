@@ -2,15 +2,19 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'map_view_model.dart';
 export 'map_view_model.dart';
 
@@ -77,7 +81,8 @@ class _MapViewWidgetState extends State<MapViewWidget> {
               : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: const Color(0xFFF9FAFC),
+            resizeToAvoidBottomInset: false,
+            backgroundColor: Color(0xFFF9FAFC),
             appBar: AppBar(
               backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
               automaticallyImplyLeading: false,
@@ -102,7 +107,7 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                   fit: BoxFit.contain,
                 ),
               ),
-              actions: const [],
+              actions: [],
               centerTitle: false,
               elevation: 2.0,
             ),
@@ -123,7 +128,7 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                             FormFieldController<String>(
                           _model.stateDropdownValue ??= 'Tamil Nadu',
                         ),
-                        options: const [
+                        options: [
                           'Tamil Nadu',
                           'Andhra Pradesh',
                           'Kerela',
@@ -139,7 +144,7 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                                   fontFamily: 'Sora',
                                   fontSize: 14.0,
                                 ),
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.keyboard_arrow_down,
                           size: 15.0,
                         ),
@@ -149,7 +154,7 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                         borderColor: Colors.transparent,
                         borderWidth: 0.0,
                         borderRadius: 0.0,
-                        margin: const EdgeInsetsDirectional.fromSTEB(
+                        margin: EdgeInsetsDirectional.fromSTEB(
                             12.0, 4.0, 12.0, 4.0),
                         hidesUnderline: true,
                         isSearchable: false,
@@ -176,11 +181,11 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                       ),
                     ),
                   ]
-                      .addToStart(const SizedBox(width: 20.0))
-                      .addToEnd(const SizedBox(width: 20.0)),
+                      .addToStart(SizedBox(width: 20.0))
+                      .addToEnd(SizedBox(width: 20.0)),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -192,7 +197,7 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 4.0),
                               child: Text(
                                 'Show Candidates',
@@ -205,7 +210,7 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 10.0, 0.0),
                               child: FlutterFlowDropDown<String>(
                                 controller: _model
@@ -214,7 +219,7 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                                   _model.showCandidatesChoiceValue ??= 'all',
                                 ),
                                 options: List<String>.from(['all', 'matched']),
-                                optionLabels: const ['View All', 'Matched'],
+                                optionLabels: ['View All', 'Matched'],
                                 onChanged: (val) => setState(() =>
                                     _model.showCandidatesChoiceValue = val),
                                 width: 120.0,
@@ -237,7 +242,7 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                                 borderColor: Colors.transparent,
                                 borderWidth: 0.0,
                                 borderRadius: 20.0,
-                                margin: const EdgeInsetsDirectional.fromSTEB(
+                                margin: EdgeInsetsDirectional.fromSTEB(
                                     12.0, 4.0, 12.0, 4.0),
                                 hidesUnderline: true,
                                 isSearchable: false,
@@ -251,7 +256,7 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 4.0),
                               child: Text(
                                 'Education Level',
@@ -264,7 +269,7 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 10.0, 0.0),
                               child: FlutterFlowDropDown<String>(
                                 controller:
@@ -272,7 +277,7 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                                         FormFieldController<String>(null),
                                 options: List<String>.from(
                                     ['ug', 'pg', 'doc', 'all']),
-                                optionLabels: const ['UG', 'PG', 'DOC', 'All'],
+                                optionLabels: ['UG', 'PG', 'DOC', 'All'],
                                 onChanged: (val) => setState(
                                     () => _model.educationLevelValue = val),
                                 width: 120.0,
@@ -295,7 +300,7 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                                 borderColor: Colors.transparent,
                                 borderWidth: 0.0,
                                 borderRadius: 20.0,
-                                margin: const EdgeInsetsDirectional.fromSTEB(
+                                margin: EdgeInsetsDirectional.fromSTEB(
                                     12.0, 4.0, 12.0, 4.0),
                                 hidesUnderline: true,
                                 isSearchable: false,
@@ -309,7 +314,7 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 4.0),
                               child: Text(
                                 'Gender',
@@ -322,14 +327,14 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 10.0, 0.0),
                               child: FlutterFlowDropDown<String>(
                                 controller: _model.genderValueController ??=
                                     FormFieldController<String>(
                                   _model.genderValue ??= 'All',
                                 ),
-                                options: const ['All', 'Male', 'Female', 'Neutral'],
+                                options: ['All', 'Male', 'Female', 'Neutral'],
                                 onChanged: (val) async {
                                   setState(() => _model.genderValue = val);
                                   context.pushNamed(
@@ -341,7 +346,7 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                                       ),
                                     }.withoutNulls,
                                     extra: <String, dynamic>{
-                                      kTransitionInfoKey: const TransitionInfo(
+                                      kTransitionInfoKey: TransitionInfo(
                                         hasTransition: true,
                                         transitionType: PageTransitionType.fade,
                                         duration: Duration(milliseconds: 0),
@@ -369,7 +374,7 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                                 borderColor: Colors.transparent,
                                 borderWidth: 0.0,
                                 borderRadius: 20.0,
-                                margin: const EdgeInsetsDirectional.fromSTEB(
+                                margin: EdgeInsetsDirectional.fromSTEB(
                                     12.0, 4.0, 12.0, 4.0),
                                 hidesUnderline: true,
                                 isSearchable: false,
@@ -383,7 +388,7 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 4.0),
                               child: Text(
                                 'Experience(Min - Max in yrs)',
@@ -399,14 +404,14 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 10.0, 0.0),
                                   child: FlutterFlowDropDown<String>(
                                     controller:
                                         _model.experienceFromValueController ??=
                                             FormFieldController<String>(null),
                                     options: List<String>.from(<String>[]),
-                                    optionLabels: const <String>[],
+                                    optionLabels: <String>[],
                                     onChanged: (val) => setState(
                                         () => _model.experienceFromValue = val),
                                     width: 90.0,
@@ -430,7 +435,7 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                                     borderColor: Colors.transparent,
                                     borderWidth: 0.0,
                                     borderRadius: 20.0,
-                                    margin: const EdgeInsetsDirectional.fromSTEB(
+                                    margin: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 4.0, 12.0, 4.0),
                                     hidesUnderline: true,
                                     isSearchable: false,
@@ -443,7 +448,7 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                                       FlutterFlowTheme.of(context).bodyMedium,
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 10.0, 0.0),
                                   child: FlutterFlowDropDown<String>(
                                     controller:
@@ -452,7 +457,7 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                                       _model.experienceTillValue ??= '',
                                     ),
                                     options: List<String>.from(<String>[]),
-                                    optionLabels: const <String>[],
+                                    optionLabels: <String>[],
                                     onChanged: (val) => setState(
                                         () => _model.experienceTillValue = val),
                                     width: 90.0,
@@ -476,7 +481,7 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                                     borderColor: Colors.transparent,
                                     borderWidth: 0.0,
                                     borderRadius: 20.0,
-                                    margin: const EdgeInsetsDirectional.fromSTEB(
+                                    margin: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 4.0, 12.0, 4.0),
                                     hidesUnderline: true,
                                     isSearchable: false,
@@ -488,8 +493,8 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                           ],
                         ),
                       ]
-                          .addToStart(const SizedBox(width: 20.0))
-                          .addToEnd(const SizedBox(width: 20.0)),
+                          .addToStart(SizedBox(width: 20.0))
+                          .addToEnd(SizedBox(width: 20.0)),
                     ),
                   ),
                 ),
@@ -499,49 +504,77 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                 ),
                 Expanded(
                   child: Builder(
-                    builder: (context) => StreamBuilder<List<UsersRecord>>(
-                      stream: queryUsersRecord(),
-                      builder: (context, snapshot) {
-                        // Customize what your widget looks like when it's loading.
-                        if (!snapshot.hasData) {
-                          return Center(
-                            child: SizedBox(
-                              width: 50.0,
-                              height: 50.0,
-                              child: CircularProgressIndicator(
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  FlutterFlowTheme.of(context).primary,
+                    builder: (context) {
+                      if (true) {
+                        return Builder(
+                          builder: (context) =>
+                              StreamBuilder<List<UsersRecord>>(
+                            stream: queryUsersRecord(),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    child: CircularProgressIndicator(
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                        FlutterFlowTheme.of(context).primary,
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              }
+                              List<UsersRecord> customMapUsersRecordList =
+                                  snapshot.data!
+                                      .where((u) => u.uid != currentUserUid)
+                                      .toList();
+                              return Container(
+                                width: MediaQuery.sizeOf(context).width * 1.0,
+                                height: MediaQuery.sizeOf(context).height * 1.0,
+                                child: custom_widgets.CustomMap(
+                                  width: MediaQuery.sizeOf(context).width * 1.0,
+                                  height:
+                                      MediaQuery.sizeOf(context).height * 1.0,
+                                  initialCenter: customMapUsersRecordList
+                                      .first.address.latLang!,
+                                  lantlangs: customMapUsersRecordList
+                                      .map((e) => e.address.latLang)
+                                      .withoutNulls
+                                      .toList(),
+                                  userDoc: customMapUsersRecordList,
                                 ),
-                              ),
-                            ),
-                          );
-                        }
-                        List<UsersRecord> customMapUsersRecordList = snapshot
-                            .data!
-                            .where((u) => u.uid != currentUserUid)
-                            .toList();
-                        return SizedBox(
-                          width: MediaQuery.sizeOf(context).width * 1.0,
-                          height: MediaQuery.sizeOf(context).height * 1.0,
-                          child: custom_widgets.CustomMap(
-                            width: MediaQuery.sizeOf(context).width * 1.0,
-                            height: MediaQuery.sizeOf(context).height * 1.0,
-                            initialCenter:
-                                customMapUsersRecordList.first.address.latLang!,
-                            lantlangs: customMapUsersRecordList
-                                .map((e) => e.address.latLang)
-                                .withoutNulls
-                                .toList(),
-                            userDoc: customMapUsersRecordList,
+                              );
+                            },
                           ),
                         );
-                      },
-                    ),
+                      } else {
+                        return FlutterFlowGoogleMap(
+                          controller: _model.googleMapsController,
+                          onCameraIdle: (latLng) =>
+                              _model.googleMapsCenter = latLng,
+                          initialLocation: _model.googleMapsCenter ??=
+                              LatLng(13.106061, -59.613158),
+                          markerColor: GoogleMarkerColor.violet,
+                          mapType: MapType.normal,
+                          style: GoogleMapStyle.standard,
+                          initialZoom: 14.0,
+                          allowInteraction: true,
+                          allowZoom: true,
+                          showZoomControls: true,
+                          showLocation: true,
+                          showCompass: false,
+                          showMapToolbar: false,
+                          showTraffic: false,
+                          centerMapOnMarkerTap: true,
+                        );
+                      }
+                    },
                   ),
                 ),
               ]
-                  .divide(const SizedBox(height: 12.0))
-                  .addToStart(const SizedBox(height: 12.0)),
+                  .divide(SizedBox(height: 12.0))
+                  .addToStart(SizedBox(height: 12.0)),
             ),
           ),
         ));

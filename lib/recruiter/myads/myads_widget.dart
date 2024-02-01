@@ -3,11 +3,15 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 import 'myads_model.dart';
 export 'myads_model.dart';
 
@@ -58,7 +62,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
               : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: const Color(0xFFF9FAFC),
+            backgroundColor: Color(0xFFF9FAFC),
             body: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -81,7 +85,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                 Expanded(
                   flex: 6,
                   child: Stack(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     children: [
                       ClipRect(
                         child: ImageFiltered(
@@ -99,13 +103,13 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
-                            borderRadius: const BorderRadius.only(
+                            borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(0.0),
                               bottomRight: Radius.circular(0.0),
                               topLeft: Radius.circular(20.0),
@@ -116,7 +120,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 20.0, 20.0, 14.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -131,7 +135,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                       onTap: () async {
                                         context.goNamed('profileEmployer');
                                       },
-                                      child: const Icon(
+                                      child: Icon(
                                         Icons.arrow_back_ios,
                                         color: Colors.black,
                                         size: 24.0,
@@ -140,7 +144,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                     Expanded(
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Text(
                                           'My Ads',
                                           style: FlutterFlowTheme.of(context)
@@ -168,7 +172,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             20.0, 0.0, 20.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -176,12 +180,12 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 10.0, 0.0, 10.0),
                                               child: AuthUserStreamWidget(
                                                 builder: (context) => Text(
-                                                  '${currentUserDocument?.ads.liveAds.toString()} Ads created | ${currentUserDocument?.ads.adsLeft.toString()}  left',
+                                                  '${currentUserDocument?.ads?.liveAds?.toString()} Ads created | ${currentUserDocument?.ads?.adsLeft?.toString()}  left',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -255,7 +259,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                     listViewAdsRecordList[
                                                         listViewIndex];
                                                 return Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 14.0, 0.0, 0.0),
                                                   child: InkWell(
@@ -290,7 +294,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       20.0,
                                                                       0.0,
@@ -306,7 +310,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -336,9 +340,9 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                                           image:
                                                                               CachedNetworkImage(
                                                                             fadeInDuration:
-                                                                                const Duration(milliseconds: 500),
+                                                                                Duration(milliseconds: 500),
                                                                             fadeOutDuration:
-                                                                                const Duration(milliseconds: 500),
+                                                                                Duration(milliseconds: 500),
                                                                             imageUrl:
                                                                                 listViewAdsRecord.logo,
                                                                             fit:
@@ -373,16 +377,16 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                                       clipBehavior:
                                                                           Clip.antiAlias,
                                                                       decoration:
-                                                                          const BoxDecoration(
+                                                                          BoxDecoration(
                                                                         shape: BoxShape
                                                                             .circle,
                                                                       ),
                                                                       child:
                                                                           CachedNetworkImage(
                                                                         fadeInDuration:
-                                                                            const Duration(milliseconds: 500),
+                                                                            Duration(milliseconds: 500),
                                                                         fadeOutDuration:
-                                                                            const Duration(milliseconds: 500),
+                                                                            Duration(milliseconds: 500),
                                                                         imageUrl:
                                                                             listViewAdsRecord.logo,
                                                                         fit: BoxFit
@@ -417,7 +421,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                                           .bodyMedium,
                                                                     ),
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           4.0,
                                                                           0.0,
@@ -430,7 +434,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                                             CrossAxisAlignment.start,
                                                                         children: [
                                                                           Padding(
-                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
                                                                                 2.0,
                                                                                 0.0,
                                                                                 0.0,
@@ -450,7 +454,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                                       ),
                                                                     ),
                                                                     Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           4.0,
                                                                           0.0,
@@ -471,7 +475,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                                           Expanded(
                                                                             child:
                                                                                 Padding(
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 0.0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 0.0),
                                                                               child: Text(
                                                                                 '${listViewAdsRecord.jobLocation.state} ${listViewAdsRecord.jobLocation.city}',
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -494,7 +498,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       12.0,
@@ -513,7 +517,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                                       .center,
                                                               children: [
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           20.0,
                                                                           0.0,
@@ -539,13 +543,13 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                                     child:
                                                                         Align(
                                                                       alignment:
-                                                                          const AlignmentDirectional(
+                                                                          AlignmentDirectional(
                                                                               0.0,
                                                                               0.0),
                                                                       child:
                                                                           Padding(
                                                                         padding:
-                                                                            const EdgeInsets.all(8.0),
+                                                                            EdgeInsets.all(8.0),
                                                                         child:
                                                                             Text(
                                                                           '${listViewAdsRecord.appliedForJobs.length.toString()} Applied ',
@@ -562,7 +566,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           4.0,
                                                                           0.0,
@@ -588,13 +592,13 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                                     child:
                                                                         Align(
                                                                       alignment:
-                                                                          const AlignmentDirectional(
+                                                                          AlignmentDirectional(
                                                                               0.0,
                                                                               0.0),
                                                                       child:
                                                                           Padding(
                                                                         padding:
-                                                                            const EdgeInsets.all(8.0),
+                                                                            EdgeInsets.all(8.0),
                                                                         child:
                                                                             Text(
                                                                           listViewAdsRecord
@@ -612,7 +616,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           4.0,
                                                                           0.0,
@@ -638,7 +642,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                                     child:
                                                                         Padding(
                                                                       padding:
-                                                                          const EdgeInsets.all(
+                                                                          EdgeInsets.all(
                                                                               8.0),
                                                                       child:
                                                                           Text(
@@ -656,7 +660,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           4.0,
                                                                           0.0,
@@ -682,7 +686,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                                     child:
                                                                         Padding(
                                                                       padding:
-                                                                          const EdgeInsets.all(
+                                                                          EdgeInsets.all(
                                                                               8.0),
                                                                       child:
                                                                           Text(
@@ -700,7 +704,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           4.0,
                                                                           0.0,
@@ -726,7 +730,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                                     child:
                                                                         Padding(
                                                                       padding:
-                                                                          const EdgeInsets.all(
+                                                                          EdgeInsets.all(
                                                                               8.0),
                                                                       child:
                                                                           Text(
@@ -761,7 +765,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           4.0,
                                                                           0.0,
@@ -787,7 +791,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                                     child:
                                                                         Padding(
                                                                       padding:
-                                                                          const EdgeInsets.all(
+                                                                          EdgeInsets.all(
                                                                               8.0),
                                                                       child:
                                                                           Text(
@@ -805,7 +809,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           4.0,
                                                                           0.0,
@@ -831,7 +835,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                                     child:
                                                                         Padding(
                                                                       padding:
-                                                                          const EdgeInsets.all(
+                                                                          EdgeInsets.all(
                                                                               8.0),
                                                                       child:
                                                                           Text(

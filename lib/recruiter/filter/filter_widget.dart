@@ -7,6 +7,9 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'filter_model.dart';
 export 'filter_model.dart';
 
@@ -57,12 +60,12 @@ class _FilterWidgetState extends State<FilterWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      constraints: const BoxConstraints(
+      constraints: BoxConstraints(
         maxWidth: 600.0,
       ),
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
           bottomRight: Radius.circular(0.0),
           topLeft: Radius.circular(20.0),
@@ -75,7 +78,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 12.0),
+              padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 12.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -107,7 +110,7 @@ class _FilterWidgetState extends State<FilterWidget> {
               color: FlutterFlowTheme.of(context).accent3,
             ),
             Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: EdgeInsets.all(20.0),
               child: StreamBuilder<List<GeneralSettingsConfigRecord>>(
                 stream: queryGeneralSettingsConfigRecord(
                   singleRecord: true,
@@ -151,10 +154,10 @@ class _FilterWidgetState extends State<FilterWidget> {
                                   ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 18.0, 0.0, 28.0),
                           child: FlutterFlowChoiceChips(
-                            options: const [
+                            options: [
                               ChipData('Full Time'),
                               ChipData('Part Time'),
                               ChipData('Freelance')
@@ -180,7 +183,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                               iconColor:
                                   FlutterFlowTheme.of(context).primaryText,
                               iconSize: 18.0,
-                              labelPadding: const EdgeInsetsDirectional.fromSTEB(
+                              labelPadding: EdgeInsetsDirectional.fromSTEB(
                                   14.0, 6.0, 14.0, 8.0),
                               elevation: 0.0,
                             ),
@@ -198,7 +201,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                               iconColor:
                                   FlutterFlowTheme.of(context).primaryText,
                               iconSize: 18.0,
-                              labelPadding: const EdgeInsetsDirectional.fromSTEB(
+                              labelPadding: EdgeInsetsDirectional.fromSTEB(
                                   14.0, 6.0, 14.0, 8.0),
                               elevation: 0.0,
                             ),
@@ -225,7 +228,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                           ),
                         if (false)
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 0.0, 23.0),
                             child: SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
@@ -234,7 +237,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 10.0, 0.0),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
@@ -257,7 +260,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                                         height: 100.0,
                                         decoration: BoxDecoration(
                                           color: _model.gender.contains('male')
-                                              ? const Color(0xFFF3F5F7)
+                                              ? Color(0xFFF3F5F7)
                                               : FlutterFlowTheme.of(context)
                                                   .secondaryBackground,
                                           borderRadius:
@@ -272,7 +275,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                                           ),
                                         ),
                                         child: Padding(
-                                          padding: const EdgeInsets.all(5.0),
+                                          padding: EdgeInsets.all(5.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
@@ -301,7 +304,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 10.0, 0.0),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
@@ -325,7 +328,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                                         decoration: BoxDecoration(
                                           color:
                                               _model.gender.contains('female')
-                                                  ? const Color(0xFFF3F5F7)
+                                                  ? Color(0xFFF3F5F7)
                                                   : FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
                                           borderRadius:
@@ -335,11 +338,11 @@ class _FilterWidgetState extends State<FilterWidget> {
                                                     .contains('female')
                                                 ? FlutterFlowTheme.of(context)
                                                     .primaryText
-                                                : const Color(0x00000000),
+                                                : Color(0x00000000),
                                           ),
                                         ),
                                         child: Padding(
-                                          padding: const EdgeInsets.all(5.0),
+                                          padding: EdgeInsets.all(5.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
@@ -388,7 +391,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                                       height: 100.0,
                                       decoration: BoxDecoration(
                                         color: _model.gender.contains('neutral')
-                                            ? const Color(0xFFF3F5F7)
+                                            ? Color(0xFFF3F5F7)
                                             : FlutterFlowTheme.of(context)
                                                 .secondaryBackground,
                                         borderRadius:
@@ -398,11 +401,11 @@ class _FilterWidgetState extends State<FilterWidget> {
                                               _model.gender.contains('neutral')
                                                   ? FlutterFlowTheme.of(context)
                                                       .primaryText
-                                                  : const Color(0x00000000),
+                                                  : Color(0x00000000),
                                         ),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsets.all(5.0),
+                                        padding: EdgeInsets.all(5.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
@@ -447,7 +450,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                             Expanded(
                               flex: 2,
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 10.0, 10.0, 10.0),
                                 child: FlutterFlowDropDown<String>(
                                   controller: _model.levelValueController ??=
@@ -477,7 +480,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                                       FlutterFlowTheme.of(context).accent3,
                                   borderWidth: 0.0,
                                   borderRadius: 10.0,
-                                  margin: const EdgeInsetsDirectional.fromSTEB(
+                                  margin: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 4.0, 16.0, 4.0),
                                   hidesUnderline: true,
                                   isSearchable: false,
@@ -488,7 +491,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                             Expanded(
                               flex: 3,
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 10.0, 10.0, 10.0),
                                 child: FlutterFlowDropDown<String>(
                                   controller: _model.degreeValueController ??=
@@ -519,7 +522,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                                       FlutterFlowTheme.of(context).accent3,
                                   borderWidth: 0.0,
                                   borderRadius: 10.0,
-                                  margin: const EdgeInsetsDirectional.fromSTEB(
+                                  margin: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 4.0, 16.0, 4.0),
                                   hidesUnderline: true,
                                   isSearchable: false,
@@ -535,12 +538,13 @@ class _FilterWidgetState extends State<FilterWidget> {
                             Expanded(
                               flex: 3,
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 10.0, 10.0, 10.0),
                                 child: FlutterFlowDropDown<String>(
                                   controller: _model.subjectValueController ??=
                                       FormFieldController<String>(null),
-                                  options: columnGeneralSettingsConfigRecord.subjects,
+                                  options: columnGeneralSettingsConfigRecord!
+                                      .subjects,
                                   onChanged: (val) =>
                                       setState(() => _model.subjectValue = val),
                                   width: 300.0,
@@ -565,7 +569,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                                       FlutterFlowTheme.of(context).accent3,
                                   borderWidth: 0.0,
                                   borderRadius: 10.0,
-                                  margin: const EdgeInsetsDirectional.fromSTEB(
+                                  margin: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 4.0, 16.0, 4.0),
                                   hidesUnderline: true,
                                   isSearchable: false,
@@ -580,7 +584,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 0.0, 15.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -629,7 +633,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       5.0, 0.0, 5.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -644,7 +648,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                                           children: [
                                             Expanded(
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 0.0, 8.0, 0.0),
                                                 child: TextFormField(
@@ -715,11 +719,11 @@ class _FilterWidgetState extends State<FilterWidget> {
                                           Container(
                                             width: 40.0,
                                             height: 50.0,
-                                            decoration: const BoxDecoration(
+                                            decoration: BoxDecoration(
                                               color: Color(0xFFF3F5F7),
                                             ),
                                             child: Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Text(
                                                 'TO',
@@ -753,7 +757,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                                           children: [
                                             Expanded(
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 0.0, 8.0, 0.0),
                                                 child: TextFormField(
@@ -815,7 +819,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 20.0, 0.0, 15.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -864,7 +868,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       5.0, 0.0, 5.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -879,7 +883,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                                           children: [
                                             Expanded(
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 0.0, 8.0, 0.0),
                                                 child: TextFormField(
@@ -950,11 +954,11 @@ class _FilterWidgetState extends State<FilterWidget> {
                                           Container(
                                             width: 40.0,
                                             height: 50.0,
-                                            decoration: const BoxDecoration(
+                                            decoration: BoxDecoration(
                                               color: Color(0xFFF3F5F7),
                                             ),
                                             child: Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Text(
                                                 'TO',
@@ -988,7 +992,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                                           children: [
                                             Expanded(
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 0.0, 8.0, 0.0),
                                                 child: TextFormField(
@@ -1061,16 +1065,16 @@ class _FilterWidgetState extends State<FilterWidget> {
                   color: FlutterFlowTheme.of(context).accent3,
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 9.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 9.0, 0.0, 0.0),
                         child: Container(
-                          constraints: const BoxConstraints(
+                          constraints: BoxConstraints(
                             maxWidth: 337.0,
                           ),
                           decoration: BoxDecoration(
@@ -1082,7 +1086,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                             ),
                           ),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 30.0, 14.0, 30.0, 14.0),
                             child: Text(
                               'Reset',
@@ -1100,15 +1104,23 @@ class _FilterWidgetState extends State<FilterWidget> {
                       ),
                       FFButtonWidget(
                         onPressed: () async {
-                          if (((_model.expfromController.text != '') &&
-                                  (_model.exptoController.text == '')) ||
-                              ((_model.expfromController.text == '') &&
-                                  (_model.exptoController.text != '')) ||
-                              ((_model.salaryminController.text != '') &&
-                                  (_model.salarytillController.text ==
+                          if (((_model.expfromController.text != null &&
+                                      _model.expfromController.text != '') &&
+                                  (_model.exptoController.text == null ||
+                                      _model.exptoController.text == '')) ||
+                              ((_model.expfromController.text == null ||
+                                      _model.expfromController.text == '') &&
+                                  (_model.exptoController.text != null &&
+                                      _model.exptoController.text != '')) ||
+                              ((_model.salaryminController.text != null &&
+                                      _model.salaryminController.text != '') &&
+                                  (_model.salarytillController.text == null ||
+                                      _model.salarytillController.text ==
                                           '')) ||
-                              ((_model.salarytillController.text != '') &&
-                                  (_model.salaryminController.text == ''))) {
+                              ((_model.salarytillController.text != null &&
+                                      _model.salarytillController.text != '') &&
+                                  (_model.salaryminController.text == null ||
+                                      _model.salaryminController.text == ''))) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                 content: Text(
@@ -1118,7 +1130,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                                         .primaryText,
                                   ),
                                 ),
-                                duration: const Duration(milliseconds: 4000),
+                                duration: Duration(milliseconds: 4000),
                                 backgroundColor:
                                     FlutterFlowTheme.of(context).secondary,
                               ),
@@ -1172,9 +1184,9 @@ class _FilterWidgetState extends State<FilterWidget> {
                         options: FFButtonOptions(
                           width: MediaQuery.sizeOf(context).width * 0.331,
                           height: 46.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).tertiary,
                           textStyle:
@@ -1183,7 +1195,7 @@ class _FilterWidgetState extends State<FilterWidget> {
                                     color: Colors.white,
                                   ),
                           elevation: 3.0,
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),

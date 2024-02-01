@@ -8,9 +8,14 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/place.dart';
 import '/flutter_flow/upload_data.dart';
+import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'update_details_model.dart';
 export 'update_details_model.dart';
 
@@ -62,7 +67,7 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: const Color(0xFFF9FAFC),
+            backgroundColor: Color(0xFFF9FAFC),
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -86,7 +91,7 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
                   : FocusScope.of(context).unfocus(),
               child: Scaffold(
                 key: scaffoldKey,
-                backgroundColor: const Color(0xFFF9FAFC),
+                backgroundColor: Color(0xFFF9FAFC),
                 appBar: AppBar(
                   backgroundColor:
                       FlutterFlowTheme.of(context).primaryBackground,
@@ -113,7 +118,7 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
                           fontSize: 16.0,
                         ),
                   ),
-                  actions: const [],
+                  actions: [],
                   centerTitle: false,
                   elevation: 2.0,
                 ),
@@ -121,7 +126,7 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
                   height: double.infinity,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
-                    borderRadius: const BorderRadius.only(
+                    borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(0.0),
                       bottomRight: Radius.circular(0.0),
                       topLeft: Radius.circular(20.0),
@@ -142,7 +147,7 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
                           key: _model.formKey,
                           autovalidateMode: AutovalidateMode.disabled,
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 10.0, 0.0),
                             child: SingleChildScrollView(
                               child: Column(
@@ -157,14 +162,19 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
                                         width: 120.0,
                                         height: 120.0,
                                         clipBehavior: Clip.antiAlias,
-                                        decoration: const BoxDecoration(
+                                        decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                         ),
                                         child: Image.network(
                                           () {
-                                            if (_model.uploadedFileUrl != '') {
+                                            if (_model.uploadedFileUrl !=
+                                                    null &&
+                                                _model.uploadedFileUrl != '') {
                                               return _model.uploadedFileUrl;
                                             } else if (updateDetailsUsersRecord
+                                                        .photoUrl !=
+                                                    null &&
+                                                updateDetailsUsersRecord
                                                         .photoUrl !=
                                                     '') {
                                               return updateDetailsUsersRecord
@@ -178,7 +188,7 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
                                       ),
                                       Align(
                                         alignment:
-                                            const AlignmentDirectional(0.85, 0.46),
+                                            AlignmentDirectional(0.85, 0.46),
                                         child: FlutterFlowIconButton(
                                           borderColor: Colors.transparent,
                                           borderRadius: 30.0,
@@ -270,7 +280,7 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
                                           },
                                         ),
                                       ),
-                                    ].divide(const SizedBox(width: 10.0)),
+                                    ].divide(SizedBox(width: 10.0)),
                                   ),
                                   TextFormField(
                                     controller:
@@ -309,7 +319,7 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
                                             BorderRadius.circular(10.0),
                                       ),
                                       errorBorder: OutlineInputBorder(
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -317,7 +327,7 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
                                             BorderRadius.circular(10.0),
                                       ),
                                       focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -325,7 +335,7 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
                                             BorderRadius.circular(10.0),
                                       ),
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               10.0, 3.0, 10.0, 3.0),
                                     ),
                                     style:
@@ -394,8 +404,8 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
                                         ),
                                       ),
                                     ]
-                                        .divide(const SizedBox(height: 20.0))
-                                        .around(const SizedBox(height: 20.0)),
+                                        .divide(SizedBox(height: 20.0))
+                                        .around(SizedBox(height: 20.0)),
                                   ),
                                   Text(
                                     'Profile Type',
@@ -408,7 +418,7 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
                                         ),
                                   ),
                                   FlutterFlowChoiceChips(
-                                    options: const [
+                                    options: [
                                       ChipData('School'),
                                       ChipData('Institution'),
                                       ChipData('Agency')
@@ -431,7 +441,7 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
                                           .primaryText,
                                       iconSize: 0.0,
                                       labelPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               14.0, 6.0, 14.0, 8.0),
                                       elevation: 0.0,
                                     ),
@@ -450,7 +460,7 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
                                           .primaryText,
                                       iconSize: 18.0,
                                       labelPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               14.0, 6.0, 14.0, 8.0),
                                       elevation: 0.0,
                                     ),
@@ -472,7 +482,7 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
                                     phone: false,
                                   ))
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 23.0, 0.0, 10.0),
                                       child: Text(
                                         'School Name',
@@ -540,7 +550,7 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
                                                 BorderRadius.circular(10.0),
                                           ),
                                           errorBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0x00000000),
                                               width: 1.0,
                                             ),
@@ -549,7 +559,7 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
                                           ),
                                           focusedErrorBorder:
                                               OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0x00000000),
                                               width: 1.0,
                                             ),
@@ -557,7 +567,7 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
                                                 BorderRadius.circular(10.0),
                                           ),
                                           contentPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 3.0, 10.0, 3.0),
                                         ),
                                         style: FlutterFlowTheme.of(context)
@@ -568,12 +578,12 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
                                             .asValidator(context),
                                       ),
                                     ]
-                                        .divide(const SizedBox(height: 20.0))
-                                        .around(const SizedBox(height: 20.0)),
+                                        .divide(SizedBox(height: 20.0))
+                                        .around(SizedBox(height: 20.0)),
                                   ),
                                 ]
-                                    .divide(const SizedBox(height: 10.0))
-                                    .around(const SizedBox(height: 10.0)),
+                                    .divide(SizedBox(height: 10.0))
+                                    .around(SizedBox(height: 10.0)),
                               ),
                             ),
                           ),
@@ -599,7 +609,8 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
                                 if (_model.placePickerValue != null) {
                                   await currentUserReference!
                                       .update(createUsersRecordData(
-                                    photoUrl: _model.uploadedFileUrl != ''
+                                    photoUrl: _model.uploadedFileUrl != null &&
+                                            _model.uploadedFileUrl != ''
                                         ? _model.uploadedFileUrl
                                         : currentUserPhoto,
                                     displayName:
@@ -620,7 +631,8 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
                                 } else {
                                   await currentUserReference!
                                       .update(createUsersRecordData(
-                                    photoUrl: _model.uploadedFileUrl != ''
+                                    photoUrl: _model.uploadedFileUrl != null &&
+                                            _model.uploadedFileUrl != ''
                                         ? _model.uploadedFileUrl
                                         : currentUserPhoto,
                                     displayName:
@@ -637,9 +649,9 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
                                 width: MediaQuery.sizeOf(context).width * 0.878,
                                 height:
                                     MediaQuery.sizeOf(context).height * 0.065,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).tertiary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -649,7 +661,7 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
                                       color: Colors.white,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),

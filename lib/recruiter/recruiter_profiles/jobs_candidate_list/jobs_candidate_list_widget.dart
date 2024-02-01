@@ -11,9 +11,13 @@ import '/recruiter/recruiter_profiles/send_message/send_message_widget.dart';
 import '/recruiter/send_email_message/send_email_message_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'jobs_candidate_list_model.dart';
 export 'jobs_candidate_list_model.dart';
@@ -71,9 +75,9 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
               : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: const Color(0xFFF9FAFC),
+            backgroundColor: Color(0xFFF9FAFC),
             appBar: AppBar(
-              backgroundColor: const Color(0xFFF9FAFC),
+              backgroundColor: Color(0xFFF9FAFC),
               automaticallyImplyLeading: false,
               leading: FlutterFlowIconButton(
                 borderColor: Colors.transparent,
@@ -97,7 +101,7 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                       fontSize: 16.0,
                     ),
               ),
-              actions: const [],
+              actions: [],
               centerTitle: true,
               elevation: 2.0,
             ),
@@ -108,7 +112,7 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                   child: Container(
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
-                      borderRadius: const BorderRadius.only(
+                      borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(0.0),
                         bottomRight: Radius.circular(0.0),
                         topLeft: Radius.circular(20.0),
@@ -120,7 +124,7 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
                           child: Container(
                             width: double.infinity,
@@ -133,11 +137,11 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 0.0),
                                   child: AuthUserStreamWidget(
                                     builder: (context) => Text(
-                                      'Total Results: ${(currentUserDocument?.savedCandidates.toList() ?? []).length.toString()}',
+                                      'Total Results: ${(currentUserDocument?.savedCandidates?.toList() ?? []).length.toString()}',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -149,12 +153,12 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 8.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      if (_model.selectedCandidates.isNotEmpty)
+                                      if (_model.selectedCandidates.length > 0)
                                         FFButtonWidget(
                                           onPressed: () async {
                                             setState(() {
@@ -163,17 +167,17 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                                           },
                                           text:
                                               '${_model.selectedCandidates.length.toString()} Selected',
-                                          icon: const Icon(
+                                          icon: Icon(
                                             Icons.check_circle,
                                             size: 16.0,
                                           ),
                                           options: FFButtonOptions(
                                             height: 31.0,
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     20.0, 0.0, 20.0, 0.0),
                                             iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
                                             color: FlutterFlowTheme.of(context)
                                                 .tertiary,
@@ -186,7 +190,7 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                                                       fontSize: 12.0,
                                                     ),
                                             elevation: 3.0,
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.transparent,
                                               width: 1.0,
                                             ),
@@ -203,12 +207,12 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                         ),
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 20.0, 20.0, 0.0),
                             child: Builder(
                               builder: (context) {
                                 final savedProfiles =
-                                    widget.ad?.candidatesApplied.toList() ??
+                                    widget.ad?.candidatesApplied?.toList() ??
                                         [];
                                 return ListView.builder(
                                   padding: EdgeInsets.zero,
@@ -219,7 +223,7 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                                     final savedProfilesItem =
                                         savedProfiles[savedProfilesIndex];
                                     return Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 14.0),
                                       child: StreamBuilder<UsersRecord>(
                                         stream: UsersRecord.getDocument(
@@ -274,11 +278,11 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                                                             image:
                                                                 CachedNetworkImage(
                                                               fadeInDuration:
-                                                                  const Duration(
+                                                                  Duration(
                                                                       milliseconds:
                                                                           500),
                                                               fadeOutDuration:
-                                                                  const Duration(
+                                                                  Duration(
                                                                       milliseconds:
                                                                           500),
                                                               imageUrl: '',
@@ -305,18 +309,18 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                                                         clipBehavior:
                                                             Clip.antiAlias,
                                                         decoration:
-                                                            const BoxDecoration(
+                                                            BoxDecoration(
                                                           shape:
                                                               BoxShape.circle,
                                                         ),
                                                         child:
                                                             CachedNetworkImage(
                                                           fadeInDuration:
-                                                              const Duration(
+                                                              Duration(
                                                                   milliseconds:
                                                                       500),
                                                           fadeOutDuration:
-                                                              const Duration(
+                                                              Duration(
                                                                   milliseconds:
                                                                       500),
                                                           imageUrl: '',
@@ -328,7 +332,7 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   10.0,
                                                                   0.0,
@@ -350,7 +354,7 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         4.0,
@@ -373,7 +377,7 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                                                                 Expanded(
                                                                   child:
                                                                       Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             2.0,
                                                                             0.0,
@@ -402,7 +406,7 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         4.0,
@@ -425,7 +429,7 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                                                                 Expanded(
                                                                   child:
                                                                       Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             2.0,
                                                                             0.0,
@@ -505,7 +509,7 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 12.0,
                                                                 0.0, 14.0),
                                                     child: Row(
@@ -533,11 +537,11 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                                                           ),
                                                           child: Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     0.0, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsets
+                                                                  EdgeInsets
                                                                       .all(8.0),
                                                               child: Text(
                                                                 columnUsersRecord
@@ -560,7 +564,7 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       4.0,
                                                                       0.0,
@@ -585,7 +589,7 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                                                             ),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsets
+                                                                  EdgeInsets
                                                                       .all(8.0),
                                                               child: Text(
                                                                 'Age ${functions.dateStringAgeCalculator(columnUsersRecord.dob!.toString()).toString()}',
@@ -607,7 +611,7 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       4.0,
                                                                       0.0,
@@ -632,7 +636,7 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                                                             ),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsets
+                                                                  EdgeInsets
                                                                       .all(8.0),
                                                               child: Text(
                                                                 '₹ ${columnUsersRecord.salaryRange.from.toString()} - ${columnUsersRecord.salaryRange.to.toString()}',
@@ -686,7 +690,7 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                     ),
                   ),
                 ),
-                if (_model.selectedCandidates.isNotEmpty)
+                if (_model.selectedCandidates.length > 0)
                   Container(
                     width: double.infinity,
                     height: 66.0,
@@ -740,9 +744,9 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                                 text: 'Send Message ',
                                 options: FFButtonOptions(
                                   height: 50.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).tertiary,
                                   textStyle: FlutterFlowTheme.of(context)
@@ -753,7 +757,7 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                                         fontSize: 14.0,
                                       ),
                                   elevation: 3.0,
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
@@ -794,9 +798,9 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                                 options: FFButtonOptions(
                                   width: 135.0,
                                   height: 51.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
@@ -808,7 +812,7 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                                         fontSize: 14.0,
                                       ),
                                   elevation: 3.0,
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
@@ -824,7 +828,7 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                 wrapWithModel(
                   model: _model.navigationModel,
                   updateCallback: () => setState(() {}),
-                  child: const NavigationWidget(),
+                  child: NavigationWidget(),
                 ),
               ],
             ),

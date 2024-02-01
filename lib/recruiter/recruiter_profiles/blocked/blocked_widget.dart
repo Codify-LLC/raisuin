@@ -1,8 +1,11 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'blocked_model.dart';
 export 'blocked_model.dart';
 
@@ -53,7 +56,7 @@ class _BlockedWidgetState extends State<BlockedWidget> {
               : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: const Color(0xFFF9FAFC),
+            backgroundColor: Color(0xFFF9FAFC),
             body: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -76,7 +79,7 @@ class _BlockedWidgetState extends State<BlockedWidget> {
                 Expanded(
                   flex: 6,
                   child: Stack(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     children: [
                       ClipRect(
                         child: ImageFiltered(
@@ -94,13 +97,13 @@ class _BlockedWidgetState extends State<BlockedWidget> {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
-                            borderRadius: const BorderRadius.only(
+                            borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(0.0),
                               bottomRight: Radius.circular(0.0),
                               topLeft: Radius.circular(20.0),
@@ -111,7 +114,7 @@ class _BlockedWidgetState extends State<BlockedWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 20.0, 20.0, 14.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -125,7 +128,7 @@ class _BlockedWidgetState extends State<BlockedWidget> {
                                       onTap: () async {
                                         context.goNamed('profileEmployer');
                                       },
-                                      child: const Icon(
+                                      child: Icon(
                                         Icons.arrow_back_ios,
                                         color: Colors.black,
                                         size: 24.0,
@@ -134,7 +137,7 @@ class _BlockedWidgetState extends State<BlockedWidget> {
                                     Expanded(
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Text(
                                           'Blocked',
                                           style: FlutterFlowTheme.of(context)
@@ -162,7 +165,7 @@ class _BlockedWidgetState extends State<BlockedWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsets.all(24.0),
+                                        padding: EdgeInsets.all(24.0),
                                         child: Text(
                                           'Your account is temporarily Blocked. Please Contact the system Admin',
                                           textAlign: TextAlign.center,

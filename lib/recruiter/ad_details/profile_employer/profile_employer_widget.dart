@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/main_pages/navigation/navigation_widget.dart';
 import '/recruiter/choose_plan/choose_plan_widget.dart';
 import '/recruiter/component/notification/notification_widget.dart';
@@ -9,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'profile_employer_model.dart';
 export 'profile_employer_model.dart';
@@ -60,7 +63,7 @@ class _ProfileEmployerWidgetState extends State<ProfileEmployerWidget> {
               : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: const Color(0xFFF9FAFC),
+            backgroundColor: Color(0xFFF9FAFC),
             body: Container(
               decoration: BoxDecoration(
                 image: DecorationImage(
@@ -75,10 +78,10 @@ class _ProfileEmployerWidgetState extends State<ProfileEmployerWidget> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Align(
-                    alignment: const AlignmentDirectional(-1.0, 0.0),
+                    alignment: AlignmentDirectional(-1.0, 0.0),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 60.0, 0.0, 10.0),
+                          EdgeInsetsDirectional.fromSTEB(20.0, 60.0, 0.0, 10.0),
                       child: SvgPicture.asset(
                         'assets/images/es_Logo.svg',
                         fit: BoxFit.cover,
@@ -87,7 +90,7 @@ class _ProfileEmployerWidgetState extends State<ProfileEmployerWidget> {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -96,7 +99,7 @@ class _ProfileEmployerWidgetState extends State<ProfileEmployerWidget> {
                             width: 60.0,
                             height: 60.0,
                             clipBehavior: Clip.antiAlias,
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                               shape: BoxShape.circle,
                             ),
                             child: Image.network(
@@ -110,7 +113,7 @@ class _ProfileEmployerWidgetState extends State<ProfileEmployerWidget> {
                         ),
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 10.0, 0.0, 0.0, 0.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -166,7 +169,7 @@ class _ProfileEmployerWidgetState extends State<ProfileEmployerWidget> {
                     ),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -181,7 +184,7 @@ class _ProfileEmployerWidgetState extends State<ProfileEmployerWidget> {
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 5.0, 0.0, 0.0),
                                 child: Text(
                                   'valid : 23 Apr - 27 Apr',
@@ -226,7 +229,7 @@ class _ProfileEmployerWidgetState extends State<ProfileEmployerWidget> {
                                         child: Padding(
                                           padding:
                                               MediaQuery.viewInsetsOf(context),
-                                          child: const ChoosePlanWidget(),
+                                          child: ChoosePlanWidget(),
                                         ),
                                       ),
                                     );
@@ -284,7 +287,7 @@ class _ProfileEmployerWidgetState extends State<ProfileEmployerWidget> {
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     17.0, 0.0, 17.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -333,7 +336,7 @@ class _ProfileEmployerWidgetState extends State<ProfileEmployerWidget> {
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     17.0, 0.0, 17.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -382,7 +385,7 @@ class _ProfileEmployerWidgetState extends State<ProfileEmployerWidget> {
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     17.0, 0.0, 17.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -436,11 +439,11 @@ class _ProfileEmployerWidgetState extends State<ProfileEmployerWidget> {
                                       child: Padding(
                                         padding:
                                             MediaQuery.viewInsetsOf(context),
-                                        child: SizedBox(
+                                        child: Container(
                                           height: MediaQuery.sizeOf(context)
                                                   .height *
                                               0.5,
-                                          child: const NotificationWidget(),
+                                          child: NotificationWidget(),
                                         ),
                                       ),
                                     ),
@@ -457,7 +460,7 @@ class _ProfileEmployerWidgetState extends State<ProfileEmployerWidget> {
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     17.0, 0.0, 17.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -506,7 +509,7 @@ class _ProfileEmployerWidgetState extends State<ProfileEmployerWidget> {
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     17.0, 0.0, 17.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -559,7 +562,7 @@ class _ProfileEmployerWidgetState extends State<ProfileEmployerWidget> {
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     17.0, 0.0, 17.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -599,7 +602,7 @@ class _ProfileEmployerWidgetState extends State<ProfileEmployerWidget> {
                               borderRadius: BorderRadius.circular(20.0),
                             ),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   17.0, 14.0, 17.0, 14.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -610,7 +613,7 @@ class _ProfileEmployerWidgetState extends State<ProfileEmployerWidget> {
                                   ),
                                   Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           15.0, 0.0, 0.0, 0.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -619,7 +622,7 @@ class _ProfileEmployerWidgetState extends State<ProfileEmployerWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 5.0),
                                             child: Text(
                                               'Invite Friends',
@@ -651,7 +654,7 @@ class _ProfileEmployerWidgetState extends State<ProfileEmployerWidget> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 14.0, 8.0, 20.0),
                                 child: Text(
                                   'Terms',
@@ -664,7 +667,7 @@ class _ProfileEmployerWidgetState extends State<ProfileEmployerWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     8.0, 14.0, 0.0, 20.0),
                                 child: Text(
                                   'Support',
@@ -678,14 +681,14 @@ class _ProfileEmployerWidgetState extends State<ProfileEmployerWidget> {
                               ),
                             ],
                           ),
-                        ].divide(const SizedBox(height: 10.0)),
+                        ].divide(SizedBox(height: 10.0)),
                       ),
                     ),
                   ),
                   wrapWithModel(
                     model: _model.navigationModel,
                     updateCallback: () => setState(() {}),
-                    child: const NavigationWidget(
+                    child: NavigationWidget(
                       home: false,
                       search: false,
                       ads: false,
@@ -693,7 +696,7 @@ class _ProfileEmployerWidgetState extends State<ProfileEmployerWidget> {
                       accounts: true,
                     ),
                   ),
-                ].divide(const SizedBox(height: 10.0)),
+                ].divide(SizedBox(height: 10.0)),
               ),
             ),
           ),

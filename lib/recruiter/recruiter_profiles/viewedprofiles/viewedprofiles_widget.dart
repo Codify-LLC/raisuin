@@ -11,9 +11,13 @@ import '/recruiter/recruiter_profiles/send_message/send_message_widget.dart';
 import '/recruiter/send_email_message/send_email_message_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'viewedprofiles_model.dart';
 export 'viewedprofiles_model.dart';
@@ -65,7 +69,7 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
               : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: const Color(0xFFF9FAFC),
+            backgroundColor: Color(0xFFF9FAFC),
             appBar: AppBar(
               backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
               automaticallyImplyLeading: false,
@@ -87,7 +91,7 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                 'Viewed Profiles',
                 style: FlutterFlowTheme.of(context).bodyMedium,
               ),
-              actions: const [],
+              actions: [],
               centerTitle: true,
               elevation: 2.0,
             ),
@@ -99,7 +103,7 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
-                      borderRadius: const BorderRadius.only(
+                      borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(0.0),
                         bottomRight: Radius.circular(0.0),
                         topLeft: Radius.circular(20.0),
@@ -111,7 +115,7 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
                           child: Container(
                             width: double.infinity,
@@ -124,11 +128,11 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 0.0),
                                   child: AuthUserStreamWidget(
                                     builder: (context) => Text(
-                                      'Total Results: ${(currentUserDocument?.viewedProfile.toList() ?? []).length.toString()} Profiles',
+                                      'Total Results: ${(currentUserDocument?.viewedProfile?.toList() ?? []).length.toString()} Profiles',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -140,12 +144,12 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 8.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      if (_model.selectedProfiles.isNotEmpty)
+                                      if (_model.selectedProfiles.length > 0)
                                         FFButtonWidget(
                                           onPressed: () async {
                                             setState(() {
@@ -154,17 +158,17 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                                           },
                                           text:
                                               '${_model.selectedProfiles.length.toString()} Selected',
-                                          icon: const Icon(
+                                          icon: Icon(
                                             Icons.check_circle,
                                             size: 14.0,
                                           ),
                                           options: FFButtonOptions(
                                             height: 31.0,
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     24.0, 0.0, 24.0, 0.0),
                                             iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
                                             color: FlutterFlowTheme.of(context)
                                                 .tertiary,
@@ -177,7 +181,7 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                                                       fontSize: 12.0,
                                                     ),
                                             elevation: 3.0,
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.transparent,
                                               width: 1.0,
                                             ),
@@ -198,21 +202,21 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                               builder: (context) {
                                 final profiles = (currentUserDocument
                                             ?.viewedProfile
-                                            .toList() ??
+                                            ?.toList() ??
                                         [])
                                     .toList();
                                 return ListView.separated(
-                                  padding: const EdgeInsets.symmetric(vertical: 20.0),
+                                  padding: EdgeInsets.symmetric(vertical: 20.0),
                                   shrinkWrap: true,
                                   scrollDirection: Axis.vertical,
                                   itemCount: profiles.length,
                                   separatorBuilder: (_, __) =>
-                                      const SizedBox(height: 20.0),
+                                      SizedBox(height: 20.0),
                                   itemBuilder: (context, profilesIndex) {
                                     final profilesItem =
                                         profiles[profilesIndex];
                                     return Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 0.0, 10.0, 0.0),
                                       child: StreamBuilder<UsersRecord>(
                                         stream: UsersRecord.getDocument(
@@ -285,11 +289,11 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                                                               image:
                                                                   CachedNetworkImage(
                                                                 fadeInDuration:
-                                                                    const Duration(
+                                                                    Duration(
                                                                         milliseconds:
                                                                             500),
                                                                 fadeOutDuration:
-                                                                    const Duration(
+                                                                    Duration(
                                                                         milliseconds:
                                                                             500),
                                                                 imageUrl:
@@ -328,18 +332,18 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                                                           clipBehavior:
                                                               Clip.antiAlias,
                                                           decoration:
-                                                              const BoxDecoration(
+                                                              BoxDecoration(
                                                             shape:
                                                                 BoxShape.circle,
                                                           ),
                                                           child:
                                                               CachedNetworkImage(
                                                             fadeInDuration:
-                                                                const Duration(
+                                                                Duration(
                                                                     milliseconds:
                                                                         500),
                                                             fadeOutDuration:
-                                                                const Duration(
+                                                                Duration(
                                                                     milliseconds:
                                                                         500),
                                                             imageUrl:
@@ -360,7 +364,7 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     10.0,
                                                                     0.0,
@@ -382,7 +386,7 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           4.0,
@@ -405,7 +409,7 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                                                                   Expanded(
                                                                     child:
                                                                         Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           2.0,
                                                                           0.0,
                                                                           0.0,
@@ -429,7 +433,7 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                                                             ),
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           4.0,
@@ -452,7 +456,7 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                                                                   Expanded(
                                                                     child:
                                                                         Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           2.0,
                                                                           0.0,
                                                                           0.0,
@@ -516,7 +520,7 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                                                   ],
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 12.0, 0.0, 14.0),
                                                   child: Row(
@@ -544,11 +548,11 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                                                         ),
                                                         child: Align(
                                                           alignment:
-                                                              const AlignmentDirectional(
+                                                              AlignmentDirectional(
                                                                   0.0, 0.0),
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsets.all(
+                                                                EdgeInsets.all(
                                                                     8.0),
                                                             child: Text(
                                                               columnUsersRecord
@@ -571,7 +575,7 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     4.0,
                                                                     0.0,
@@ -595,7 +599,7 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                                                           ),
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsets.all(
+                                                                EdgeInsets.all(
                                                                     8.0),
                                                             child: Text(
                                                               'Age ${functions.dateStringAgeCalculator(columnUsersRecord.dob!.toString()).toString()}',
@@ -617,7 +621,7 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     4.0,
                                                                     0.0,
@@ -641,7 +645,7 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                                                           ),
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsets.all(
+                                                                EdgeInsets.all(
                                                                     8.0),
                                                             child: Text(
                                                               '₹ 30,000 - ₹ 40,000',
@@ -687,7 +691,7 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                     ),
                   ),
                 ),
-                if (_model.selectedProfiles.isNotEmpty)
+                if (_model.selectedProfiles.length > 0)
                   Container(
                     width: double.infinity,
                     height: 66.0,
@@ -704,7 +708,7 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                           color: FlutterFlowTheme.of(context).accent3,
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 5.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -746,15 +750,15 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                                 },
                                 child: Container(
                                   height: 50.0,
-                                  constraints: const BoxConstraints(
+                                  constraints: BoxConstraints(
                                     maxWidth: 198.0,
                                   ),
                                   decoration: BoxDecoration(
-                                    color: const Color(0xFFDD3568),
+                                    color: Color(0xFFDD3568),
                                     borderRadius: BorderRadius.circular(40.0),
                                   ),
                                   child: Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Text(
                                       'Send Message',
                                       style: FlutterFlowTheme.of(context)
@@ -805,7 +809,7 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                                 },
                                 child: Container(
                                   height: 50.0,
-                                  constraints: const BoxConstraints(
+                                  constraints: BoxConstraints(
                                     maxWidth: 130.0,
                                   ),
                                   decoration: BoxDecoration(
@@ -814,7 +818,7 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                                     borderRadius: BorderRadius.circular(40.0),
                                   ),
                                   child: Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Text(
                                       'Send Mail',
                                       style: FlutterFlowTheme.of(context)
@@ -838,7 +842,7 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                 wrapWithModel(
                   model: _model.navigationModel,
                   updateCallback: () => setState(() {}),
-                  child: const NavigationWidget(),
+                  child: NavigationWidget(),
                 ),
               ],
             ),

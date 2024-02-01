@@ -11,12 +11,16 @@ import '/recruiter/filter/filter_widget.dart';
 import '/recruiter/recruiter_profiles/send_message/send_message_widget.dart';
 import '/recruiter/send_email_message/send_email_message_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 import 'package:text_search/text_search.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'list_candidates_model.dart';
@@ -34,15 +38,15 @@ class ListCandidatesWidget extends StatefulWidget {
     int? monthlySalaryRangeFrom,
     int? monthlySalaryRangeTo,
     bool? filtered,
-  })  : jobType = jobType ?? '',
-        educationType = educationType ?? '',
-        educationDegree = educationDegree ?? '',
-        educationSubject = educationSubject ?? '',
-        workExperienceFrom = workExperienceFrom ?? 0,
-        workExperienceTo = workExperienceTo ?? 9999,
-        monthlySalaryRangeFrom = monthlySalaryRangeFrom ?? 0,
-        monthlySalaryRangeTo = monthlySalaryRangeTo ?? 9999999,
-        filtered = filtered ?? false;
+  })  : this.jobType = jobType ?? '',
+        this.educationType = educationType ?? '',
+        this.educationDegree = educationDegree ?? '',
+        this.educationSubject = educationSubject ?? '',
+        this.workExperienceFrom = workExperienceFrom ?? 0,
+        this.workExperienceTo = workExperienceTo ?? 9999,
+        this.monthlySalaryRangeFrom = monthlySalaryRangeFrom ?? 0,
+        this.monthlySalaryRangeTo = monthlySalaryRangeTo ?? 9999999,
+        this.filtered = filtered ?? false;
 
   final String jobType;
   final String educationType;
@@ -72,7 +76,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
         _model.savedCandidates =
-            (currentUserDocument?.savedCandidates.toList() ?? [])
+            (currentUserDocument?.savedCandidates?.toList() ?? [])
                 .toList()
                 .cast<DocumentReference>();
       });
@@ -111,9 +115,9 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
               : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: const Color(0xFFF9FAFC),
+            backgroundColor: Color(0xFFF9FAFC),
             appBar: PreferredSize(
-              preferredSize: const Size.fromHeight(100.0),
+              preferredSize: Size.fromHeight(100.0),
               child: AppBar(
                 backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
                 automaticallyImplyLeading: false,
@@ -131,14 +135,14 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                     size: 24.0,
                   ),
                 ),
-                title: SizedBox(
+                title: Container(
                   width: MediaQuery.sizeOf(context).width * 1.0,
                   child: TextFormField(
                     controller: _model.textController,
                     focusNode: _model.textFieldFocusNode,
                     onChanged: (_) => EasyDebounce.debounce(
                       '_model.textController',
-                      const Duration(milliseconds: 2000),
+                      Duration(milliseconds: 2000),
                       () async {
                         await queryUsersRecordOnce()
                             .then(
@@ -148,13 +152,14 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                     .map(
                                       (record) =>
                                           TextSearchItem.fromTerms(record, [
-                                        record.maritalStatus,
-                                        record.expriencedIn,
-                                        record.gender,
-                                        record.seekingJobType,
-                                        record.phoneNumber,
-                                        record.displayName,
-                                        record.email]),
+                                        record.maritalStatus!,
+                                        record.expriencedIn!,
+                                        record.gender!,
+                                        record.seekingJobType!,
+                                        record.phoneNumber!,
+                                        record.displayName!,
+                                        record.email!
+                                      ]),
                                     )
                                     .toList(),
                               )
@@ -174,28 +179,28 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                       hintText: 'Search',
                       hintStyle: FlutterFlowTheme.of(context).bodySmall,
                       enabledBorder: UnderlineInputBorder(
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(50.0),
                       ),
                       focusedBorder: UnderlineInputBorder(
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(50.0),
                       ),
                       errorBorder: UnderlineInputBorder(
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(50.0),
                       ),
                       focusedErrorBorder: UnderlineInputBorder(
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
@@ -216,13 +221,14 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                               (record) =>
                                                   TextSearchItem.fromTerms(
                                                       record, [
-                                                record.maritalStatus,
-                                                record.expriencedIn,
-                                                record.gender,
-                                                record.seekingJobType,
-                                                record.phoneNumber,
-                                                record.displayName,
-                                                record.email]),
+                                                record.maritalStatus!,
+                                                record.expriencedIn!,
+                                                record.gender!,
+                                                record.seekingJobType!,
+                                                record.phoneNumber!,
+                                                record.displayName!,
+                                                record.email!
+                                              ]),
                                             )
                                             .toList(),
                                       )
@@ -252,11 +258,11 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                 ),
                 actions: [
                   Align(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Builder(
                       builder: (context) => Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -264,14 +270,14 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                           highlightColor: Colors.transparent,
                           onTap: () async {
                             await showDialog(
-                              barrierColor: const Color(0x4E000000),
+                              barrierColor: Color(0x4E000000),
                               context: context,
                               builder: (dialogContext) {
                                 return Dialog(
                                   elevation: 0,
                                   insetPadding: EdgeInsets.zero,
                                   backgroundColor: Colors.transparent,
-                                  alignment: const AlignmentDirectional(0.0, 0.0)
+                                  alignment: AlignmentDirectional(0.0, 0.0)
                                       .resolve(Directionality.of(context)),
                                   child: WebViewAware(
                                     child: GestureDetector(
@@ -280,7 +286,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                           ? FocusScope.of(context)
                                               .requestFocus(_model.unfocusNode)
                                           : FocusScope.of(context).unfocus(),
-                                      child: const FilterWidget(),
+                                      child: FilterWidget(),
                                     ),
                                   ),
                                 );
@@ -299,7 +305,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                   ),
                 ],
                 bottom: PreferredSize(
-                  preferredSize: const Size.fromHeight(70.0),
+                  preferredSize: Size.fromHeight(70.0),
                   child: Container(),
                 ),
                 centerTitle: true,
@@ -309,12 +315,12 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
             body: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                if (_model.selectedCandidate.isNotEmpty)
+                if (_model.selectedCandidate.length > 0)
                   Align(
-                    alignment: const AlignmentDirectional(-1.0, -1.0),
+                    alignment: AlignmentDirectional(-1.0, -1.0),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           setState(() {
@@ -323,16 +329,16 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                         },
                         text:
                             '${_model.selectedCandidate.length.toString()} Selected',
-                        icon: const Icon(
+                        icon: Icon(
                           Icons.check_circle,
                           size: 15.0,
                         ),
                         options: FFButtonOptions(
                           width: 147.0,
                           height: 37.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 0.0, 24.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).tertiary,
                           textStyle:
@@ -343,7 +349,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                     fontWeight: FontWeight.normal,
                                   ),
                           elevation: 3.0,
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
@@ -407,10 +413,10 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                             List<UsersRecord> listViewUsersRecordList =
                                 snapshot.data!;
                             if (listViewUsersRecordList.isEmpty) {
-                              return const LoadingWidget();
+                              return LoadingWidget();
                             }
                             return ListView.separated(
-                              padding: const EdgeInsets.fromLTRB(
+                              padding: EdgeInsets.fromLTRB(
                                 0,
                                 20.0,
                                 0,
@@ -420,7 +426,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                               scrollDirection: Axis.vertical,
                               itemCount: listViewUsersRecordList.length,
                               separatorBuilder: (_, __) =>
-                                  const SizedBox(height: 8.0),
+                                  SizedBox(height: 8.0),
                               itemBuilder: (context, listViewIndex) {
                                 final listViewUsersRecord =
                                     listViewUsersRecordList[listViewIndex];
@@ -467,7 +473,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                               width: 60.0,
                                               height: 60.0,
                                               clipBehavior: Clip.antiAlias,
-                                              decoration: const BoxDecoration(
+                                              decoration: BoxDecoration(
                                                 shape: BoxShape.circle,
                                               ),
                                               child: Image.network(
@@ -483,7 +489,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                             ),
                                             Expanded(
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 0.0, 0.0, 0.0),
                                                 child: Column(
@@ -493,6 +499,9 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                       CrossAxisAlignment.start,
                                                   children: [
                                                     if (listViewUsersRecord
+                                                                .displayName !=
+                                                            null &&
+                                                        listViewUsersRecord
                                                                 .displayName !=
                                                             '')
                                                       Text(
@@ -508,7 +517,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                       ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   4.0,
@@ -529,7 +538,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                             Expanded(
                                                               child: Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             2.0,
                                                                             0.0,
@@ -585,7 +594,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   4.0,
@@ -602,43 +611,46 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                             'assets/images/Location1.svg',
                                                             fit: BoxFit.cover,
                                                           ),
-                                                          Expanded(
-                                                            child: Padding(
-                                                              padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          2.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                '${valueOrDefault<String>(
-                                                                  listViewUsersRecord
-                                                                      .address
-                                                                      .city,
-                                                                  'TEXT',
-                                                                )} ${valueOrDefault<String>(
-                                                                  listViewUsersRecord
-                                                                      .address
-                                                                      .state,
-                                                                  'TEXT',
-                                                                )}',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Sora',
-                                                                      color: FlutterFlowTheme.of(context)
-                                                                          .primaryText,
-                                                                      fontSize:
-                                                                          12.0,
-                                                                      fontWeight:
-                                                                          FontWeight.w300,
-                                                                    ),
+                                                          if (listViewUsersRecord
+                                                                  .address !=
+                                                              null)
+                                                            Expanded(
+                                                              child: Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            2.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Text(
+                                                                  '${valueOrDefault<String>(
+                                                                    listViewUsersRecord
+                                                                        .address
+                                                                        .city,
+                                                                    'TEXT',
+                                                                  )} ${valueOrDefault<String>(
+                                                                    listViewUsersRecord
+                                                                        .address
+                                                                        .state,
+                                                                    'TEXT',
+                                                                  )}',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Sora',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .primaryText,
+                                                                        fontSize:
+                                                                            12.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w300,
+                                                                      ),
+                                                                ),
                                                               ),
                                                             ),
-                                                          ),
                                                         ],
                                                       ),
                                                     ),
@@ -682,8 +694,8 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                               ),
                                             ),
                                           ]
-                                              .addToStart(const SizedBox(width: 20.0))
-                                              .addToEnd(const SizedBox(width: 20.0)),
+                                              .addToStart(SizedBox(width: 20.0))
+                                              .addToEnd(SizedBox(width: 20.0)),
                                         ),
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -713,14 +725,17 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                   child: Visibility(
                                                     visible: listViewUsersRecord
                                                                 .gender !=
+                                                            null &&
+                                                        listViewUsersRecord
+                                                                .gender !=
                                                             '',
                                                     child: Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsets.all(8.0),
+                                                            EdgeInsets.all(8.0),
                                                         child: Text(
                                                           listViewUsersRecord
                                                               .gender,
@@ -741,7 +756,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           4.0, 0.0, 0.0, 0.0),
                                                   child: Container(
@@ -766,7 +781,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                               null,
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsets.all(8.0),
+                                                            EdgeInsets.all(8.0),
                                                         child: Text(
                                                           'Age ${functions.dateStringAgeCalculator(listViewUsersRecord.dob!.toString()).toString()}',
                                                           style: FlutterFlowTheme
@@ -786,7 +801,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           4.0, 0.0, 0.0, 0.0),
                                                   child: Container(
@@ -811,7 +826,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                               null,
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsets.all(8.0),
+                                                            EdgeInsets.all(8.0),
                                                         child: Text(
                                                           '${formatNumber(
                                                             listViewUsersRecord
@@ -855,7 +870,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                             ),
                                             Expanded(
                                               child: Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     1.0, 0.0),
                                                 child: ToggleIcon(
                                                   onPressed: () async {
@@ -874,7 +889,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                     );
                                                     if ((currentUserDocument
                                                                 ?.savedCandidates
-                                                                .toList() ??
+                                                                ?.toList() ??
                                                             [])
                                                         .contains(
                                                             listViewUsersRecord
@@ -930,8 +945,8 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                               ),
                                             ),
                                           ]
-                                              .addToStart(const SizedBox(width: 20.0))
-                                              .addToEnd(const SizedBox(width: 20.0)),
+                                              .addToStart(SizedBox(width: 20.0))
+                                              .addToEnd(SizedBox(width: 20.0)),
                                         ),
                                         Divider(
                                           height: 1.0,
@@ -940,8 +955,8 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                               .accent3,
                                         ),
                                       ]
-                                          .divide(const SizedBox(height: 12.0))
-                                          .addToStart(const SizedBox(height: 12.0)),
+                                          .divide(SizedBox(height: 12.0))
+                                          .addToStart(SizedBox(height: 12.0)),
                                     ),
                                   ),
                                 );
@@ -949,13 +964,14 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                             );
                           },
                         );
-                      } else if (_model.textController.text != '') {
+                      } else if (_model.textController.text != null &&
+                          _model.textController.text != '') {
                         return Builder(
                           builder: (context) {
                             final searchresult =
                                 _model.simpleSearchResults.toList();
                             return ListView.separated(
-                              padding: const EdgeInsets.fromLTRB(
+                              padding: EdgeInsets.fromLTRB(
                                 0,
                                 20.0,
                                 0,
@@ -965,7 +981,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                               scrollDirection: Axis.vertical,
                               itemCount: searchresult.length,
                               separatorBuilder: (_, __) =>
-                                  const SizedBox(height: 8.0),
+                                  SizedBox(height: 8.0),
                               itemBuilder: (context, searchresultIndex) {
                                 final searchresultItem =
                                     searchresult[searchresultIndex];
@@ -1007,7 +1023,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                               width: 60.0,
                                               height: 60.0,
                                               clipBehavior: Clip.antiAlias,
-                                              decoration: const BoxDecoration(
+                                              decoration: BoxDecoration(
                                                 shape: BoxShape.circle,
                                               ),
                                               child: Image.network(
@@ -1026,7 +1042,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                             ),
                                             Expanded(
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 0.0, 0.0, 0.0),
                                                 child: Column(
@@ -1045,7 +1061,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   4.0,
@@ -1065,7 +1081,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                           Expanded(
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           2.0,
                                                                           0.0,
@@ -1096,7 +1112,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   4.0,
@@ -1116,7 +1132,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                           Expanded(
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           2.0,
                                                                           0.0,
@@ -1185,8 +1201,8 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                               ),
                                             ),
                                           ]
-                                              .addToStart(const SizedBox(width: 20.0))
-                                              .addToEnd(const SizedBox(width: 20.0)),
+                                              .addToStart(SizedBox(width: 20.0))
+                                              .addToEnd(SizedBox(width: 20.0)),
                                         ),
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -1215,11 +1231,11 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                   ),
                                                   child: Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(8.0),
+                                                          EdgeInsets.all(8.0),
                                                       child: Text(
                                                         searchresultItem.gender,
                                                         style: FlutterFlowTheme
@@ -1238,7 +1254,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           4.0, 0.0, 0.0, 0.0),
                                                   child: Container(
@@ -1258,7 +1274,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(8.0),
+                                                          EdgeInsets.all(8.0),
                                                       child: Text(
                                                         'Age ${functions.dateStringAgeCalculator(searchresultItem.dob!.toString()).toString()}',
                                                         style: FlutterFlowTheme
@@ -1277,7 +1293,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           4.0, 0.0, 0.0, 0.0),
                                                   child: Container(
@@ -1297,7 +1313,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(8.0),
+                                                          EdgeInsets.all(8.0),
                                                       child: Text(
                                                         '₹${searchresultItem.salaryRange.from.toString()}-  ₹ ${searchresultItem.salaryRange.to.toString()}',
                                                         style: FlutterFlowTheme
@@ -1319,7 +1335,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                             ),
                                             Expanded(
                                               child: Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     1.0, 0.0),
                                                 child: ToggleIcon(
                                                   onPressed: () async {
@@ -1328,7 +1344,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                             !_model.filtered);
                                                     if ((currentUserDocument
                                                                 ?.savedCandidates
-                                                                .toList() ??
+                                                                ?.toList() ??
                                                             [])
                                                         .contains(
                                                             searchresultItem
@@ -1381,8 +1397,8 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                               ),
                                             ),
                                           ]
-                                              .addToStart(const SizedBox(width: 20.0))
-                                              .addToEnd(const SizedBox(width: 20.0)),
+                                              .addToStart(SizedBox(width: 20.0))
+                                              .addToEnd(SizedBox(width: 20.0)),
                                         ),
                                         Divider(
                                           height: 1.0,
@@ -1391,8 +1407,8 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                               .accent3,
                                         ),
                                       ]
-                                          .divide(const SizedBox(height: 12.0))
-                                          .addToStart(const SizedBox(height: 12.0)),
+                                          .divide(SizedBox(height: 12.0))
+                                          .addToStart(SizedBox(height: 12.0)),
                                     ),
                                   ),
                                 );
@@ -1409,7 +1425,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                               isEqualTo: 'Candidate',
                             ),
                           ),
-                          padding: const EdgeInsets.fromLTRB(
+                          padding: EdgeInsets.fromLTRB(
                             0,
                             20.0,
                             0,
@@ -1418,7 +1434,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                           shrinkWrap: true,
                           reverse: false,
                           scrollDirection: Axis.vertical,
-                          separatorBuilder: (_, __) => const SizedBox(height: 8.0),
+                          separatorBuilder: (_, __) => SizedBox(height: 8.0),
                           builderDelegate:
                               PagedChildBuilderDelegate<UsersRecord>(
                             // Customize what your widget looks like when it's loading the first page.
@@ -1513,7 +1529,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                               width: 60.0,
                                               height: 60.0,
                                               clipBehavior: Clip.antiAlias,
-                                              decoration: const BoxDecoration(
+                                              decoration: BoxDecoration(
                                                 shape: BoxShape.circle,
                                               ),
                                               child: Image.network(
@@ -1532,7 +1548,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                         Expanded(
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 0.0, 0.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -1547,7 +1563,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                       .bodyMedium,
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 4.0, 0.0, 0.0),
                                                   child: Row(
@@ -1564,7 +1580,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                       Expanded(
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       2.0,
                                                                       0.0,
@@ -1621,7 +1637,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 4.0, 0.0, 0.0),
                                                   child: Row(
@@ -1638,7 +1654,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                       Expanded(
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       2.0,
                                                                       0.0,
@@ -1705,8 +1721,8 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                           ),
                                         ),
                                       ]
-                                          .addToStart(const SizedBox(width: 20.0))
-                                          .addToEnd(const SizedBox(width: 20.0)),
+                                          .addToStart(SizedBox(width: 20.0))
+                                          .addToEnd(SizedBox(width: 20.0)),
                                     ),
                                     Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -1732,10 +1748,10 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                 ),
                                               ),
                                               child: Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsets.all(8.0),
+                                                  padding: EdgeInsets.all(8.0),
                                                   child: Text(
                                                     listViewUsersRecord.gender,
                                                     style: FlutterFlowTheme.of(
@@ -1752,7 +1768,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(4.0, 0.0, 0.0, 0.0),
                                               child: Container(
                                                 decoration: BoxDecoration(
@@ -1769,7 +1785,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                   ),
                                                 ),
                                                 child: Padding(
-                                                  padding: const EdgeInsets.all(8.0),
+                                                  padding: EdgeInsets.all(8.0),
                                                   child: Text(
                                                     'Age ${functions.dateStringAgeCalculator(listViewUsersRecord.dob!.toString()).toString()}',
                                                     style: FlutterFlowTheme.of(
@@ -1786,7 +1802,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(4.0, 0.0, 0.0, 0.0),
                                               child: Container(
                                                 decoration: BoxDecoration(
@@ -1803,7 +1819,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                   ),
                                                 ),
                                                 child: Padding(
-                                                  padding: const EdgeInsets.all(8.0),
+                                                  padding: EdgeInsets.all(8.0),
                                                   child: Text(
                                                     ' ${formatNumber(
                                                       listViewUsersRecord
@@ -1840,7 +1856,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                         Expanded(
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(1.0, 0.0),
+                                                AlignmentDirectional(1.0, 0.0),
                                             child: ToggleIcon(
                                               onPressed: () async {
                                                 setState(
@@ -1859,7 +1875,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                 );
                                                 if ((currentUserDocument
                                                             ?.savedCandidates
-                                                            .toList() ??
+                                                            ?.toList() ??
                                                         [])
                                                     .contains(
                                                         listViewUsersRecord
@@ -1914,8 +1930,8 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                           ),
                                         ),
                                       ]
-                                          .addToStart(const SizedBox(width: 20.0))
-                                          .addToEnd(const SizedBox(width: 20.0)),
+                                          .addToStart(SizedBox(width: 20.0))
+                                          .addToEnd(SizedBox(width: 20.0)),
                                     ),
                                     Divider(
                                       height: 1.0,
@@ -1924,8 +1940,8 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                           FlutterFlowTheme.of(context).accent3,
                                     ),
                                   ]
-                                      .divide(const SizedBox(height: 8.0))
-                                      .addToStart(const SizedBox(height: 8.0)),
+                                      .divide(SizedBox(height: 8.0))
+                                      .addToStart(SizedBox(height: 8.0)),
                                 ),
                               );
                             },
@@ -1935,7 +1951,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                     },
                   ),
                 ),
-                if (_model.selectedCandidate.isNotEmpty)
+                if (_model.selectedCandidate.length > 0)
                   Column(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -1980,9 +1996,9 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                             text: 'Send Message',
                             options: FFButtonOptions(
                               height: 50.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).tertiary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -1993,7 +2009,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                     fontWeight: FontWeight.normal,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -2032,9 +2048,9 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                             options: FFButtonOptions(
                               width: MediaQuery.sizeOf(context).width * 0.336,
                               height: 47.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primaryText,
                               textStyle: FlutterFlowTheme.of(context)
@@ -2045,7 +2061,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                     fontWeight: FontWeight.normal,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -2055,13 +2071,13 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                         ],
                       ),
                     ]
-                        .divide(const SizedBox(height: 8.0))
-                        .addToEnd(const SizedBox(height: 8.0)),
+                        .divide(SizedBox(height: 8.0))
+                        .addToEnd(SizedBox(height: 8.0)),
                   ),
                 wrapWithModel(
                   model: _model.navigationModel,
                   updateCallback: () => setState(() {}),
-                  child: const NavigationWidget(
+                  child: NavigationWidget(
                     home: false,
                     search: true,
                     ads: false,

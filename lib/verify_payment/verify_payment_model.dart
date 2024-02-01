@@ -1,8 +1,16 @@
+import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'verify_payment_widget.dart' show VerifyPaymentWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class VerifyPaymentModel extends FlutterFlowModel<VerifyPaymentWidget> {
   ///  State fields for stateful widgets in this page.
@@ -20,10 +28,8 @@ class VerifyPaymentModel extends FlutterFlowModel<VerifyPaymentWidget> {
 
   /// Initialization and disposal methods.
 
-  @override
   void initState(BuildContext context) {}
 
-  @override
   void dispose() {
     unfocusNode.dispose();
     timerController.dispose();

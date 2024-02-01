@@ -8,10 +8,14 @@ import '/main_pages/navigation/navigation_widget.dart';
 import '/recruiter/recruiter_profiles/send_message/send_message_widget.dart';
 import '/recruiter/send_email_message/send_email_message_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'match_profiles_model.dart';
 export 'match_profiles_model.dart';
@@ -50,17 +54,17 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
               )
               .where(
                 'preferred_posting',
-                isEqualTo: _model.allAds?[_model.loop].jobLocation.city,
+                isEqualTo: _model.allAds?[_model.loop]?.jobLocation?.city,
               )
               .where(
                 'seeking_job_post',
-                isEqualTo: _model.allAds?[_model.loop].positionTitle,
+                isEqualTo: _model.allAds?[_model.loop]?.positionTitle,
               )
               .where(
                 'gender',
-                isEqualTo: _model.allAds?[_model.loop].preferredGender == 'All'
+                isEqualTo: _model.allAds?[_model.loop]?.preferredGender == 'All'
                     ? ''
-                    : _model.allAds?[_model.loop].preferredGender,
+                    : _model.allAds?[_model.loop]?.preferredGender,
               ),
         );
         setState(() {
@@ -104,7 +108,7 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
               : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: const Color(0xFFF9FAFC),
+            backgroundColor: Color(0xFFF9FAFC),
             appBar: AppBar(
               backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
               automaticallyImplyLeading: false,
@@ -126,9 +130,9 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                 'Match Profiles',
                 style: FlutterFlowTheme.of(context).bodyMedium,
               ),
-              actions: const [],
+              actions: [],
               bottom: PreferredSize(
-                preferredSize: const Size.fromHeight(70.0),
+                preferredSize: Size.fromHeight(70.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -146,12 +150,12 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                             ),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.all(8.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 4.0, 0.0),
                                   child: Text(
                                     'Bulk Selection',
@@ -173,7 +177,7 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                             ),
                           ),
                         ),
-                        if (_model.savedCandidates.isNotEmpty)
+                        if (_model.savedCandidates.length > 0)
                           Container(
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context).tertiary,
@@ -183,7 +187,7 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                               ),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: EdgeInsets.all(8.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
@@ -194,7 +198,7 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                                     size: 16.0,
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         4.0, 0.0, 0.0, 0.0),
                                     child: Text(
                                       '${_model.savedCandidates.length.toString()} Selected',
@@ -213,11 +217,11 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                             ),
                           ),
                       ]
-                          .divide(const SizedBox(width: 4.0))
-                          .addToStart(const SizedBox(width: 16.0))
-                          .addToEnd(const SizedBox(width: 16.0)),
+                          .divide(SizedBox(width: 4.0))
+                          .addToStart(SizedBox(width: 16.0))
+                          .addToEnd(SizedBox(width: 16.0)),
                     ),
-                  ].divide(const SizedBox(height: 8.0)),
+                  ].divide(SizedBox(height: 8.0)),
                 ),
               ),
               centerTitle: true,
@@ -231,7 +235,7 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                     builder: (context) {
                       final results = _model.result.toList();
                       return ListView.separated(
-                        padding: const EdgeInsets.fromLTRB(
+                        padding: EdgeInsets.fromLTRB(
                           0,
                           20.0,
                           0,
@@ -240,7 +244,7 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
                         itemCount: results.length,
-                        separatorBuilder: (_, __) => const SizedBox(height: 8.0),
+                        separatorBuilder: (_, __) => SizedBox(height: 8.0),
                         itemBuilder: (context, resultsIndex) {
                           final resultsItem = results[resultsIndex];
                           return InkWell(
@@ -270,7 +274,7 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                                       width: 60.0,
                                       height: 60.0,
                                       clipBehavior: Clip.antiAlias,
-                                      decoration: const BoxDecoration(
+                                      decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                       ),
                                       child: Image.network(
@@ -286,7 +290,7 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                                     ),
                                     Expanded(
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             10.0, 0.0, 0.0, 0.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -300,7 +304,7 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                                                       .bodyMedium,
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -314,7 +318,7 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   2.0,
                                                                   0.0,
@@ -345,7 +349,7 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -359,7 +363,7 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   2.0,
                                                                   0.0,
@@ -422,8 +426,8 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                                       ),
                                     ),
                                   ]
-                                      .addToStart(const SizedBox(width: 20.0))
-                                      .addToEnd(const SizedBox(width: 20.0)),
+                                      .addToStart(SizedBox(width: 20.0))
+                                      .addToEnd(SizedBox(width: 20.0)),
                                 ),
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -448,9 +452,9 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                                           ),
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Padding(
-                                              padding: const EdgeInsets.all(8.0),
+                                              padding: EdgeInsets.all(8.0),
                                               child: Text(
                                                 resultsItem.gender,
                                                 style:
@@ -468,7 +472,7 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   4.0, 0.0, 0.0, 0.0),
                                           child: Container(
                                             decoration: BoxDecoration(
@@ -484,7 +488,7 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                                               ),
                                             ),
                                             child: Padding(
-                                              padding: const EdgeInsets.all(8.0),
+                                              padding: EdgeInsets.all(8.0),
                                               child: Text(
                                                 'Age ${functions.dateStringAgeCalculator(resultsItem.dob!.toString()).toString()}',
                                                 style:
@@ -502,7 +506,7 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   4.0, 0.0, 0.0, 0.0),
                                           child: Container(
                                             decoration: BoxDecoration(
@@ -518,7 +522,7 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                                               ),
                                             ),
                                             child: Padding(
-                                              padding: const EdgeInsets.all(8.0),
+                                              padding: EdgeInsets.all(8.0),
                                               child: Text(
                                                 '₹ ${resultsItem.salaryRange.from.toString()}-  ₹ ${resultsItem.salaryRange.to.toString()}',
                                                 style:
@@ -539,7 +543,7 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                                     Expanded(
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(1.0, 0.0),
+                                            AlignmentDirectional(1.0, 0.0),
                                         child: ToggleIcon(
                                           onPressed: () async {
                                             setState(
@@ -571,8 +575,8 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                                       ),
                                     ),
                                   ]
-                                      .addToStart(const SizedBox(width: 20.0))
-                                      .addToEnd(const SizedBox(width: 20.0)),
+                                      .addToStart(SizedBox(width: 20.0))
+                                      .addToEnd(SizedBox(width: 20.0)),
                                 ),
                                 Divider(
                                   height: 1.0,
@@ -580,8 +584,8 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                                   color: FlutterFlowTheme.of(context).accent3,
                                 ),
                               ]
-                                  .divide(const SizedBox(height: 8.0))
-                                  .addToStart(const SizedBox(height: 8.0)),
+                                  .divide(SizedBox(height: 8.0))
+                                  .addToStart(SizedBox(height: 8.0)),
                             ),
                           );
                         },
@@ -589,7 +593,7 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                     },
                   ),
                 ),
-                if (_model.selectedCandidates.isNotEmpty)
+                if (_model.selectedCandidates.length > 0)
                   Column(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -613,7 +617,7 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                                       elevation: 0,
                                       insetPadding: EdgeInsets.zero,
                                       backgroundColor: Colors.transparent,
-                                      alignment: const AlignmentDirectional(0.0, 0.0)
+                                      alignment: AlignmentDirectional(0.0, 0.0)
                                           .resolve(Directionality.of(context)),
                                       child: WebViewAware(
                                         child: GestureDetector(
@@ -638,9 +642,9 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                               options: FFButtonOptions(
                                 width: 198.0,
                                 height: 50.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color: FlutterFlowTheme.of(context).tertiary,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -650,7 +654,7 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                                       color: Colors.white,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -668,7 +672,7 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                                       elevation: 0,
                                       insetPadding: EdgeInsets.zero,
                                       backgroundColor: Colors.transparent,
-                                      alignment: const AlignmentDirectional(0.0, 0.0)
+                                      alignment: AlignmentDirectional(0.0, 0.0)
                                           .resolve(Directionality.of(context)),
                                       child: WebViewAware(
                                         child: GestureDetector(
@@ -693,9 +697,9 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                               options: FFButtonOptions(
                                 width: MediaQuery.sizeOf(context).width * 0.359,
                                 height: 50.0,
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color:
                                     FlutterFlowTheme.of(context).secondaryText,
@@ -707,7 +711,7 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                                       fontSize: 14.0,
                                     ),
                                 elevation: 3.0,
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Colors.transparent,
                                   width: 1.0,
                                 ),
@@ -718,13 +722,13 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                         ],
                       ),
                     ]
-                        .divide(const SizedBox(height: 8.0))
-                        .addToEnd(const SizedBox(height: 8.0)),
+                        .divide(SizedBox(height: 8.0))
+                        .addToEnd(SizedBox(height: 8.0)),
                   ),
                 wrapWithModel(
                   model: _model.navigationModel,
                   updateCallback: () => setState(() {}),
-                  child: const NavigationWidget(
+                  child: NavigationWidget(
                     home: false,
                     search: false,
                     ads: false,

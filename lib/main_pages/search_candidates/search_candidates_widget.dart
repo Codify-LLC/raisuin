@@ -10,11 +10,14 @@ import '/main_pages/navigation/navigation_widget.dart';
 import '/recruiter/recruiter_profiles/send_message/send_message_widget.dart';
 import '/recruiter/send_email_message/send_email_message_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:text_search/text_search.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'search_candidates_model.dart';
@@ -41,7 +44,7 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
         _model.savedCandidates =
-            (currentUserDocument?.savedCandidates.toList() ?? [])
+            (currentUserDocument?.savedCandidates?.toList() ?? [])
                 .toList()
                 .cast<DocumentReference>();
       });
@@ -79,9 +82,9 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
               : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: const Color(0xFFF9FAFC),
+            backgroundColor: Color(0xFFF9FAFC),
             appBar: PreferredSize(
-              preferredSize: const Size.fromHeight(60.0),
+              preferredSize: Size.fromHeight(60.0),
               child: AppBar(
                 backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
                 automaticallyImplyLeading: false,
@@ -99,10 +102,10 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                     size: 24.0,
                   ),
                 ),
-                title: SizedBox(
+                title: Container(
                   width: MediaQuery.sizeOf(context).width * 1.0,
                   child: Autocomplete<String>(
-                    initialValue: const TextEditingValue(),
+                    initialValue: TextEditingValue(),
                     optionsBuilder: (textEditingValue) {
                       if (textEditingValue.text == '') {
                         return const Iterable<String>.empty();
@@ -123,7 +126,7 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                         options: options.toList(),
                         onSelected: onSelected,
                         textStyle: FlutterFlowTheme.of(context).bodyMedium,
-                        textHighlightStyle: const TextStyle(),
+                        textHighlightStyle: TextStyle(),
                         elevation: 4.0,
                         optionBackgroundColor:
                             FlutterFlowTheme.of(context).primaryBackground,
@@ -153,7 +156,7 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                         onEditingComplete: onEditingComplete,
                         onChanged: (_) => EasyDebounce.debounce(
                           '_model.textController',
-                          const Duration(milliseconds: 2000),
+                          Duration(milliseconds: 2000),
                           () async {
                             await queryUsersRecordOnce()
                                 .then(
@@ -163,13 +166,14 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                                         .map(
                                           (record) =>
                                               TextSearchItem.fromTerms(record, [
-                                            record.maritalStatus,
-                                            record.expriencedIn,
-                                            record.gender,
-                                            record.seekingJobType,
-                                            record.phoneNumber,
-                                            record.displayName,
-                                            record.email]),
+                                            record.maritalStatus!,
+                                            record.expriencedIn!,
+                                            record.gender!,
+                                            record.seekingJobType!,
+                                            record.phoneNumber!,
+                                            record.displayName!,
+                                            record.email!
+                                          ]),
                                         )
                                         .toList(),
                                   )
@@ -190,28 +194,28 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                           hintText: 'Search',
                           hintStyle: FlutterFlowTheme.of(context).bodySmall,
                           enabledBorder: UnderlineInputBorder(
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Color(0x00000000),
                               width: 1.0,
                             ),
                             borderRadius: BorderRadius.circular(50.0),
                           ),
                           focusedBorder: UnderlineInputBorder(
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Color(0x00000000),
                               width: 1.0,
                             ),
                             borderRadius: BorderRadius.circular(50.0),
                           ),
                           errorBorder: UnderlineInputBorder(
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Color(0x00000000),
                               width: 1.0,
                             ),
                             borderRadius: BorderRadius.circular(50.0),
                           ),
                           focusedErrorBorder: UnderlineInputBorder(
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Color(0x00000000),
                               width: 1.0,
                             ),
@@ -227,9 +231,9 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                     },
                   ),
                 ),
-                actions: const [],
+                actions: [],
                 bottom: PreferredSize(
-                  preferredSize: const Size.fromHeight(70.0),
+                  preferredSize: Size.fromHeight(70.0),
                   child: Container(),
                 ),
                 centerTitle: true,
@@ -244,10 +248,10 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                     builder: (context) {
                       final searchresult = _model.simpleSearchResults.toList();
                       if (searchresult.isEmpty) {
-                        return const LoadingWidget();
+                        return LoadingWidget();
                       }
                       return ListView.separated(
-                        padding: const EdgeInsets.fromLTRB(
+                        padding: EdgeInsets.fromLTRB(
                           0,
                           20.0,
                           0,
@@ -256,7 +260,7 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
                         itemCount: searchresult.length,
-                        separatorBuilder: (_, __) => const SizedBox(height: 8.0),
+                        separatorBuilder: (_, __) => SizedBox(height: 8.0),
                         itemBuilder: (context, searchresultIndex) {
                           final searchresultItem =
                               searchresult[searchresultIndex];
@@ -288,7 +292,7 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                                       width: 60.0,
                                       height: 60.0,
                                       clipBehavior: Clip.antiAlias,
-                                      decoration: const BoxDecoration(
+                                      decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                       ),
                                       child: Image.network(
@@ -307,7 +311,7 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                                     ),
                                     Expanded(
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             10.0, 0.0, 0.0, 0.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -321,7 +325,7 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                                                       .bodyMedium,
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -335,7 +339,7 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   2.0,
                                                                   0.0,
@@ -366,7 +370,7 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -380,7 +384,7 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   2.0,
                                                                   0.0,
@@ -444,8 +448,8 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                                       ),
                                     ),
                                   ]
-                                      .addToStart(const SizedBox(width: 20.0))
-                                      .addToEnd(const SizedBox(width: 20.0)),
+                                      .addToStart(SizedBox(width: 20.0))
+                                      .addToEnd(SizedBox(width: 20.0)),
                                 ),
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -470,9 +474,9 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                                           ),
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Padding(
-                                              padding: const EdgeInsets.all(8.0),
+                                              padding: EdgeInsets.all(8.0),
                                               child: Text(
                                                 searchresultItem.gender,
                                                 style:
@@ -490,7 +494,7 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   4.0, 0.0, 0.0, 0.0),
                                           child: Container(
                                             decoration: BoxDecoration(
@@ -506,7 +510,7 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                                               ),
                                             ),
                                             child: Padding(
-                                              padding: const EdgeInsets.all(8.0),
+                                              padding: EdgeInsets.all(8.0),
                                               child: Text(
                                                 'Age ${functions.dateStringAgeCalculator(searchresultItem.dob!.toString()).toString()}',
                                                 style:
@@ -524,7 +528,7 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   4.0, 0.0, 0.0, 0.0),
                                           child: Container(
                                             decoration: BoxDecoration(
@@ -540,7 +544,7 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                                               ),
                                             ),
                                             child: Padding(
-                                              padding: const EdgeInsets.all(8.0),
+                                              padding: EdgeInsets.all(8.0),
                                               child: Text(
                                                 '₹${searchresultItem.salaryRange.from.toString()}-  ₹ ${searchresultItem.salaryRange.to.toString()}',
                                                 style:
@@ -561,14 +565,14 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                                     Expanded(
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(1.0, 0.0),
+                                            AlignmentDirectional(1.0, 0.0),
                                         child: ToggleIcon(
                                           onPressed: () async {
                                             setState(() => _model.filtered =
                                                 !_model.filtered);
                                             if ((currentUserDocument
                                                         ?.savedCandidates
-                                                        .toList() ??
+                                                        ?.toList() ??
                                                     [])
                                                 .contains(searchresultItem
                                                     .reference)) {
@@ -614,8 +618,8 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                                       ),
                                     ),
                                   ]
-                                      .addToStart(const SizedBox(width: 20.0))
-                                      .addToEnd(const SizedBox(width: 20.0)),
+                                      .addToStart(SizedBox(width: 20.0))
+                                      .addToEnd(SizedBox(width: 20.0)),
                                 ),
                                 Divider(
                                   height: 1.0,
@@ -623,8 +627,8 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                                   color: FlutterFlowTheme.of(context).accent3,
                                 ),
                               ]
-                                  .divide(const SizedBox(height: 12.0))
-                                  .addToStart(const SizedBox(height: 12.0)),
+                                  .divide(SizedBox(height: 12.0))
+                                  .addToStart(SizedBox(height: 12.0)),
                             ),
                           );
                         },
@@ -632,7 +636,7 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                     },
                   ),
                 ),
-                if (_model.selectedCandidate.isNotEmpty)
+                if (_model.selectedCandidate.length > 0)
                   Column(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -677,9 +681,9 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                             text: 'Send Message',
                             options: FFButtonOptions(
                               height: 50.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).tertiary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -690,7 +694,7 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                                     fontWeight: FontWeight.normal,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -728,9 +732,9 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                             options: FFButtonOptions(
                               width: MediaQuery.sizeOf(context).width * 0.336,
                               height: 47.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primaryText,
                               textStyle: FlutterFlowTheme.of(context)
@@ -741,7 +745,7 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                                     fontWeight: FontWeight.normal,
                                   ),
                               elevation: 3.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -751,13 +755,13 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                         ],
                       ),
                     ]
-                        .divide(const SizedBox(height: 8.0))
-                        .addToEnd(const SizedBox(height: 8.0)),
+                        .divide(SizedBox(height: 8.0))
+                        .addToEnd(SizedBox(height: 8.0)),
                   ),
                 wrapWithModel(
                   model: _model.navigationModel,
                   updateCallback: () => setState(() {}),
-                  child: const NavigationWidget(
+                  child: NavigationWidget(
                     home: false,
                     search: false,
                     ads: false,

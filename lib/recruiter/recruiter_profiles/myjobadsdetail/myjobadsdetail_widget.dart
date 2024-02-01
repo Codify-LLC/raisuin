@@ -8,9 +8,13 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 import 'myjobadsdetail_model.dart';
 export 'myjobadsdetail_model.dart';
 
@@ -129,7 +133,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                               fontSize: 22.0,
                             ),
                       ),
-                      actions: const [],
+                      actions: [],
                       centerTitle: true,
                       elevation: 2.0,
                     )
@@ -141,7 +145,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Container(
-                              constraints: const BoxConstraints(
+                              constraints: BoxConstraints(
                                 maxHeight: 490.0,
                               ),
                               decoration: BoxDecoration(
@@ -153,7 +157,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                   final overviewImages = myjobadsdetailAdsRecord
                                       .overviewImages
                                       .toList();
-                                  return SizedBox(
+                                  return Container(
                                     width: double.infinity,
                                     height: 350.0,
                                     child: Stack(
@@ -195,10 +199,10 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 1.0),
+                                              AlignmentDirectional(0.0, 1.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 70.0),
                                             child: smooth_page_indicator
                                                 .SmoothPageIndicator(
@@ -216,7 +220,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                                 await _model.pageViewController!
                                                     .animateToPage(
                                                   i,
-                                                  duration: const Duration(
+                                                  duration: Duration(
                                                       milliseconds: 500),
                                                   curve: Curves.ease,
                                                 );
@@ -256,7 +260,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                       .secondaryBackground,
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 20.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -264,7 +268,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                         CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 10.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
@@ -279,9 +283,9 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                                 child:
                                                     FlutterFlowExpandedImageView(
                                                   image: CachedNetworkImage(
-                                                    fadeInDuration: const Duration(
+                                                    fadeInDuration: Duration(
                                                         milliseconds: 500),
-                                                    fadeOutDuration: const Duration(
+                                                    fadeOutDuration: Duration(
                                                         milliseconds: 500),
                                                     imageUrl:
                                                         myjobadsdetailAdsRecord
@@ -310,14 +314,14 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                               width: 60.0,
                                               height: 60.0,
                                               clipBehavior: Clip.antiAlias,
-                                              decoration: const BoxDecoration(
+                                              decoration: BoxDecoration(
                                                 shape: BoxShape.circle,
                                               ),
                                               child: CachedNetworkImage(
                                                 fadeInDuration:
-                                                    const Duration(milliseconds: 500),
+                                                    Duration(milliseconds: 500),
                                                 fadeOutDuration:
-                                                    const Duration(milliseconds: 500),
+                                                    Duration(milliseconds: 500),
                                                 imageUrl:
                                                     myjobadsdetailAdsRecord
                                                         .logo,
@@ -347,7 +351,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                                       .bodyMedium,
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -356,7 +360,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(2.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -380,7 +384,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                               ),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 4.0, 0.0, 0.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -394,7 +398,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                                   Expanded(
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   2.0,
                                                                   0.0,
@@ -431,7 +435,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       20.0, 12.0, 20.0, 0.0),
                                   child: Wrap(
                                     spacing: 4.0,
@@ -456,7 +460,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                           ),
                                         ),
                                         child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
+                                          padding: EdgeInsets.all(8.0),
                                           child: Text(
                                             myjobadsdetailAdsRecord
                                                 .preferredGender,
@@ -471,7 +475,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             4.0, 0.0, 0.0, 0.0),
                                         child: Container(
                                           decoration: BoxDecoration(
@@ -486,7 +490,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                             ),
                                           ),
                                           child: Padding(
-                                            padding: const EdgeInsets.all(8.0),
+                                            padding: EdgeInsets.all(8.0),
                                             child: Text(
                                               'Work Exp : ${myjobadsdetailAdsRecord.experience.from.toString()} - ${myjobadsdetailAdsRecord.experience.to.toString()}',
                                               style:
@@ -514,7 +518,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                           ),
                                         ),
                                         child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
+                                          padding: EdgeInsets.all(8.0),
                                           child: Text(
                                             '${valueOrDefault<String>(
                                               formatNumber(
@@ -553,7 +557,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       20.0, 10.0, 20.0, 0.0),
                                   child: Container(
                                     decoration: BoxDecoration(
@@ -566,7 +570,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsets.all(10.0),
+                                      padding: EdgeInsets.all(10.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -577,7 +581,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                             fit: BoxFit.cover,
                                           ),
                                           Padding(
-                                            padding: const EdgeInsets.all(8.0),
+                                            padding: EdgeInsets.all(8.0),
                                             child: Text(
                                               '${myjobadsdetailAdsRecord.candidatesApplied.length.toString()} Candidates Applied for this job',
                                               style:
@@ -606,14 +610,14 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                   child: Column(
                                     children: [
                                       Align(
-                                        alignment: const Alignment(0.0, 0),
+                                        alignment: Alignment(0.0, 0),
                                         child: TabBar(
                                           isScrollable: true,
                                           labelColor:
                                               FlutterFlowTheme.of(context)
                                                   .tertiary,
                                           unselectedLabelColor:
-                                              const Color(0x80001451),
+                                              Color(0x80001451),
                                           labelStyle:
                                               FlutterFlowTheme.of(context)
                                                   .bodyMedium
@@ -621,11 +625,11 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                                     fontFamily: 'Sora',
                                                     fontSize: 14.0,
                                                   ),
-                                          unselectedLabelStyle: const TextStyle(),
+                                          unselectedLabelStyle: TextStyle(),
                                           indicatorColor:
                                               FlutterFlowTheme.of(context)
                                                   .tertiary,
-                                          tabs: const [
+                                          tabs: [
                                             Tab(
                                               text: 'JOB DETAILS',
                                             ),
@@ -644,7 +648,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                           controller: _model.tabBarController,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       20.0, 20.0, 20.0, 10.0),
                                               child: Column(
@@ -654,7 +658,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 25.0),
                                                     child: Row(
@@ -719,7 +723,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 25.0),
                                                     child: Row(
@@ -784,7 +788,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 25.0),
                                                     child: Row(
@@ -849,7 +853,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 25.0),
                                                     child: Row(
@@ -914,7 +918,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 25.0),
                                                     child: Row(
@@ -1010,7 +1014,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 25.0),
                                                     child: Row(
@@ -1074,7 +1078,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 25.0),
                                                     child: Row(
@@ -1110,7 +1114,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                                               Expanded(
                                                                 child: Align(
                                                                   alignment:
-                                                                      const AlignmentDirectional(
+                                                                      AlignmentDirectional(
                                                                           1.0,
                                                                           0.0),
                                                                   child: Text(
@@ -1141,7 +1145,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                               ),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       20.0, 20.0, 20.0, 10.0),
                                               child: SingleChildScrollView(
@@ -1154,7 +1158,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -1220,7 +1224,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -1286,7 +1290,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -1351,7 +1355,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   0.0,
@@ -1433,9 +1437,9 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 20.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
@@ -1455,10 +1459,10 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                             MediaQuery.sizeOf(context).width *
                                                 0.496,
                                         height: 45.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             24.0, 0.0, 24.0, 0.0),
                                         iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .tertiary,
@@ -1470,7 +1474,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                               fontWeight: FontWeight.w600,
                                             ),
                                         elevation: 3.0,
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
@@ -1481,9 +1485,9 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                   ),
                                 ),
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 20.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
@@ -1503,10 +1507,10 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                             MediaQuery.sizeOf(context).width *
                                                 0.402,
                                         height: 45.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             24.0, 0.0, 24.0, 0.0),
                                         iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
