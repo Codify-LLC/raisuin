@@ -108,8 +108,8 @@ List<String> allTypesOfDegreeLevels() {
 
 int calculateNumberOfYears(FromToDateTimeStruct date) {
   // calculate number of years from and to datetime
-  DateTime fromDate = date.from!;
-  DateTime toDate = date.to!;
+  DateTime fromDate = date.from ?? DateTime.now();
+  DateTime toDate = date.to ?? DateTime.now();
   int years = toDate.year - fromDate.year;
   if (toDate.month < fromDate.month ||
       (toDate.month == fromDate.month && toDate.day < fromDate.day)) {
