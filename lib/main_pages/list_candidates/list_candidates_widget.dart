@@ -492,17 +492,20 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.start,
                                                   children: [
-                                                    Text(
-                                                      valueOrDefault<String>(
-                                                        listViewUsersRecord
-                                                            .displayName,
-                                                        'TEXT',
+                                                    if (listViewUsersRecord
+                                                                .displayName !=
+                                                            '')
+                                                      Text(
+                                                        valueOrDefault<String>(
+                                                          listViewUsersRecord
+                                                              .displayName,
+                                                          'TEXT',
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium,
                                                       ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium,
-                                                    ),
                                                     Padding(
                                                       padding:
                                                           const EdgeInsetsDirectional
@@ -626,14 +629,12 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                                     .override(
                                                                       fontFamily:
                                                                           'Sora',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
+                                                                      color: FlutterFlowTheme.of(context)
                                                                           .primaryText,
                                                                       fontSize:
                                                                           12.0,
                                                                       fontWeight:
-                                                                          FontWeight
-                                                                              .w300,
+                                                                          FontWeight.w300,
                                                                     ),
                                                               ),
                                                             ),
@@ -709,27 +710,32 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                               .accent3,
                                                     ),
                                                   ),
-                                                  child: Align(
-                                                    alignment:
-                                                        const AlignmentDirectional(
-                                                            0.0, 0.0),
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(8.0),
-                                                      child: Text(
-                                                        listViewUsersRecord
-                                                            .gender,
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Sora',
-                                                              fontSize: 12.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w300,
-                                                            ),
+                                                  child: Visibility(
+                                                    visible: listViewUsersRecord
+                                                                .gender !=
+                                                            '',
+                                                    child: Align(
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsets.all(8.0),
+                                                        child: Text(
+                                                          listViewUsersRecord
+                                                              .gender,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Sora',
+                                                                fontSize: 12.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w300,
+                                                              ),
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
@@ -753,22 +759,28 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                                 .accent3,
                                                       ),
                                                     ),
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(8.0),
-                                                      child: Text(
-                                                        'Age ${functions.dateStringAgeCalculator(listViewUsersRecord.dob!.toString()).toString()}',
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Sora',
-                                                              fontSize: 12.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w300,
-                                                            ),
+                                                    child: Visibility(
+                                                      visible:
+                                                          listViewUsersRecord
+                                                                  .dob !=
+                                                              null,
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsets.all(8.0),
+                                                        child: Text(
+                                                          'Age ${functions.dateStringAgeCalculator(listViewUsersRecord.dob!.toString()).toString()}',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Sora',
+                                                                fontSize: 12.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w300,
+                                                              ),
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
@@ -792,40 +804,49 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                                 .accent3,
                                                       ),
                                                     ),
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(8.0),
-                                                      child: Text(
-                                                        '${formatNumber(
+                                                    child: Visibility(
+                                                      visible:
                                                           listViewUsersRecord
-                                                              .salaryRange.from,
-                                                          formatType: FormatType
-                                                              .decimal,
-                                                          decimalType:
-                                                              DecimalType
-                                                                  .automatic,
-                                                          currency: '₹',
-                                                        )} - ${formatNumber(
-                                                          listViewUsersRecord
-                                                              .salaryRange.to,
-                                                          formatType: FormatType
-                                                              .decimal,
-                                                          decimalType:
-                                                              DecimalType
-                                                                  .automatic,
-                                                          currency: '₹',
-                                                        )}',
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Sora',
-                                                              fontSize: 12.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w300,
-                                                            ),
+                                                                  .salaryRange !=
+                                                              null,
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsets.all(8.0),
+                                                        child: Text(
+                                                          '${formatNumber(
+                                                            listViewUsersRecord
+                                                                .salaryRange
+                                                                .from,
+                                                            formatType:
+                                                                FormatType
+                                                                    .decimal,
+                                                            decimalType:
+                                                                DecimalType
+                                                                    .automatic,
+                                                            currency: '₹',
+                                                          )} - ${formatNumber(
+                                                            listViewUsersRecord
+                                                                .salaryRange.to,
+                                                            formatType:
+                                                                FormatType
+                                                                    .decimal,
+                                                            decimalType:
+                                                                DecimalType
+                                                                    .automatic,
+                                                            currency: '₹',
+                                                          )}',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Sora',
+                                                                fontSize: 12.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w300,
+                                                              ),
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
