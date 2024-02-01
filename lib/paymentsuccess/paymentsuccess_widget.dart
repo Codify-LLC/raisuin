@@ -3,12 +3,9 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'paymentsuccess_model.dart';
 export 'paymentsuccess_model.dart';
 
@@ -87,9 +84,9 @@ class _PaymentsuccessWidgetState extends State<PaymentsuccessWidget> {
                       width: 2.0,
                     ),
                   ),
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Padding(
-                    padding: EdgeInsets.all(30.0),
+                    padding: const EdgeInsets.all(30.0),
                     child: Icon(
                       Icons.check_rounded,
                       color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -98,7 +95,7 @@ class _PaymentsuccessWidgetState extends State<PaymentsuccessWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                   child: Text(
                     'Payment Confirmed!',
                     textAlign: TextAlign.center,
@@ -109,7 +106,7 @@ class _PaymentsuccessWidgetState extends State<PaymentsuccessWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                   child: Text(
                     valueOrDefault<String>(
                       '₹',
@@ -122,7 +119,7 @@ class _PaymentsuccessWidgetState extends State<PaymentsuccessWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 8.0, 24.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(24.0, 8.0, 24.0, 0.0),
                   child: Text(
                     'Your payment has been confirmed. Your account will be recharged accordingly Thank you for the payment.',
                     textAlign: TextAlign.center,
@@ -132,7 +129,7 @@ class _PaymentsuccessWidgetState extends State<PaymentsuccessWidget> {
                 Expanded(
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -145,9 +142,9 @@ class _PaymentsuccessWidgetState extends State<PaymentsuccessWidget> {
                           options: FFButtonOptions(
                             width: 230.0,
                             height: 50.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).tertiary,
                             textStyle:
@@ -157,7 +154,7 @@ class _PaymentsuccessWidgetState extends State<PaymentsuccessWidget> {
                                           .secondaryBackground,
                                     ),
                             elevation: 0.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),

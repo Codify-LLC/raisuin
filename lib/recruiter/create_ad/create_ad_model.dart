@@ -1,28 +1,8 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/firebase_storage/storage.dart';
-import '/backend/schema/structs/index.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_choice_chips.dart';
-import '/flutter_flow/flutter_flow_drop_down.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_place_picker.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/flutter_flow/place.dart';
-import '/flutter_flow/upload_data.dart';
-import 'dart:io';
 import 'create_ad_widget.dart' show CreateAdWidget;
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
 class CreateAdModel extends FlutterFlowModel<CreateAdWidget> {
   ///  Local state fields for this page.
@@ -134,9 +114,9 @@ class CreateAdModel extends FlutterFlowModel<CreateAdWidget> {
   List<String>? choiceChipsValues;
   FormFieldController<List<String>>? choiceChipsValueController;
   // State field(s) for JobLocation widget.
-  var jobLocationValue = FFPlace();
+  var jobLocationValue = const FFPlace();
   // State field(s) for PlacePicker widget.
-  var placePickerValue = FFPlace();
+  var placePickerValue = const FFPlace();
   // State field(s) for level widget.
   String? levelValue;
   FormFieldController<String>? levelValueController;
@@ -178,6 +158,7 @@ class CreateAdModel extends FlutterFlowModel<CreateAdWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     positionTitleControllerValidator = _positionTitleControllerValidator;
     instituteNameControllerValidator = _instituteNameControllerValidator;
@@ -185,6 +166,7 @@ class CreateAdModel extends FlutterFlowModel<CreateAdWidget> {
     toControllerValidator = _toControllerValidator;
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     tabBarController?.dispose();

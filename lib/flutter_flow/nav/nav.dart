@@ -1,21 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
-import '/backend/schema/structs/index.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
-import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -80,36 +73,36 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? HomePageWidget() : SignInWidget(),
+          appStateNotifier.loggedIn ? const HomePageWidget() : const SignInWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? HomePageWidget() : SignInWidget(),
+              appStateNotifier.loggedIn ? const HomePageWidget() : const SignInWidget(),
         ),
         FFRoute(
           name: 'signIn',
           path: '/signIn',
-          builder: (context, params) => SignInWidget(),
+          builder: (context, params) => const SignInWidget(),
         ),
         FFRoute(
           name: 'registration',
           path: '/registration',
           requireAuth: true,
-          builder: (context, params) => RegistrationWidget(),
+          builder: (context, params) => const RegistrationWidget(),
         ),
         FFRoute(
           name: 'subcription',
           path: '/subcription',
           requireAuth: true,
-          builder: (context, params) => SubcriptionWidget(),
+          builder: (context, params) => const SubcriptionWidget(),
         ),
         FFRoute(
           name: 'homePage',
           path: '/homePage',
           requireAuth: true,
-          builder: (context, params) => HomePageWidget(),
+          builder: (context, params) => const HomePageWidget(),
         ),
         FFRoute(
           name: 'mapView',
@@ -123,7 +116,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'createAd',
           path: '/createAd',
           requireAuth: true,
-          builder: (context, params) => CreateAdWidget(),
+          builder: (context, params) => const CreateAdWidget(),
         ),
         FFRoute(
           name: 'listCandidates',
@@ -151,13 +144,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'profileEmployer',
           path: '/profileEmployer',
           requireAuth: true,
-          builder: (context, params) => ProfileEmployerWidget(),
+          builder: (context, params) => const ProfileEmployerWidget(),
         ),
         FFRoute(
           name: 'myads',
           path: '/myads',
           requireAuth: true,
-          builder: (context, params) => MyadsWidget(),
+          builder: (context, params) => const MyadsWidget(),
         ),
         FFRoute(
           name: 'myjobadsdetail',
@@ -181,25 +174,25 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'savedprofile',
           path: '/savedprofile',
           requireAuth: true,
-          builder: (context, params) => SavedprofileWidget(),
+          builder: (context, params) => const SavedprofileWidget(),
         ),
         FFRoute(
           name: 'viewedprofiles',
           path: '/viewedprofiles',
           requireAuth: true,
-          builder: (context, params) => ViewedprofilesWidget(),
+          builder: (context, params) => const ViewedprofilesWidget(),
         ),
         FFRoute(
           name: 'blocked',
           path: '/blocked',
           requireAuth: true,
-          builder: (context, params) => BlockedWidget(),
+          builder: (context, params) => const BlockedWidget(),
         ),
         FFRoute(
           name: 'verifyPayment',
           path: '/verifyPayment',
           requireAuth: true,
-          builder: (context, params) => VerifyPaymentWidget(),
+          builder: (context, params) => const VerifyPaymentWidget(),
         ),
         FFRoute(
           name: 'chatMessages',
@@ -214,18 +207,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'chat',
           path: '/chat',
           requireAuth: true,
-          builder: (context, params) => ChatWidget(),
+          builder: (context, params) => const ChatWidget(),
         ),
         FFRoute(
           name: 'recentTransactions',
           path: '/recentTransactions',
           requireAuth: true,
-          builder: (context, params) => RecentTransactionsWidget(),
+          builder: (context, params) => const RecentTransactionsWidget(),
         ),
         FFRoute(
           name: 'hlstest',
           path: '/hlstest',
-          builder: (context, params) => HlstestWidget(),
+          builder: (context, params) => const HlstestWidget(),
         ),
         FFRoute(
           name: 'paymentsuccess',
@@ -269,19 +262,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'MatchProfiles',
           path: '/matchProfiles',
-          builder: (context, params) => MatchProfilesWidget(),
+          builder: (context, params) => const MatchProfilesWidget(),
         ),
         FFRoute(
           name: 'SearchCandidates',
           path: '/searchCandidates',
           requireAuth: true,
-          builder: (context, params) => SearchCandidatesWidget(),
+          builder: (context, params) => const SearchCandidatesWidget(),
         ),
         FFRoute(
           name: 'UpdateDetails',
           path: '/updateDetails',
           requireAuth: true,
-          builder: (context, params) => UpdateDetailsWidget(),
+          builder: (context, params) => const UpdateDetailsWidget(),
         ),
         FFRoute(
           name: 'JobsCandidateList',
@@ -525,7 +518,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

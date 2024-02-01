@@ -6,12 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'schedule_interview_model.dart';
 export 'schedule_interview_model.dart';
 
@@ -61,12 +56,12 @@ class _ScheduleInterviewWidgetState extends State<ScheduleInterviewWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      constraints: BoxConstraints(
+      constraints: const BoxConstraints(
         maxWidth: 600.0,
       ),
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
           bottomRight: Radius.circular(0.0),
           topLeft: Radius.circular(20.0),
@@ -78,7 +73,7 @@ class _ScheduleInterviewWidgetState extends State<ScheduleInterviewWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 12.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 12.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -110,7 +105,7 @@ class _ScheduleInterviewWidgetState extends State<ScheduleInterviewWidget> {
             color: FlutterFlowTheme.of(context).accent3,
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 0.0),
             child: Text(
               'Pick Interview Date*',
               style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -120,14 +115,14 @@ class _ScheduleInterviewWidgetState extends State<ScheduleInterviewWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16.0, 10.0, 16.0, 23.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 10.0, 16.0, 23.0),
             child: InkWell(
               splashColor: Colors.transparent,
               focusColor: Colors.transparent,
               hoverColor: Colors.transparent,
               highlightColor: Colors.transparent,
               onTap: () async {
-                final _datePickedDate = await showDatePicker(
+                final datePickedDate = await showDatePicker(
                   context: context,
                   initialDate: functions.futureDateTime(
                       getCurrentTimestamp, 0, 2, 0, 0, 0),
@@ -139,12 +134,12 @@ class _ScheduleInterviewWidgetState extends State<ScheduleInterviewWidget> {
                       DateTime(2050)),
                 );
 
-                if (_datePickedDate != null) {
+                if (datePickedDate != null) {
                   safeSetState(() {
                     _model.datePicked = DateTime(
-                      _datePickedDate.year,
-                      _datePickedDate.month,
-                      _datePickedDate.day,
+                      datePickedDate.year,
+                      datePickedDate.month,
+                      datePickedDate.day,
                     );
                   });
                 }
@@ -158,7 +153,7 @@ class _ScheduleInterviewWidgetState extends State<ScheduleInterviewWidget> {
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -181,7 +176,7 @@ class _ScheduleInterviewWidgetState extends State<ScheduleInterviewWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
             child: Text(
               'Interview Mode*',
               style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -191,9 +186,9 @@ class _ScheduleInterviewWidgetState extends State<ScheduleInterviewWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16.0, 14.0, 0.0, 16.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 14.0, 0.0, 16.0),
             child: FlutterFlowChoiceChips(
-              options: [
+              options: const [
                 ChipData('Online'),
                 ChipData('Phone'),
                 ChipData('Physical')
@@ -210,7 +205,7 @@ class _ScheduleInterviewWidgetState extends State<ScheduleInterviewWidget> {
                 iconColor: FlutterFlowTheme.of(context).primaryText,
                 iconSize: 18.0,
                 labelPadding:
-                    EdgeInsetsDirectional.fromSTEB(14.0, 6.0, 14.0, 8.0),
+                    const EdgeInsetsDirectional.fromSTEB(14.0, 6.0, 14.0, 8.0),
                 elevation: 0.0,
               ),
               unselectedChipStyle: ChipStyle(
@@ -223,7 +218,7 @@ class _ScheduleInterviewWidgetState extends State<ScheduleInterviewWidget> {
                 iconColor: FlutterFlowTheme.of(context).primaryText,
                 iconSize: 18.0,
                 labelPadding:
-                    EdgeInsetsDirectional.fromSTEB(14.0, 6.0, 14.0, 8.0),
+                    const EdgeInsetsDirectional.fromSTEB(14.0, 6.0, 14.0, 8.0),
                 elevation: 0.0,
               ),
               chipSpacing: 5.0,
@@ -239,7 +234,7 @@ class _ScheduleInterviewWidgetState extends State<ScheduleInterviewWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
             child: Text(
               'Message*',
               style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -249,7 +244,7 @@ class _ScheduleInterviewWidgetState extends State<ScheduleInterviewWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16.0, 10.0, 16.0, 15.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 10.0, 16.0, 15.0),
             child: TextFormField(
               controller: _model.userRoleController,
               focusNode: _model.userRoleFocusNode,
@@ -275,21 +270,21 @@ class _ScheduleInterviewWidgetState extends State<ScheduleInterviewWidget> {
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 errorBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Color(0x00000000),
                     width: 1.0,
                   ),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 focusedErrorBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Color(0x00000000),
                     width: 1.0,
                   ),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 contentPadding:
-                    EdgeInsetsDirectional.fromSTEB(10.0, 16.0, 10.0, 10.0),
+                    const EdgeInsetsDirectional.fromSTEB(10.0, 16.0, 10.0, 10.0),
               ),
               style: FlutterFlowTheme.of(context).bodyMedium,
               maxLines: null,
@@ -299,9 +294,9 @@ class _ScheduleInterviewWidgetState extends State<ScheduleInterviewWidget> {
             ),
           ),
           Align(
-            alignment: AlignmentDirectional(0.0, 0.0),
+            alignment: const AlignmentDirectional(0.0, 0.0),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 20.0),
               child: FFButtonWidget(
                 onPressed: () async {
                   var interviewsRecordReference =
@@ -342,16 +337,16 @@ class _ScheduleInterviewWidgetState extends State<ScheduleInterviewWidget> {
                 options: FFButtonOptions(
                   width: MediaQuery.sizeOf(context).width * 0.8,
                   height: 50.0,
-                  padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                   iconPadding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).tertiary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                         fontFamily: 'Sora',
                         color: Colors.white,
                       ),
                   elevation: 3.0,
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Colors.transparent,
                     width: 1.0,
                   ),

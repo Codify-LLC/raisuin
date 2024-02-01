@@ -4,13 +4,10 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'sign_in_model.dart';
 export 'sign_in_model.dart';
 
@@ -67,17 +64,17 @@ class _SignInWidgetState extends State<SignInWidget> {
               : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: Color(0xFFF9FAFC),
+            backgroundColor: const Color(0xFFF9FAFC),
             body: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(-1.0, 0.0),
+                    alignment: const AlignmentDirectional(-1.0, 0.0),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                       child: SvgPicture.asset(
                         'assets/images/es_Logo.svg',
                         fit: BoxFit.cover,
@@ -86,8 +83,8 @@ class _SignInWidgetState extends State<SignInWidget> {
                   ),
                   Container(
                     height: 450.0,
-                    decoration: BoxDecoration(),
-                    child: Container(
+                    decoration: const BoxDecoration(),
+                    child: SizedBox(
                       width: double.infinity,
                       height: 300.0,
                       child: Stack(
@@ -102,7 +99,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 50.0),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
@@ -119,7 +116,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 9.0),
                                     child: Text(
                                       'Recruit bestEducators',
@@ -127,7 +124,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Sora',
-                                            color: Color(0xFF001451),
+                                            color: const Color(0xFF001451),
                                             fontWeight: FontWeight.w500,
                                           ),
                                     ),
@@ -139,7 +136,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Sora',
-                                          color: Color(0xB2001451),
+                                          color: const Color(0xB2001451),
                                           fontSize: 14.0,
                                           fontWeight: FontWeight.w300,
                                         ),
@@ -151,7 +148,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 50.0),
                                     child: SvgPicture.asset(
                                       'assets/images/Frame_(3).svg',
@@ -159,7 +156,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 9.0),
                                     child: Text(
                                       'Unearth talented educators',
@@ -188,7 +185,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 50.0),
                                     child: SvgPicture.asset(
                                       'assets/images/Frame_(4).svg',
@@ -196,7 +193,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 9.0),
                                     child: Text(
                                       'Search by location',
@@ -219,9 +216,9 @@ class _SignInWidgetState extends State<SignInWidget> {
                             ],
                           ),
                           Align(
-                            alignment: AlignmentDirectional(0.0, 1.0),
+                            alignment: const AlignmentDirectional(0.0, 1.0),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 150.0),
                               child: smooth_page_indicator.SmoothPageIndicator(
                                 controller: _model.pageViewController ??=
@@ -232,7 +229,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                   await _model.pageViewController!
                                       .animateToPage(
                                     i,
-                                    duration: Duration(milliseconds: 500),
+                                    duration: const Duration(milliseconds: 500),
                                     curve: Curves.ease,
                                   );
                                 },
@@ -257,11 +254,11 @@ class _SignInWidgetState extends State<SignInWidget> {
                     ),
                   ),
                   Container(
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       minHeight: 250.0,
                       maxHeight: 400.0,
                     ),
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -278,15 +275,15 @@ class _SignInWidgetState extends State<SignInWidget> {
                             context.goNamedAuth('homePage', context.mounted);
                           },
                           text: ' Google',
-                          icon: FaIcon(
+                          icon: const FaIcon(
                             FontAwesomeIcons.google,
                           ),
                           options: FFButtonOptions(
                             width: MediaQuery.sizeOf(context).width * 0.5,
                             height: MediaQuery.sizeOf(context).height * 0.052,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).tertiary,
                             textStyle: FlutterFlowTheme.of(context)
@@ -297,7 +294,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                   fontSize: 20.0,
                                 ),
                             elevation: 3.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),
@@ -328,7 +325,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     12.0, 0.0, 12.0, 0.0),
                                 child: Text(
                                   'or',
@@ -367,15 +364,15 @@ class _SignInWidgetState extends State<SignInWidget> {
                             },
                             child: Container(
                               height: 50.0,
-                              constraints: BoxConstraints(
+                              constraints: const BoxConstraints(
                                 maxWidth: 400.0,
                               ),
                               decoration: BoxDecoration(
-                                color: Color(0xFF001451),
+                                color: const Color(0xFF001451),
                                 borderRadius: BorderRadius.circular(40.0),
                               ),
                               child: Align(
-                                alignment: AlignmentDirectional(0.0, 0.0),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   'Sign up for free',
                                   style: FlutterFlowTheme.of(context)
@@ -389,7 +386,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                             ),
                           ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
                           child: TextFormField(
                             controller: _model.emailController,
@@ -439,7 +436,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
                           child: TextFormField(
                             controller: _model.passController,
@@ -499,7 +496,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 16.0, 0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -525,9 +522,9 @@ class _SignInWidgetState extends State<SignInWidget> {
                                 options: FFButtonOptions(
                                   width: MediaQuery.sizeOf(context).width * 0.8,
                                   height: 40.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
@@ -538,7 +535,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                         color: Colors.white,
                                       ),
                                   elevation: 3.0,
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
@@ -546,7 +543,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 10.0, 0.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
@@ -570,9 +567,9 @@ class _SignInWidgetState extends State<SignInWidget> {
                                     width:
                                         MediaQuery.sizeOf(context).width * 0.8,
                                     height: 40.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         24.0, 0.0, 24.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     color:
                                         FlutterFlowTheme.of(context).tertiary,
@@ -583,7 +580,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                                           color: Colors.white,
                                         ),
                                     elevation: 3.0,
-                                    borderSide: BorderSide(
+                                    borderSide: const BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),
@@ -597,7 +594,7 @@ class _SignInWidgetState extends State<SignInWidget> {
                       ],
                     ),
                   ),
-                ].divide(SizedBox(height: 20.0)).around(SizedBox(height: 20.0)),
+                ].divide(const SizedBox(height: 20.0)).around(const SizedBox(height: 20.0)),
               ),
             ),
           ),

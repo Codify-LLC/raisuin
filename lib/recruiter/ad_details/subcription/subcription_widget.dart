@@ -1,13 +1,10 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'subcription_model.dart';
 export 'subcription_model.dart';
 
@@ -58,7 +55,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
               : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: Color(0xFFF9FAFC),
+            backgroundColor: const Color(0xFFF9FAFC),
             body: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -81,7 +78,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                 Expanded(
                   flex: 6,
                   child: Stack(
-                    alignment: AlignmentDirectional(0.0, 0.0),
+                    alignment: const AlignmentDirectional(0.0, 0.0),
                     children: [
                       ClipRect(
                         child: ImageFiltered(
@@ -99,7 +96,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
                         child: Container(
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
@@ -109,7 +106,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     20.0, 32.0, 20.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -134,7 +131,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                               ),
                               Expanded(
                                 child: Container(
-                                  constraints: BoxConstraints(
+                                  constraints: const BoxConstraints(
                                     maxWidth: 600.0,
                                   ),
                                   decoration: BoxDecoration(
@@ -142,7 +139,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                         .secondaryBackground,
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         20.0, 0.0, 20.0, 20.0),
                                     child: SingleChildScrollView(
                                       child: Column(
@@ -154,7 +151,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 20.0, 0.0, 20.0),
                                             child: Text(
                                               'Choose your plan',
@@ -173,7 +170,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 10.0),
                                                 child: InkWell(
@@ -193,7 +190,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                                   },
                                                   child: Container(
                                                     height: 187.0,
-                                                    constraints: BoxConstraints(
+                                                    constraints: const BoxConstraints(
                                                       minWidth: 330.0,
                                                       minHeight: 187.0,
                                                     ),
@@ -218,7 +215,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   15.0,
                                                                   12.0,
@@ -259,7 +256,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                                             children: [
                                                               Expanded(
                                                                 child: Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           10.0,
@@ -295,7 +292,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                                                             decoration:
                                                                                 BoxDecoration(
                                                                               color: FlutterFlowTheme.of(context).alternate,
-                                                                              borderRadius: BorderRadius.only(
+                                                                              borderRadius: const BorderRadius.only(
                                                                                 bottomLeft: Radius.circular(10.0),
                                                                                 bottomRight: Radius.circular(0.0),
                                                                                 topLeft: Radius.circular(0.0),
@@ -325,7 +322,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                                                             ),
                                                                           ),
                                                                           Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 10.0,
                                                                                 0.0,
                                                                                 0.0,
@@ -435,7 +432,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                                                           .cover,
                                                                     ),
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           10.0,
                                                                           0.0,
                                                                           0.0,
@@ -480,7 +477,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                                                           .cover,
                                                                     ),
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           10.0,
                                                                           0.0,
                                                                           0.0,
@@ -511,7 +508,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                                                           .cover,
                                                                     ),
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           10.0,
                                                                           0.0,
                                                                           0.0,
@@ -540,7 +537,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 10.0),
                                                 child: InkWell(
@@ -560,7 +557,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                                   },
                                                   child: Container(
                                                     height: 187.0,
-                                                    constraints: BoxConstraints(
+                                                    constraints: const BoxConstraints(
                                                       minWidth: 330.0,
                                                       minHeight: 187.0,
                                                     ),
@@ -585,7 +582,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   15.0,
                                                                   12.0,
@@ -626,7 +623,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                                             children: [
                                                               Expanded(
                                                                 child: Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           10.0,
@@ -662,7 +659,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                                                             decoration:
                                                                                 BoxDecoration(
                                                                               color: FlutterFlowTheme.of(context).alternate,
-                                                                              borderRadius: BorderRadius.only(
+                                                                              borderRadius: const BorderRadius.only(
                                                                                 bottomLeft: Radius.circular(10.0),
                                                                                 bottomRight: Radius.circular(0.0),
                                                                                 topLeft: Radius.circular(0.0),
@@ -692,7 +689,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                                                             ),
                                                                           ),
                                                                           Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 10.0,
                                                                                 0.0,
                                                                                 0.0,
@@ -799,7 +796,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                                                           .cover,
                                                                     ),
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           10.0,
                                                                           0.0,
                                                                           0.0,
@@ -844,7 +841,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                                                           .cover,
                                                                     ),
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           10.0,
                                                                           0.0,
                                                                           0.0,
@@ -875,7 +872,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                                                           .cover,
                                                                     ),
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           10.0,
                                                                           0.0,
                                                                           0.0,
@@ -904,7 +901,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 40.0),
                                                 child: InkWell(
@@ -924,7 +921,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                                   },
                                                   child: Container(
                                                     height: 187.0,
-                                                    constraints: BoxConstraints(
+                                                    constraints: const BoxConstraints(
                                                       minWidth: 330.0,
                                                       minHeight: 187.0,
                                                     ),
@@ -949,7 +946,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   15.0,
                                                                   12.0,
@@ -990,7 +987,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                                             children: [
                                                               Expanded(
                                                                 child: Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           10.0,
@@ -1026,7 +1023,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                                                             decoration:
                                                                                 BoxDecoration(
                                                                               color: FlutterFlowTheme.of(context).alternate,
-                                                                              borderRadius: BorderRadius.only(
+                                                                              borderRadius: const BorderRadius.only(
                                                                                 bottomLeft: Radius.circular(10.0),
                                                                                 bottomRight: Radius.circular(0.0),
                                                                                 topLeft: Radius.circular(0.0),
@@ -1056,7 +1053,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                                                             ),
                                                                           ),
                                                                           Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 10.0,
                                                                                 0.0,
                                                                                 0.0,
@@ -1166,7 +1163,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                                                           .cover,
                                                                     ),
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           10.0,
                                                                           0.0,
                                                                           0.0,
@@ -1211,7 +1208,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                                                           .cover,
                                                                     ),
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           10.0,
                                                                           0.0,
                                                                           0.0,
@@ -1242,7 +1239,7 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                                                           .cover,
                                                                     ),
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           10.0,
                                                                           0.0,
                                                                           0.0,
@@ -1287,21 +1284,21 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
                                     color: FlutterFlowTheme.of(context).accent3,
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         20.0, 9.0, 20.0, 20.0),
                                     child: Container(
                                       height: 50.0,
-                                      constraints: BoxConstraints(
+                                      constraints: const BoxConstraints(
                                         maxWidth: 400.0,
                                       ),
                                       decoration: BoxDecoration(
-                                        color: Color(0xFFDD3568),
+                                        color: const Color(0xFFDD3568),
                                         borderRadius:
                                             BorderRadius.circular(40.0),
                                       ),
                                       child: Align(
                                         alignment:
-                                            AlignmentDirectional(0.0, 0.0),
+                                            const AlignmentDirectional(0.0, 0.0),
                                         child: Text(
                                           'Purchase',
                                           style: FlutterFlowTheme.of(context)

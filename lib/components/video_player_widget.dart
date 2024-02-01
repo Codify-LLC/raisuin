@@ -3,11 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'video_player_model.dart';
 export 'video_player_model.dart';
 
@@ -17,7 +13,7 @@ class VideoPlayerWidget extends StatefulWidget {
     required this.videopath,
     bool? videoBio,
     this.canRef,
-  }) : this.videoBio = videoBio ?? false;
+  }) : videoBio = videoBio ?? false;
 
   final String? videopath;
   final bool videoBio;
@@ -56,7 +52,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
     return Material(
       color: Colors.transparent,
       elevation: 5.0,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(16.0),
           bottomRight: Radius.circular(16.0),
@@ -68,7 +64,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
         width: double.infinity,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).secondaryBackground,
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             bottomLeft: Radius.circular(16.0),
             bottomRight: Radius.circular(16.0),
             topLeft: Radius.circular(16.0),
@@ -80,7 +76,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
               child: FlutterFlowIconButton(
                 borderRadius: 20.0,
                 borderWidth: 1.0,
@@ -96,9 +92,9 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
               ),
             ),
             Align(
-              alignment: AlignmentDirectional(0.0, 0.0),
+              alignment: const AlignmentDirectional(0.0, 0.0),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                 child: FlutterFlowVideoPlayer(
                   path: widget.videopath!,
                   videoType: VideoType.network,
@@ -113,7 +109,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
             ),
             if (widget.videoBio)
               Align(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 child: FFButtonWidget(
                   onPressed: () async {
                     context.pushNamed(
@@ -131,16 +127,16 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
                     width: MediaQuery.sizeOf(context).width * 0.8,
                     height: 46.0,
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                     iconPadding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).tertiary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Sora',
                           color: Colors.white,
                         ),
                     elevation: 3.0,
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Colors.transparent,
                       width: 1.0,
                     ),
@@ -148,7 +144,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
                   ),
                 ),
               ),
-          ].divide(SizedBox(height: 10.0)).around(SizedBox(height: 10.0)),
+          ].divide(const SizedBox(height: 10.0)).around(const SizedBox(height: 10.0)),
         ),
       ),
     );

@@ -8,14 +8,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/upload_data.dart';
-import 'dart:io';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'registration_model.dart';
 export 'registration_model.dart';
 
@@ -72,14 +67,14 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
               : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: Color(0xFFF9FAFC),
+            backgroundColor: const Color(0xFFF9FAFC),
             body: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
               child: Container(
                 height: double.infinity,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(0.0),
                     bottomRight: Radius.circular(0.0),
                     topLeft: Radius.circular(20.0),
@@ -91,7 +86,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
+                      padding: const EdgeInsetsDirectional.fromSTEB(
                           20.0, 25.0, 20.0, 15.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
@@ -106,7 +101,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                   fontWeight: FontWeight.w500,
                                 ),
                           ),
-                          Icon(
+                          const Icon(
                             Icons.close,
                             color: Colors.black,
                             size: 24.0,
@@ -124,10 +119,10 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                         key: _model.formKey,
                         autovalidateMode: AutovalidateMode.disabled,
                         child: Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Container(
                             height: double.infinity,
-                            constraints: BoxConstraints(
+                            constraints: const BoxConstraints(
                               maxWidth: 600.0,
                             ),
                             decoration: BoxDecoration(
@@ -135,7 +130,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                   .secondaryBackground,
                             ),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   20.0, 20.0, 20.0, 0.0),
                               child: SingleChildScrollView(
                                 child: Column(
@@ -143,7 +138,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 10.0),
                                       child: Text(
                                         'Organization Logo',
@@ -157,7 +152,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 5.0, 0.0, 0.0),
                                       child: Container(
                                         width: 140.0,
@@ -169,20 +164,18 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                         child: Stack(
                                           children: [
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 0.0, 20.0, 20.0),
                                               child: Container(
                                                 width: 120.0,
                                                 height: 120.0,
                                                 clipBehavior: Clip.antiAlias,
-                                                decoration: BoxDecoration(
+                                                decoration: const BoxDecoration(
                                                   shape: BoxShape.circle,
                                                 ),
                                                 child: Image.network(
                                                   _model.uploadedFileUrl !=
-                                                              null &&
-                                                          _model.uploadedFileUrl !=
                                                               ''
                                                       ? _model.uploadedFileUrl
                                                       : 'https://firebasestorage.googleapis.com/v0/b/teachnear.appspot.com/o/appImages%2FEllipse_15.png?alt=media&token=8091626b-c632-4899-8615-909b59cb00bb&_gl=1*43b4ir*_ga*NDg3MzE0Mzk2LjE2NzE3MDc4MjA.*_ga_CW55HF8NVT*MTY4NjMzNTAxOS4xMDcuMS4xNjg2MzM1NDg1LjAuMC4w',
@@ -191,7 +184,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                               ),
                                             ),
                                             Align(
-                                              alignment: AlignmentDirectional(
+                                              alignment: const AlignmentDirectional(
                                                   0.85, 0.46),
                                               child: FlutterFlowIconButton(
                                                 borderColor: Colors.transparent,
@@ -299,7 +292,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 23.0, 0.0, 10.0),
                                       child: Text(
                                         'Organization name',
@@ -346,7 +339,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                               BorderRadius.circular(10.0),
                                         ),
                                         errorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -354,7 +347,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                               BorderRadius.circular(10.0),
                                         ),
                                         focusedErrorBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -362,7 +355,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                               BorderRadius.circular(10.0),
                                         ),
                                         contentPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
+                                            const EdgeInsetsDirectional.fromSTEB(
                                                 10.0, 3.0, 10.0, 3.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
@@ -379,7 +372,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 23.0, 0.0, 10.0),
                                           child: Text(
                                             'Organization Address',
@@ -440,7 +433,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                       ],
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 23.0, 0.0, 10.0),
                                       child: Text(
                                         'Profile Type',
@@ -454,10 +447,10 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 8.0, 0.0, 8.0),
                                       child: FlutterFlowChoiceChips(
-                                        options: [
+                                        options: const [
                                           ChipData('School'),
                                           ChipData('Institution'),
                                           ChipData('Agency')
@@ -484,7 +477,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                                   .primaryText,
                                           iconSize: 0.0,
                                           labelPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   14.0, 6.0, 14.0, 8.0),
                                           elevation: 0.0,
                                         ),
@@ -507,7 +500,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                                   .primaryText,
                                           iconSize: 18.0,
                                           labelPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   14.0, 6.0, 14.0, 8.0),
                                           elevation: 0.0,
                                         ),
@@ -530,7 +523,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                       phone: false,
                                     ))
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 23.0, 0.0, 10.0),
                                         child: Text(
                                           'School Name',
@@ -550,7 +543,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 23.0, 0.0, 10.0),
                                           child: Text(
                                             'Your Role',
@@ -565,7 +558,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 15.0),
                                           child: TextFormField(
                                             controller:
@@ -603,7 +596,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                                     BorderRadius.circular(10.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
+                                                borderSide: const BorderSide(
                                                   color: Color(0x00000000),
                                                   width: 1.0,
                                                 ),
@@ -612,7 +605,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
-                                                borderSide: BorderSide(
+                                                borderSide: const BorderSide(
                                                   color: Color(0x00000000),
                                                   width: 1.0,
                                                 ),
@@ -620,7 +613,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                                     BorderRadius.circular(10.0),
                                               ),
                                               contentPadding:
-                                                  EdgeInsetsDirectional
+                                                  const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 3.0, 10.0, 3.0),
                                             ),
@@ -634,7 +627,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                         ),
                                       ],
                                     ),
-                                  ].divide(SizedBox(height: 10.0)),
+                                  ].divide(const SizedBox(height: 10.0)),
                                 ),
                               ),
                             ),
@@ -683,9 +676,9 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                             options: FFButtonOptions(
                               width: MediaQuery.sizeOf(context).width * 0.878,
                               height: MediaQuery.sizeOf(context).height * 0.065,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).tertiary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -695,7 +688,7 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                     color: Colors.white,
                                   ),
                               elevation: 3.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),

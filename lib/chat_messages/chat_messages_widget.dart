@@ -6,17 +6,12 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import '/recruiter/component/schedule_interview/schedule_interview_widget.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'chat_messages_model.dart';
 export 'chat_messages_model.dart';
@@ -47,8 +42,8 @@ class _ChatMessagesWidgetState extends State<ChatMessagesWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 200.ms,
-          begin: Offset(0.0, 100.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 100.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -140,7 +135,7 @@ class _ChatMessagesWidgetState extends State<ChatMessagesWidget>
                         .userName,
                     style: FlutterFlowTheme.of(context).bodyMedium,
                   ),
-                  actions: [],
+                  actions: const [],
                   centerTitle: true,
                   elevation: 2.0,
                 ),
@@ -191,7 +186,7 @@ class _ChatMessagesWidgetState extends State<ChatMessagesWidget>
                               List<MessagesRecord> listViewMessagesRecordList =
                                   snapshot.data!;
                               return ListView.separated(
-                                padding: EdgeInsets.fromLTRB(
+                                padding: const EdgeInsets.fromLTRB(
                                   0,
                                   27.0,
                                   0,
@@ -202,7 +197,7 @@ class _ChatMessagesWidgetState extends State<ChatMessagesWidget>
                                 scrollDirection: Axis.vertical,
                                 itemCount: listViewMessagesRecordList.length,
                                 separatorBuilder: (_, __) =>
-                                    SizedBox(height: 12.0),
+                                    const SizedBox(height: 12.0),
                                 itemBuilder: (context, listViewIndex) {
                                   final listViewMessagesRecord =
                                       listViewMessagesRecordList[listViewIndex];
@@ -224,7 +219,7 @@ class _ChatMessagesWidgetState extends State<ChatMessagesWidget>
                         ),
                       ),
                       Container(
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Builder(
                           builder: (context) {
                             if (_model.send) {
@@ -323,8 +318,7 @@ class _ChatMessagesWidgetState extends State<ChatMessagesWidget>
                                           }
                                         }
 
-                                        if (_model.uploadedFileUrl1 != null &&
-                                            _model.uploadedFileUrl1 != '') {
+                                        if (_model.uploadedFileUrl1 != '') {
                                           await MessagesRecord.collection
                                               .doc()
                                               .set(createMessagesRecordData(
@@ -408,8 +402,7 @@ class _ChatMessagesWidgetState extends State<ChatMessagesWidget>
                                           }
                                         }
 
-                                        if (_model.uploadedFileUrl2 != null &&
-                                            _model.uploadedFileUrl2 != '') {
+                                        if (_model.uploadedFileUrl2 != '') {
                                           await MessagesRecord.collection
                                               .doc()
                                               .set(createMessagesRecordData(
@@ -473,8 +466,8 @@ class _ChatMessagesWidgetState extends State<ChatMessagesWidget>
                                       },
                                     ),
                                   ]
-                                      .divide(SizedBox(width: 20.0))
-                                      .around(SizedBox(width: 20.0)),
+                                      .divide(const SizedBox(width: 20.0))
+                                      .around(const SizedBox(width: 20.0)),
                                 ).animateOnPageLoad(
                                     animationsMap['rowOnPageLoadAnimation']!),
                               );
@@ -598,8 +591,8 @@ class _ChatMessagesWidgetState extends State<ChatMessagesWidget>
                                       },
                                     ),
                                   ]
-                                      .divide(SizedBox(width: 20.0))
-                                      .around(SizedBox(width: 20.0)),
+                                      .divide(const SizedBox(width: 20.0))
+                                      .around(const SizedBox(width: 20.0)),
                                 ),
                               );
                             }

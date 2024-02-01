@@ -1,9 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'choose_plan_model.dart';
 export 'choose_plan_model.dart';
 
@@ -42,12 +39,12 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      constraints: BoxConstraints(
+      constraints: const BoxConstraints(
         maxWidth: 600.0,
       ),
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
           bottomRight: Radius.circular(0.0),
           topLeft: Radius.circular(20.0),
@@ -59,7 +56,7 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 12.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 12.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -91,12 +88,12 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
             color: FlutterFlowTheme.of(context).accent3,
           ),
           Padding(
-            padding: EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(20.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                   child: Container(
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -106,7 +103,7 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
                       ),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(12.0),
+                      padding: const EdgeInsets.all(12.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -140,7 +137,7 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
                           ),
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   12.0, 0.0, 0.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -168,7 +165,7 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 4.0, 10.0, 4.0),
                                           child: Text(
                                             '3 FREE ADS POSTINGS',
@@ -188,14 +185,14 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
                                     ],
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 4.0, 0.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Container(
                                           decoration: BoxDecoration(
-                                            color: Color(0xFFD9D9D9),
+                                            color: const Color(0xFFD9D9D9),
                                             shape: BoxShape.circle,
                                             border: Border.all(
                                               color:
@@ -204,7 +201,7 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
                                             ),
                                           ),
                                           child: Padding(
-                                            padding: EdgeInsets.all(2.0),
+                                            padding: const EdgeInsets.all(2.0),
                                             child: Icon(
                                               Icons.check,
                                               color:
@@ -248,14 +245,14 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 4.0, 0.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Container(
                                           decoration: BoxDecoration(
-                                            color: Color(0xFFD9D9D9),
+                                            color: const Color(0xFFD9D9D9),
                                             shape: BoxShape.circle,
                                             border: Border.all(
                                               color:
@@ -264,7 +261,7 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
                                             ),
                                           ),
                                           child: Padding(
-                                            padding: EdgeInsets.all(2.0),
+                                            padding: const EdgeInsets.all(2.0),
                                             child: Icon(
                                               Icons.check,
                                               color:
@@ -297,7 +294,7 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                   child: Container(
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -307,7 +304,7 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
                       ),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(12.0),
+                      padding: const EdgeInsets.all(12.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -341,7 +338,7 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
                           ),
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   12.0, 0.0, 0.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -369,7 +366,7 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 4.0, 10.0, 4.0),
                                           child: Text(
                                             '7 FREE ADS POSTINGS',
@@ -389,14 +386,14 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
                                     ],
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 4.0, 0.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Container(
                                           decoration: BoxDecoration(
-                                            color: Color(0xFFD9D9D9),
+                                            color: const Color(0xFFD9D9D9),
                                             shape: BoxShape.circle,
                                             border: Border.all(
                                               color:
@@ -405,7 +402,7 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
                                             ),
                                           ),
                                           child: Padding(
-                                            padding: EdgeInsets.all(2.0),
+                                            padding: const EdgeInsets.all(2.0),
                                             child: Icon(
                                               Icons.check,
                                               color:
@@ -449,14 +446,14 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 4.0, 0.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Container(
                                           decoration: BoxDecoration(
-                                            color: Color(0xFFD9D9D9),
+                                            color: const Color(0xFFD9D9D9),
                                             shape: BoxShape.circle,
                                             border: Border.all(
                                               color:
@@ -465,7 +462,7 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
                                             ),
                                           ),
                                           child: Padding(
-                                            padding: EdgeInsets.all(2.0),
+                                            padding: const EdgeInsets.all(2.0),
                                             child: Icon(
                                               Icons.check,
                                               color:
@@ -498,7 +495,7 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
                   child: Container(
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -508,7 +505,7 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
                       ),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(12.0),
+                      padding: const EdgeInsets.all(12.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -542,7 +539,7 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
                           ),
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   12.0, 0.0, 0.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -570,7 +567,7 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
                                         ),
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   10.0, 4.0, 10.0, 4.0),
                                           child: Text(
                                             '10 FREE ADS POSTINGS',
@@ -590,14 +587,14 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
                                     ],
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 4.0, 0.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Container(
                                           decoration: BoxDecoration(
-                                            color: Color(0xFFD9D9D9),
+                                            color: const Color(0xFFD9D9D9),
                                             shape: BoxShape.circle,
                                             border: Border.all(
                                               color:
@@ -606,7 +603,7 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
                                             ),
                                           ),
                                           child: Padding(
-                                            padding: EdgeInsets.all(2.0),
+                                            padding: const EdgeInsets.all(2.0),
                                             child: Icon(
                                               Icons.check,
                                               color:
@@ -650,14 +647,14 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 4.0, 0.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Container(
                                           decoration: BoxDecoration(
-                                            color: Color(0xFFD9D9D9),
+                                            color: const Color(0xFFD9D9D9),
                                             shape: BoxShape.circle,
                                             border: Border.all(
                                               color:
@@ -666,7 +663,7 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
                                             ),
                                           ),
                                           child: Padding(
-                                            padding: EdgeInsets.all(2.0),
+                                            padding: const EdgeInsets.all(2.0),
                                             child: Icon(
                                               Icons.check,
                                               color:

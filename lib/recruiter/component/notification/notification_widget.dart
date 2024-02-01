@@ -1,9 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'notification_model.dart';
 export 'notification_model.dart';
 
@@ -42,12 +39,12 @@ class _NotificationWidgetState extends State<NotificationWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      constraints: BoxConstraints(
+      constraints: const BoxConstraints(
         maxWidth: 600.0,
       ),
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
           bottomRight: Radius.circular(0.0),
           topLeft: Radius.circular(20.0),
@@ -59,7 +56,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 12.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 12.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -91,7 +88,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
             color: FlutterFlowTheme.of(context).accent3,
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 10.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 10.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -110,13 +107,13 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                         child: Text(
                           'Get notified on new profiles related your search on your mobile.',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Sora',
-                                    color: Color(0x80001451),
+                                    color: const Color(0x80001451),
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.w300,
                                   ),
@@ -128,7 +125,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                 Switch.adaptive(
                   value: _model.switchValue1 ??= true,
                   onChanged: (newValue) async {
-                    setState(() => _model.switchValue1 = newValue!);
+                    setState(() => _model.switchValue1 = newValue);
                   },
                   activeColor: FlutterFlowTheme.of(context).tertiary,
                   activeTrackColor: FlutterFlowTheme.of(context).accent1,
@@ -140,7 +137,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 10.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 10.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -159,13 +156,13 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                         child: Text(
                           'Get notified on any interesting news & updates form our community.',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Sora',
-                                    color: Color(0x80001451),
+                                    color: const Color(0x80001451),
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.w300,
                                   ),
@@ -177,7 +174,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                 Switch.adaptive(
                   value: _model.switchValue2 ??= true,
                   onChanged: (newValue) async {
-                    setState(() => _model.switchValue2 = newValue!);
+                    setState(() => _model.switchValue2 = newValue);
                   },
                   activeColor: FlutterFlowTheme.of(context).tertiary,
                   activeTrackColor: FlutterFlowTheme.of(context).accent1,
@@ -189,7 +186,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 44.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 44.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -208,13 +205,13 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                         child: Text(
                           'We send various emails around updates, news and tips.',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Sora',
-                                    color: Color(0x80001451),
+                                    color: const Color(0x80001451),
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.w300,
                                   ),
@@ -226,7 +223,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                 Switch.adaptive(
                   value: _model.switchValue3 ??= false,
                   onChanged: (newValue) async {
-                    setState(() => _model.switchValue3 = newValue!);
+                    setState(() => _model.switchValue3 = newValue);
                   },
                   activeColor: FlutterFlowTheme.of(context).tertiary,
                   activeTrackColor: FlutterFlowTheme.of(context).accent1,

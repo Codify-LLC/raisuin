@@ -2,9 +2,6 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'navigation_model.dart';
 export 'navigation_model.dart';
 
@@ -16,11 +13,11 @@ class NavigationWidget extends StatefulWidget {
     bool? ads,
     bool? messages,
     bool? accounts,
-  })  : this.home = home ?? false,
-        this.search = search ?? false,
-        this.ads = ads ?? false,
-        this.messages = messages ?? false,
-        this.accounts = accounts ?? false;
+  })  : home = home ?? false,
+        search = search ?? false,
+        ads = ads ?? false,
+        messages = messages ?? false,
+        accounts = accounts ?? false;
 
   final bool home;
   final bool search;
@@ -83,7 +80,7 @@ class _NavigationWidgetState extends State<NavigationWidget> {
                   buttonSize: 40.0,
                   fillColor: widget.home
                       ? FlutterFlowTheme.of(context).tertiary
-                      : Color(0x00000000),
+                      : const Color(0x00000000),
                   icon: Icon(
                     Icons.home,
                     color: widget.home
@@ -100,7 +97,7 @@ class _NavigationWidgetState extends State<NavigationWidget> {
                   buttonSize: 40.0,
                   fillColor: widget.search
                       ? FlutterFlowTheme.of(context).tertiary
-                      : Color(0x00000000),
+                      : const Color(0x00000000),
                   icon: Icon(
                     Icons.search,
                     color: widget.search
@@ -118,7 +115,7 @@ class _NavigationWidgetState extends State<NavigationWidget> {
                   buttonSize: 40.0,
                   fillColor: widget.ads
                       ? FlutterFlowTheme.of(context).tertiary
-                      : Color(0x00000000),
+                      : const Color(0x00000000),
                   icon: Icon(
                     Icons.add_rounded,
                     color: widget.ads
@@ -136,7 +133,7 @@ class _NavigationWidgetState extends State<NavigationWidget> {
                   buttonSize: 40.0,
                   fillColor: widget.messages
                       ? FlutterFlowTheme.of(context).tertiary
-                      : Color(0x00000000),
+                      : const Color(0x00000000),
                   icon: Icon(
                     Icons.message_outlined,
                     color: widget.messages
@@ -154,7 +151,7 @@ class _NavigationWidgetState extends State<NavigationWidget> {
                   buttonSize: 40.0,
                   fillColor: widget.accounts
                       ? FlutterFlowTheme.of(context).tertiary
-                      : Color(0x00000000),
+                      : const Color(0x00000000),
                   icon: Icon(
                     Icons.account_circle,
                     color: widget.accounts

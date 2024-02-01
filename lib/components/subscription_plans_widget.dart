@@ -2,10 +2,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'subscription_plans_model.dart';
 export 'subscription_plans_model.dart';
 
@@ -13,7 +10,7 @@ class SubscriptionPlansWidget extends StatefulWidget {
   const SubscriptionPlansWidget({
     super.key,
     String? parameter1,
-  }) : this.parameter1 = parameter1 ?? '15Days';
+  }) : parameter1 = parameter1 ?? '15Days';
 
   final String parameter1;
 
@@ -56,7 +53,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(20.0, 32.0, 20.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 32.0, 20.0, 0.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -89,14 +86,14 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
           ),
           Expanded(
             child: Container(
-              constraints: BoxConstraints(
+              constraints: const BoxConstraints(
                 maxWidth: 600.0,
               ),
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 20.0),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -104,7 +101,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             0.0, 20.0, 0.0, 20.0),
                         child: Text(
                           'Choose your plan',
@@ -120,11 +117,11 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 10.0),
                             child: Container(
                               height: 187.0,
-                              constraints: BoxConstraints(
+                              constraints: const BoxConstraints(
                                 minWidth: 330.0,
                                 minHeight: 187.0,
                               ),
@@ -139,7 +136,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                 ),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     15.0, 12.0, 15.0, 12.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -166,7 +163,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                         Expanded(
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 10.0, 0.0, 0.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -198,7 +195,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                     context)
                                                                 .alternate,
                                                         borderRadius:
-                                                            BorderRadius.only(
+                                                            const BorderRadius.only(
                                                           bottomLeft:
                                                               Radius.circular(
                                                                   10.0),
@@ -250,7 +247,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   10.0,
                                                                   0.0,
@@ -339,7 +336,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                 fit: BoxFit.cover,
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -377,7 +374,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                 fit: BoxFit.cover,
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -403,7 +400,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                 fit: BoxFit.cover,
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -430,11 +427,11 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 10.0),
                             child: Container(
                               height: 187.0,
-                              constraints: BoxConstraints(
+                              constraints: const BoxConstraints(
                                 minWidth: 330.0,
                                 minHeight: 187.0,
                               ),
@@ -449,7 +446,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                 ),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     15.0, 12.0, 15.0, 12.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -476,7 +473,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                         Expanded(
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 10.0, 0.0, 0.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -508,7 +505,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                     context)
                                                                 .alternate,
                                                         borderRadius:
-                                                            BorderRadius.only(
+                                                            const BorderRadius.only(
                                                           bottomLeft:
                                                               Radius.circular(
                                                                   10.0),
@@ -560,7 +557,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   10.0,
                                                                   0.0,
@@ -649,7 +646,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                 fit: BoxFit.cover,
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -687,7 +684,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                 fit: BoxFit.cover,
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -713,7 +710,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                 fit: BoxFit.cover,
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -741,7 +738,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                           ),
                           Container(
                             height: 187.0,
-                            constraints: BoxConstraints(
+                            constraints: const BoxConstraints(
                               minWidth: 330.0,
                               minHeight: 187.0,
                             ),
@@ -756,7 +753,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                               ),
                             ),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   15.0, 12.0, 15.0, 12.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -783,7 +780,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                       Expanded(
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 10.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -814,7 +811,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                                   context)
                                                               .alternate,
                                                       borderRadius:
-                                                          BorderRadius.only(
+                                                          const BorderRadius.only(
                                                         bottomLeft:
                                                             Radius.circular(
                                                                 10.0),
@@ -865,7 +862,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(10.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -948,7 +945,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                               fit: BoxFit.cover,
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       10.0, 0.0, 0.0, 0.0),
                                               child: Text(
@@ -986,7 +983,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                               fit: BoxFit.cover,
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       10.0, 0.0, 0.0, 0.0),
                                               child: Text(
@@ -1012,7 +1009,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                                               fit: BoxFit.cover,
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       10.0, 0.0, 0.0, 0.0),
                                               child: Text(
@@ -1054,7 +1051,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                 color: FlutterFlowTheme.of(context).accent3,
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20.0, 9.0, 20.0, 20.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(20.0, 9.0, 20.0, 20.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -1065,15 +1062,15 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                   },
                   child: Container(
                     height: 50.0,
-                    constraints: BoxConstraints(
+                    constraints: const BoxConstraints(
                       maxWidth: 400.0,
                     ),
                     decoration: BoxDecoration(
-                      color: Color(0xFFDD3568),
+                      color: const Color(0xFFDD3568),
                       borderRadius: BorderRadius.circular(40.0),
                     ),
                     child: Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Text(
                         'Purchase',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
