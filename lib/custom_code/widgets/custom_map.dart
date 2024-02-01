@@ -17,7 +17,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart' as googleMaps;
 import 'package:dio/dio.dart';
 import 'package:image/image.dart' as img; // Import the image package
 import '../../backend/api_requests/api_calls.dart';
-import 'package:raisunjobsfinal/components/candidate_profile_card_widget.dart';
+import '../../components/candidate_profile_card_widget.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 
 class CustomMap extends StatefulWidget {
