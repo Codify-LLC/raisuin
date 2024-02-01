@@ -472,7 +472,7 @@ class FFRoute {
                     child: Image.asset(
                       'assets/images/es_Logo.svg',
                       width: MediaQuery.sizeOf(context).width * 0.8,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 )
