@@ -380,11 +380,8 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                 )
                                 .where(
                                   'salary_range.from',
-                                  isGreaterThanOrEqualTo: valueOrDefault<int>(
-                                    int.parse(widget.monthlySalaryRangeFrom!
-                                        .toString()),
-                                    0,
-                                  ),
+                                  isGreaterThanOrEqualTo:
+                                      widget.monthlySalaryRangeFrom,
                                 ),
                           ),
                           builder: (context, snapshot) {
@@ -474,7 +471,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                 shape: BoxShape.circle,
                                               ),
                                               child: Image.network(
-                                                listViewUsersRecord.photoUrl,
+                                                '',
                                                 fit: BoxFit.cover,
                                                 errorBuilder: (context, error,
                                                         stackTrace) =>
@@ -484,425 +481,288 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                 ),
                                               ),
                                             ),
-                                            Expanded(
-                                              child: Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        10.0, 0.0, 0.0, 0.0),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      listViewUsersRecord
-                                                          .displayName,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium,
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  4.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          SvgPicture.asset(
-                                                            'assets/images/cap.svg',
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                          Expanded(
-                                                            child: Padding(
-                                                              padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          2.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                '${valueOrDefault<String>(
-                                                                  listViewUsersRecord
-                                                                      .education
-                                                                      .where((e) =>
-                                                                          e.primary)
-                                                                      .toList()
-                                                                      .first
-                                                                      .educationType,
-                                                                  'No Education',
-                                                                )} ${valueOrDefault<String>(
-                                                                  listViewUsersRecord
-                                                                      .education
-                                                                      .where((e) =>
-                                                                          e.primary)
-                                                                      .toList()
-                                                                      .first
-                                                                      .degree,
-                                                                  'No Degree',
-                                                                )} ${valueOrDefault<String>(
-                                                                  listViewUsersRecord
-                                                                      .education
-                                                                      .where((e) =>
-                                                                          e.primary)
-                                                                      .toList()
-                                                                      .first
-                                                                      .subject,
-                                                                  'No Subject',
-                                                                )}',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Sora',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primaryText,
-                                                                      fontSize:
-                                                                          12.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w300,
-                                                                    ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  4.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          SvgPicture.asset(
-                                                            'assets/images/Location1.svg',
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                          Expanded(
-                                                            child: Padding(
-                                                              padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          2.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                '${listViewUsersRecord.address.city} ${listViewUsersRecord.address.state}',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Sora',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primaryText,
-                                                                      fontSize:
-                                                                          12.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w300,
-                                                                    ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ],
+                                            if (false)
+                                              ToggleIcon(
+                                                onPressed: () async {
+                                                  setState(
+                                                    () => _model
+                                                            .selectedCandidate
+                                                            .contains(
+                                                                listViewUsersRecord
+                                                                    .reference)
+                                                        ? _model
+                                                            .removeFromSelectedCandidate(
+                                                                listViewUsersRecord
+                                                                    .reference)
+                                                        : _model
+                                                            .addToSelectedCandidate(
+                                                                listViewUsersRecord
+                                                                    .reference),
+                                                  );
+                                                },
+                                                value: _model.selectedCandidate
+                                                    .contains(
+                                                        listViewUsersRecord
+                                                            .reference),
+                                                onIcon: Icon(
+                                                  Icons.check_circle,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .tertiary,
+                                                  size: 25.0,
+                                                ),
+                                                offIcon: Icon(
+                                                  Icons.check_circle,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondary,
+                                                  size: 25.0,
                                                 ),
                                               ),
-                                            ),
-                                            ToggleIcon(
-                                              onPressed: () async {
-                                                setState(
-                                                  () => _model.selectedCandidate
-                                                          .contains(
-                                                              listViewUsersRecord
-                                                                  .reference)
-                                                      ? _model
-                                                          .removeFromSelectedCandidate(
-                                                              listViewUsersRecord
-                                                                  .reference)
-                                                      : _model
-                                                          .addToSelectedCandidate(
-                                                              listViewUsersRecord
-                                                                  .reference),
-                                                );
-                                              },
-                                              value: _model.selectedCandidate
-                                                  .contains(listViewUsersRecord
-                                                      .reference),
-                                              onIcon: Icon(
-                                                Icons.check_circle,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .tertiary,
-                                                size: 25.0,
-                                              ),
-                                              offIcon: Icon(
-                                                Icons.check_circle,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondary,
-                                                size: 25.0,
-                                              ),
-                                            ),
                                           ]
                                               .addToStart(const SizedBox(width: 20.0))
                                               .addToEnd(const SizedBox(width: 20.0)),
                                         ),
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Container(
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20.0),
-                                                    border: Border.all(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .accent3,
+                                        if (false)
+                                          Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Container(
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20.0),
+                                                      border: Border.all(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .accent3,
+                                                      ),
+                                                    ),
+                                                    child: Align(
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsets.all(8.0),
+                                                        child: Text(
+                                                          listViewUsersRecord
+                                                              .gender,
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Sora',
+                                                                fontSize: 12.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w300,
+                                                              ),
+                                                        ),
+                                                      ),
                                                     ),
                                                   ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(4.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(20.0),
+                                                        border: Border.all(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .accent3,
+                                                        ),
+                                                      ),
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsets.all(8.0),
+                                                        child: Text(
+                                                          'Age ${functions.dateStringAgeCalculator(listViewUsersRecord.dob!.toString()).toString()}',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Sora',
+                                                                fontSize: 12.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w300,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(4.0, 0.0,
+                                                                0.0, 0.0),
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(20.0),
+                                                        border: Border.all(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .accent3,
+                                                        ),
+                                                      ),
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsets.all(8.0),
+                                                        child: Text(
+                                                          '${formatNumber(
+                                                            listViewUsersRecord
+                                                                .salaryRange
+                                                                .from,
+                                                            formatType:
+                                                                FormatType
+                                                                    .decimal,
+                                                            decimalType:
+                                                                DecimalType
+                                                                    .automatic,
+                                                            currency: '₹',
+                                                          )} - ${formatNumber(
+                                                            listViewUsersRecord
+                                                                .salaryRange.to,
+                                                            formatType:
+                                                                FormatType
+                                                                    .decimal,
+                                                            decimalType:
+                                                                DecimalType
+                                                                    .automatic,
+                                                            currency: '₹',
+                                                          )}',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Sora',
+                                                                fontSize: 12.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w300,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              if (false)
+                                                Expanded(
                                                   child: Align(
                                                     alignment:
                                                         const AlignmentDirectional(
-                                                            0.0, 0.0),
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(8.0),
-                                                      child: Text(
-                                                        listViewUsersRecord
-                                                            .gender,
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Sora',
-                                                              fontSize: 12.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w300,
-                                                            ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          4.0, 0.0, 0.0, 0.0),
-                                                  child: Container(
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20.0),
-                                                      border: Border.all(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .accent3,
-                                                      ),
-                                                    ),
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(8.0),
-                                                      child: Text(
-                                                        'Age ${functions.dateStringAgeCalculator(listViewUsersRecord.dob!.toString()).toString()}',
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Sora',
-                                                              fontSize: 12.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w300,
-                                                            ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          4.0, 0.0, 0.0, 0.0),
-                                                  child: Container(
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              20.0),
-                                                      border: Border.all(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .accent3,
-                                                      ),
-                                                    ),
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(8.0),
-                                                      child: Text(
-                                                        '${formatNumber(
-                                                          listViewUsersRecord
-                                                              .salaryRange.from,
-                                                          formatType: FormatType
-                                                              .decimal,
-                                                          decimalType:
-                                                              DecimalType
-                                                                  .automatic,
-                                                          currency: '₹',
-                                                        )} - ${formatNumber(
-                                                          listViewUsersRecord
-                                                              .salaryRange.to,
-                                                          formatType: FormatType
-                                                              .decimal,
-                                                          decimalType:
-                                                              DecimalType
-                                                                  .automatic,
-                                                          currency: '₹',
-                                                        )}',
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Sora',
-                                                              fontSize: 12.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w300,
-                                                            ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            Expanded(
-                                              child: Align(
-                                                alignment: const AlignmentDirectional(
-                                                    1.0, 0.0),
-                                                child: ToggleIcon(
-                                                  onPressed: () async {
-                                                    setState(
-                                                      () => _model
-                                                              .savedCandidates
-                                                              .contains(
+                                                            1.0, 0.0),
+                                                    child: ToggleIcon(
+                                                      onPressed: () async {
+                                                        setState(
+                                                          () => _model
+                                                                  .savedCandidates
+                                                                  .contains(
+                                                                      listViewUsersRecord
+                                                                          .reference)
+                                                              ? _model.removeFromSavedCandidates(
                                                                   listViewUsersRecord
                                                                       .reference)
-                                                          ? _model.removeFromSavedCandidates(
-                                                              listViewUsersRecord
-                                                                  .reference)
-                                                          : _model.addToSavedCandidates(
+                                                              : _model.addToSavedCandidates(
+                                                                  listViewUsersRecord
+                                                                      .reference),
+                                                        );
+                                                        if ((currentUserDocument
+                                                                    ?.savedCandidates
+                                                                    .toList() ??
+                                                                [])
+                                                            .contains(
+                                                                listViewUsersRecord
+                                                                    .reference)) {
+                                                          await currentUserReference!
+                                                              .update({
+                                                            ...mapToFirestore(
+                                                              {
+                                                                'savedCandidates':
+                                                                    FieldValue
+                                                                        .arrayRemove([
+                                                                  listViewUsersRecord
+                                                                      .reference
+                                                                ]),
+                                                              },
+                                                            ),
+                                                          });
+                                                        } else {
+                                                          await currentUserReference!
+                                                              .update({
+                                                            ...mapToFirestore(
+                                                              {
+                                                                'savedCandidates':
+                                                                    FieldValue
+                                                                        .arrayUnion([
+                                                                  listViewUsersRecord
+                                                                      .reference
+                                                                ]),
+                                                              },
+                                                            ),
+                                                          });
+                                                        }
+                                                      },
+                                                      value: _model
+                                                          .savedCandidates
+                                                          .contains(
                                                               listViewUsersRecord
                                                                   .reference),
-                                                    );
-                                                    if ((currentUserDocument
-                                                                ?.savedCandidates
-                                                                .toList() ??
-                                                            [])
-                                                        .contains(
-                                                            listViewUsersRecord
-                                                                .reference)) {
-                                                      await currentUserReference!
-                                                          .update({
-                                                        ...mapToFirestore(
-                                                          {
-                                                            'savedCandidates':
-                                                                FieldValue
-                                                                    .arrayRemove([
-                                                              listViewUsersRecord
-                                                                  .reference
-                                                            ]),
-                                                          },
-                                                        ),
-                                                      });
-                                                    } else {
-                                                      await currentUserReference!
-                                                          .update({
-                                                        ...mapToFirestore(
-                                                          {
-                                                            'savedCandidates':
-                                                                FieldValue
-                                                                    .arrayUnion([
-                                                              listViewUsersRecord
-                                                                  .reference
-                                                            ]),
-                                                          },
-                                                        ),
-                                                      });
-                                                    }
-                                                  },
-                                                  value: _model.savedCandidates
-                                                      .contains(
-                                                          listViewUsersRecord
-                                                              .reference),
-                                                  onIcon: Icon(
-                                                    Icons.favorite_rounded,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .tertiary,
-                                                    size: 25.0,
-                                                  ),
-                                                  offIcon: Icon(
-                                                    Icons.favorite_border_sharp,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondary,
-                                                    size: 25.0,
+                                                      onIcon: Icon(
+                                                        Icons.favorite_rounded,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .tertiary,
+                                                        size: 25.0,
+                                                      ),
+                                                      offIcon: Icon(
+                                                        Icons
+                                                            .favorite_border_sharp,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondary,
+                                                        size: 25.0,
+                                                      ),
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                            ),
-                                          ]
-                                              .addToStart(const SizedBox(width: 20.0))
-                                              .addToEnd(const SizedBox(width: 20.0)),
-                                        ),
+                                            ]
+                                                .addToStart(
+                                                    const SizedBox(width: 20.0))
+                                                .addToEnd(
+                                                    const SizedBox(width: 20.0)),
+                                          ),
                                         Divider(
                                           height: 1.0,
                                           thickness: 1.0,
