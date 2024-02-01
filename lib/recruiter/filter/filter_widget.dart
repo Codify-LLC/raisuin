@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'filter_model.dart';
 export 'filter_model.dart';
 
@@ -56,8 +55,6 @@ class _FilterWidgetState extends State<FilterWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Container(
       width: double.infinity,
       constraints: const BoxConstraints(
@@ -1151,20 +1148,21 @@ class _FilterWidgetState extends State<FilterWidget> {
                                   ParamType.String,
                                 ),
                                 'workExperienceFrom': serializeParam(
-                                  _model.expfromController.text,
-                                  ParamType.String,
+                                  int.tryParse(_model.expfromController.text),
+                                  ParamType.int,
                                 ),
                                 'workExperienceTo': serializeParam(
-                                  _model.exptoController.text,
-                                  ParamType.String,
+                                  int.tryParse(_model.exptoController.text),
+                                  ParamType.int,
                                 ),
                                 'monthlySalaryRangeFrom': serializeParam(
-                                  _model.salaryminController.text,
-                                  ParamType.String,
+                                  int.tryParse(_model.salaryminController.text),
+                                  ParamType.int,
                                 ),
                                 'monthlySalaryRangeTo': serializeParam(
-                                  _model.salarytillController.text,
-                                  ParamType.String,
+                                  int.tryParse(
+                                      _model.salarytillController.text),
+                                  ParamType.int,
                                 ),
                               }.withoutNulls,
                             );

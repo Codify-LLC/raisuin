@@ -16,7 +16,6 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:provider/provider.dart';
 import 'package:text_search/text_search.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'list_candidates_model.dart';
@@ -29,29 +28,25 @@ class ListCandidatesWidget extends StatefulWidget {
     String? educationType,
     String? educationDegree,
     String? educationSubject,
-    String? workExperienceFrom,
-    String? workExperienceTo,
-    String? monthlySalaryRangeFrom,
-    String? monthlySalaryRangeTo,
+    this.workExperienceFrom,
+    this.workExperienceTo,
+    this.monthlySalaryRangeFrom,
+    this.monthlySalaryRangeTo,
     bool? filtered,
   })  : jobType = jobType ?? '',
         educationType = educationType ?? '',
         educationDegree = educationDegree ?? '',
         educationSubject = educationSubject ?? '',
-        workExperienceFrom = workExperienceFrom ?? '',
-        workExperienceTo = workExperienceTo ?? '',
-        monthlySalaryRangeFrom = monthlySalaryRangeFrom ?? '',
-        monthlySalaryRangeTo = monthlySalaryRangeTo ?? '',
         filtered = filtered ?? false;
 
   final String jobType;
   final String educationType;
   final String educationDegree;
   final String educationSubject;
-  final String workExperienceFrom;
-  final String workExperienceTo;
-  final String monthlySalaryRangeFrom;
-  final String monthlySalaryRangeTo;
+  final int? workExperienceFrom;
+  final int? workExperienceTo;
+  final int? monthlySalaryRangeFrom;
+  final int? monthlySalaryRangeTo;
   final bool filtered;
 
   @override
@@ -101,8 +96,6 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
         ),
       );
     }
-
-    context.watch<FFAppState>();
 
     return Title(
         title: 'listCandidates',
@@ -388,7 +381,8 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                 .where(
                                   'salary_range.from',
                                   isGreaterThanOrEqualTo: valueOrDefault<int>(
-                                    int.parse(widget.monthlySalaryRangeFrom),
+                                    int.parse(widget.monthlySalaryRangeFrom!
+                                        .toString()),
                                     0,
                                   ),
                                 ),
@@ -426,9 +420,26 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                 final listViewUsersRecord =
                                     listViewUsersRecordList[listViewIndex];
                                 return Visibility(
-                                  visible: functions.maxSalaryComparsion(
-                                      int.parse(widget.monthlySalaryRangeTo),
-                                      listViewUsersRecord.salaryRange.to),
+                                  visible: ((widget.monthlySalaryRangeTo ==
+                                              null) ||
+                                          (widget.monthlySalaryRangeTo! <=
+                                              listViewUsersRecord
+                                                  .salaryRange.to)) &&
+                                      (((widget.workExperienceFrom == null) &&
+                                              (widget.workExperienceTo ==
+                                                  null)) ||
+                                          (listViewUsersRecord
+                                              .workExperienceHistory
+                                              .where((e) =>
+                                                  (functions.calculateNumberOfYears(
+                                                          e.duration) >=
+                                                      widget
+                                                          .workExperienceFrom!) &&
+                                                  (functions.calculateNumberOfYears(
+                                                          e.duration) <=
+                                                      widget.workExperienceTo!))
+                                              .toList()
+                                              .isNotEmpty)),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -929,9 +940,11 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                 final searchresultItem =
                                     searchresult[searchresultIndex];
                                 return Visibility(
-                                  visible: (widget.monthlySalaryRangeTo == '') ||
-                                      ((int.tryParse(
-                                              widget.monthlySalaryRangeTo))! <=
+                                  visible: (widget.monthlySalaryRangeTo ==
+                                          null) ||
+                                      ((int.tryParse(widget
+                                              .monthlySalaryRangeTo!
+                                              .toString()))! <=
                                           searchresultItem.salaryRange.to) ||
                                       (searchresultItem.profileType ==
                                           'Candidate'),

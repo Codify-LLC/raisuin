@@ -14,7 +14,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'savedprofile_model.dart';
 export 'savedprofile_model.dart';
@@ -56,8 +55,6 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
         ),
       );
     }
-
-    context.watch<FFAppState>();
 
     return Title(
         title: 'savedprofile',

@@ -3,9 +3,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'send_message_model.dart';
 export 'send_message_model.dart';
 
@@ -50,8 +48,6 @@ class _SendMessageWidgetState extends State<SendMessageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Container(
       width: double.infinity,
       constraints: const BoxConstraints(
@@ -184,12 +180,23 @@ class _SendMessageWidgetState extends State<SendMessageWidget> {
                                 queryBuilder: (chatsRecord) =>
                                     chatsRecord.where(
                                   'users',
-                                  arrayContains: currentUserReference,
+                                  arrayContains: getChatUserFirestoreData(
+                                    ChatUserStruct(
+                                      userRef: currentUserReference,
+                                      userName: currentUserDisplayName,
+                                      userEmail: currentUserEmail,
+                                    ),
+                                    true,
+                                  ),
                                 ),
                               );
                               if (!(_model.alldocs!
-                                  .where((e) => e.users.contains(
-                                      widget.candidateList?[_model.loop]))
+                                  .where((e) => e.users
+                                      .where((e) =>
+                                          e.userRef ==
+                                          (widget.candidateList?[_model.loop]))
+                                      .toList()
+                                      .isNotEmpty)
                                   .toList()
                                   .isNotEmpty)) {
                                 var chatsRecordReference =
@@ -197,9 +204,18 @@ class _SendMessageWidgetState extends State<SendMessageWidget> {
                                 await chatsRecordReference.set({
                                   ...mapToFirestore(
                                     {
-                                      'users': functions.addUsersInList(
-                                          currentUserReference!,
-                                          widget.candidateList![_model.loop]),
+                                      'users': [
+                                        getChatUserFirestoreData(
+                                          createChatUserStruct(
+                                            userRef: currentUserReference,
+                                            userName: currentUserDisplayName,
+                                            userEmail: currentUserEmail,
+                                            clearUnsetFields: false,
+                                            create: true,
+                                          ),
+                                          true,
+                                        )
+                                      ],
                                     },
                                   ),
                                 });
@@ -207,12 +223,46 @@ class _SendMessageWidgetState extends State<SendMessageWidget> {
                                     ChatsRecord.getDocumentFromData({
                                   ...mapToFirestore(
                                     {
-                                      'users': functions.addUsersInList(
-                                          currentUserReference!,
-                                          widget.candidateList![_model.loop]),
+                                      'users': [
+                                        getChatUserFirestoreData(
+                                          createChatUserStruct(
+                                            userRef: currentUserReference,
+                                            userName: currentUserDisplayName,
+                                            userEmail: currentUserEmail,
+                                            clearUnsetFields: false,
+                                            create: true,
+                                          ),
+                                          true,
+                                        )
+                                      ],
                                     },
                                   ),
                                 }, chatsRecordReference);
+                                _model.userDoc =
+                                    await UsersRecord.getDocumentOnce(
+                                        widget.candidateList![_model.loop]);
+
+                                await _model.createdChat!.reference.update({
+                                  ...mapToFirestore(
+                                    {
+                                      'users': FieldValue.arrayUnion([
+                                        getChatUserFirestoreData(
+                                          updateChatUserStruct(
+                                            ChatUserStruct(
+                                              userRef:
+                                                  _model.userDoc?.reference,
+                                              userName:
+                                                  _model.userDoc?.displayName,
+                                              userEmail: _model.userDoc?.email,
+                                            ),
+                                            clearUnsetFields: false,
+                                          ),
+                                          true,
+                                        )
+                                      ]),
+                                    },
+                                  ),
+                                });
 
                                 await MessagesRecord.collection
                                     .doc()
@@ -228,8 +278,13 @@ class _SendMessageWidgetState extends State<SendMessageWidget> {
                                     .set(createMessagesRecordData(
                                       sentBy: currentUserReference,
                                       chat: _model.alldocs
-                                          ?.where((e) => e.users.contains(widget
-                                              .candidateList?[_model.loop]))
+                                          ?.where((e) => e.users
+                                              .where((e) =>
+                                                  e.userRef ==
+                                                  (widget.candidateList?[
+                                                      _model.loop]))
+                                              .toList()
+                                              .isNotEmpty)
                                           .toList()
                                           .first
                                           .reference,

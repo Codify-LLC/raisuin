@@ -12,7 +12,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
@@ -67,8 +66,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         ),
       );
     }
-
-    context.watch<FFAppState>();
 
     return StreamBuilder<List<AdsRecord>>(
       stream: queryAdsRecord(
@@ -755,15 +752,28 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                       .where(
                                                             'users',
                                                             arrayContains:
-                                                                currentUserReference,
+                                                                getChatUserFirestoreData(
+                                                              ChatUserStruct(
+                                                                userRef:
+                                                                    currentUserReference,
+                                                                userName:
+                                                                    currentUserDisplayName,
+                                                                userEmail:
+                                                                    currentUserEmail,
+                                                              ),
+                                                              true,
+                                                            ),
                                                           ),
                                                         );
                                                         if (_model.alldocs!
                                                             .where((e) => e
                                                                 .users
-                                                                .contains(
+                                                                .where((e) =>
+                                                                    e.userRef ==
                                                                     rowUsersRecord
-                                                                        .reference))
+                                                                        .reference)
+                                                                .toList()
+                                                                .isNotEmpty)
                                                             .toList()
                                                             .isNotEmpty) {
                                                           context.pushNamed(
@@ -774,8 +784,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                 _model.alldocs
                                                                     ?.where((e) => e
                                                                         .users
-                                                                        .contains(
-                                                                            rowUsersRecord.reference))
+                                                                        .where((e) =>
+                                                                            e.userRef ==
+                                                                            rowUsersRecord.reference)
+                                                                        .toList()
+                                                                        .isNotEmpty)
                                                                     .toList()
                                                                     .first
                                                                     .reference,
@@ -793,10 +806,24 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                               .set({
                                                             ...mapToFirestore(
                                                               {
-                                                                'users': functions.addUsersInList(
-                                                                    currentUserReference!,
-                                                                    rowUsersRecord
-                                                                        .reference),
+                                                                'users': [
+                                                                  getChatUserFirestoreData(
+                                                                    createChatUserStruct(
+                                                                      userRef:
+                                                                          currentUserReference,
+                                                                      userName:
+                                                                          currentUserDisplayName,
+                                                                      userEmail:
+                                                                          rowUsersRecord
+                                                                              .email,
+                                                                      clearUnsetFields:
+                                                                          false,
+                                                                      create:
+                                                                          true,
+                                                                    ),
+                                                                    true,
+                                                                  )
+                                                                ],
                                                               },
                                                             ),
                                                           });
@@ -805,13 +832,55 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                   .getDocumentFromData({
                                                             ...mapToFirestore(
                                                               {
-                                                                'users': functions.addUsersInList(
-                                                                    currentUserReference!,
-                                                                    rowUsersRecord
-                                                                        .reference),
+                                                                'users': [
+                                                                  getChatUserFirestoreData(
+                                                                    createChatUserStruct(
+                                                                      userRef:
+                                                                          currentUserReference,
+                                                                      userName:
+                                                                          currentUserDisplayName,
+                                                                      userEmail:
+                                                                          rowUsersRecord
+                                                                              .email,
+                                                                      clearUnsetFields:
+                                                                          false,
+                                                                      create:
+                                                                          true,
+                                                                    ),
+                                                                    true,
+                                                                  )
+                                                                ],
                                                               },
                                                             ),
                                                           }, chatsRecordReference);
+
+                                                          await _model
+                                                              .createdChat!
+                                                              .reference
+                                                              .update({
+                                                            ...mapToFirestore(
+                                                              {
+                                                                'users': FieldValue
+                                                                    .arrayUnion([
+                                                                  getChatUserFirestoreData(
+                                                                    updateChatUserStruct(
+                                                                      ChatUserStruct(
+                                                                        userRef:
+                                                                            rowUsersRecord.reference,
+                                                                        userName:
+                                                                            rowUsersRecord.displayName,
+                                                                        userEmail:
+                                                                            rowUsersRecord.email,
+                                                                      ),
+                                                                      clearUnsetFields:
+                                                                          false,
+                                                                    ),
+                                                                    true,
+                                                                  )
+                                                                ]),
+                                                              },
+                                                            ),
+                                                          });
 
                                                           context.pushNamed(
                                                             'chatMessages',

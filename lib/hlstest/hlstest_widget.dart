@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_web_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 import 'hlstest_model.dart';
 export 'hlstest_model.dart';
 
@@ -44,8 +43,6 @@ class _HlstestWidgetState extends State<HlstestWidget> {
         ),
       );
     }
-
-    context.watch<FFAppState>();
 
     return Title(
         title: 'hlstest',

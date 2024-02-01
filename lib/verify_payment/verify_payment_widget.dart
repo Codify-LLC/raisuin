@@ -6,7 +6,6 @@ import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:provider/provider.dart';
 import 'verify_payment_model.dart';
 export 'verify_payment_model.dart';
 
@@ -111,8 +110,6 @@ class _VerifyPaymentWidgetState extends State<VerifyPaymentWidget>
         ),
       );
     }
-
-    context.watch<FFAppState>();
 
     return Title(
         title: 'verifyPayment',

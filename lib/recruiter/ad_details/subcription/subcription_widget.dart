@@ -5,7 +5,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/provider.dart';
 import 'subcription_model.dart';
 export 'subcription_model.dart';
 
@@ -46,8 +45,6 @@ class _SubcriptionWidgetState extends State<SubcriptionWidget> {
         ),
       );
     }
-
-    context.watch<FFAppState>();
 
     return Title(
         title: 'subcription',

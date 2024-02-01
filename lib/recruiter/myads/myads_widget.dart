@@ -8,7 +8,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/provider.dart';
 import 'myads_model.dart';
 export 'myads_model.dart';
 
@@ -49,8 +48,6 @@ class _MyadsWidgetState extends State<MyadsWidget> {
         ),
       );
     }
-
-    context.watch<FFAppState>();
 
     return Title(
         title: 'myads',

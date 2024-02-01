@@ -11,7 +11,6 @@ import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 import 'registration_model.dart';
 export 'registration_model.dart';
 
@@ -58,8 +57,6 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
         ),
       );
     }
-
-    context.watch<FFAppState>();
 
     return Title(
         title: 'registration',

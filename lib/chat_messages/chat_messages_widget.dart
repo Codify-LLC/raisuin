@@ -12,7 +12,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'chat_messages_model.dart';
 export 'chat_messages_model.dart';
@@ -79,8 +78,6 @@ class _ChatMessagesWidgetState extends State<ChatMessagesWidget>
       );
     }
 
-    context.watch<FFAppState>();
-
     return StreamBuilder<ChatsRecord>(
       stream: ChatsRecord.getDocument(widget.chatDoc!),
       builder: (context, snapshot) {
@@ -130,33 +127,13 @@ class _ChatMessagesWidgetState extends State<ChatMessagesWidget>
                       context.pop();
                     },
                   ),
-                  title: StreamBuilder<UsersRecord>(
-                    stream: UsersRecord.getDocument(chatMessagesChatsRecord
-                        .users
+                  title: Text(
+                    chatMessagesChatsRecord.users
                         .where((e) => e != currentUserReference)
                         .toList()
-                        .first),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                FlutterFlowTheme.of(context).primary,
-                              ),
-                            ),
-                          ),
-                        );
-                      }
-                      final textUsersRecord = snapshot.data!;
-                      return Text(
-                        textUsersRecord.displayName,
-                        style: FlutterFlowTheme.of(context).bodyMedium,
-                      );
-                    },
+                        .first
+                        .userName,
+                    style: FlutterFlowTheme.of(context).bodyMedium,
                   ),
                   actions: const [],
                   centerTitle: true,
@@ -477,7 +454,8 @@ class _ChatMessagesWidgetState extends State<ChatMessagesWidget>
                                                                 e !=
                                                                 currentUserReference)
                                                             .toList()
-                                                            .first,
+                                                            .first
+                                                            .userRef!,
                                                     chatDoc: widget.chatDoc!,
                                                   ),
                                                 ),

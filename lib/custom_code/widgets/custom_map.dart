@@ -17,6 +17,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart' as googleMaps;
 import 'package:dio/dio.dart';
 import 'package:image/image.dart' as img; // Import the image package
 import '../../backend/api_requests/api_calls.dart';
+import 'package:raisunjobsfinal/components/candidate_profile_card_widget.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 
 class CustomMap extends StatefulWidget {
   const CustomMap({
@@ -26,7 +28,6 @@ class CustomMap extends StatefulWidget {
     required this.initialCenter,
     required this.userDoc,
     required this.lantlangs,
-    required this.openUserDetails,
   }) : super(key: key);
 
   final double? width;
@@ -34,7 +35,6 @@ class CustomMap extends StatefulWidget {
   final LatLng initialCenter;
   final List<UsersRecord> userDoc;
   final List<LatLng> lantlangs;
-  final Future Function() openUserDetails;
 
   @override
   _CustomMapState createState() => _CustomMapState();
@@ -89,11 +89,26 @@ class _CustomMapState extends State<CustomMap> {
                 ? (await _createMarkerIcon(iconBytes))
                 : googleMaps.BitmapDescriptor.defaultMarkerWithHue(
                     googleMaps.BitmapDescriptor.hueAzure),
-            onTap: () {
-              FFAppState().update(() {
-                FFAppState().userRef = userData.reference;
-              });
-              widget.openUserDetails();
+            onTap: () async {
+              await showDialog(
+                context: context,
+                builder: (dialogContext) {
+                  return Dialog(
+                    elevation: 0,
+                    insetPadding: EdgeInsets.zero,
+                    backgroundColor: Colors.transparent,
+                    alignment: AlignmentDirectional(0, 0)
+                        .resolve(Directionality.of(context)),
+                    child: WebViewAware(
+                      child: GestureDetector(
+                        child: CandidateProfileCardWidget(
+                          userRef: userData.reference,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ).then((value) => setState(() {}));
             },
           ));
         }),

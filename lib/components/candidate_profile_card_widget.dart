@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/provider.dart';
 import 'candidate_profile_card_model.dart';
 export 'candidate_profile_card_model.dart';
 
@@ -48,8 +47,6 @@ class _CandidateProfileCardWidgetState
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Container(
       width: 320.0,
       decoration: BoxDecoration(

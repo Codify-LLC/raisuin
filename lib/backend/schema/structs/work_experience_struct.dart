@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '/backend/schema/util/firestore_util.dart';
 
+import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 class WorkExperienceStruct extends FFFirebaseStruct {
@@ -11,10 +12,14 @@ class WorkExperienceStruct extends FFFirebaseStruct {
     String? positionTitle,
     String? company,
     String? description,
+    FromToDateTimeStruct? duration,
+    bool? currentlyWorkingHere,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _positionTitle = positionTitle,
         _company = company,
         _description = description,
+        _duration = duration,
+        _currentlyWorkingHere = currentlyWorkingHere,
         super(firestoreUtilData);
 
   // "positionTitle" field.
@@ -35,11 +40,27 @@ class WorkExperienceStruct extends FFFirebaseStruct {
   set description(String? val) => _description = val;
   bool hasDescription() => _description != null;
 
+  // "duration" field.
+  FromToDateTimeStruct? _duration;
+  FromToDateTimeStruct get duration => _duration ?? FromToDateTimeStruct();
+  set duration(FromToDateTimeStruct? val) => _duration = val;
+  void updateDuration(Function(FromToDateTimeStruct) updateFn) =>
+      updateFn(_duration ??= FromToDateTimeStruct());
+  bool hasDuration() => _duration != null;
+
+  // "currentlyWorkingHere" field.
+  bool? _currentlyWorkingHere;
+  bool get currentlyWorkingHere => _currentlyWorkingHere ?? false;
+  set currentlyWorkingHere(bool? val) => _currentlyWorkingHere = val;
+  bool hasCurrentlyWorkingHere() => _currentlyWorkingHere != null;
+
   static WorkExperienceStruct fromMap(Map<String, dynamic> data) =>
       WorkExperienceStruct(
         positionTitle: data['positionTitle'] as String?,
         company: data['company'] as String?,
         description: data['description'] as String?,
+        duration: FromToDateTimeStruct.maybeFromMap(data['duration']),
+        currentlyWorkingHere: data['currentlyWorkingHere'] as bool?,
       );
 
   static WorkExperienceStruct? maybeFromMap(dynamic data) => data is Map
@@ -50,6 +71,8 @@ class WorkExperienceStruct extends FFFirebaseStruct {
         'positionTitle': _positionTitle,
         'company': _company,
         'description': _description,
+        'duration': _duration?.toMap(),
+        'currentlyWorkingHere': _currentlyWorkingHere,
       }.withoutNulls;
 
   @override
@@ -65,6 +88,14 @@ class WorkExperienceStruct extends FFFirebaseStruct {
         'description': serializeParam(
           _description,
           ParamType.String,
+        ),
+        'duration': serializeParam(
+          _duration,
+          ParamType.DataStruct,
+        ),
+        'currentlyWorkingHere': serializeParam(
+          _currentlyWorkingHere,
+          ParamType.bool,
         ),
       }.withoutNulls;
 
@@ -85,6 +116,17 @@ class WorkExperienceStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        duration: deserializeStructParam(
+          data['duration'],
+          ParamType.DataStruct,
+          false,
+          structBuilder: FromToDateTimeStruct.fromSerializableMap,
+        ),
+        currentlyWorkingHere: deserializeParam(
+          data['currentlyWorkingHere'],
+          ParamType.bool,
+          false,
+        ),
       );
 
   @override
@@ -95,18 +137,22 @@ class WorkExperienceStruct extends FFFirebaseStruct {
     return other is WorkExperienceStruct &&
         positionTitle == other.positionTitle &&
         company == other.company &&
-        description == other.description;
+        description == other.description &&
+        duration == other.duration &&
+        currentlyWorkingHere == other.currentlyWorkingHere;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([positionTitle, company, description]);
+  int get hashCode => const ListEquality().hash(
+      [positionTitle, company, description, duration, currentlyWorkingHere]);
 }
 
 WorkExperienceStruct createWorkExperienceStruct({
   String? positionTitle,
   String? company,
   String? description,
+  FromToDateTimeStruct? duration,
+  bool? currentlyWorkingHere,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -116,6 +162,8 @@ WorkExperienceStruct createWorkExperienceStruct({
       positionTitle: positionTitle,
       company: company,
       description: description,
+      duration: duration ?? (clearUnsetFields ? FromToDateTimeStruct() : null),
+      currentlyWorkingHere: currentlyWorkingHere,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,
@@ -172,6 +220,14 @@ Map<String, dynamic> getWorkExperienceFirestoreData(
     return {};
   }
   final firestoreData = mapToFirestore(workExperience.toMap());
+
+  // Handle nested data for "duration" field.
+  addFromToDateTimeStructData(
+    firestoreData,
+    workExperience.hasDuration() ? workExperience.duration : null,
+    'duration',
+    forFieldValue,
+  );
 
   // Add any Firestore field values
   workExperience.firestoreUtilData.fieldValues

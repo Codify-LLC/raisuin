@@ -41,3 +41,5 @@ export '/main_pages/search_candidates/search_candidates_widget.dart'
     show SearchCandidatesWidget;
 export '/recruiter/ad_details/update_details/update_details_widget.dart'
     show UpdateDetailsWidget;
+export '/recruiter/recruiter_profiles/jobs_candidate_list/jobs_candidate_list_widget.dart'
+    show JobsCandidateListWidget;

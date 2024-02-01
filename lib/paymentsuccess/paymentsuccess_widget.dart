@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 import 'paymentsuccess_model.dart';
 export 'paymentsuccess_model.dart';
 
@@ -62,8 +61,6 @@ class _PaymentsuccessWidgetState extends State<PaymentsuccessWidget> {
         ),
       );
     }
-
-    context.watch<FFAppState>();
 
     return Title(
         title: 'paymentsuccess',

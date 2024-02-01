@@ -2,6 +2,7 @@ export '/backend/schema/util/schema_util.dart';
 
 export 'address_struct.dart';
 export 'ads_struct.dart';
+export 'chat_user_struct.dart';
 export 'education_struct.dart';
 export 'education_year_struct.dart';
 export 'experience_needed_struct.dart';

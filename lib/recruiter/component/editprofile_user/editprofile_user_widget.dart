@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/provider.dart';
 import 'editprofile_user_model.dart';
 export 'editprofile_user_model.dart';
 
@@ -51,8 +50,6 @@ class _EditprofileUserWidgetState extends State<EditprofileUserWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Padding(
       padding: const EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
       child: Container(

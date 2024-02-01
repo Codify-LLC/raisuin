@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '/backend/backend.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -129,13 +130,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             educationSubject:
                 params.getParam('educationSubject', ParamType.String),
             workExperienceFrom:
-                params.getParam('workExperienceFrom', ParamType.String),
+                params.getParam('workExperienceFrom', ParamType.int),
             workExperienceTo:
-                params.getParam('workExperienceTo', ParamType.String),
+                params.getParam('workExperienceTo', ParamType.int),
             monthlySalaryRangeFrom:
-                params.getParam('monthlySalaryRangeFrom', ParamType.String),
+                params.getParam('monthlySalaryRangeFrom', ParamType.int),
             monthlySalaryRangeTo:
-                params.getParam('monthlySalaryRangeTo', ParamType.String),
+                params.getParam('monthlySalaryRangeTo', ParamType.int),
             filtered: params.getParam('filtered', ParamType.bool),
           ),
         ),
@@ -274,6 +275,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/updateDetails',
           requireAuth: true,
           builder: (context, params) => const UpdateDetailsWidget(),
+        ),
+        FFRoute(
+          name: 'JobsCandidateList',
+          path: '/jobsCandidateList',
+          requireAuth: true,
+          asyncParams: {
+            'ad': getDoc(['ads'], AdsRecord.fromSnapshot),
+          },
+          builder: (context, params) => JobsCandidateListWidget(
+            ad: params.getParam('ad', ParamType.Document),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'message_component_model.dart';
 export 'message_component_model.dart';
 
@@ -57,8 +56,6 @@ class _MessageComponentWidgetState extends State<MessageComponentWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Builder(
       builder: (context) {
         if (widget.sentBy == currentUserReference) {

@@ -12,7 +12,6 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'detailedprofilecandidate_model.dart';
@@ -79,8 +78,6 @@ class _DetailedprofilecandidateWidgetState
         ),
       );
     }
-
-    context.watch<FFAppState>();
 
     return StreamBuilder<UsersRecord>(
       stream: UsersRecord.getDocument(widget.candidateProfile!),
@@ -1568,14 +1565,27 @@ class _DetailedprofilecandidateWidgetState
                                                             chatsRecord.where(
                                                       'users',
                                                       arrayContains:
-                                                          currentUserReference,
+                                                          getChatUserFirestoreData(
+                                                        ChatUserStruct(
+                                                          userRef:
+                                                              currentUserReference,
+                                                          userName:
+                                                              currentUserDisplayName,
+                                                          userEmail:
+                                                              currentUserEmail,
+                                                        ),
+                                                        true,
+                                                      ),
                                                     ),
                                                   );
                                                   if (_model.alldocs!
                                                       .where((e) => e.users
-                                                          .contains(
+                                                          .where((e) =>
+                                                              e.userRef ==
                                                               detailedprofilecandidateUsersRecord
-                                                                  .reference))
+                                                                  .reference)
+                                                          .toList()
+                                                          .isNotEmpty)
                                                       .toList()
                                                       .isNotEmpty) {
                                                     context.pushNamed(
@@ -1586,9 +1596,12 @@ class _DetailedprofilecandidateWidgetState
                                                           _model.alldocs
                                                               ?.where((e) => e
                                                                   .users
-                                                                  .contains(
+                                                                  .where((e) =>
+                                                                      e.userRef ==
                                                                       detailedprofilecandidateUsersRecord
-                                                                          .reference))
+                                                                          .reference)
+                                                                  .toList()
+                                                                  .isNotEmpty)
                                                               .toList()
                                                               .first
                                                               .reference,
@@ -1603,55 +1616,83 @@ class _DetailedprofilecandidateWidgetState
                                                             .doc();
                                                     await chatsRecordReference
                                                         .set({
-                                                      ...createChatsRecordData(
-                                                        user1Name:
-                                                            currentUserDisplayName,
-                                                        user1Gmail:
-                                                            detailedprofilecandidateUsersRecord
-                                                                .email,
-                                                        user2Name:
-                                                            detailedprofilecandidateUsersRecord
-                                                                .displayName,
-                                                        user2Gmail:
-                                                            detailedprofilecandidateUsersRecord
-                                                                .email,
-                                                      ),
                                                       ...mapToFirestore(
                                                         {
-                                                          'users': functions
-                                                              .addUsersInList(
-                                                                  currentUserReference!,
-                                                                  widget
-                                                                      .candidateProfile!),
+                                                          'users': [
+                                                            getChatUserFirestoreData(
+                                                              createChatUserStruct(
+                                                                userRef:
+                                                                    currentUserReference,
+                                                                userName:
+                                                                    currentUserDisplayName,
+                                                                userEmail:
+                                                                    detailedprofilecandidateUsersRecord
+                                                                        .email,
+                                                                clearUnsetFields:
+                                                                    false,
+                                                                create: true,
+                                                              ),
+                                                              true,
+                                                            )
+                                                          ],
                                                         },
                                                       ),
                                                     });
                                                     _model.createdChat =
                                                         ChatsRecord
                                                             .getDocumentFromData({
-                                                      ...createChatsRecordData(
-                                                        user1Name:
-                                                            currentUserDisplayName,
-                                                        user1Gmail:
-                                                            detailedprofilecandidateUsersRecord
-                                                                .email,
-                                                        user2Name:
-                                                            detailedprofilecandidateUsersRecord
-                                                                .displayName,
-                                                        user2Gmail:
-                                                            detailedprofilecandidateUsersRecord
-                                                                .email,
-                                                      ),
                                                       ...mapToFirestore(
                                                         {
-                                                          'users': functions
-                                                              .addUsersInList(
-                                                                  currentUserReference!,
-                                                                  widget
-                                                                      .candidateProfile!),
+                                                          'users': [
+                                                            getChatUserFirestoreData(
+                                                              createChatUserStruct(
+                                                                userRef:
+                                                                    currentUserReference,
+                                                                userName:
+                                                                    currentUserDisplayName,
+                                                                userEmail:
+                                                                    detailedprofilecandidateUsersRecord
+                                                                        .email,
+                                                                clearUnsetFields:
+                                                                    false,
+                                                                create: true,
+                                                              ),
+                                                              true,
+                                                            )
+                                                          ],
                                                         },
                                                       ),
                                                     }, chatsRecordReference);
+
+                                                    await _model
+                                                        .createdChat!.reference
+                                                        .update({
+                                                      ...mapToFirestore(
+                                                        {
+                                                          'users': FieldValue
+                                                              .arrayUnion([
+                                                            getChatUserFirestoreData(
+                                                              updateChatUserStruct(
+                                                                ChatUserStruct(
+                                                                  userRef:
+                                                                      detailedprofilecandidateUsersRecord
+                                                                          .reference,
+                                                                  userName:
+                                                                      detailedprofilecandidateUsersRecord
+                                                                          .displayName,
+                                                                  userEmail:
+                                                                      detailedprofilecandidateUsersRecord
+                                                                          .email,
+                                                                ),
+                                                                clearUnsetFields:
+                                                                    false,
+                                                              ),
+                                                              true,
+                                                            )
+                                                          ]),
+                                                        },
+                                                      ),
+                                                    });
 
                                                     context.pushNamed(
                                                       'chatMessages',

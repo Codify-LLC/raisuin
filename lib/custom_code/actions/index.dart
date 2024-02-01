@@ -8,3 +8,4 @@ export 'hive_candidate_add_favourites.dart' show hiveCandidateAddFavourites;
 export 'hive_test.dart' show hiveTest;
 export 'hive_delete_boxes.dart' show hiveDeleteBoxes;
 export 'hive_candidate_get_save.dart' show hiveCandidateGetSave;
+export 'chat_search.dart' show chatSearch;

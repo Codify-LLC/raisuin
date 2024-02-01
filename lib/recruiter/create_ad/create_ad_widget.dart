@@ -14,7 +14,6 @@ import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:provider/provider.dart';
 import 'create_ad_model.dart';
 export 'create_ad_model.dart';
 
@@ -100,8 +99,6 @@ class _CreateAdWidgetState extends State<CreateAdWidget>
         ),
       );
     }
-
-    context.watch<FFAppState>();
 
     return Title(
         title: 'createAd',

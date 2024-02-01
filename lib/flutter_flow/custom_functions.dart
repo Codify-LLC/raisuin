@@ -95,13 +95,6 @@ List<UsersRecord> joinToUserRefList(
   return [...list1, ...list2];
 }
 
-bool maxSalaryComparsion(
-  int maxSalary,
-  int userSalary,
-) {
-  return userSalary <= maxSalary;
-}
-
 List<String> allTypesOfDegreeLevels() {
   return [
     'Undergraduate',
@@ -111,4 +104,30 @@ List<String> allTypesOfDegreeLevels() {
     'Doctorate',
     'Professional',
   ];
+}
+
+int calculateNumberOfYears(FromToDateTimeStruct date) {
+  // calculate number of years from and to datetime
+  DateTime fromDate = date.from!;
+  DateTime toDate = date.to!;
+  int years = toDate.year - fromDate.year;
+  if (toDate.month < fromDate.month ||
+      (toDate.month == fromDate.month && toDate.day < fromDate.day)) {
+    years--;
+  }
+  return years;
+}
+
+List<String> getSearchParameterList(List<ChatsRecord> chats) {
+  // generate a list of UserName and UserEmail form users field which has chatUsers data type
+  List<String> searchParameters = [];
+
+  for (final chat in chats) {
+    for (final user in chat.users) {
+      searchParameters.add(user.userName);
+      searchParameters.add(user.userEmail);
+    }
+  }
+
+  return searchParameters;
 }

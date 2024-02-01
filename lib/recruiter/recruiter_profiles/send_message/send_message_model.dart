@@ -18,6 +18,8 @@ class SendMessageModel extends FlutterFlowModel<SendMessageWidget> {
   List<ChatsRecord>? alldocs;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   ChatsRecord? createdChat;
+  // Stores action output result for [Backend Call - Read Document] action in Button widget.
+  UsersRecord? userDoc;
 
   /// Initialization and disposal methods.
 

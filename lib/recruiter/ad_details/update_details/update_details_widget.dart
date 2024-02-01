@@ -11,7 +11,6 @@ import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 import 'update_details_model.dart';
 export 'update_details_model.dart';
 
@@ -56,8 +55,6 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
         ),
       );
     }
-
-    context.watch<FFAppState>();
 
     return StreamBuilder<UsersRecord>(
       stream: UsersRecord.getDocument(currentUserReference!),

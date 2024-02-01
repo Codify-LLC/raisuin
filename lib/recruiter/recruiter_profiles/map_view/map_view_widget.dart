@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/provider.dart';
 import 'map_view_model.dart';
 export 'map_view_model.dart';
 
@@ -68,8 +67,6 @@ class _MapViewWidgetState extends State<MapViewWidget> {
         ),
       );
     }
-
-    context.watch<FFAppState>();
 
     return Title(
         title: 'mapView',
@@ -501,44 +498,45 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                   style: FlutterFlowTheme.of(context).bodyMedium,
                 ),
                 Expanded(
-                  child: StreamBuilder<List<UsersRecord>>(
-                    stream: queryUsersRecord(),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                FlutterFlowTheme.of(context).primary,
+                  child: Builder(
+                    builder: (context) => StreamBuilder<List<UsersRecord>>(
+                      stream: queryUsersRecord(),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  FlutterFlowTheme.of(context).primary,
+                                ),
                               ),
                             ),
-                          ),
-                        );
-                      }
-                      List<UsersRecord> customMapUsersRecordList = snapshot
-                          .data!
-                          .where((u) => u.uid != currentUserUid)
-                          .toList();
-                      return SizedBox(
-                        width: MediaQuery.sizeOf(context).width * 1.0,
-                        height: MediaQuery.sizeOf(context).height * 1.0,
-                        child: custom_widgets.CustomMap(
+                          );
+                        }
+                        List<UsersRecord> customMapUsersRecordList = snapshot
+                            .data!
+                            .where((u) => u.uid != currentUserUid)
+                            .toList();
+                        return SizedBox(
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           height: MediaQuery.sizeOf(context).height * 1.0,
-                          initialCenter:
-                              customMapUsersRecordList.first.address.latLang!,
-                          lantlangs: customMapUsersRecordList
-                              .map((e) => e.address.latLang)
-                              .withoutNulls
-                              .toList(),
-                          userDoc: customMapUsersRecordList,
-                          openUserDetails: () async {},
-                        ),
-                      );
-                    },
+                          child: custom_widgets.CustomMap(
+                            width: MediaQuery.sizeOf(context).width * 1.0,
+                            height: MediaQuery.sizeOf(context).height * 1.0,
+                            initialCenter:
+                                customMapUsersRecordList.first.address.latLang!,
+                            lantlangs: customMapUsersRecordList
+                                .map((e) => e.address.latLang)
+                                .withoutNulls
+                                .toList(),
+                            userDoc: customMapUsersRecordList,
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ]
