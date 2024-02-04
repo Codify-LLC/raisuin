@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 
 import 'package:google_maps_flutter/google_maps_flutter.dart' as google_maps;
 import 'package:widget_to_marker/widget_to_marker.dart';
+import '../../components/candidate_profile_card/candidate_profile_card_widget.dart';
 
 class CustomMap extends StatefulWidget {
   const CustomMap({
@@ -78,14 +79,34 @@ class _CustomMapState extends State<CustomMap> {
         markerId: google_maps.MarkerId("marker_$i"),
         position: google_maps.LatLng(user.address.latLang?.latitude ?? 0.0,
             user.address.latLang?.longitude ?? 0.0), // Set the marker position
-        icon: await Container(
-          child: Padding(
-            padding: EdgeInsets.all(2),
-            child: CircleAvatar(
-              backgroundImage: NetworkImage(user.photoUrl),
-            ),
+        icon: await CircleAvatar(
+          backgroundColor: Colors.white,
+          radius: 24.0,
+          child: CircleAvatar(
+            backgroundImage: NetworkImage(user.photoUrl.isEmpty
+                ? "https://cdn-icons-png.flaticon.com/512/456/456212.png"
+                : user.photoUrl),
+            radius: 20.0,
           ),
         ).toBitmapDescriptor(),
+        consumeTapEvents: true,
+        onTap: () async {
+          await showDialog(
+            context: context,
+            builder: (dialogContext) {
+              return Dialog(
+                elevation: 0,
+                insetPadding: EdgeInsets.zero,
+                backgroundColor: Colors.transparent,
+                alignment: const AlignmentDirectional(0, 0)
+                    .resolve(Directionality.of(context)),
+                child: CandidateProfileCardWidget(
+                  userRef: user.reference,
+                ),
+              );
+            },
+          ).then((value) => setState(() {}));
+        },
       );
 
       result.add(marker);
