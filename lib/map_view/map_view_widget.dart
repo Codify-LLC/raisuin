@@ -1,5 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/components/candidate_profile_card/candidate_profile_card_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -518,15 +519,48 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                   child: Builder(
                     builder: (context) {
                       if (true) {
-                        return SizedBox(
-                          width: MediaQuery.sizeOf(context).width * 1.0,
-                          height: MediaQuery.sizeOf(context).height * 1.0,
-                          child: custom_widgets.CustomMap(
+                        return Builder(
+                          builder: (context) => SizedBox(
                             width: MediaQuery.sizeOf(context).width * 1.0,
                             height: MediaQuery.sizeOf(context).height * 1.0,
-                            initialCenter:
-                                mapViewUsersRecordList.first.address.latLang!,
-                            userDocs: mapViewUsersRecordList,
+                            child: custom_widgets.CustomMap(
+                              width: MediaQuery.sizeOf(context).width * 1.0,
+                              height: MediaQuery.sizeOf(context).height * 1.0,
+                              initialCenter:
+                                  mapViewUsersRecordList.first.address.latLang!,
+                              userDocs: mapViewUsersRecordList,
+                              onMarkerTap: (userDoc) async {
+                                await showDialog(
+                                  context: context,
+                                  builder: (dialogContext) {
+                                    return Dialog(
+                                      elevation: 0,
+                                      insetPadding: EdgeInsets.zero,
+                                      backgroundColor: Colors.transparent,
+                                      alignment: const AlignmentDirectional(0.0, 0.0)
+                                          .resolve(Directionality.of(context)),
+                                      child: GestureDetector(
+                                        onTap: () => _model
+                                                .unfocusNode.canRequestFocus
+                                            ? FocusScope.of(context)
+                                                .requestFocus(
+                                                    _model.unfocusNode)
+                                            : FocusScope.of(context).unfocus(),
+                                        child: SizedBox(
+                                          height: 500.0,
+                                          width:
+                                              MediaQuery.sizeOf(context).width *
+                                                  0.9,
+                                          child: CandidateProfileCardWidget(
+                                            userRef: userRef.reference,
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ).then((value) => setState(() {}));
+                              },
+                            ),
                           ),
                         );
                       } else {

@@ -17,20 +17,22 @@ import '../../components/candidate_profile_card/candidate_profile_card_widget.da
 
 class CustomMap extends StatefulWidget {
   const CustomMap({
-    Key? key,
+    super.key,
     this.width,
     this.height,
     required this.initialCenter,
     required this.userDocs,
-  }) : super(key: key);
+    required this.onMarkerTap,
+  });
 
   final double? width;
   final double? height;
   final LatLng initialCenter;
   final List<UsersRecord> userDocs;
+  final Future Function(UsersRecord userDoc) onMarkerTap;
 
   @override
-  _CustomMapState createState() => _CustomMapState();
+  State<CustomMap> createState() => _CustomMapState();
 }
 
 class _CustomMapState extends State<CustomMap> {
@@ -90,23 +92,7 @@ class _CustomMapState extends State<CustomMap> {
           ),
         ).toBitmapDescriptor(),
         consumeTapEvents: true,
-        onTap: () async {
-          await showDialog(
-            context: context,
-            builder: (dialogContext) {
-              return Dialog(
-                elevation: 0,
-                insetPadding: EdgeInsets.zero,
-                backgroundColor: Colors.transparent,
-                alignment: const AlignmentDirectional(0, 0)
-                    .resolve(Directionality.of(context)),
-                child: CandidateProfileCardWidget(
-                  userRef: user.reference,
-                ),
-              );
-            },
-          ).then((value) => setState(() {}));
-        },
+        onTap: () async => widget.onMarkerTap(user),
       );
 
       result.add(marker);
