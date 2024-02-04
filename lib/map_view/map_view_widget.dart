@@ -548,9 +548,6 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                                             : FocusScope.of(context).unfocus(),
                                         child: SizedBox(
                                           height: 500.0,
-                                          width:
-                                              MediaQuery.sizeOf(context).width *
-                                                  0.9,
                                           child: CandidateProfileCardWidget(
                                             userRef: userDoc.reference,
                                           ),
