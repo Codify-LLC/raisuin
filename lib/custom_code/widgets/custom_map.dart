@@ -11,9 +11,9 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong2/latlong.dart' as latlong;
-import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
+import 'index.dart'; // Imports other custom widgets
+
+import 'package:google_maps/google_maps.dart' as googleMaps;
 import 'package:flutter_map/plugin_api.dart';
 import 'dart:math';
 import 'dart:async';
@@ -44,7 +44,7 @@ class CustomMap extends StatefulWidget {
 }
 
 class _CustomMapState extends State<CustomMap> {
-  late GoogleMapController mapController;
+  late googleMaps.GoogleMapController mapController;
 
   @override
   Widget build(BuildContext context) {
