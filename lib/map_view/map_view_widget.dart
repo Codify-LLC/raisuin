@@ -526,7 +526,7 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                             height: MediaQuery.sizeOf(context).height * 1.0,
                             initialCenter:
                                 mapViewUsersRecordList.first.address.latLang!,
-                            userDoc: mapViewUsersRecordList,
+                            userDocs: mapViewUsersRecordList,
                             latLangList: mapViewUsersRecordList
                                 .map((e) => e.address.latLang)
                                 .withoutNulls
