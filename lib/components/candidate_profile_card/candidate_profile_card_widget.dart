@@ -56,17 +56,12 @@ class _CandidateProfileCardWidgetState
             offset: Offset(0.0, 2.0),
           )
         ],
-        borderRadius: const BorderRadius.only(
-          bottomLeft: Radius.circular(0.0),
-          bottomRight: Radius.circular(0.0),
-          topLeft: Radius.circular(12.0),
-          topRight: Radius.circular(12.0),
-        ),
+        borderRadius: BorderRadius.circular(16.0),
       ),
       child: Padding(
         padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
         child: Column(
-          mainAxisSize: MainAxisSize.max,
+          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
@@ -119,7 +114,7 @@ class _CandidateProfileCardWidgetState
                 }
                 final columnUsersRecord = snapshot.data!;
                 return Column(
-                  mainAxisSize: MainAxisSize.max,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Divider(
                       height: 1.0,
