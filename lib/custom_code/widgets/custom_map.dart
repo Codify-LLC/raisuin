@@ -27,14 +27,14 @@ class CustomMap extends StatefulWidget {
     this.height,
     required this.initialCenter,
     required this.userDoc,
-    required this.lantlangs,
+    required this.latLangList,
   }) : super(key: key);
 
   final double? width;
   final double? height;
   final LatLng initialCenter;
   final List<UsersRecord> userDoc;
-  final List<LatLng> lantlangs;
+  final List<LatLng> latLangList;
 
   @override
   _CustomMapState createState() => _CustomMapState();
