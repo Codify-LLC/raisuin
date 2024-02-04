@@ -55,12 +55,6 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
               .where(
                 'seeking_job_post',
                 isEqualTo: _model.allAds?[_model.loop].positionTitle,
-              )
-              .where(
-                'gender',
-                isEqualTo: _model.allAds?[_model.loop].preferredGender == 'All'
-                    ? ''
-                    : _model.allAds?[_model.loop].preferredGender,
               ),
         );
         setState(() {

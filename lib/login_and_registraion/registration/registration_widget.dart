@@ -832,8 +832,9 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                               _model.displayNameController.text,
                                           userRole:
                                               _model.userRoleController.text,
-                                          profileType: functions.stringToEnum(
-                                              _model.profileTypeValue!),
+                                          profileType:
+                                              functions.stringToEnumProfileType(
+                                                  _model.profileTypeValue!),
                                           address: createAddressStruct(
                                             latLang:
                                                 _model.placePickerValue.latLng,

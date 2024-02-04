@@ -17,10 +17,6 @@
           "order": "ASCENDING"
         },
         {
-          "fieldPath": "gender",
-          "order": "ASCENDING"
-        },
-        {
           "fieldPath": "salary_range.from",
           "order": "ASCENDING"
         }

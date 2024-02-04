@@ -529,8 +529,9 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
                                             .organizationNameController.text,
                                         userRole:
                                             _model.userRoleController.text,
-                                        profileType: functions.stringToEnum(
-                                            _model.choiceChipsValue!),
+                                        profileType:
+                                            functions.stringToEnumProfileType(
+                                                _model.choiceChipsValue!),
                                         address: updateAddressStruct(
                                           _model.placePickerValue != null
                                               ? AddressStruct(

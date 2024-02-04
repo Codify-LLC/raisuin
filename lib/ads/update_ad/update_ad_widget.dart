@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/backend/schema/enums/enums.dart';
 import '/components/update_or_delete/update_or_delete_widget.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -11,6 +12,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -43,7 +45,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.adref = await AdsRecord.getDocumentOnce(widget.adRef!);
       setState(() {
-        _model.gender = _model.adref!.preferredGender;
+        _model.gender = _model.adref!.preferredGender.toList().cast<Gender>();
       });
     });
 
@@ -1424,7 +1426,9 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
                                         setState(() {
-                                          _model.gender = 'All';
+                                          _model.gender = Gender.values
+                                              .toList()
+                                              .cast<Gender>();
                                         });
                                       },
                                       child: Text(
@@ -1457,30 +1461,16 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
                                             setState(() {
-                                              _model.gender = 'male';
+                                              _model.addToGender(Gender.Male);
                                             });
                                           },
                                           child: Container(
                                             width: 100.0,
                                             height: 100.0,
                                             decoration: BoxDecoration(
-                                              color: (_model.gender ==
-                                                          'male') ||
-                                                      (_model.gender == 'All')
-                                                  ? FlutterFlowTheme.of(context)
-                                                      .secondaryBackground
-                                                  : const Color(0xFFF3F5F7),
+                                              color: const Color(0xFFF3F5F7),
                                               borderRadius:
                                                   BorderRadius.circular(5.0),
-                                              border: Border.all(
-                                                color: (_model.gender ==
-                                                            'male') ||
-                                                        (_model.gender == 'All')
-                                                    ? FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText
-                                                    : const Color(0xFFF3F5F7),
-                                              ),
                                             ),
                                             child: Padding(
                                               padding: const EdgeInsets.all(5.0),
@@ -1496,7 +1486,8 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                                     fit: BoxFit.cover,
                                                   ),
                                                   Text(
-                                                    'MALE',
+                                                    functions.enumToString(
+                                                        Gender.Male),
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -1521,30 +1512,16 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
                                             setState(() {
-                                              _model.gender = 'female';
+                                              _model.addToGender(Gender.Female);
                                             });
                                           },
                                           child: Container(
                                             width: 100.0,
                                             height: 100.0,
                                             decoration: BoxDecoration(
-                                              color: (_model.gender ==
-                                                          'female') ||
-                                                      (_model.gender == 'All')
-                                                  ? FlutterFlowTheme.of(context)
-                                                      .secondaryBackground
-                                                  : const Color(0xFFF3F5F7),
+                                              color: const Color(0xFFF3F5F7),
                                               borderRadius:
                                                   BorderRadius.circular(5.0),
-                                              border: Border.all(
-                                                color: (_model.gender ==
-                                                            'female') ||
-                                                        (_model.gender == 'All')
-                                                    ? FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText
-                                                    : const Color(0xFFF3F5F7),
-                                              ),
                                             ),
                                             child: Padding(
                                               padding: const EdgeInsets.all(5.0),
@@ -1560,7 +1537,8 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                                     fit: BoxFit.cover,
                                                   ),
                                                   Text(
-                                                    'FEMALE',
+                                                    functions.enumToString(
+                                                        Gender.Female),
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -1582,28 +1560,21 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
                                           setState(() {
-                                            _model.gender = 'neutral';
+                                            _model.addToGender(Gender.Neutral);
                                           });
                                         },
                                         child: Container(
                                           width: 100.0,
                                           height: 100.0,
                                           decoration: BoxDecoration(
-                                            color: (_model.gender ==
-                                                        'neutral') ||
-                                                    (_model.gender == 'All')
-                                                ? FlutterFlowTheme.of(context)
-                                                    .secondaryBackground
-                                                : const Color(0xFFF3F5F7),
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
                                             borderRadius:
                                                 BorderRadius.circular(5.0),
                                             border: Border.all(
-                                              color: (_model.gender ==
-                                                          'neutral') ||
-                                                      (_model.gender == 'All')
-                                                  ? FlutterFlowTheme.of(context)
-                                                      .primaryText
-                                                  : const Color(0xFFF3F5F7),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
                                             ),
                                           ),
                                           child: Padding(
@@ -1620,7 +1591,8 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                                   fit: BoxFit.cover,
                                                 ),
                                                 Text(
-                                                  'NEUTRAL',
+                                                  functions.enumToString(
+                                                      Gender.Neutral),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -2415,7 +2387,6 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                         requirementFor:
                                             _model.requirementForValue,
                                         jobType: _model.jobTypeValue,
-                                        preferredGender: _model.gender,
                                         educationRequired:
                                             updateEducationStruct(
                                           EducationStruct(
@@ -2502,6 +2473,9 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                               _model.choiceChipsValues,
                                           'regional_language': _model
                                               .regionallanguageschipsValues,
+                                          'preferred_gender': _model.gender
+                                              .map((e) => e.serialize())
+                                              .toList(),
                                         },
                                       ),
                                     });

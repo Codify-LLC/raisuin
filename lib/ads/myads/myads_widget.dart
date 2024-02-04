@@ -597,8 +597,7 @@ class _MyadsWidgetState extends State<MyadsWidget> {
                                                                             const EdgeInsets.all(8.0),
                                                                         child:
                                                                             Text(
-                                                                          listViewAdsRecord
-                                                                              .preferredGender,
+                                                                          'Male / Female',
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(

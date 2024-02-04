@@ -221,6 +221,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'profilesWithVideoBio',
           path: '/profilesWithVideoBio',
+          requireAuth: true,
           builder: (context, params) => ProfilesWithVideoBioWidget(
             jobType: params.getParam('jobType', ParamType.String),
             educationType: params.getParam('educationType', ParamType.String),
@@ -251,6 +252,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'MatchProfiles',
           path: '/matchProfiles',
+          requireAuth: true,
           builder: (context, params) => const MatchProfilesWidget(),
         ),
         FFRoute(

@@ -458,8 +458,7 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: Text(
-                                            myjobadsdetailAdsRecord
-                                                .preferredGender,
+                                            'Male / Female',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(

@@ -490,23 +490,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             ? homePageAdsRecordList
                                                 .first.positionTitle
                                             : null,
-                                      )
-                                      .where(
-                                        'gender',
-                                        isEqualTo: homePageAdsRecordList
-                                                    .first.preferredGender ==
-                                                'All'
-                                            ? ''
-                                            : homePageAdsRecordList.first
-                                                        .preferredGender !=
-                                                    ''
-                                                ? homePageAdsRecordList.first
-                                                            .preferredGender ==
-                                                        'All'
-                                                    ? ''
-                                                    : homePageAdsRecordList
-                                                        .first.preferredGender
-                                                : null,
                                       ),
                                   limit: 5,
                                 ),

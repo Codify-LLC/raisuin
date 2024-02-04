@@ -137,6 +137,14 @@ List<String> enumToStringList(List<ProfileType> input) {
   return input.map((type) => type.name).toList();
 }
 
-ProfileType stringToEnum(String input) {
+ProfileType stringToEnumProfileType(String input) {
   return ProfileType.values.byName(input);
+}
+
+String enumToString(Gender gender) {
+  return gender.name;
+}
+
+Gender stringToEnumGender(String input) {
+  return Gender.values.byName(input);
 }

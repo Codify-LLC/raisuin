@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/enums/enums.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -39,11 +40,6 @@ class AdsRecord extends FirestoreRecord {
   String? _jobType;
   String get jobType => _jobType ?? '';
   bool hasJobType() => _jobType != null;
-
-  // "preferred_gender" field.
-  String? _preferredGender;
-  String get preferredGender => _preferredGender ?? '';
-  bool hasPreferredGender() => _preferredGender != null;
 
   // "education_required" field.
   EducationStruct? _educationRequired;
@@ -140,13 +136,17 @@ class AdsRecord extends FirestoreRecord {
   int get totalVacancy => _totalVacancy ?? 0;
   bool hasTotalVacancy() => _totalVacancy != null;
 
+  // "preferred_gender" field.
+  List<Gender>? _preferredGender;
+  List<Gender> get preferredGender => _preferredGender ?? const [];
+  bool hasPreferredGender() => _preferredGender != null;
+
   void _initializeFields() {
     _positionType = snapshotData['position_type'] as String?;
     _positionTitle = snapshotData['position_title'] as String?;
     _schoolInstitute = snapshotData['school_institute'] as String?;
     _requirementFor = snapshotData['requirement_for'] as String?;
     _jobType = snapshotData['job_type'] as String?;
-    _preferredGender = snapshotData['preferred_gender'] as String?;
     _educationRequired =
         EducationStruct.maybeFromMap(snapshotData['education_required']);
     _englishLevel = snapshotData['english_level'] as String?;
@@ -170,6 +170,7 @@ class AdsRecord extends FirestoreRecord {
     _interviewDate =
         FromToDateTimeStruct.maybeFromMap(snapshotData['interview_date']);
     _totalVacancy = castToType<int>(snapshotData['total_vacancy']);
+    _preferredGender = getEnumList<Gender>(snapshotData['preferred_gender']);
   }
 
   static CollectionReference get collection =>
@@ -211,7 +212,6 @@ Map<String, dynamic> createAdsRecordData({
   String? schoolInstitute,
   String? requirementFor,
   String? jobType,
-  String? preferredGender,
   EducationStruct? educationRequired,
   String? englishLevel,
   DocumentReference? createdBy,
@@ -233,7 +233,6 @@ Map<String, dynamic> createAdsRecordData({
       'school_institute': schoolInstitute,
       'requirement_for': requirementFor,
       'job_type': jobType,
-      'preferred_gender': preferredGender,
       'education_required': EducationStruct().toMap(),
       'english_level': englishLevel,
       'created_by': createdBy,
@@ -284,7 +283,6 @@ class AdsRecordDocumentEquality implements Equality<AdsRecord> {
         e1?.schoolInstitute == e2?.schoolInstitute &&
         e1?.requirementFor == e2?.requirementFor &&
         e1?.jobType == e2?.jobType &&
-        e1?.preferredGender == e2?.preferredGender &&
         e1?.educationRequired == e2?.educationRequired &&
         e1?.englishLevel == e2?.englishLevel &&
         e1?.createdBy == e2?.createdBy &&
@@ -302,7 +300,8 @@ class AdsRecordDocumentEquality implements Equality<AdsRecord> {
         listEquality.equals(e1?.overviewImages, e2?.overviewImages) &&
         e1?.interviewMode == e2?.interviewMode &&
         e1?.interviewDate == e2?.interviewDate &&
-        e1?.totalVacancy == e2?.totalVacancy;
+        e1?.totalVacancy == e2?.totalVacancy &&
+        listEquality.equals(e1?.preferredGender, e2?.preferredGender);
   }
 
   @override
@@ -312,7 +311,6 @@ class AdsRecordDocumentEquality implements Equality<AdsRecord> {
         e?.schoolInstitute,
         e?.requirementFor,
         e?.jobType,
-        e?.preferredGender,
         e?.educationRequired,
         e?.englishLevel,
         e?.createdBy,
@@ -330,7 +328,8 @@ class AdsRecordDocumentEquality implements Equality<AdsRecord> {
         e?.overviewImages,
         e?.interviewMode,
         e?.interviewDate,
-        e?.totalVacancy
+        e?.totalVacancy,
+        e?.preferredGender
       ]);
 
   @override

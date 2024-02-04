@@ -7,6 +7,12 @@ enum ProfileType {
   Candidate,
 }
 
+enum Gender {
+  Male,
+  Female,
+  Neutral,
+}
+
 extension FFEnumExtensions<T extends Enum> on T {
   String serialize() => name;
 }
@@ -20,6 +26,8 @@ T? deserializeEnum<T>(String? value) {
   switch (T) {
     case (ProfileType):
       return ProfileType.values.deserialize(value) as T?;
+    case (Gender):
+      return Gender.values.deserialize(value) as T?;
     default:
       return null;
   }

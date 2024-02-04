@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
 import '/components/upload_ad_image_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
@@ -17,7 +18,14 @@ class PostAdModel extends FlutterFlowModel<PostAdWidget> {
   void updatePostionTypeAtIndex(int index, Function(String) updateFn) =>
       postionType[index] = updateFn(postionType[index]);
 
-  String gender = 'All';
+  List<Gender> gender = [];
+  void addToGender(Gender item) => gender.add(item);
+  void removeFromGender(Gender item) => gender.remove(item);
+  void removeAtIndexFromGender(int index) => gender.removeAt(index);
+  void insertAtIndexInGender(int index, Gender item) =>
+      gender.insert(index, item);
+  void updateGenderAtIndex(int index, Function(Gender) updateFn) =>
+      gender[index] = updateFn(gender[index]);
 
   String interviewType = 'DIRECT';
 

@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
+import '/backend/schema/enums/enums.dart';
 import '/components/upload_ad_image_widget.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
@@ -13,6 +14,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:ui';
+import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -2109,8 +2111,10 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                             Colors.transparent,
                                                         onTap: () async {
                                                           setState(() {
-                                                            _model.gender =
-                                                                'All';
+                                                            _model.gender = Gender
+                                                                .values
+                                                                .toList()
+                                                                .cast<Gender>();
                                                           });
                                                         },
                                                         child: Text(
@@ -2157,8 +2161,9 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                                     .transparent,
                                                             onTap: () async {
                                                               setState(() {
-                                                                _model.gender =
-                                                                    'Male';
+                                                                _model.addToGender(
+                                                                    Gender
+                                                                        .Male);
                                                               });
                                                             },
                                                             child: Container(
@@ -2166,31 +2171,12 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                               height: 100.0,
                                                               decoration:
                                                                   BoxDecoration(
-                                                                color: (_model.gender ==
-                                                                            'Male') ||
-                                                                        (_model.gender ==
-                                                                            'All')
-                                                                    ? FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryBackground
-                                                                    : const Color(
-                                                                        0xFFF3F5F7),
+                                                                color: const Color(
+                                                                    0xFFF3F5F7),
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .circular(
                                                                             5.0),
-                                                                border:
-                                                                    Border.all(
-                                                                  color: (_model.gender ==
-                                                                              'Male') ||
-                                                                          (_model.gender ==
-                                                                              'All')
-                                                                      ? FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primaryText
-                                                                      : const Color(
-                                                                          0xFFF3F5F7),
-                                                                ),
                                                               ),
                                                               child: Padding(
                                                                 padding:
@@ -2215,7 +2201,9 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                                           .cover,
                                                                     ),
                                                                     Text(
-                                                                      'MALE',
+                                                                      functions.enumToString(
+                                                                          Gender
+                                                                              .Male),
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyMedium
@@ -2252,8 +2240,9 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                                     .transparent,
                                                             onTap: () async {
                                                               setState(() {
-                                                                _model.gender =
-                                                                    'Female';
+                                                                _model.addToGender(
+                                                                    Gender
+                                                                        .Female);
                                                               });
                                                             },
                                                             child: Container(
@@ -2261,31 +2250,12 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                               height: 100.0,
                                                               decoration:
                                                                   BoxDecoration(
-                                                                color: (_model.gender ==
-                                                                            'Female') ||
-                                                                        (_model.gender ==
-                                                                            'All')
-                                                                    ? FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryBackground
-                                                                    : const Color(
-                                                                        0xFFF3F5F7),
+                                                                color: const Color(
+                                                                    0xFFF3F5F7),
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .circular(
                                                                             5.0),
-                                                                border:
-                                                                    Border.all(
-                                                                  color: (_model.gender ==
-                                                                              'Female') ||
-                                                                          (_model.gender ==
-                                                                              'All')
-                                                                      ? FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .primaryText
-                                                                      : const Color(
-                                                                          0xFFF3F5F7),
-                                                                ),
                                                               ),
                                                               child: Padding(
                                                                 padding:
@@ -2310,7 +2280,9 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                                           .cover,
                                                                     ),
                                                                     Text(
-                                                                      'FEMALE',
+                                                                      functions.enumToString(
+                                                                          Gender
+                                                                              .Female),
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyMedium
@@ -2338,8 +2310,9 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                               .transparent,
                                                           onTap: () async {
                                                             setState(() {
-                                                              _model.gender =
-                                                                  'Neutral';
+                                                              _model.addToGender(
+                                                                  Gender
+                                                                      .Neutral);
                                                             });
                                                           },
                                                           child: Container(
@@ -2347,30 +2320,18 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                             height: 100.0,
                                                             decoration:
                                                                 BoxDecoration(
-                                                              color: (_model.gender ==
-                                                                          'Neutral') ||
-                                                                      (_model.gender ==
-                                                                          'All')
-                                                                  ? FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground
-                                                                  : const Color(
-                                                                      0xFFF3F5F7),
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryBackground,
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
                                                                           5.0),
                                                               border:
                                                                   Border.all(
-                                                                color: (_model.gender ==
-                                                                            'Neutral') ||
-                                                                        (_model.gender ==
-                                                                            'All')
-                                                                    ? FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primaryText
-                                                                    : const Color(
-                                                                        0xFFF3F5F7),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
                                                               ),
                                                             ),
                                                             child: Padding(
@@ -2394,7 +2355,9 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                                         .cover,
                                                                   ),
                                                                   Text(
-                                                                    'NEUTRAL',
+                                                                    functions.enumToString(
+                                                                        Gender
+                                                                            .Neutral),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyMedium
@@ -3556,82 +3519,67 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                           ),
                                                         ),
                                                       ),
-                                                      InkWell(
-                                                        splashColor:
-                                                            Colors.transparent,
-                                                        focusColor:
-                                                            Colors.transparent,
-                                                        hoverColor:
-                                                            Colors.transparent,
-                                                        highlightColor:
-                                                            Colors.transparent,
-                                                        onTap: () async {
-                                                          setState(() {
-                                                            _model.gender =
-                                                                'Neutral';
-                                                          });
-                                                        },
-                                                        child: Container(
-                                                          width: 100.0,
-                                                          height: 100.0,
-                                                          decoration:
-                                                              BoxDecoration(
+                                                      Container(
+                                                        width: 100.0,
+                                                        height: 100.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: _model
+                                                                      .interviewType ==
+                                                                  'VIDEO'
+                                                              ? FlutterFlowTheme
+                                                                      .of(
+                                                                          context)
+                                                                  .secondaryBackground
+                                                              : const Color(
+                                                                  0xFFF3F5F7),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      5.0),
+                                                          border: Border.all(
                                                             color: _model
                                                                         .interviewType ==
                                                                     'VIDEO'
                                                                 ? FlutterFlowTheme.of(
                                                                         context)
-                                                                    .secondaryBackground
+                                                                    .primaryText
                                                                 : const Color(
                                                                     0xFFF3F5F7),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        5.0),
-                                                            border: Border.all(
-                                                              color: _model
-                                                                          .interviewType ==
-                                                                      'VIDEO'
-                                                                  ? FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText
-                                                                  : const Color(
-                                                                      0xFFF3F5F7),
-                                                            ),
                                                           ),
-                                                          child: Padding(
-                                                            padding:
-                                                                const EdgeInsets.all(
-                                                                    5.0),
-                                                            child: Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .center,
-                                                              children: [
-                                                                Image.asset(
-                                                                  'assets/images/both.png',
-                                                                  width: 40.0,
-                                                                  height: 40.0,
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                ),
-                                                                Text(
-                                                                  'VIDEO',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Sora',
-                                                                        fontSize:
-                                                                            12.0,
-                                                                      ),
-                                                                ),
-                                                              ],
-                                                            ),
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets.all(
+                                                                  5.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              Image.asset(
+                                                                'assets/images/both.png',
+                                                                width: 40.0,
+                                                                height: 40.0,
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
+                                                              Text(
+                                                                'VIDEO',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Sora',
+                                                                      fontSize:
+                                                                          12.0,
+                                                                    ),
+                                                              ),
+                                                            ],
                                                           ),
                                                         ),
                                                       ),
@@ -4524,7 +4472,6 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                               ),
                                               createdBy: currentUserReference,
                                               logo: _model.uploadedFileUrl,
-                                              preferredGender: _model.gender,
                                               educationRequired:
                                                   updateEducationStruct(
                                                 EducationStruct(
@@ -4578,6 +4525,10 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                 ),
                                                 'regional_language': _model
                                                     .regionallanguageschipsValues,
+                                                'preferred_gender': _model
+                                                    .gender
+                                                    .map((e) => e.serialize())
+                                                    .toList(),
                                               },
                                             ),
                                           });
@@ -4644,7 +4595,6 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                               ),
                                               createdBy: currentUserReference,
                                               logo: _model.uploadedFileUrl,
-                                              preferredGender: _model.gender,
                                               educationRequired:
                                                   updateEducationStruct(
                                                 EducationStruct(
@@ -4698,6 +4648,10 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                 ),
                                                 'regional_language': _model
                                                     .regionallanguageschipsValues,
+                                                'preferred_gender': _model
+                                                    .gender
+                                                    .map((e) => e.serialize())
+                                                    .toList(),
                                               },
                                             ),
                                           }, adsRecordReference);
