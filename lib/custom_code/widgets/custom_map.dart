@@ -11,14 +11,11 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'package:google_maps/google_maps.dart' as googleMaps;
-import 'dart:math';
-import 'dart:async';
-import 'dart:io';
-import 'dart:ui' as ui;
-import 'package:async/async.dart';
-import 'package:flutter/services.dart';
-import 'dart:typed_data';
+import 'package:google_maps_flutter/google_maps_flutter.dart' as googleMaps;
+import 'package:image/image.dart' as img;
+import '../../backend/api_requests/api_calls.dart';
+import '../../backend/api_requests/api_manager.dart';
+import '../../components/candidate_profile_card/candidate_profile_card_widget.dart';
 
 class CustomMap extends StatefulWidget {
   const CustomMap({
