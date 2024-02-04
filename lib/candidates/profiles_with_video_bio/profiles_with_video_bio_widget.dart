@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
 import '/components/navigation/navigation_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_toggle_icon.dart';
@@ -268,7 +269,7 @@ class _ProfilesWithVideoBioWidgetState
                             UsersRecord.collection
                                 .where(
                                   'profile_type',
-                                  isEqualTo: 'Candidate',
+                                  isEqualTo: ProfileType.Candidate.serialize(),
                                 )
                                 .where(
                                   'video_bio',

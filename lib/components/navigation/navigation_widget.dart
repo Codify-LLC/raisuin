@@ -133,7 +133,7 @@ class _NavigationWidgetState extends State<NavigationWidget> {
                     size: 22.0,
                   ),
                   onPressed: () async {
-                    context.pushNamed('createAd');
+                    context.pushNamed('postAd');
                   },
                 ),
                 FlutterFlowIconButton(

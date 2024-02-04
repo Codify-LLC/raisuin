@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
 import '/components/filter/filter_widget.dart';
 import '/components/loading/loading_widget.dart';
 import '/components/navigation/navigation_widget.dart';
@@ -973,7 +974,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                               .toString()))! <=
                                           searchresultItem.salaryRange.to) ||
                                       (searchresultItem.profileType ==
-                                          'Candidate'),
+                                          ProfileType.Candidate),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -1403,7 +1404,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                           pagingController: _model.setListViewController3(
                             UsersRecord.collection.where(
                               'profile_type',
-                              isEqualTo: 'Candidate',
+                              isEqualTo: ProfileType.Candidate.serialize(),
                             ),
                           ),
                           padding: const EdgeInsets.fromLTRB(

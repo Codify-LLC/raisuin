@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
+import '/backend/schema/enums/enums.dart';
 
 import 'index.dart';
 
@@ -124,11 +125,6 @@ class UsersRecord extends FirestoreRecord {
   List<String> get languageKnown => _languageKnown ?? const [];
   bool hasLanguageKnown() => _languageKnown != null;
 
-  // "profile_type" field.
-  String? _profileType;
-  String get profileType => _profileType ?? '';
-  bool hasProfileType() => _profileType != null;
-
   // "education" field.
   List<EducationStruct>? _education;
   List<EducationStruct> get education => _education ?? const [];
@@ -170,6 +166,16 @@ class UsersRecord extends FirestoreRecord {
   AdsStruct get ads => _ads ?? AdsStruct();
   bool hasAds() => _ads != null;
 
+  // "profile_type" field.
+  ProfileType? _profileType;
+  ProfileType? get profileType => _profileType;
+  bool hasProfileType() => _profileType != null;
+
+  // "school_name" field.
+  String? _schoolName;
+  String get schoolName => _schoolName ?? '';
+  bool hasSchoolName() => _schoolName != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -197,7 +203,6 @@ class UsersRecord extends FirestoreRecord {
     _maritalStatus = snapshotData['marital_status'] as String?;
     _motherTongue = snapshotData['mother_tongue'] as String?;
     _languageKnown = getDataList(snapshotData['language_known']);
-    _profileType = snapshotData['profile_type'] as String?;
     _education = getStructList(
       snapshotData['education'],
       EducationStruct.fromMap,
@@ -215,6 +220,8 @@ class UsersRecord extends FirestoreRecord {
     );
     _seekingJobPost = snapshotData['seeking_job_post'] as String?;
     _ads = AdsStruct.maybeFromMap(snapshotData['ads']);
+    _profileType = deserializeEnum<ProfileType>(snapshotData['profile_type']);
+    _schoolName = snapshotData['school_name'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -270,11 +277,12 @@ Map<String, dynamic> createUsersRecordData({
   String? preferredPosting,
   String? maritalStatus,
   String? motherTongue,
-  String? profileType,
   bool? whatsapp,
   String? videoBio,
   String? seekingJobPost,
   AdsStruct? ads,
+  ProfileType? profileType,
+  String? schoolName,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -297,11 +305,12 @@ Map<String, dynamic> createUsersRecordData({
       'preferred_posting': preferredPosting,
       'marital_status': maritalStatus,
       'mother_tongue': motherTongue,
-      'profile_type': profileType,
       'whatsapp': whatsapp,
       'video_bio': videoBio,
       'seeking_job_post': seekingJobPost,
       'ads': AdsStruct().toMap(),
+      'profile_type': profileType,
+      'school_name': schoolName,
     }.withoutNulls,
   );
 
@@ -345,7 +354,6 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.maritalStatus == e2?.maritalStatus &&
         e1?.motherTongue == e2?.motherTongue &&
         listEquality.equals(e1?.languageKnown, e2?.languageKnown) &&
-        e1?.profileType == e2?.profileType &&
         listEquality.equals(e1?.education, e2?.education) &&
         listEquality.equals(
             e1?.workExperienceHistory, e2?.workExperienceHistory) &&
@@ -354,7 +362,9 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.videoBio == e2?.videoBio &&
         listEquality.equals(e1?.jobSeekDistrict, e2?.jobSeekDistrict) &&
         e1?.seekingJobPost == e2?.seekingJobPost &&
-        e1?.ads == e2?.ads;
+        e1?.ads == e2?.ads &&
+        e1?.profileType == e2?.profileType &&
+        e1?.schoolName == e2?.schoolName;
   }
 
   @override
@@ -381,7 +391,6 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.maritalStatus,
         e?.motherTongue,
         e?.languageKnown,
-        e?.profileType,
         e?.education,
         e?.workExperienceHistory,
         e?.whatsapp,
@@ -389,7 +398,9 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.videoBio,
         e?.jobSeekDistrict,
         e?.seekingJobPost,
-        e?.ads
+        e?.ads,
+        e?.profileType,
+        e?.schoolName
       ]);
 
   @override

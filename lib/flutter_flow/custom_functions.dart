@@ -11,6 +11,7 @@ import 'uploaded_file.dart';
 import '/backend/backend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '/backend/schema/structs/index.dart';
+import '/backend/schema/enums/enums.dart';
 import '/auth/firebase_auth/auth_util.dart';
 
 int dateStringAgeCalculator(String date) {
@@ -130,4 +131,12 @@ List<String> getSearchParameterList(List<ChatsRecord> chats) {
   }
 
   return searchParameters;
+}
+
+List<String> enumToStringList(List<ProfileType> input) {
+  return input.map((type) => type.name).toList();
+}
+
+ProfileType stringToEnum(String input) {
+  return ProfileType.values.byName(input);
 }

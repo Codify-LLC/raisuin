@@ -1,10 +1,11 @@
 import '/backend/backend.dart';
+import '/components/upload_ad_image_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'create_ad_widget.dart' show CreateAdWidget;
+import 'post_ad_widget.dart' show PostAdWidget;
 import 'package:flutter/material.dart';
 
-class CreateAdModel extends FlutterFlowModel<CreateAdWidget> {
+class PostAdModel extends FlutterFlowModel<PostAdWidget> {
   ///  Local state fields for this page.
 
   List<String> postionType = [];
@@ -16,16 +17,6 @@ class CreateAdModel extends FlutterFlowModel<CreateAdWidget> {
   void updatePostionTypeAtIndex(int index, Function(String) updateFn) =>
       postionType[index] = updateFn(postionType[index]);
 
-  List<String> overviewImages = [];
-  void addToOverviewImages(String item) => overviewImages.add(item);
-  void removeFromOverviewImages(String item) => overviewImages.remove(item);
-  void removeAtIndexFromOverviewImages(int index) =>
-      overviewImages.removeAt(index);
-  void insertAtIndexInOverviewImages(int index, String item) =>
-      overviewImages.insert(index, item);
-  void updateOverviewImagesAtIndex(int index, Function(String) updateFn) =>
-      overviewImages[index] = updateFn(overviewImages[index]);
-
   String gender = 'All';
 
   String interviewType = 'DIRECT';
@@ -33,6 +24,7 @@ class CreateAdModel extends FlutterFlowModel<CreateAdWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  final formKey3 = GlobalKey<FormState>();
   final formKey2 = GlobalKey<FormState>();
   final formKey1 = GlobalKey<FormState>();
   // State field(s) for TabBar widget.
@@ -40,26 +32,11 @@ class CreateAdModel extends FlutterFlowModel<CreateAdWidget> {
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
 
-  // State field(s) for Position widget.
-  String? positionValue;
-  FormFieldController<List<String>>? positionValueController;
-  // State field(s) for PositionTitle widget.
-  FocusNode? positionTitleFocusNode;
-  TextEditingController? positionTitleController;
-  String? Function(BuildContext, String?)? positionTitleControllerValidator;
-  String? _positionTitleControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Field is required';
-    }
-
-    return null;
-  }
-
-  // State field(s) for instituteName widget.
-  FocusNode? instituteNameFocusNode;
-  TextEditingController? instituteNameController;
-  String? Function(BuildContext, String?)? instituteNameControllerValidator;
-  String? _instituteNameControllerValidator(BuildContext context, String? val) {
+  // State field(s) for JobTitile widget.
+  FocusNode? jobTitileFocusNode;
+  TextEditingController? jobTitileController;
+  String? Function(BuildContext, String?)? jobTitileControllerValidator;
+  String? _jobTitileControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -76,16 +53,25 @@ class CreateAdModel extends FlutterFlowModel<CreateAdWidget> {
   // State field(s) for Shift widget.
   String? shiftValue;
   FormFieldController<List<String>>? shiftValueController;
-  bool isDataUploading1 = false;
-  FFUploadedFile uploadedLocalFile1 =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl1 = '';
+  // State field(s) for instituteName widget.
+  FocusNode? instituteNameFocusNode;
+  TextEditingController? instituteNameController;
+  String? Function(BuildContext, String?)? instituteNameControllerValidator;
+  String? _instituteNameControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
 
-  bool isDataUploading2 = false;
-  FFUploadedFile uploadedLocalFile2 =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl2 = '';
+    return null;
+  }
 
+  bool isDataUploading = false;
+  FFUploadedFile uploadedLocalFile =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl = '';
+
+  // Models for uploadAdImage dynamic component.
+  late FlutterFlowDynamicModels<UploadAdImageModel> uploadAdImageModels;
   // State field(s) for from widget.
   FocusNode? fromFocusNode;
   TextEditingController? fromController;
@@ -160,8 +146,9 @@ class CreateAdModel extends FlutterFlowModel<CreateAdWidget> {
 
   @override
   void initState(BuildContext context) {
-    positionTitleControllerValidator = _positionTitleControllerValidator;
+    jobTitileControllerValidator = _jobTitileControllerValidator;
     instituteNameControllerValidator = _instituteNameControllerValidator;
+    uploadAdImageModels = FlutterFlowDynamicModels(() => UploadAdImageModel());
     fromControllerValidator = _fromControllerValidator;
     toControllerValidator = _toControllerValidator;
   }
@@ -170,12 +157,13 @@ class CreateAdModel extends FlutterFlowModel<CreateAdWidget> {
   void dispose() {
     unfocusNode.dispose();
     tabBarController?.dispose();
-    positionTitleFocusNode?.dispose();
-    positionTitleController?.dispose();
+    jobTitileFocusNode?.dispose();
+    jobTitileController?.dispose();
 
     instituteNameFocusNode?.dispose();
     instituteNameController?.dispose();
 
+    uploadAdImageModels.dispose();
     fromFocusNode?.dispose();
     fromController?.dispose();
 

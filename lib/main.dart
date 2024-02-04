@@ -25,6 +25,7 @@ void main() async {
   await revenue_cat.initialize(
     "",
     "appcfc2530287",
+    debugLogEnabled: true,
     loadDataAfterLaunch: true,
   );
 

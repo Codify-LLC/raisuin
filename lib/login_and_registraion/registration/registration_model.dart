@@ -13,12 +13,11 @@ class RegistrationModel extends FlutterFlowModel<RegistrationWidget> {
       FFUploadedFile(bytes: Uint8List.fromList([]));
   String uploadedFileUrl = '';
 
-  // State field(s) for organizationName widget.
-  FocusNode? organizationNameFocusNode;
-  TextEditingController? organizationNameController;
-  String? Function(BuildContext, String?)? organizationNameControllerValidator;
-  String? _organizationNameControllerValidator(
-      BuildContext context, String? val) {
+  // State field(s) for displayName widget.
+  FocusNode? displayNameFocusNode;
+  TextEditingController? displayNameController;
+  String? Function(BuildContext, String?)? displayNameControllerValidator;
+  String? _displayNameControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -26,11 +25,21 @@ class RegistrationModel extends FlutterFlowModel<RegistrationWidget> {
     return null;
   }
 
-  // State field(s) for PlacePicker widget.
-  var placePickerValue = const FFPlace();
-  // State field(s) for ChoiceChips widget.
-  String? choiceChipsValue;
-  FormFieldController<List<String>>? choiceChipsValueController;
+  // State field(s) for profileType widget.
+  String? profileTypeValue;
+  FormFieldController<List<String>>? profileTypeValueController;
+  // State field(s) for schoolName widget.
+  FocusNode? schoolNameFocusNode;
+  TextEditingController? schoolNameController;
+  String? Function(BuildContext, String?)? schoolNameControllerValidator;
+  String? _schoolNameControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for userRole widget.
   FocusNode? userRoleFocusNode;
   TextEditingController? userRoleController;
@@ -43,19 +52,26 @@ class RegistrationModel extends FlutterFlowModel<RegistrationWidget> {
     return null;
   }
 
+  // State field(s) for PlacePicker widget.
+  var placePickerValue = const FFPlace();
+
   /// Initialization and disposal methods.
 
   @override
   void initState(BuildContext context) {
-    organizationNameControllerValidator = _organizationNameControllerValidator;
+    displayNameControllerValidator = _displayNameControllerValidator;
+    schoolNameControllerValidator = _schoolNameControllerValidator;
     userRoleControllerValidator = _userRoleControllerValidator;
   }
 
   @override
   void dispose() {
     unfocusNode.dispose();
-    organizationNameFocusNode?.dispose();
-    organizationNameController?.dispose();
+    displayNameFocusNode?.dispose();
+    displayNameController?.dispose();
+
+    schoolNameFocusNode?.dispose();
+    schoolNameController?.dispose();
 
     userRoleFocusNode?.dispose();
     userRoleController?.dispose();

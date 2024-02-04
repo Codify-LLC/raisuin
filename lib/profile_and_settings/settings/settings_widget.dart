@@ -541,7 +541,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                               await authManager.signOut();
                               GoRouter.of(context).clearRedirectLocation();
 
-                              context.goNamedAuth('signIn', context.mounted);
+                              context.goNamedAuth('SignIn', context.mounted);
                             },
                             child: Container(
                               width: MediaQuery.sizeOf(context).width * 0.9,

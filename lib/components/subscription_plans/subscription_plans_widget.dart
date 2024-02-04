@@ -1058,7 +1058,7 @@ class _SubscriptionPlansWidgetState extends State<SubscriptionPlansWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
-                    context.goNamed('registration');
+                    context.goNamed('Registration');
                   },
                   child: Container(
                     height: 50.0,

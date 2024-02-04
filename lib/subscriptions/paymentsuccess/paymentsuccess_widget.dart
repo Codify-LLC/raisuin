@@ -12,8 +12,8 @@ export 'paymentsuccess_model.dart';
 class PaymentsuccessWidget extends StatefulWidget {
   const PaymentsuccessWidget({
     super.key,
-    required this.validTill,
-    required this.adLimits,
+    this.validTill,
+    this.adLimits,
   });
 
   final DateTime? validTill;
@@ -71,7 +71,7 @@ class _PaymentsuccessWidgetState extends State<PaymentsuccessWidget> {
           body: SafeArea(
             top: true,
             child: Column(
-              mainAxisSize: MainAxisSize.max,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
                   width: 140.0,
@@ -127,45 +127,38 @@ class _PaymentsuccessWidgetState extends State<PaymentsuccessWidget> {
                   ),
                 ),
                 Expanded(
-                  child: Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 32.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        FFButtonWidget(
-                          onPressed: () async {
-                            context.goNamed('homePage');
-                          },
-                          text: 'Go Home',
-                          options: FFButtonOptions(
-                            width: 230.0,
-                            height: 50.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).tertiary,
-                            textStyle:
-                                FlutterFlowTheme.of(context).bodyLarge.override(
-                                      fontFamily: 'Sora',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                            elevation: 0.0,
-                            borderSide: const BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(40.0),
-                          ),
+                  child: Align(
+                    alignment: const AlignmentDirectional(0.0, 1.0),
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        context.goNamed('homePage');
+                      },
+                      text: 'Go Home',
+                      options: FFButtonOptions(
+                        width: 230.0,
+                        height: 50.0,
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        iconPadding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).tertiary,
+                        textStyle:
+                            FlutterFlowTheme.of(context).bodyLarge.override(
+                                  fontFamily: 'Sora',
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
+                        elevation: 0.0,
+                        borderSide: const BorderSide(
+                          color: Colors.transparent,
+                          width: 1.0,
                         ),
-                      ],
+                        borderRadius: BorderRadius.circular(40.0),
+                      ),
                     ),
                   ),
                 ),
-              ],
+              ].addToStart(const SizedBox(height: 20.0)),
             ),
           ),
         ));

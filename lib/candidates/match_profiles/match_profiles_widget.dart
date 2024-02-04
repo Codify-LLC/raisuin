@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
 import '/components/navigation/navigation_widget.dart';
 import '/components/send_email_message/send_email_message_widget.dart';
 import '/components/send_message/send_message_widget.dart';
@@ -45,7 +46,7 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
           queryBuilder: (usersRecord) => usersRecord
               .where(
                 'profile_type',
-                isEqualTo: 'Candidate',
+                isEqualTo: ProfileType.Candidate.serialize(),
               )
               .where(
                 'preferred_posting',

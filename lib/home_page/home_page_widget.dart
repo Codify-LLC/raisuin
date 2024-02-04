@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/backend/schema/enums/enums.dart';
 import '/components/navigation/navigation_widget.dart';
 import '/components/video_player/video_player_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -36,7 +37,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       if (currentUserDisplayName == '') {
-        context.pushNamed('registration');
+        context.pushNamed('Registration');
       }
       setState(() {
         _model.savedCandidates =
@@ -463,7 +464,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   queryBuilder: (usersRecord) => usersRecord
                                       .where(
                                         'profile_type',
-                                        isEqualTo: 'Candidate',
+                                        isEqualTo:
+                                            ProfileType.Candidate.serialize(),
                                       )
                                       .where(
                                         'preferred_posting',
@@ -1444,7 +1446,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         queryBuilder: (usersRecord) =>
                                             usersRecord.where(
                                           'profile_type',
-                                          isEqualTo: 'Candidate',
+                                          isEqualTo:
+                                              ProfileType.Candidate.serialize(),
                                         ),
                                         limit: 1,
                                       ),

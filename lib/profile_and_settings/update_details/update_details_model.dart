@@ -17,15 +17,6 @@ class UpdateDetailsModel extends FlutterFlowModel<UpdateDetailsWidget> {
   FocusNode? organizationNameFocusNode;
   TextEditingController? organizationNameController;
   String? Function(BuildContext, String?)? organizationNameControllerValidator;
-  String? _organizationNameControllerValidator(
-      BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Field is required';
-    }
-
-    return null;
-  }
-
   // State field(s) for PlacePicker widget.
   var placePickerValue = const FFPlace();
   // State field(s) for ChoiceChips widget.
@@ -35,21 +26,11 @@ class UpdateDetailsModel extends FlutterFlowModel<UpdateDetailsWidget> {
   FocusNode? userRoleFocusNode;
   TextEditingController? userRoleController;
   String? Function(BuildContext, String?)? userRoleControllerValidator;
-  String? _userRoleControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Field is required';
-    }
-
-    return null;
-  }
 
   /// Initialization and disposal methods.
 
   @override
-  void initState(BuildContext context) {
-    organizationNameControllerValidator = _organizationNameControllerValidator;
-    userRoleControllerValidator = _userRoleControllerValidator;
-  }
+  void initState(BuildContext context) {}
 
   @override
   void dispose() {

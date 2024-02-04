@@ -82,21 +82,21 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? const HomePageWidget() : const SignInWidget(),
         ),
         FFRoute(
-          name: 'signIn',
+          name: 'SignIn',
           path: '/signIn',
           builder: (context, params) => const SignInWidget(),
         ),
         FFRoute(
-          name: 'registration',
+          name: 'Registration',
           path: '/registration',
           requireAuth: true,
           builder: (context, params) => const RegistrationWidget(),
         ),
         FFRoute(
-          name: 'subcription',
-          path: '/subcription',
+          name: 'Subscription',
+          path: '/subscription',
           requireAuth: true,
-          builder: (context, params) => const SubcriptionWidget(),
+          builder: (context, params) => const SubscriptionWidget(),
         ),
         FFRoute(
           name: 'homePage',
@@ -113,10 +113,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'createAd',
-          path: '/createAd',
+          name: 'postAd',
+          path: '/postAd',
           requireAuth: true,
-          builder: (context, params) => const CreateAdWidget(),
+          builder: (context, params) => const PostAdWidget(),
         ),
         FFRoute(
           name: 'listCandidates',
@@ -187,12 +187,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/blocked',
           requireAuth: true,
           builder: (context, params) => const BlockedWidget(),
-        ),
-        FFRoute(
-          name: 'verifyPayment',
-          path: '/verifyPayment',
-          requireAuth: true,
-          builder: (context, params) => const VerifyPaymentWidget(),
         ),
         FFRoute(
           name: 'chatMessages',
@@ -513,7 +507,11 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(
+        hasTransition: true,
+        transitionType: PageTransitionType.bottomToTop,
+        duration: Duration(milliseconds: 300),
+      );
 }
 
 class RootPageContext {

@@ -1,13 +1,17 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'subcription_widget.dart' show SubcriptionWidget;
+import 'subscription_widget.dart' show SubscriptionWidget;
 import 'package:flutter/material.dart';
 
-class SubcriptionModel extends FlutterFlowModel<SubcriptionWidget> {
+class SubscriptionModel extends FlutterFlowModel<SubscriptionWidget> {
+  ///  Local state fields for this page.
+
+  String? packageIdentifier;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [RevenueCat - Purchase] action in Column widget.
-  bool? purchase;
+  // Stores action output result for [RevenueCat - Purchase] action in Button widget.
+  bool? purchaseStatus;
 
   /// Initialization and disposal methods.
 

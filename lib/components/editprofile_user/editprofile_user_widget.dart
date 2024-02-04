@@ -470,7 +470,7 @@ class _EditprofileUserWidgetState extends State<EditprofileUserWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        context.goNamed('createAd');
+                        context.goNamed('postAd');
                       },
                       child: Container(
                         height: 50.0,
