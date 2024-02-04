@@ -44,7 +44,7 @@ class CustomMap extends StatefulWidget {
 }
 
 class _CustomMapState extends State<CustomMap> {
-  late googleMaps.GoogleMapController mapController;
+  late GoogleMapController mapController;
 
   @override
   Widget build(BuildContext context) {
