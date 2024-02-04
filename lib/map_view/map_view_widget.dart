@@ -552,7 +552,7 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                                               MediaQuery.sizeOf(context).width *
                                                   0.9,
                                           child: CandidateProfileCardWidget(
-                                            userRef: userRef.reference,
+                                            userRef: userDoc.reference,
                                           ),
                                         ),
                                       ),
