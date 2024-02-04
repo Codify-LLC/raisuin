@@ -12,8 +12,7 @@ import 'package:flutter/material.dart';
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
 import 'package:google_maps_flutter/google_maps_flutter.dart' as google_maps;
-import 'dart:typed_data';
-import 'dart:ui' as ui;
+import 'package:widget_to_marker/widget_to_marker.dart';
 
 class CustomMap extends StatefulWidget {
   const CustomMap({
@@ -22,14 +21,12 @@ class CustomMap extends StatefulWidget {
     this.height,
     required this.initialCenter,
     required this.userDocs,
-    required this.latLangList,
   }) : super(key: key);
 
   final double? width;
   final double? height;
   final LatLng initialCenter;
   final List<UsersRecord> userDocs;
-  final List<LatLng> latLangList;
 
   @override
   _CustomMapState createState() => _CustomMapState();
@@ -76,70 +73,24 @@ class _CustomMapState extends State<CustomMap> {
     for (int i = 0; i < widget.userDocs.length; i++) {
       final UsersRecord user = widget.userDocs[i];
 
-      // Convert photo URL to image
-      final Image image = Image.network(user.photoUrl);
-
-      // Create a BitmapDescriptor from the cropped image
-      final google_maps.BitmapDescriptor bitmapDescriptor =
-          await _createCircularBitmapDescriptor(image);
-
       // Add the marker to the set
       final google_maps.Marker marker = google_maps.Marker(
         markerId: google_maps.MarkerId("marker_$i"),
-        position: const google_maps.LatLng(0.0, 0.0), // Set the marker position
-        icon: bitmapDescriptor,
+        position: google_maps.LatLng(user.address.latLang?.latitude ?? 0.0,
+            user.address.latLang?.longitude ?? 0.0), // Set the marker position
+        icon: await Container(
+          child: Padding(
+            padding: EdgeInsets.all(2),
+            child: CircleAvatar(
+              backgroundImage: NetworkImage(user.photoUrl),
+            ),
+          ),
+        ).toBitmapDescriptor(),
       );
 
       result.add(marker);
     }
 
     return result;
-  }
-
-  Future<google_maps.BitmapDescriptor> _createCircularBitmapDescriptor(
-      Image image) async {
-    final ui.PictureRecorder pictureRecorder = ui.PictureRecorder();
-    final Canvas canvas = Canvas(pictureRecorder);
-
-    final Paint paint = Paint()..color = Colors.transparent;
-
-    final Radius radius = Radius.circular(image.width! / 2);
-
-    canvas.drawRRect(
-      RRect.fromRectAndCorners(
-        Rect.fromPoints(
-          const Offset(0.0, 0.0),
-          Offset(
-            image.width!.toDouble(),
-            image.height!.toDouble(),
-          ),
-        ),
-        topLeft: radius,
-        topRight: radius,
-        bottomLeft: radius,
-        bottomRight: radius,
-      ),
-      paint,
-    );
-
-    canvas.drawImage(
-      image.image as ui.Image,
-      const Offset(0.0, 0.0),
-      paint,
-    );
-
-    final ui.Picture picture = pictureRecorder.endRecording();
-    final ui.Image img = await picture.toImage(
-      image.width!.toInt(),
-      image.height!.toInt(),
-    );
-
-    final ByteData? byteData = await img.toByteData(
-      format: ui.ImageByteFormat.png,
-    )!;
-
-    final Uint8List uint8List = byteData!.buffer.asUint8List();
-
-    return google_maps.BitmapDescriptor.fromBytes(uint8List);
   }
 }

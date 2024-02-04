@@ -527,10 +527,6 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                             initialCenter:
                                 mapViewUsersRecordList.first.address.latLang!,
                             userDocs: mapViewUsersRecordList,
-                            latLangList: mapViewUsersRecordList
-                                .map((e) => e.address.latLang)
-                                .withoutNulls
-                                .toList(),
                           ),
                         );
                       } else {
