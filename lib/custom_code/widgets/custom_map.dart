@@ -11,10 +11,7 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'index.dart'; // Imports other custom widgets
-
 import 'package:google_maps/google_maps.dart' as googleMaps;
-import 'package:flutter_map/plugin_api.dart';
 import 'dart:math';
 import 'dart:async';
 import 'dart:io';
