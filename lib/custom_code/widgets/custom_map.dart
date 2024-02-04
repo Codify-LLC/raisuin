@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'package:google_maps_flutter/google_maps_flutter.dart' as googleMaps;
+import 'package:google_maps_flutter/google_maps_flutter.dart' as google_maps;
 import 'package:image/image.dart' as img;
 import '../../backend/api_requests/api_calls.dart';
 import '../../components/candidate_profile_card/candidate_profile_card_widget.dart';
@@ -37,7 +37,7 @@ class CustomMap extends StatefulWidget {
 }
 
 class _CustomMapState extends State<CustomMap> {
-  late googleMaps.GoogleMapController mapController;
+  late google_maps.GoogleMapController mapController;
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +45,9 @@ class _CustomMapState extends State<CustomMap> {
       future: _createMarkers(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return googleMaps.GoogleMap(
-            initialCameraPosition: googleMaps.CameraPosition(
-              target: googleMaps.LatLng(
+          return google_maps.GoogleMap(
+            initialCameraPosition: google_maps.CameraPosition(
+              target: google_maps.LatLng(
                 widget.initialCenter.latitude,
                 widget.initialCenter.longitude,
               ),
@@ -73,8 +73,8 @@ class _CustomMapState extends State<CustomMap> {
     _createMarkers();
   }
 
-  Future<List<googleMaps.Marker>> _createMarkers() async {
-    List<Future<googleMaps.Marker>> markerFutures = [];
+  Future<List<google_maps.Marker>> _createMarkers() async {
+    List<Future<google_maps.Marker>> markerFutures = [];
 
     for (UsersRecord userData in widget.userDoc) {
       LatLng latLng = userData.address.latLang ?? LatLng(0.0, 0.0);
@@ -82,14 +82,14 @@ class _CustomMapState extends State<CustomMap> {
 
       markerFutures.add(
         getMarkerBytes(photoUrl).then((iconBytes) async {
-          return googleMaps.Marker(
-            markerId: googleMaps.MarkerId(latLng.hashCode.toString()),
-            position: googleMaps.LatLng(latLng.latitude, latLng.longitude),
+          return google_maps.Marker(
+            markerId: google_maps.MarkerId(latLng.hashCode.toString()),
+            position: google_maps.LatLng(latLng.latitude, latLng.longitude),
             icon: iconBytes != null
-                ? googleMaps.BitmapDescriptor.fromBytes(img.encodeBmp(img
+                ? google_maps.BitmapDescriptor.fromBytes(img.encodeBmp(img
                     .copyCropCircle(img.decodeImage(iconBytes)!, radius: 50)))
-                : googleMaps.BitmapDescriptor.defaultMarkerWithHue(
-                    googleMaps.BitmapDescriptor.hueAzure),
+                : google_maps.BitmapDescriptor.defaultMarkerWithHue(
+                    google_maps.BitmapDescriptor.hueAzure),
             onTap: () async {
               await showDialog(
                 context: context,
