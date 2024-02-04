@@ -101,11 +101,9 @@ class _CustomMapState extends State<CustomMap> {
                     backgroundColor: Colors.transparent,
                     alignment: AlignmentDirectional(0, 0)
                         .resolve(Directionality.of(context)),
-                    child: WebViewAware(
-                      child: GestureDetector(
-                        child: CandidateProfileCardWidget(
-                          userRef: userData.reference,
-                        ),
+                    child: GestureDetector(
+                      child: CandidateProfileCardWidget(
+                        userRef: userData.reference,
                       ),
                     ),
                   );
