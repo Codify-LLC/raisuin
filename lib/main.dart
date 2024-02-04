@@ -11,6 +11,7 @@ import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
 import 'flutter_flow/nav/nav.dart';
+import 'flutter_flow/revenue_cat_util.dart' as revenue_cat;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,6 +21,12 @@ void main() async {
   // Start initial custom actions code
   await actions.hiveConnect();
   // End initial custom actions code
+
+  await revenue_cat.initialize(
+    "",
+    "appcfc2530287",
+    loadDataAfterLaunch: true,
+  );
 
   runApp(const MyApp());
 }
@@ -44,7 +51,9 @@ class _MyAppState extends State<MyApp> {
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
 
-  final authUserSub = authenticatedUserStream.listen((_) {});
+  final authUserSub = authenticatedUserStream.listen((user) {
+    revenue_cat.login(user?.uid);
+  });
 
   @override
   void initState() {
@@ -90,7 +99,6 @@ class _MyAppState extends State<MyApp> {
       supportedLocales: const [Locale('en', '')],
       theme: ThemeData(
         brightness: Brightness.light,
-        scrollbarTheme: const ScrollbarThemeData(),
       ),
       themeMode: _themeMode,
       routerConfig: _router,

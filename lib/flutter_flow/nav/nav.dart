@@ -141,10 +141,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'profileEmployer',
-          path: '/profileEmployer',
+          name: 'settings',
+          path: '/settings',
           requireAuth: true,
-          builder: (context, params) => const ProfileEmployerWidget(),
+          builder: (context, params) => const SettingsWidget(),
         ),
         FFRoute(
           name: 'myads',
@@ -214,11 +214,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/recentTransactions',
           requireAuth: true,
           builder: (context, params) => const RecentTransactionsWidget(),
-        ),
-        FFRoute(
-          name: 'hlstest',
-          path: '/hlstest',
-          builder: (context, params) => const HlstestWidget(),
         ),
         FFRoute(
           name: 'paymentsuccess',
