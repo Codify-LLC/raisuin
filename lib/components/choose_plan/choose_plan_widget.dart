@@ -24,8 +24,6 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ChoosePlanModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

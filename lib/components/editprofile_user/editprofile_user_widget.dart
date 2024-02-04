@@ -37,8 +37,6 @@ class _EditprofileUserWidgetState extends State<EditprofileUserWidget> {
 
     _model.textController3 ??= TextEditingController();
     _model.textFieldFocusNode3 ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

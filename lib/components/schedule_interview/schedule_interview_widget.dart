@@ -41,8 +41,6 @@ class _ScheduleInterviewWidgetState extends State<ScheduleInterviewWidget> {
 
     _model.userRoleController ??= TextEditingController();
     _model.userRoleFocusNode ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

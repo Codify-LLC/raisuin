@@ -1,4 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
+import '/flutter_flow/flutter_flow_google_map.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'map_view_widget.dart' show MapViewWidget;
@@ -28,6 +29,9 @@ class MapViewModel extends FlutterFlowModel<MapViewWidget> {
   // State field(s) for experienceTill widget.
   String? experienceTillValue;
   FormFieldController<String>? experienceTillValueController;
+  // State field(s) for DoNotDelete widget.
+  LatLng? doNotDeletesCenter;
+  final doNotDeletesController = Completer<GoogleMapController>();
 
   /// Initialization and disposal methods.
 

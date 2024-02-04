@@ -43,8 +43,6 @@ class _MessageComponentWidgetState extends State<MessageComponentWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => MessageComponentModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

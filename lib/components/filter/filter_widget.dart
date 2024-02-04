@@ -42,8 +42,6 @@ class _FilterWidgetState extends State<FilterWidget> {
 
     _model.salarytillController ??= TextEditingController();
     _model.salarytillFocusNode ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

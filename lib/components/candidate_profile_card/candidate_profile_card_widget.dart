@@ -34,8 +34,6 @@ class _CandidateProfileCardWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => CandidateProfileCardModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

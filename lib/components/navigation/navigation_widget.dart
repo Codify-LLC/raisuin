@@ -42,8 +42,6 @@ class _NavigationWidgetState extends State<NavigationWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => NavigationModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

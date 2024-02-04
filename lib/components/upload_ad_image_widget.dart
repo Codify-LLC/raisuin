@@ -27,8 +27,6 @@ class _UploadAdImageWidgetState extends State<UploadAdImageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => UploadAdImageModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

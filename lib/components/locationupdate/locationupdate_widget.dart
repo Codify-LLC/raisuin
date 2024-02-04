@@ -26,8 +26,6 @@ class _LocationupdateWidgetState extends State<LocationupdateWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => LocationupdateModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

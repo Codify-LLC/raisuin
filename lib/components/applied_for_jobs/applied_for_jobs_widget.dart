@@ -32,8 +32,6 @@ class _AppliedForJobsWidgetState extends State<AppliedForJobsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AppliedForJobsModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

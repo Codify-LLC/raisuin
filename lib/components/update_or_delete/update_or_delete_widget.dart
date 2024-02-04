@@ -36,8 +36,6 @@ class _UpdateOrDeleteWidgetState extends State<UpdateOrDeleteWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => UpdateOrDeleteModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

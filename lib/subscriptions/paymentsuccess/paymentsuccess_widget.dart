@@ -40,8 +40,6 @@ class _PaymentsuccessWidgetState extends State<PaymentsuccessWidget> {
         subscribed: true,
       ));
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -62,105 +60,100 @@ class _PaymentsuccessWidgetState extends State<PaymentsuccessWidget> {
       );
     }
 
-    return Title(
-        title: 'paymentsuccess',
-        color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
-        child: Scaffold(
-          key: scaffoldKey,
-          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-          body: SafeArea(
-            top: true,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  width: 140.0,
-                  height: 140.0,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).tertiary,
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: FlutterFlowTheme.of(context).tertiary,
-                      width: 2.0,
-                    ),
-                  ),
-                  alignment: const AlignmentDirectional(0.0, 0.0),
-                  child: Padding(
-                    padding: const EdgeInsets.all(30.0),
-                    child: Icon(
-                      Icons.check_rounded,
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                      size: 60.0,
-                    ),
-                  ),
+    return Scaffold(
+      key: scaffoldKey,
+      backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+      body: SafeArea(
+        top: true,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 140.0,
+              height: 140.0,
+              decoration: BoxDecoration(
+                color: FlutterFlowTheme.of(context).tertiary,
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: FlutterFlowTheme.of(context).tertiary,
+                  width: 2.0,
                 ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
-                  child: Text(
-                    'Payment Confirmed!',
-                    textAlign: TextAlign.center,
-                    style: FlutterFlowTheme.of(context).displaySmall.override(
-                          fontFamily: 'Sora',
-                          color: FlutterFlowTheme.of(context).tertiary,
-                        ),
-                  ),
+              ),
+              alignment: const AlignmentDirectional(0.0, 0.0),
+              child: Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: Icon(
+                  Icons.check_rounded,
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                  size: 60.0,
                 ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
-                  child: Text(
-                    valueOrDefault<String>(
-                      '₹',
-                      '-',
-                    ),
-                    style: FlutterFlowTheme.of(context).displayLarge.override(
-                          fontFamily: 'Sora',
-                          fontSize: 48.0,
-                        ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(24.0, 8.0, 24.0, 0.0),
-                  child: Text(
-                    'Your payment has been confirmed. Your account will be recharged accordingly Thank you for the payment.',
-                    textAlign: TextAlign.center,
-                    style: FlutterFlowTheme.of(context).labelLarge,
-                  ),
-                ),
-                Expanded(
-                  child: Align(
-                    alignment: const AlignmentDirectional(0.0, 1.0),
-                    child: FFButtonWidget(
-                      onPressed: () async {
-                        context.goNamed('homePage');
-                      },
-                      text: 'Go Home',
-                      options: FFButtonOptions(
-                        width: 230.0,
-                        height: 50.0,
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).tertiary,
-                        textStyle:
-                            FlutterFlowTheme.of(context).bodyLarge.override(
-                                  fontFamily: 'Sora',
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                ),
-                        elevation: 0.0,
-                        borderSide: const BorderSide(
-                          color: Colors.transparent,
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(40.0),
-                      ),
-                    ),
-                  ),
-                ),
-              ].addToStart(const SizedBox(height: 20.0)),
+              ),
             ),
-          ),
-        ));
+            Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+              child: Text(
+                'Payment Confirmed!',
+                textAlign: TextAlign.center,
+                style: FlutterFlowTheme.of(context).displaySmall.override(
+                      fontFamily: 'Sora',
+                      color: FlutterFlowTheme.of(context).tertiary,
+                    ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+              child: Text(
+                valueOrDefault<String>(
+                  '₹',
+                  '-',
+                ),
+                style: FlutterFlowTheme.of(context).displayLarge.override(
+                      fontFamily: 'Sora',
+                      fontSize: 48.0,
+                    ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(24.0, 8.0, 24.0, 0.0),
+              child: Text(
+                'Your payment has been confirmed. Your account will be recharged accordingly Thank you for the payment.',
+                textAlign: TextAlign.center,
+                style: FlutterFlowTheme.of(context).labelLarge,
+              ),
+            ),
+            Expanded(
+              child: Align(
+                alignment: const AlignmentDirectional(0.0, 1.0),
+                child: FFButtonWidget(
+                  onPressed: () async {
+                    context.goNamed('homePage');
+                  },
+                  text: 'Go Home',
+                  options: FFButtonOptions(
+                    width: 230.0,
+                    height: 50.0,
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    iconPadding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).tertiary,
+                    textStyle: FlutterFlowTheme.of(context).bodyLarge.override(
+                          fontFamily: 'Sora',
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                        ),
+                    elevation: 0.0,
+                    borderSide: const BorderSide(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(40.0),
+                  ),
+                ),
+              ),
+            ),
+          ].addToStart(const SizedBox(height: 20.0)),
+        ),
+      ),
+    );
   }
 }
