@@ -14,7 +14,6 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart' as google_maps;
 import 'dart:typed_data';
 import 'dart:ui' as ui;
-import '../../backend/api_requests/api_calls.dart';
 
 class CustomMap extends StatefulWidget {
   const CustomMap({
@@ -142,16 +141,5 @@ class _CustomMapState extends State<CustomMap> {
     final Uint8List uint8List = byteData!.buffer.asUint8List();
 
     return google_maps.BitmapDescriptor.fromBytes(uint8List);
-  }
-}
-
-Future<Uint8List?> getMarkerBytes(String photoUrl) async {
-  if (photoUrl.isNotEmpty) {
-    final ApiCallResponse apiCall = await GetImageByteDataCall.call(
-      url: photoUrl,
-    );
-    return apiCall.response!.bodyBytes;
-  } else {
-    return null;
   }
 }
