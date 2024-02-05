@@ -13,6 +13,12 @@ enum Gender {
   Neutral,
 }
 
+enum InterviewMode {
+  DIRECT,
+  VIDEO,
+  PHONE,
+}
+
 extension FFEnumExtensions<T extends Enum> on T {
   String serialize() => name;
 }
@@ -28,6 +34,8 @@ T? deserializeEnum<T>(String? value) {
       return ProfileType.values.deserialize(value) as T?;
     case (Gender):
       return Gender.values.deserialize(value) as T?;
+    case (InterviewMode):
+      return InterviewMode.values.deserialize(value) as T?;
     default:
       return null;
   }

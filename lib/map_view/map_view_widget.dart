@@ -546,11 +546,8 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                                                 .requestFocus(
                                                     _model.unfocusNode)
                                             : FocusScope.of(context).unfocus(),
-                                        child: SizedBox(
-                                          height: 500.0,
-                                          child: CandidateProfileCardWidget(
-                                            userRef: userDoc.reference,
-                                          ),
+                                        child: CandidateProfileCardWidget(
+                                          userRef: userDoc.reference,
                                         ),
                                       ),
                                     );

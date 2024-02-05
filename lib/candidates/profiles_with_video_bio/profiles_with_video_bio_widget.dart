@@ -546,7 +546,8 @@ class _ProfilesWithVideoBioWidgetState
                                             child: Padding(
                                               padding: const EdgeInsets.all(8.0),
                                               child: Text(
-                                                listViewUsersRecord.gender,
+                                                listViewUsersRecord
+                                                    .gender!.name,
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -1042,7 +1043,8 @@ class _ProfilesWithVideoBioWidgetState
                                               child: Padding(
                                                 padding: const EdgeInsets.all(8.0),
                                                 child: Text(
-                                                  listViewUsersRecord.gender,
+                                                  listViewUsersRecord
+                                                      .gender!.name,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium

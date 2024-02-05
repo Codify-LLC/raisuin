@@ -60,7 +60,7 @@ class _CustomMapState extends State<CustomMap> {
               markers: snapshot.data!,
             );
           } else {
-            return Container();
+            return const Center(child: CircularProgressIndicator());
           }
         });
   }

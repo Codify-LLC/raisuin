@@ -512,7 +512,7 @@ class _SavedprofileWidgetState extends State<SavedprofileWidget> {
                                                                     8.0),
                                                             child: Text(
                                                               columnUsersRecord
-                                                                  .gender,
+                                                                  .gender!.name,
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium

@@ -5,7 +5,6 @@ import '/backend/schema/enums/enums.dart';
 import '/components/upload_ad_image_widget.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
-import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_place_picker.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -57,14 +56,11 @@ class _PostAdWidgetState extends State<PostAdWidget>
     _model.toController ??= TextEditingController();
     _model.toFocusNode ??= FocusNode();
 
-    _model.subjectController ??= TextEditingController();
-    _model.subjectFocusNode ??= FocusNode();
+    _model.subjectController1 ??= TextEditingController();
+    _model.subjectFocusNode1 ??= FocusNode();
 
-    _model.expfromController ??= TextEditingController();
-    _model.expfromFocusNode ??= FocusNode();
-
-    _model.exptoController ??= TextEditingController();
-    _model.exptoFocusNode ??= FocusNode();
+    _model.subjectController2 ??= TextEditingController();
+    _model.subjectFocusNode2 ??= FocusNode();
 
     _model.totalVacanciesController ??= TextEditingController();
     _model.totalVacanciesFocusNode ??= FocusNode();
@@ -1892,57 +1888,20 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.stretch,
                                             children: [
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(10.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      'Gender *',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily: 'Sora',
-                                                            fontSize: 14.0,
-                                                          ),
-                                                    ),
-                                                  ),
-                                                  InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    focusColor:
-                                                        Colors.transparent,
-                                                    hoverColor:
-                                                        Colors.transparent,
-                                                    highlightColor:
-                                                        Colors.transparent,
-                                                    onTap: () async {
-                                                      setState(() {
-                                                        _model.gender = Gender
-                                                            .values
-                                                            .toList()
-                                                            .cast<Gender>();
-                                                      });
-                                                    },
-                                                    child: Text(
-                                                      'Select All',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily: 'Sora',
-                                                            fontSize: 14.0,
-                                                          ),
-                                                    ),
-                                                  ),
-                                                ],
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        21.0, 22.0, 0.0, 10.0),
+                                                child: Text(
+                                                  'Gender *',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Sora',
+                                                        fontSize: 14.0,
+                                                      ),
+                                                ),
                                               ),
                                               SingleChildScrollView(
                                                 scrollDirection:
@@ -2178,17 +2137,17 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                     ),
                                                   ]
                                                       .addToStart(
-                                                          const SizedBox(width: 20.0))
+                                                          const SizedBox(width: 21.0))
                                                       .addToEnd(const SizedBox(
-                                                          width: 20.0)),
+                                                          width: 21.0)),
                                                 ),
                                               ),
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        10.0, 0.0, 0.0, 0.0),
+                                                        21.0, 23.0, 0.0, 0.0),
                                                 child: Text(
-                                                  'Minimum Education Requirement *',
+                                                  ' Education*',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -2202,230 +2161,41 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         20.0, 0.0, 20.0, 0.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceEvenly,
-                                                  children: [
-                                                    Expanded(
-                                                      child:
-                                                          FlutterFlowDropDown<
-                                                              String>(
-                                                        controller: _model
-                                                                .levelValueController ??=
-                                                            FormFieldController<
-                                                                String>(null),
-                                                        options: const [
-                                                          'Undergraduate',
-                                                          'Postgraduate',
-                                                          'Doctrate'
-                                                        ],
-                                                        onChanged: (val) =>
-                                                            setState(() => _model
-                                                                    .levelValue =
-                                                                val),
-                                                        width: 300.0,
-                                                        height: 48.0,
-                                                        textStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Sora',
-                                                                  fontSize:
-                                                                      14.0,
-                                                                ),
-                                                        hintText: 'Level',
-                                                        icon: Icon(
-                                                          Icons
-                                                              .keyboard_arrow_down_rounded,
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryText,
-                                                          size: 16.0,
-                                                        ),
-                                                        fillColor: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        elevation: 2.0,
-                                                        borderColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                        borderWidth: 1.0,
-                                                        borderRadius: 10.0,
-                                                        margin:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    16.0,
-                                                                    4.0,
-                                                                    16.0,
-                                                                    4.0),
-                                                        hidesUnderline: true,
-                                                        isSearchable: false,
-                                                        isMultiSelect: false,
-                                                      ),
-                                                    ),
-                                                    Expanded(
-                                                      child: StreamBuilder<
-                                                          List<
-                                                              GeneralSettingsConfigRecord>>(
-                                                        stream:
-                                                            queryGeneralSettingsConfigRecord(
-                                                          singleRecord: true,
-                                                        ),
-                                                        builder: (context,
-                                                            snapshot) {
-                                                          // Customize what your widget looks like when it's loading.
-                                                          if (!snapshot
-                                                              .hasData) {
-                                                            return Center(
-                                                              child: SizedBox(
-                                                                width: 50.0,
-                                                                height: 50.0,
-                                                                child:
-                                                                    CircularProgressIndicator(
-                                                                  valueColor:
-                                                                      AlwaysStoppedAnimation<
-                                                                          Color>(
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .primary,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                            );
-                                                          }
-                                                          List<GeneralSettingsConfigRecord>
-                                                              degreeGeneralSettingsConfigRecordList =
-                                                              snapshot.data!;
-                                                          // Return an empty Container when the item does not exist.
-                                                          if (snapshot
-                                                              .data!.isEmpty) {
-                                                            return Container();
-                                                          }
-                                                          final degreeGeneralSettingsConfigRecord =
-                                                              degreeGeneralSettingsConfigRecordList
-                                                                      .isNotEmpty
-                                                                  ? degreeGeneralSettingsConfigRecordList
-                                                                      .first
-                                                                  : null;
-                                                          return FlutterFlowDropDown<
-                                                              String>(
-                                                            controller: _model
-                                                                    .degreeValueController ??=
-                                                                FormFieldController<
-                                                                        String>(
-                                                                    null),
-                                                            options:
-                                                                degreeGeneralSettingsConfigRecord!
-                                                                    .degreeList,
-                                                            onChanged: (val) =>
-                                                                setState(() =>
-                                                                    _model.degreeValue =
-                                                                        val),
-                                                            width: 50.0,
-                                                            height: 50.0,
-                                                            searchHintTextStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyLarge
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Sora',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                    ),
-                                                            searchTextStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium,
-                                                            textStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Sora',
-                                                                      fontSize:
-                                                                          14.0,
-                                                                    ),
-                                                            hintText: 'Degree',
-                                                            searchHintText:
-                                                                'Degree',
-                                                            icon: const Icon(
-                                                              Icons
-                                                                  .keyboard_arrow_down,
-                                                              size: 15.0,
-                                                            ),
-                                                            fillColor: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                            elevation: 2.0,
-                                                            borderColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                            borderWidth: 1.0,
-                                                            borderRadius: 10.0,
-                                                            margin:
-                                                                const EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        12.0,
-                                                                        4.0,
-                                                                        12.0,
-                                                                        4.0),
-                                                            hidesUnderline:
-                                                                true,
-                                                            disabled: _model
-                                                                        .levelValue ==
-                                                                    null ||
-                                                                _model.levelValue ==
-                                                                    '',
-                                                            isSearchable: true,
-                                                            isMultiSelect:
-                                                                false,
-                                                          );
-                                                        },
-                                                      ),
-                                                    ),
-                                                  ].divide(
-                                                      const SizedBox(width: 10.0)),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        20.0, 0.0, 20.0, 0.0),
                                                 child: TextFormField(
                                                   controller:
-                                                      _model.subjectController,
+                                                      _model.subjectController1,
                                                   focusNode:
-                                                      _model.subjectFocusNode,
+                                                      _model.subjectFocusNode1,
                                                   autofocus: true,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
-                                                    labelText: 'Subject',
-                                                    labelStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMedium,
-                                                    hintText: 'Subject',
-                                                    hintStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMedium,
+                                                    labelStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Sora',
+                                                          color:
+                                                              const Color(0x7F001451),
+                                                          fontSize: 13.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                    hintText:
+                                                        'ex: PhD in Physics',
+                                                    hintStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Sora',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                        ),
                                                     enabledBorder:
                                                         OutlineInputBorder(
-                                                      borderSide: BorderSide(
+                                                      borderSide: const BorderSide(
                                                         color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
+                                                            Color(0xFFCFD9DE),
                                                         width: 1.0,
                                                       ),
                                                       borderRadius:
@@ -2474,279 +2244,25 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyMedium,
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Sora',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                      ),
                                                   validator: _model
-                                                      .subjectControllerValidator
+                                                      .subjectController1Validator
                                                       .asValidator(context),
                                                 ),
                                               ),
-                                              if (_model.experiencechipsValue ==
-                                                  'Experienced')
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          20.0, 0.0, 20.0, 0.0),
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    10.0,
-                                                                    0.0,
-                                                                    15.0),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          10.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'Experience Required *',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Sora',
-                                                                      fontSize:
-                                                                          14.0,
-                                                                    ),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    5.0,
-                                                                    0.0,
-                                                                    5.0,
-                                                                    0.0),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceEvenly,
-                                                          children: [
-                                                            Expanded(
-                                                              child: Padding(
-                                                                padding:
-                                                                    const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            8.0,
-                                                                            0.0,
-                                                                            8.0,
-                                                                            0.0),
-                                                                child:
-                                                                    TextFormField(
-                                                                  controller: _model
-                                                                      .expfromController,
-                                                                  focusNode: _model
-                                                                      .expfromFocusNode,
-                                                                  autofocus:
-                                                                      true,
-                                                                  obscureText:
-                                                                      false,
-                                                                  decoration:
-                                                                      InputDecoration(
-                                                                    labelStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Sora',
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).accent2,
-                                                                        ),
-                                                                    hintText:
-                                                                        '0',
-                                                                    hintStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Sora',
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).accent2,
-                                                                        ),
-                                                                    enabledBorder:
-                                                                        InputBorder
-                                                                            .none,
-                                                                    focusedBorder:
-                                                                        InputBorder
-                                                                            .none,
-                                                                    errorBorder:
-                                                                        InputBorder
-                                                                            .none,
-                                                                    focusedErrorBorder:
-                                                                        InputBorder
-                                                                            .none,
-                                                                  ),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium,
-                                                                  keyboardType: const TextInputType
-                                                                      .numberWithOptions(
-                                                                      decimal:
-                                                                          true),
-                                                                  validator: _model
-                                                                      .expfromControllerValidator
-                                                                      .asValidator(
-                                                                          context),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                SizedBox(
-                                                                  height: 20.0,
-                                                                  child:
-                                                                      VerticalDivider(
-                                                                    width: 2.0,
-                                                                    thickness:
-                                                                        1.0,
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .accent3,
-                                                                  ),
-                                                                ),
-                                                                Align(
-                                                                  alignment:
-                                                                      const AlignmentDirectional(
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child:
-                                                                      Padding(
-                                                                    padding: const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            10.0,
-                                                                            0.0,
-                                                                            10.0,
-                                                                            0.0),
-                                                                    child: Text(
-                                                                      'TO',
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Sora',
-                                                                            fontSize:
-                                                                                13.0,
-                                                                          ),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                                SizedBox(
-                                                                  height: 20.0,
-                                                                  child:
-                                                                      VerticalDivider(
-                                                                    width: 2.0,
-                                                                    thickness:
-                                                                        1.0,
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .accent3,
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            Expanded(
-                                                              child: Padding(
-                                                                padding:
-                                                                    const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            8.0,
-                                                                            0.0,
-                                                                            8.0,
-                                                                            0.0),
-                                                                child:
-                                                                    TextFormField(
-                                                                  controller: _model
-                                                                      .exptoController,
-                                                                  focusNode: _model
-                                                                      .exptoFocusNode,
-                                                                  autofocus:
-                                                                      true,
-                                                                  obscureText:
-                                                                      false,
-                                                                  decoration:
-                                                                      InputDecoration(
-                                                                    labelStyle:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .labelMedium,
-                                                                    hintText:
-                                                                        '30',
-                                                                    hintStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .labelMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Sora',
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).accent2,
-                                                                        ),
-                                                                    enabledBorder:
-                                                                        InputBorder
-                                                                            .none,
-                                                                    focusedBorder:
-                                                                        InputBorder
-                                                                            .none,
-                                                                    errorBorder:
-                                                                        InputBorder
-                                                                            .none,
-                                                                    focusedErrorBorder:
-                                                                        InputBorder
-                                                                            .none,
-                                                                  ),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium,
-                                                                  keyboardType: const TextInputType
-                                                                      .numberWithOptions(
-                                                                      decimal:
-                                                                          true),
-                                                                  validator: _model
-                                                                      .exptoControllerValidator
-                                                                      .asValidator(
-                                                                          context),
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        20.0, 0.0, 0.0, 0.0),
+                                                        21.0, 23.0, 0.0, 0.0),
                                                 child: Text(
-                                                  'Experience Required *',
+                                                  'Subjects*',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -2754,6 +2270,106 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                         fontFamily: 'Sora',
                                                         fontSize: 14.0,
                                                       ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        20.0, 0.0, 20.0, 0.0),
+                                                child: TextFormField(
+                                                  controller:
+                                                      _model.subjectController2,
+                                                  focusNode:
+                                                      _model.subjectFocusNode2,
+                                                  autofocus: true,
+                                                  obscureText: false,
+                                                  decoration: InputDecoration(
+                                                    labelStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Sora',
+                                                          color:
+                                                              const Color(0x7F001451),
+                                                          fontSize: 13.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                    hintText:
+                                                        'Enter Subject with comma',
+                                                    hintStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Sora',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                        ),
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: const BorderSide(
+                                                        color:
+                                                            Color(0xFFCFD9DE),
+                                                        width: 1.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        width: 1.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    errorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 1.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    focusedErrorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 1.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Sora',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                      ),
+                                                  validator: _model
+                                                      .subjectController2Validator
+                                                      .asValidator(context),
                                                 ),
                                               ),
                                               Padding(
@@ -2768,7 +2384,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                   ],
                                                   onChanged: (val) => setState(
                                                       () => _model
-                                                              .experiencechipsValue =
+                                                              .experiencechipsValue1 =
                                                           val?.first),
                                                   selectedChipStyle: ChipStyle(
                                                     backgroundColor:
@@ -2825,12 +2441,109 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                   rowSpacing: 17.0,
                                                   multiselect: false,
                                                   initialized: _model
-                                                          .experiencechipsValue !=
+                                                          .experiencechipsValue1 !=
                                                       null,
                                                   alignment:
                                                       WrapAlignment.start,
                                                   controller: _model
-                                                          .experiencechipsValueController ??=
+                                                          .experiencechipsValueController1 ??=
+                                                      FormFieldController<
+                                                          List<String>>(
+                                                    ['Any'],
+                                                  ),
+                                                  wrapped: true,
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        20.0, 0.0, 0.0, 0.0),
+                                                child: Text(
+                                                  'Experience Required *',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Sora',
+                                                        fontSize: 14.0,
+                                                      ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        20.0, 0.0, 20.0, 0.0),
+                                                child: FlutterFlowChoiceChips(
+                                                  options: const [
+                                                    ChipData('Any'),
+                                                    ChipData('Freshers'),
+                                                    ChipData('Experienced')
+                                                  ],
+                                                  onChanged: (val) => setState(
+                                                      () => _model
+                                                              .experiencechipsValue2 =
+                                                          val?.first),
+                                                  selectedChipStyle: ChipStyle(
+                                                    backgroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText,
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Sora',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          fontSize: 13.0,
+                                                        ),
+                                                    iconColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText,
+                                                    iconSize: 18.0,
+                                                    labelPadding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(14.0, 6.0,
+                                                                14.0, 8.0),
+                                                    elevation: 0.0,
+                                                  ),
+                                                  unselectedChipStyle:
+                                                      ChipStyle(
+                                                    backgroundColor:
+                                                        const Color(0xFFF3F5F7),
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .bodySmall
+                                                        .override(
+                                                          fontFamily: 'Sora',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          fontSize: 13.0,
+                                                        ),
+                                                    iconColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText,
+                                                    iconSize: 18.0,
+                                                    labelPadding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(14.0, 6.0,
+                                                                14.0, 8.0),
+                                                    elevation: 0.0,
+                                                  ),
+                                                  chipSpacing: 5.0,
+                                                  rowSpacing: 17.0,
+                                                  multiselect: false,
+                                                  initialized: _model
+                                                          .experiencechipsValue2 !=
+                                                      null,
+                                                  alignment:
+                                                      WrapAlignment.start,
+                                                  controller: _model
+                                                          .experiencechipsValueController2 ??=
                                                       FormFieldController<
                                                           List<String>>(
                                                     ['Any'],
@@ -3097,7 +2810,8 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                       onTap: () async {
                                                         setState(() {
                                                           _model.interviewType =
-                                                              'DIRECT';
+                                                              InterviewMode
+                                                                  .DIRECT;
                                                         });
                                                       },
                                                       child: Container(
@@ -3105,9 +2819,9 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                         height: 100.0,
                                                         decoration:
                                                             BoxDecoration(
-                                                          color: _model
-                                                                      .interviewType ==
-                                                                  'DIRECT'
+                                                          color: _model.interviewType ==
+                                                                  InterviewMode
+                                                                      .DIRECT
                                                               ? FlutterFlowTheme
                                                                       .of(
                                                                           context)
@@ -3121,7 +2835,8 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                           border: Border.all(
                                                             color: _model
                                                                         .interviewType ==
-                                                                    'DIRECT'
+                                                                    InterviewMode
+                                                                        .DIRECT
                                                                 ? FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText
@@ -3183,7 +2898,8 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                       onTap: () async {
                                                         setState(() {
                                                           _model.interviewType =
-                                                              'PHONE';
+                                                              InterviewMode
+                                                                  .PHONE;
                                                         });
                                                       },
                                                       child: Container(
@@ -3193,7 +2909,8 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                             BoxDecoration(
                                                           color: _model
                                                                       .interviewType ==
-                                                                  'PHONE'
+                                                                  InterviewMode
+                                                                      .PHONE
                                                               ? FlutterFlowTheme
                                                                       .of(
                                                                           context)
@@ -3205,9 +2922,9 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                                   .circular(
                                                                       5.0),
                                                           border: Border.all(
-                                                            color: _model
-                                                                        .interviewType ==
-                                                                    'PHONE'
+                                                            color: _model.interviewType ==
+                                                                    InterviewMode
+                                                                        .PHONE
                                                                 ? FlutterFlowTheme.of(
                                                                         context)
                                                                     .primaryText
@@ -3258,7 +2975,8 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                     decoration: BoxDecoration(
                                                       color: _model
                                                                   .interviewType ==
-                                                              'VIDEO'
+                                                              InterviewMode
+                                                                  .VIDEO
                                                           ? FlutterFlowTheme.of(
                                                                   context)
                                                               .secondaryBackground
@@ -3269,7 +2987,8 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                       border: Border.all(
                                                         color: _model
                                                                     .interviewType ==
-                                                                'VIDEO'
+                                                                InterviewMode
+                                                                    .VIDEO
                                                             ? FlutterFlowTheme
                                                                     .of(context)
                                                                 .primaryText
@@ -4073,12 +3792,6 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                               .validate()) {
                                         return;
                                       }
-                                      if (_model.levelValue == null) {
-                                        return;
-                                      }
-                                      if (_model.degreeValue == null) {
-                                        return;
-                                      }
                                       setState(() {
                                         _model.tabBarController!.animateTo(
                                           min(
@@ -4165,29 +3878,16 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                           educationRequired:
                                               updateEducationStruct(
                                             EducationStruct(
-                                              degree: _model.degreeValue,
-                                              educationType: _model.levelValue,
-                                              subject:
-                                                  _model.subjectController.text,
+                                              subject: _model
+                                                  .subjectController1.text,
                                             ),
                                             clearUnsetFields: false,
                                             create: true,
                                           ),
                                           englishLevel:
                                               _model.englishchipsValue,
-                                          experience:
-                                              updateExperienceNeededStruct(
-                                            ExperienceNeededStruct(
-                                              from: int.tryParse(_model
-                                                  .expfromController.text),
-                                              to: int.tryParse(
-                                                  _model.exptoController.text),
-                                            ),
-                                            clearUnsetFields: false,
-                                            create: true,
-                                          ),
                                           experienceType:
-                                              _model.experiencechipsValue,
+                                              _model.experiencechipsValue1,
                                           interviewMode: _model.interviewType,
                                           interviewDate:
                                               updateFromToDateTimeStruct(
@@ -4284,29 +3984,16 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                           educationRequired:
                                               updateEducationStruct(
                                             EducationStruct(
-                                              degree: _model.degreeValue,
-                                              educationType: _model.levelValue,
-                                              subject:
-                                                  _model.subjectController.text,
+                                              subject: _model
+                                                  .subjectController1.text,
                                             ),
                                             clearUnsetFields: false,
                                             create: true,
                                           ),
                                           englishLevel:
                                               _model.englishchipsValue,
-                                          experience:
-                                              updateExperienceNeededStruct(
-                                            ExperienceNeededStruct(
-                                              from: int.tryParse(_model
-                                                  .expfromController.text),
-                                              to: int.tryParse(
-                                                  _model.exptoController.text),
-                                            ),
-                                            clearUnsetFields: false,
-                                            create: true,
-                                          ),
                                           experienceType:
-                                              _model.experiencechipsValue,
+                                              _model.experiencechipsValue1,
                                           interviewMode: _model.interviewType,
                                           interviewDate:
                                               updateFromToDateTimeStruct(

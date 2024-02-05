@@ -27,7 +27,7 @@ class PostAdModel extends FlutterFlowModel<PostAdWidget> {
   void updateGenderAtIndex(int index, Function(Gender) updateFn) =>
       gender[index] = updateFn(gender[index]);
 
-  String interviewType = 'DIRECT';
+  InterviewMode? interviewType = InterviewMode.DIRECT;
 
   ///  State fields for stateful widgets in this page.
 
@@ -111,27 +111,20 @@ class PostAdModel extends FlutterFlowModel<PostAdWidget> {
   var jobLocationValue = const FFPlace();
   // State field(s) for PlacePicker widget.
   var placePickerValue = const FFPlace();
-  // State field(s) for level widget.
-  String? levelValue;
-  FormFieldController<String>? levelValueController;
-  // State field(s) for degree widget.
-  String? degreeValue;
-  FormFieldController<String>? degreeValueController;
   // State field(s) for Subject widget.
-  FocusNode? subjectFocusNode;
-  TextEditingController? subjectController;
-  String? Function(BuildContext, String?)? subjectControllerValidator;
-  // State field(s) for expfrom widget.
-  FocusNode? expfromFocusNode;
-  TextEditingController? expfromController;
-  String? Function(BuildContext, String?)? expfromControllerValidator;
-  // State field(s) for expto widget.
-  FocusNode? exptoFocusNode;
-  TextEditingController? exptoController;
-  String? Function(BuildContext, String?)? exptoControllerValidator;
+  FocusNode? subjectFocusNode1;
+  TextEditingController? subjectController1;
+  String? Function(BuildContext, String?)? subjectController1Validator;
+  // State field(s) for Subject widget.
+  FocusNode? subjectFocusNode2;
+  TextEditingController? subjectController2;
+  String? Function(BuildContext, String?)? subjectController2Validator;
   // State field(s) for experiencechips widget.
-  String? experiencechipsValue;
-  FormFieldController<List<String>>? experiencechipsValueController;
+  String? experiencechipsValue1;
+  FormFieldController<List<String>>? experiencechipsValueController1;
+  // State field(s) for experiencechips widget.
+  String? experiencechipsValue2;
+  FormFieldController<List<String>>? experiencechipsValueController2;
   // State field(s) for englishchips widget.
   String? englishchipsValue;
   FormFieldController<List<String>>? englishchipsValueController;
@@ -178,14 +171,11 @@ class PostAdModel extends FlutterFlowModel<PostAdWidget> {
     toFocusNode?.dispose();
     toController?.dispose();
 
-    subjectFocusNode?.dispose();
-    subjectController?.dispose();
+    subjectFocusNode1?.dispose();
+    subjectController1?.dispose();
 
-    expfromFocusNode?.dispose();
-    expfromController?.dispose();
-
-    exptoFocusNode?.dispose();
-    exptoController?.dispose();
+    subjectFocusNode2?.dispose();
+    subjectController2?.dispose();
 
     totalVacanciesFocusNode?.dispose();
     totalVacanciesController?.dispose();

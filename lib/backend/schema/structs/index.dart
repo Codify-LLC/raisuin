@@ -11,3 +11,4 @@ export 'mail_struct.dart';
 export 'salary_range_struct.dart';
 export 'videos_struct.dart';
 export 'work_experience_struct.dart';
+export 'file_data_struct.dart';

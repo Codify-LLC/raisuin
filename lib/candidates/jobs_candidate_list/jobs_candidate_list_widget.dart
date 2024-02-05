@@ -498,7 +498,7 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
                                                                   8.0),
                                                           child: Text(
                                                             columnUsersRecord
-                                                                .gender,
+                                                                .gender!.name,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium

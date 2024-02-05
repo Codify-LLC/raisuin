@@ -43,10 +43,8 @@ class SearchCandidatesModel extends FlutterFlowModel<SearchCandidatesWidget> {
   // Model for navigation component.
   late NavigationModel navigationModel;
   // State field(s) for TextField widget.
-  final textFieldKey = GlobalKey();
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
-  String? textFieldSelectedOption;
   String? Function(BuildContext, String?)? textControllerValidator;
   List<UsersRecord> simpleSearchResults = [];
 
@@ -62,6 +60,7 @@ class SearchCandidatesModel extends FlutterFlowModel<SearchCandidatesWidget> {
     unfocusNode.dispose();
     navigationModel.dispose();
     textFieldFocusNode?.dispose();
+    textController?.dispose();
   }
 
   /// Action blocks are added here.

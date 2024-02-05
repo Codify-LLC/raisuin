@@ -277,6 +277,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => JobsCandidateListWidget(
             ad: params.getParam('ad', ParamType.Document),
           ),
+        ),
+        FFRoute(
+          name: 'PdfViewer',
+          path: '/pdfViewer',
+          requireAuth: true,
+          builder: (context, params) => PdfViewerWidget(
+            file: params.getParam('file', ParamType.String),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

@@ -38,3 +38,4 @@ export '/profile_and_settings/update_details/update_details_widget.dart'
     show UpdateDetailsWidget;
 export '/candidates/jobs_candidate_list/jobs_candidate_list_widget.dart'
     show JobsCandidateListWidget;
+export '/pdf_viewer/pdf_viewer_widget.dart' show PdfViewerWidget;

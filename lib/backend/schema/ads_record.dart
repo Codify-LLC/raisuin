@@ -120,11 +120,6 @@ class AdsRecord extends FirestoreRecord {
   List<String> get overviewImages => _overviewImages ?? const [];
   bool hasOverviewImages() => _overviewImages != null;
 
-  // "interview_mode" field.
-  String? _interviewMode;
-  String get interviewMode => _interviewMode ?? '';
-  bool hasInterviewMode() => _interviewMode != null;
-
   // "interview_date" field.
   FromToDateTimeStruct? _interviewDate;
   FromToDateTimeStruct get interviewDate =>
@@ -140,6 +135,11 @@ class AdsRecord extends FirestoreRecord {
   List<Gender>? _preferredGender;
   List<Gender> get preferredGender => _preferredGender ?? const [];
   bool hasPreferredGender() => _preferredGender != null;
+
+  // "interview_mode" field.
+  InterviewMode? _interviewMode;
+  InterviewMode? get interviewMode => _interviewMode;
+  bool hasInterviewMode() => _interviewMode != null;
 
   void _initializeFields() {
     _positionType = snapshotData['position_type'] as String?;
@@ -166,11 +166,12 @@ class AdsRecord extends FirestoreRecord {
     _candidatesApplied = getDataList(snapshotData['candidates_applied']);
     _logo = snapshotData['logo'] as String?;
     _overviewImages = getDataList(snapshotData['overview_images']);
-    _interviewMode = snapshotData['interview_mode'] as String?;
     _interviewDate =
         FromToDateTimeStruct.maybeFromMap(snapshotData['interview_date']);
     _totalVacancy = castToType<int>(snapshotData['total_vacancy']);
     _preferredGender = getEnumList<Gender>(snapshotData['preferred_gender']);
+    _interviewMode =
+        deserializeEnum<InterviewMode>(snapshotData['interview_mode']);
   }
 
   static CollectionReference get collection =>
@@ -222,9 +223,9 @@ Map<String, dynamic> createAdsRecordData({
   ExperienceNeededStruct? experience,
   String? experienceType,
   String? logo,
-  String? interviewMode,
   FromToDateTimeStruct? interviewDate,
   int? totalVacancy,
+  InterviewMode? interviewMode,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -243,9 +244,9 @@ Map<String, dynamic> createAdsRecordData({
       'experience': ExperienceNeededStruct().toMap(),
       'experienceType': experienceType,
       'logo': logo,
-      'interview_mode': interviewMode,
       'interview_date': FromToDateTimeStruct().toMap(),
       'total_vacancy': totalVacancy,
+      'interview_mode': interviewMode,
     }.withoutNulls,
   );
 
@@ -298,10 +299,10 @@ class AdsRecordDocumentEquality implements Equality<AdsRecord> {
         listEquality.equals(e1?.candidatesApplied, e2?.candidatesApplied) &&
         e1?.logo == e2?.logo &&
         listEquality.equals(e1?.overviewImages, e2?.overviewImages) &&
-        e1?.interviewMode == e2?.interviewMode &&
         e1?.interviewDate == e2?.interviewDate &&
         e1?.totalVacancy == e2?.totalVacancy &&
-        listEquality.equals(e1?.preferredGender, e2?.preferredGender);
+        listEquality.equals(e1?.preferredGender, e2?.preferredGender) &&
+        e1?.interviewMode == e2?.interviewMode;
   }
 
   @override
@@ -326,10 +327,10 @@ class AdsRecordDocumentEquality implements Equality<AdsRecord> {
         e?.candidatesApplied,
         e?.logo,
         e?.overviewImages,
-        e?.interviewMode,
         e?.interviewDate,
         e?.totalVacancy,
-        e?.preferredGender
+        e?.preferredGender,
+        e?.interviewMode
       ]);
 
   @override

@@ -70,11 +70,6 @@ class UsersRecord extends FirestoreRecord {
   String get seekingJobType => _seekingJobType ?? '';
   bool hasSeekingJobType() => _seekingJobType != null;
 
-  // "gender" field.
-  String? _gender;
-  String get gender => _gender ?? '';
-  bool hasGender() => _gender != null;
-
   // "salary_range" field.
   SalaryRangeStruct? _salaryRange;
   SalaryRangeStruct get salaryRange => _salaryRange ?? SalaryRangeStruct();
@@ -94,11 +89,6 @@ class UsersRecord extends FirestoreRecord {
   List<VideosStruct>? _introVideos;
   List<VideosStruct> get introVideos => _introVideos ?? const [];
   bool hasIntroVideos() => _introVideos != null;
-
-  // "resume" field.
-  String? _resume;
-  String get resume => _resume ?? '';
-  bool hasResume() => _resume != null;
 
   // "exprienced_in" field.
   String? _expriencedIn;
@@ -176,6 +166,16 @@ class UsersRecord extends FirestoreRecord {
   String get schoolName => _schoolName ?? '';
   bool hasSchoolName() => _schoolName != null;
 
+  // "gender" field.
+  Gender? _gender;
+  Gender? get gender => _gender;
+  bool hasGender() => _gender != null;
+
+  // "resume" field.
+  FileDataStruct? _resume;
+  FileDataStruct get resume => _resume ?? FileDataStruct();
+  bool hasResume() => _resume != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -189,7 +189,6 @@ class UsersRecord extends FirestoreRecord {
         snapshotData['subscriptionActiveTill'] as DateTime?;
     _subscribed = snapshotData['subscribed'] as bool?;
     _seekingJobType = snapshotData['seeking_job_type'] as String?;
-    _gender = snapshotData['gender'] as String?;
     _salaryRange = SalaryRangeStruct.maybeFromMap(snapshotData['salary_range']);
     _dob = snapshotData['dob'] as DateTime?;
     _savedCandidates = getDataList(snapshotData['savedCandidates']);
@@ -197,7 +196,6 @@ class UsersRecord extends FirestoreRecord {
       snapshotData['introVideos'],
       VideosStruct.fromMap,
     );
-    _resume = snapshotData['resume'] as String?;
     _expriencedIn = snapshotData['exprienced_in'] as String?;
     _preferredPosting = snapshotData['preferred_posting'] as String?;
     _maritalStatus = snapshotData['marital_status'] as String?;
@@ -222,6 +220,8 @@ class UsersRecord extends FirestoreRecord {
     _ads = AdsStruct.maybeFromMap(snapshotData['ads']);
     _profileType = deserializeEnum<ProfileType>(snapshotData['profile_type']);
     _schoolName = snapshotData['school_name'] as String?;
+    _gender = deserializeEnum<Gender>(snapshotData['gender']);
+    _resume = FileDataStruct.maybeFromMap(snapshotData['resume']);
   }
 
   static CollectionReference get collection =>
@@ -269,10 +269,8 @@ Map<String, dynamic> createUsersRecordData({
   DateTime? subscriptionActiveTill,
   bool? subscribed,
   String? seekingJobType,
-  String? gender,
   SalaryRangeStruct? salaryRange,
   DateTime? dob,
-  String? resume,
   String? expriencedIn,
   String? preferredPosting,
   String? maritalStatus,
@@ -283,6 +281,8 @@ Map<String, dynamic> createUsersRecordData({
   AdsStruct? ads,
   ProfileType? profileType,
   String? schoolName,
+  Gender? gender,
+  FileDataStruct? resume,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -297,10 +297,8 @@ Map<String, dynamic> createUsersRecordData({
       'subscriptionActiveTill': subscriptionActiveTill,
       'subscribed': subscribed,
       'seeking_job_type': seekingJobType,
-      'gender': gender,
       'salary_range': SalaryRangeStruct().toMap(),
       'dob': dob,
-      'resume': resume,
       'exprienced_in': expriencedIn,
       'preferred_posting': preferredPosting,
       'marital_status': maritalStatus,
@@ -311,6 +309,8 @@ Map<String, dynamic> createUsersRecordData({
       'ads': AdsStruct().toMap(),
       'profile_type': profileType,
       'school_name': schoolName,
+      'gender': gender,
+      'resume': FileDataStruct().toMap(),
     }.withoutNulls,
   );
 
@@ -322,6 +322,9 @@ Map<String, dynamic> createUsersRecordData({
 
   // Handle nested data for "ads" field.
   addAdsStructData(firestoreData, ads, 'ads');
+
+  // Handle nested data for "resume" field.
+  addFileDataStructData(firestoreData, resume, 'resume');
 
   return firestoreData;
 }
@@ -343,12 +346,10 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.subscriptionActiveTill == e2?.subscriptionActiveTill &&
         e1?.subscribed == e2?.subscribed &&
         e1?.seekingJobType == e2?.seekingJobType &&
-        e1?.gender == e2?.gender &&
         e1?.salaryRange == e2?.salaryRange &&
         e1?.dob == e2?.dob &&
         listEquality.equals(e1?.savedCandidates, e2?.savedCandidates) &&
         listEquality.equals(e1?.introVideos, e2?.introVideos) &&
-        e1?.resume == e2?.resume &&
         e1?.expriencedIn == e2?.expriencedIn &&
         e1?.preferredPosting == e2?.preferredPosting &&
         e1?.maritalStatus == e2?.maritalStatus &&
@@ -364,7 +365,9 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.seekingJobPost == e2?.seekingJobPost &&
         e1?.ads == e2?.ads &&
         e1?.profileType == e2?.profileType &&
-        e1?.schoolName == e2?.schoolName;
+        e1?.schoolName == e2?.schoolName &&
+        e1?.gender == e2?.gender &&
+        e1?.resume == e2?.resume;
   }
 
   @override
@@ -380,12 +383,10 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.subscriptionActiveTill,
         e?.subscribed,
         e?.seekingJobType,
-        e?.gender,
         e?.salaryRange,
         e?.dob,
         e?.savedCandidates,
         e?.introVideos,
-        e?.resume,
         e?.expriencedIn,
         e?.preferredPosting,
         e?.maritalStatus,
@@ -400,7 +401,9 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.seekingJobPost,
         e?.ads,
         e?.profileType,
-        e?.schoolName
+        e?.schoolName,
+        e?.gender,
+        e?.resume
       ]);
 
   @override

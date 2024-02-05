@@ -489,7 +489,7 @@ class _DetailedprofilecandidateWidgetState
                                                         const EdgeInsets.all(8.0),
                                                     child: Text(
                                                       detailedprofilecandidateUsersRecord
-                                                          .gender,
+                                                          .gender!.name,
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .bodyMedium
@@ -581,8 +581,22 @@ class _DetailedprofilecandidateWidgetState
                                           ),
                                         ),
                                         FFButtonWidget(
-                                          onPressed: () {
-                                            print('Button pressed ...');
+                                          onPressed: () async {
+                                            if ((String fileName) {
+                                              return fileName.contains(".pdf");
+                                            }(detailedprofilecandidateUsersRecord
+                                                .resume.downloadUrl)) {
+                                              context.pushNamed(
+                                                'PdfViewer',
+                                                queryParameters: {
+                                                  'file': serializeParam(
+                                                    detailedprofilecandidateUsersRecord
+                                                        .resume.downloadUrl,
+                                                    ParamType.String,
+                                                  ),
+                                                }.withoutNulls,
+                                              );
+                                            }
                                           },
                                           text: 'Download Resume',
                                           options: FFButtonOptions(
@@ -801,7 +815,8 @@ class _DetailedprofilecandidateWidgetState
                                                                       children: [
                                                                         Text(
                                                                           detailedprofilecandidateUsersRecord
-                                                                              .gender,
+                                                                              .gender!
+                                                                              .name,
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(

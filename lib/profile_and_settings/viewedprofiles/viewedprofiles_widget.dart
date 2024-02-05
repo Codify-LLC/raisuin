@@ -527,7 +527,7 @@ class _ViewedprofilesWidgetState extends State<ViewedprofilesWidget> {
                                                             const EdgeInsets.all(8.0),
                                                         child: Text(
                                                           columnUsersRecord
-                                                              .gender,
+                                                              .gender!.name,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium

@@ -4,7 +4,6 @@ import '/components/loading/loading_widget.dart';
 import '/components/navigation/navigation_widget.dart';
 import '/components/send_email_message/send_email_message_widget.dart';
 import '/components/send_message/send_message_widget.dart';
-import '/flutter_flow/flutter_flow_autocomplete_options_list.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -47,6 +46,7 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
     });
 
     _model.textController ??= TextEditingController();
+    _model.textFieldFocusNode ??= FocusNode();
   }
 
   @override
@@ -95,128 +95,73 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
             ),
             title: SizedBox(
               width: MediaQuery.sizeOf(context).width * 1.0,
-              child: Autocomplete<String>(
-                initialValue: const TextEditingValue(),
-                optionsBuilder: (textEditingValue) {
-                  if (textEditingValue.text == '') {
-                    return const Iterable<String>.empty();
-                  }
-                  return _model.simpleSearchResults
-                      .map((e) => e.displayName)
-                      .toList()
-                      .where((option) {
-                    final lowercaseOption = option.toLowerCase();
-                    return lowercaseOption
-                        .contains(textEditingValue.text.toLowerCase());
-                  });
-                },
-                optionsViewBuilder: (context, onSelected, options) {
-                  return AutocompleteOptionsList(
-                    textFieldKey: _model.textFieldKey,
-                    textController: _model.textController!,
-                    options: options.toList(),
-                    onSelected: onSelected,
-                    textStyle: FlutterFlowTheme.of(context).bodyMedium,
-                    textHighlightStyle: const TextStyle(),
-                    elevation: 4.0,
-                    optionBackgroundColor:
-                        FlutterFlowTheme.of(context).primaryBackground,
-                    optionHighlightColor:
-                        FlutterFlowTheme.of(context).secondaryBackground,
-                    maxHeight: 200.0,
-                  );
-                },
-                onSelected: (String selection) {
-                  setState(() => _model.textFieldSelectedOption = selection);
-                  FocusScope.of(context).unfocus();
-                },
-                fieldViewBuilder: (
-                  context,
-                  textEditingController,
-                  focusNode,
-                  onEditingComplete,
-                ) {
-                  _model.textFieldFocusNode = focusNode;
-
-                  _model.textController = textEditingController;
-                  return TextFormField(
-                    key: _model.textFieldKey,
-                    controller: textEditingController,
-                    focusNode: focusNode,
-                    onEditingComplete: onEditingComplete,
-                    onChanged: (_) => EasyDebounce.debounce(
-                      '_model.textController',
-                      const Duration(milliseconds: 2000),
-                      () async {
-                        await queryUsersRecordOnce()
-                            .then(
-                              (records) => _model.simpleSearchResults =
-                                  TextSearch(
-                                records
-                                    .map(
-                                      (record) =>
-                                          TextSearchItem.fromTerms(record, [
-                                        record.maritalStatus,
-                                        record.expriencedIn,
-                                        record.gender,
-                                        record.seekingJobType,
-                                        record.phoneNumber,
-                                        record.displayName,
-                                        record.email]),
-                                    )
-                                    .toList(),
-                              )
-                                      .search(_model.textController.text)
-                                      .map((r) => r.object)
-                                      .toList(),
-                            )
-                            .onError((_, __) => _model.simpleSearchResults = [])
-                            .whenComplete(() => setState(() {}));
-                      },
+              child: TextFormField(
+                controller: _model.textController,
+                focusNode: _model.textFieldFocusNode,
+                onChanged: (_) => EasyDebounce.debounce(
+                  '_model.textController',
+                  const Duration(milliseconds: 2000),
+                  () async {
+                    await queryUsersRecordOnce()
+                        .then(
+                          (records) => _model.simpleSearchResults = TextSearch(
+                            records
+                                .map(
+                                  (record) => TextSearchItem.fromTerms(record, [
+                                    record.displayName,
+                                    record.email,
+                                    record.phoneNumber]),
+                                )
+                                .toList(),
+                          )
+                              .search(_model.textController.text)
+                              .map((r) => r.object)
+                              .toList(),
+                        )
+                        .onError((_, __) => _model.simpleSearchResults = [])
+                        .whenComplete(() => setState(() {}));
+                  },
+                ),
+                autofocus: true,
+                textCapitalization: TextCapitalization.none,
+                textInputAction: TextInputAction.search,
+                obscureText: false,
+                decoration: InputDecoration(
+                  hintText: 'Search',
+                  hintStyle: FlutterFlowTheme.of(context).bodySmall,
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Color(0x00000000),
+                      width: 1.0,
                     ),
-                    autofocus: true,
-                    textCapitalization: TextCapitalization.none,
-                    textInputAction: TextInputAction.search,
-                    obscureText: false,
-                    decoration: InputDecoration(
-                      hintText: 'Search',
-                      hintStyle: FlutterFlowTheme.of(context).bodySmall,
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Color(0x00000000),
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(50.0),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Color(0x00000000),
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(50.0),
-                      ),
-                      errorBorder: UnderlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Color(0x00000000),
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(50.0),
-                      ),
-                      focusedErrorBorder: UnderlineInputBorder(
-                        borderSide: const BorderSide(
-                          color: Color(0x00000000),
-                          width: 1.0,
-                        ),
-                        borderRadius: BorderRadius.circular(50.0),
-                      ),
-                      filled: true,
-                      fillColor: FlutterFlowTheme.of(context).accent4,
+                    borderRadius: BorderRadius.circular(50.0),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Color(0x00000000),
+                      width: 1.0,
                     ),
-                    style: FlutterFlowTheme.of(context).bodyMedium,
-                    validator:
-                        _model.textControllerValidator.asValidator(context),
-                  );
-                },
+                    borderRadius: BorderRadius.circular(50.0),
+                  ),
+                  errorBorder: UnderlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Color(0x00000000),
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(50.0),
+                  ),
+                  focusedErrorBorder: UnderlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Color(0x00000000),
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(50.0),
+                  ),
+                  filled: true,
+                  fillColor: FlutterFlowTheme.of(context).accent4,
+                ),
+                style: FlutterFlowTheme.of(context).bodyMedium,
+                validator: _model.textControllerValidator.asValidator(context),
               ),
             ),
             actions: const [],
@@ -445,7 +390,8 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: Text(
-                                            searchresultItem.gender,
+                                            functions.enumToString(
+                                                searchresultItem.gender!),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(

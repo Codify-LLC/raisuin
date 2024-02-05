@@ -420,7 +420,7 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: Text(
-                                            resultsItem.gender,
+                                            resultsItem.gender!.name,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(

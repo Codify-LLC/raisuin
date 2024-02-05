@@ -654,7 +654,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                         padding:
                                                             const EdgeInsets.all(8.0),
                                                         child: Text(
-                                                          rowUsersRecord.gender,
+                                                          rowUsersRecord
+                                                              .gender!.name,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
@@ -1210,7 +1211,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                     padding:
                                                         const EdgeInsets.all(8.0),
                                                     child: Text(
-                                                      rowUsersRecord.gender,
+                                                      rowUsersRecord
+                                                          .gender!.name,
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .bodyMedium
@@ -1575,7 +1577,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                             const EdgeInsets.all(8.0),
                                                         child: Text(
                                                           columnUsersRecord
-                                                              .gender,
+                                                              .gender!.name,
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium

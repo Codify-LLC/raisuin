@@ -140,14 +140,8 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                           (records) => _model.simpleSearchResults = TextSearch(
                             records
                                 .map(
-                                  (record) => TextSearchItem.fromTerms(record, [
-                                    record.maritalStatus,
-                                    record.expriencedIn,
-                                    record.gender,
-                                    record.seekingJobType,
-                                    record.phoneNumber,
-                                    record.displayName,
-                                    record.email]),
+                                  (record) => TextSearchItem.fromTerms(
+                                      record, [record.email]),
                                 )
                                 .toList(),
                           )
@@ -206,15 +200,8 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                       TextSearch(
                                     records
                                         .map(
-                                          (record) =>
-                                              TextSearchItem.fromTerms(record, [
-                                            record.maritalStatus,
-                                            record.expriencedIn,
-                                            record.gender,
-                                            record.seekingJobType,
-                                            record.phoneNumber,
-                                            record.displayName,
-                                            record.email]),
+                                          (record) => TextSearchItem.fromTerms(
+                                              record, [record.email]),
                                         )
                                         .toList(),
                                   )
@@ -685,30 +672,24 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                       .accent3,
                                                 ),
                                               ),
-                                              child: Visibility(
-                                                visible: listViewUsersRecord
-                                                            .gender !=
-                                                        '',
-                                                child: Align(
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(8.0),
-                                                    child: Text(
-                                                      listViewUsersRecord
-                                                          .gender,
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily: 'Sora',
-                                                            fontSize: 12.0,
-                                                            fontWeight:
-                                                                FontWeight.w300,
-                                                          ),
-                                                    ),
+                                              child: Align(
+                                                alignment: const AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                child: Padding(
+                                                  padding: const EdgeInsets.all(8.0),
+                                                  child: Text(
+                                                    functions.enumToString(
+                                                        listViewUsersRecord
+                                                            .gender!),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Sora',
+                                                          fontSize: 12.0,
+                                                          fontWeight:
+                                                              FontWeight.w300,
+                                                        ),
                                                   ),
                                                 ),
                                               ),
@@ -1159,7 +1140,9 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                 child: Padding(
                                                   padding: const EdgeInsets.all(8.0),
                                                   child: Text(
-                                                    searchresultItem.gender,
+                                                    functions.enumToString(
+                                                        searchresultItem
+                                                            .gender!),
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -1644,7 +1627,9 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                             child: Padding(
                                               padding: const EdgeInsets.all(8.0),
                                               child: Text(
-                                                listViewUsersRecord.gender,
+                                                functions.enumToString(
+                                                    listViewUsersRecord
+                                                        .gender!),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
