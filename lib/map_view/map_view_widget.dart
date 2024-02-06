@@ -99,11 +99,15 @@ class _MapViewWidgetState extends State<MapViewWidget> {
             appBar: AppBar(
               backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
               automaticallyImplyLeading: false,
-              title: ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: SvgPicture.asset(
-                  'assets/images/es_Logo.svg',
-                  fit: BoxFit.contain,
+              title: Hero(
+                tag: 'Logo',
+                transitionOnUserGestures: true,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: SvgPicture.asset(
+                    'assets/images/es_Logo.svg',
+                    fit: BoxFit.contain,
+                  ),
                 ),
               ),
               actions: [
