@@ -184,11 +184,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   buttonSize: 40.0,
                                   fillColor:
                                       FlutterFlowTheme.of(context).primaryText,
-                                  icon: Icon(
-                                    FFIcons.ksearch5Search,
+                                  icon: FaIcon(
+                                    FontAwesomeIcons.search,
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
-                                    size: 24.0,
+                                    size: 18.0,
                                   ),
                                   onPressed: () async {
                                     context.pushNamed(
@@ -281,115 +281,130 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 16.0, 0.0, 14.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Stack(
-                                      alignment:
-                                          const AlignmentDirectional(-1.0, 0.0),
-                                      children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Icon(
-                                              FFIcons.kproperty1Outline5,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: 16.0,
-                                            ),
-                                            Text(
-                                              _model.placePickerValue != null
-                                                  ? _model.placePickerValue.city
-                                                  : ReverseGeocodingCall.city(
-                                                      (_model.reverseGecodingResult
-                                                              ?.jsonBody ??
-                                                          ''),
-                                                    )!,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Sora',
-                                                        fontSize: 14.0,
-                                                      ),
-                                            ),
-                                          ].divide(const SizedBox(width: 8.0)),
-                                        ),
-                                        FlutterFlowPlacePicker(
-                                          iOSGoogleMapsApiKey:
-                                              'AIzaSyDAPoNGbEG7CGHzQ74mkrjnixn1XR4scFQ',
-                                          androidGoogleMapsApiKey:
-                                              'AIzaSyDAPoNGbEG7CGHzQ74mkrjnixn1XR4scFQ',
-                                          webGoogleMapsApiKey:
-                                              'AIzaSyDAPoNGbEG7CGHzQ74mkrjnixn1XR4scFQ',
-                                          onSelect: (place) async {
-                                            setState(() => _model
-                                                .placePickerValue = place);
-                                          },
-                                          defaultText: 'Select Location',
-                                          icon: const Icon(
-                                            Icons.place,
-                                            color: Colors.transparent,
-                                            size: 16.0,
-                                          ),
-                                          buttonOptions: FFButtonOptions(
-                                            width: double.infinity,
-                                            height: 40.0,
-                                            color: Colors.transparent,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily: 'Sora',
-                                                      color: Colors.transparent,
-                                                      fontSize: 14.0,
-                                                      fontWeight:
-                                                          FontWeight.normal,
-                                                    ),
-                                            elevation: 0.0,
-                                            borderSide: const BorderSide(
-                                              color: Colors.transparent,
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Text(
-                                    '${_model.placePickerValue != null ? _model.placePickerValue.state : ReverseGeocodingCall.state(
-                                        (_model.reverseGecodingResult
-                                                ?.jsonBody ??
-                                            ''),
-                                      )}, ${_model.placePickerValue != null ? _model.placePickerValue.country : 'IN'}',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Sora',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          fontSize: 14.0,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                  ),
-                                ]
-                                    .addToStart(const SizedBox(width: 20.0))
-                                    .addToEnd(const SizedBox(width: 20.0)),
-                              ),
-                            ),
                             Expanded(
                               child: SingleChildScrollView(
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 16.0, 0.0, 14.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Expanded(
+                                            child: Stack(
+                                              alignment: const AlignmentDirectional(
+                                                  -1.0, 0.0),
+                                              children: [
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Icon(
+                                                      FFIcons
+                                                          .kproperty1Outline5,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
+                                                      size: 16.0,
+                                                    ),
+                                                    Text(
+                                                      _model.placePickerValue !=
+                                                              null
+                                                          ? _model
+                                                              .placePickerValue
+                                                              .city
+                                                          : ReverseGeocodingCall
+                                                              .city(
+                                                              (_model.reverseGecodingResult
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            )!,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily: 'Sora',
+                                                            fontSize: 14.0,
+                                                          ),
+                                                    ),
+                                                  ].divide(
+                                                      const SizedBox(width: 8.0)),
+                                                ),
+                                                FlutterFlowPlacePicker(
+                                                  iOSGoogleMapsApiKey:
+                                                      'AIzaSyDAPoNGbEG7CGHzQ74mkrjnixn1XR4scFQ',
+                                                  androidGoogleMapsApiKey:
+                                                      'AIzaSyDAPoNGbEG7CGHzQ74mkrjnixn1XR4scFQ',
+                                                  webGoogleMapsApiKey:
+                                                      'AIzaSyDAPoNGbEG7CGHzQ74mkrjnixn1XR4scFQ',
+                                                  onSelect: (place) async {
+                                                    setState(() => _model
+                                                            .placePickerValue =
+                                                        place);
+                                                  },
+                                                  defaultText:
+                                                      'Select Location',
+                                                  icon: const Icon(
+                                                    Icons.place,
+                                                    color: Colors.transparent,
+                                                    size: 16.0,
+                                                  ),
+                                                  buttonOptions:
+                                                      FFButtonOptions(
+                                                    width: double.infinity,
+                                                    height: 40.0,
+                                                    color: Colors.transparent,
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily: 'Sora',
+                                                          color: Colors
+                                                              .transparent,
+                                                          fontSize: 14.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                        ),
+                                                    elevation: 0.0,
+                                                    borderSide: const BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Text(
+                                            '${_model.placePickerValue != null ? _model.placePickerValue.state : ReverseGeocodingCall.state(
+                                                (_model.reverseGecodingResult
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              )}, ${_model.placePickerValue != null ? _model.placePickerValue.country : 'IN'}',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Sora',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  fontSize: 14.0,
+                                                  fontWeight: FontWeight.w300,
+                                                ),
+                                          ),
+                                        ]
+                                            .addToStart(const SizedBox(width: 20.0))
+                                            .addToEnd(const SizedBox(width: 20.0)),
+                                      ),
+                                    ),
                                     Container(
                                       width: double.infinity,
                                       height: 134.0,
@@ -1803,7 +1818,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               labelPadding:
                                                   const EdgeInsetsDirectional
                                                       .fromSTEB(
-                                                          14.0, 6.0, 14.0, 8.0),
+                                                          14.0, 4.0, 14.0, 4.0),
                                               elevation: 0.0,
                                               borderColor: const Color(0xFF001451),
                                               borderWidth: 1.0,
@@ -1829,7 +1844,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               labelPadding:
                                                   const EdgeInsetsDirectional
                                                       .fromSTEB(
-                                                          14.0, 6.0, 14.0, 8.0),
+                                                          14.0, 4.0, 14.0, 4.0),
                                               elevation: 0.0,
                                               borderColor: const Color(0xFF001451),
                                               borderWidth: 1.0,
