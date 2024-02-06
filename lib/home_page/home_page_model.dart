@@ -1,7 +1,9 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/navigation/navigation_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/instant_timer.dart';
 import 'home_page_widget.dart' show HomePageWidget;
 import 'package:flutter/material.dart';
 
@@ -26,6 +28,11 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Stores action output result for [Backend Call - API (Reverse Geocoding)] action in homePage widget.
+  ApiCallResponse? reverseGecodingResult;
+  InstantTimer? instantTimer;
+  // State field(s) for PlacePicker widget.
+  var placePickerValue = const FFPlace();
   // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
   List<ChatsRecord>? alldocs;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
@@ -46,6 +53,7 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   @override
   void dispose() {
     unfocusNode.dispose();
+    instantTimer?.cancel();
     navigationModel.dispose();
   }
 

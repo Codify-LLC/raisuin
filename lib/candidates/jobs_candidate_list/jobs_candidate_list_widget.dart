@@ -14,6 +14,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'jobs_candidate_list_model.dart';
 export 'jobs_candidate_list_model.dart';
 
@@ -58,6 +59,8 @@ class _JobsCandidateListWidgetState extends State<JobsCandidateListWidget> {
         ),
       );
     }
+
+    context.watch<FFAppState>();
 
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus

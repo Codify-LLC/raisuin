@@ -152,3 +152,7 @@ String enumGenderToString(Gender gender) {
 Gender stringToEnumGender(String input) {
   return Gender.values.byName(input);
 }
+
+String latlngToString(LatLng input) {
+  return "${input.latitude},${input.longitude}";
+}

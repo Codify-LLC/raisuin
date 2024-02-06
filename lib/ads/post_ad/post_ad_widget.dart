@@ -19,6 +19,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'post_ad_model.dart';
 export 'post_ad_model.dart';
 
@@ -84,6 +85,8 @@ class _PostAdWidgetState extends State<PostAdWidget>
         ),
       );
     }
+
+    context.watch<FFAppState>();
 
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
@@ -177,13 +180,40 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                         child: Align(
                                           alignment:
                                               const AlignmentDirectional(1.0, 0.0),
-                                          child: Text(
-                                            _model.tabBarCurrentIndex == 0
-                                                ? 'Skip'
-                                                : 'Back',
-                                            textAlign: TextAlign.end,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              if (_model.tabBarCurrentIndex ==
+                                                  0) {
+                                                context.pushNamed('homePage');
+                                              } else {
+                                                setState(() {
+                                                  _model.tabBarController!
+                                                      .animateTo(
+                                                    max(
+                                                        0,
+                                                        _model.tabBarController!
+                                                                .index -
+                                                            1),
+                                                    duration: const Duration(
+                                                        milliseconds: 300),
+                                                    curve: Curves.ease,
+                                                  );
+                                                });
+                                              }
+                                            },
+                                            child: Text(
+                                              _model.tabBarCurrentIndex == 0
+                                                  ? 'Skip'
+                                                  : 'Back',
+                                              textAlign: TextAlign.end,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            ),
                                           ),
                                         ),
                                       ),

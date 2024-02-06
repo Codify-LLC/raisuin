@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'update_or_delete_model.dart';
 export 'update_or_delete_model.dart';
 
@@ -47,6 +48,8 @@ class _UpdateOrDeleteWidgetState extends State<UpdateOrDeleteWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Container(
       width: double.infinity,
       height: 270.0,

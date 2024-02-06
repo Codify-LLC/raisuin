@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'choose_plan_model.dart';
 export 'choose_plan_model.dart';
 
@@ -35,6 +36,8 @@ class _ChoosePlanWidgetState extends State<ChoosePlanWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Container(
       width: double.infinity,
       constraints: const BoxConstraints(

@@ -2,6 +2,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'navigation_model.dart';
 export 'navigation_model.dart';
 
@@ -53,6 +54,8 @@ class _NavigationWidgetState extends State<NavigationWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Container(
       width: double.infinity,
       height: 70.0,
@@ -83,7 +86,7 @@ class _NavigationWidgetState extends State<NavigationWidget> {
                     Colors.transparent,
                   ),
                   icon: Icon(
-                    Icons.home,
+                    FFIcons.kproperty1Outline8,
                     color: widget.home
                         ? FlutterFlowTheme.of(context).primaryBackground
                         : FlutterFlowTheme.of(context).secondaryText,
@@ -103,7 +106,7 @@ class _NavigationWidgetState extends State<NavigationWidget> {
                     Colors.transparent,
                   ),
                   icon: Icon(
-                    Icons.search,
+                    FFIcons.kproperty1Outline6,
                     color: widget.search
                         ? FlutterFlowTheme.of(context).primaryBackground
                         : FlutterFlowTheme.of(context).secondaryText,
@@ -124,11 +127,11 @@ class _NavigationWidgetState extends State<NavigationWidget> {
                     Colors.transparent,
                   ),
                   icon: Icon(
-                    Icons.add_rounded,
+                    FFIcons.kproperty1Outline8,
                     color: widget.ads
                         ? FlutterFlowTheme.of(context).primaryBackground
                         : FlutterFlowTheme.of(context).secondaryText,
-                    size: 22.0,
+                    size: 24.0,
                   ),
                   onPressed: () async {
                     context.pushNamed('postAd');
@@ -145,11 +148,11 @@ class _NavigationWidgetState extends State<NavigationWidget> {
                     Colors.transparent,
                   ),
                   icon: Icon(
-                    Icons.message_outlined,
+                    FFIcons.kproperty1Outline9,
                     color: widget.messages
                         ? FlutterFlowTheme.of(context).primaryBackground
                         : FlutterFlowTheme.of(context).secondaryText,
-                    size: 20.0,
+                    size: 24.0,
                   ),
                   onPressed: () async {
                     context.pushNamed('chat');
@@ -166,11 +169,11 @@ class _NavigationWidgetState extends State<NavigationWidget> {
                     Colors.transparent,
                   ),
                   icon: Icon(
-                    Icons.account_circle,
+                    FFIcons.kproperty1Outline,
                     color: widget.accounts
                         ? FlutterFlowTheme.of(context).primaryBackground
                         : FlutterFlowTheme.of(context).secondaryText,
-                    size: 20.0,
+                    size: 24.0,
                   ),
                   onPressed: () async {
                     context.pushNamed('settings');

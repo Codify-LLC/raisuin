@@ -11,6 +11,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'myjobadsdetail_model.dart';
 export 'myjobadsdetail_model.dart';
 
@@ -61,6 +62,8 @@ class _MyjobadsdetailWidgetState extends State<MyjobadsdetailWidget>
         ),
       );
     }
+
+    context.watch<FFAppState>();
 
     return StreamBuilder<AdsRecord>(
       stream: AdsRecord.getDocument(widget.adRef!),

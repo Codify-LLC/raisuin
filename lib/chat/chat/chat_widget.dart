@@ -9,6 +9,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'chat_model.dart';
 export 'chat_model.dart';
 
@@ -50,6 +51,8 @@ class _ChatWidgetState extends State<ChatWidget> {
         ),
       );
     }
+
+    context.watch<FFAppState>();
 
     return AuthUserStreamWidget(
       builder: (context) => StreamBuilder<List<ChatsRecord>>(

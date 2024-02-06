@@ -1,5 +1,5 @@
 import '/custom_code/actions/index.dart' as actions;
-
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -10,7 +10,6 @@ import 'auth/firebase_auth/auth_util.dart';
 import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
-import 'flutter_flow/nav/nav.dart';
 import 'flutter_flow/revenue_cat_util.dart' as revenue_cat;
 
 void main() async {
@@ -22,6 +21,9 @@ void main() async {
   await actions.hiveConnect();
   // End initial custom actions code
 
+  final appState = FFAppState(); // Initialize FFAppState
+  await appState.initializePersistedState();
+
   await revenue_cat.initialize(
     "",
     "appcfc2530287",
@@ -29,7 +31,10 @@ void main() async {
     loadDataAfterLaunch: true,
   );
 
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (context) => appState,
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatefulWidget {

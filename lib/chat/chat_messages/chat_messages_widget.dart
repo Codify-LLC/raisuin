@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'chat_messages_model.dart';
 export 'chat_messages_model.dart';
 
@@ -74,6 +75,8 @@ class _ChatMessagesWidgetState extends State<ChatMessagesWidget>
         ),
       );
     }
+
+    context.watch<FFAppState>();
 
     return StreamBuilder<ChatsRecord>(
       stream: ChatsRecord.getDocument(widget.chatDoc!),

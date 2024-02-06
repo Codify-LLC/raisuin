@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'upload_ad_image_model.dart';
 export 'upload_ad_image_model.dart';
 
@@ -38,6 +39,8 @@ class _UploadAdImageWidgetState extends State<UploadAdImageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Container(
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).accent4,

@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'package:text_search/text_search.dart';
 import 'search_candidates_model.dart';
 export 'search_candidates_model.dart';
@@ -66,6 +67,8 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
         ),
       );
     }
+
+    context.watch<FFAppState>();
 
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus

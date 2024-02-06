@@ -1,28 +1,41 @@
 import 'dart:convert';
+import '../cloud_functions/cloud_functions.dart';
 
+import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
 
-const _kPrivateApiFunctionName = 'ffPrivateApiCall';
+const _kPrivateApiFunctionName = 'ffPrivateApiCallEduStaff';
 
-class GetImageByteDataCall {
+class ReverseGeocodingCall {
   static Future<ApiCallResponse> call({
-    String? url = '',
+    String? latlng = '',
   }) async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'GetImageByteData',
-      apiUrl: '$url',
-      callType: ApiCallType.GET,
-      headers: {},
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      alwaysAllowBody: false,
+    final response = await makeCloudCall(
+      _kPrivateApiFunctionName,
+      {
+        'callName': 'ReverseGeocodingCall',
+        'variables': {
+          'latlng': latlng,
+        },
+      },
     );
+    return ApiCallResponse.fromCloudCallResponse(response);
   }
+
+  static String? status(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.status''',
+      ));
+  static String? state(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.results[0].address_components[?@.types[0]=="administrative_area_level_1"].long_name''',
+      ));
+  static String? city(dynamic response) => castToType<String>(getJsonField(
+        response,
+        r'''$.results[0].address_components[?@.types[0]=="locality"].long_name''',
+      ));
 }
 
 class ApiPagingParams {

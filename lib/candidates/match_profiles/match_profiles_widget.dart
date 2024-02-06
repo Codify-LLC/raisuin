@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'match_profiles_model.dart';
 export 'match_profiles_model.dart';
 
@@ -86,6 +87,8 @@ class _MatchProfilesWidgetState extends State<MatchProfilesWidget> {
         ),
       );
     }
+
+    context.watch<FFAppState>();
 
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus

@@ -7,6 +7,7 @@ import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'subscription_model.dart';
 export 'subscription_model.dart';
 
@@ -45,6 +46,8 @@ class _SubscriptionWidgetState extends State<SubscriptionWidget> {
         ),
       );
     }
+
+    context.watch<FFAppState>();
 
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus

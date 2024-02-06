@@ -16,6 +16,7 @@ import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'registration_model.dart';
 export 'registration_model.dart';
 
@@ -63,6 +64,8 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
         ),
       );
     }
+
+    context.watch<FFAppState>();
 
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus

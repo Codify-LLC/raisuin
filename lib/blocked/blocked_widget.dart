@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'blocked_model.dart';
 export 'blocked_model.dart';
 
@@ -41,6 +42,8 @@ class _BlockedWidgetState extends State<BlockedWidget> {
         ),
       );
     }
+
+    context.watch<FFAppState>();
 
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus

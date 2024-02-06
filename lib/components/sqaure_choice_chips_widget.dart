@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'sqaure_choice_chips_model.dart';
 export 'sqaure_choice_chips_model.dart';
 
@@ -49,6 +50,8 @@ class _SqaureChoiceChipsWidgetState extends State<SqaureChoiceChipsWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Stack(
       alignment: const AlignmentDirectional(1.0, -1.0),
       children: [
