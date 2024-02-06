@@ -184,78 +184,81 @@ class _MapViewWidgetState extends State<MapViewWidget> {
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SvgPicture.asset(
-                      'assets/images/location.svg',
-                      fit: BoxFit.cover,
-                    ),
-                    if (_model.showCandidatesChoiceValue != 'all')
-                      FlutterFlowDropDown<String>(
-                        controller: _model.stateDropdownValueController ??=
-                            FormFieldController<String>(
-                          _model.stateDropdownValue ??= 'Tamil Nadu',
-                        ),
-                        options: const [
-                          'Tamil Nadu',
-                          'Andhra Pradesh',
-                          'Kerela',
-                          'Telengana',
-                          'Maharashtra'
-                        ],
-                        onChanged: (val) =>
-                            setState(() => _model.stateDropdownValue = val),
-                        width: 150.0,
-                        height: 35.0,
-                        textStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.override(
-                                  fontFamily: 'Sora',
-                                  fontSize: 14.0,
-                                ),
-                        icon: const Icon(
-                          Icons.keyboard_arrow_down,
-                          size: 15.0,
-                        ),
-                        fillColor:
-                            FlutterFlowTheme.of(context).secondaryBackground,
-                        elevation: 2.0,
-                        borderColor: Colors.transparent,
-                        borderWidth: 0.0,
-                        borderRadius: 0.0,
-                        margin: const EdgeInsetsDirectional.fromSTEB(
-                            12.0, 4.0, 12.0, 4.0),
-                        hidesUnderline: true,
-                        isSearchable: false,
-                        isMultiSelect: false,
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SvgPicture.asset(
+                        'assets/images/location.svg',
+                        fit: BoxFit.cover,
                       ),
-                    Expanded(
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(
-                            'Tamil Nadu, IN',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Sora',
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.w300,
-                                ),
+                      if (_model.showCandidatesChoiceValue != 'all')
+                        FlutterFlowDropDown<String>(
+                          controller: _model.stateDropdownValueController ??=
+                              FormFieldController<String>(
+                            _model.stateDropdownValue ??= 'Tamil Nadu',
                           ),
-                        ],
+                          options: const [
+                            'Tamil Nadu',
+                            'Andhra Pradesh',
+                            'Kerela',
+                            'Telengana',
+                            'Maharashtra'
+                          ],
+                          onChanged: (val) =>
+                              setState(() => _model.stateDropdownValue = val),
+                          width: 150.0,
+                          height: 35.0,
+                          textStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Sora',
+                                    fontSize: 14.0,
+                                  ),
+                          icon: const Icon(
+                            Icons.keyboard_arrow_down,
+                            size: 15.0,
+                          ),
+                          fillColor:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          elevation: 2.0,
+                          borderColor: Colors.transparent,
+                          borderWidth: 0.0,
+                          borderRadius: 0.0,
+                          margin: const EdgeInsetsDirectional.fromSTEB(
+                              12.0, 4.0, 12.0, 4.0),
+                          hidesUnderline: true,
+                          isSearchable: false,
+                          isMultiSelect: false,
+                        ),
+                      Expanded(
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              'Tamil Nadu, IN',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Sora',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ]
-                      .addToStart(const SizedBox(width: 20.0))
-                      .addToEnd(const SizedBox(width: 20.0)),
+                    ]
+                        .addToStart(const SizedBox(width: 20.0))
+                        .addToEnd(const SizedBox(width: 20.0)),
+                  ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -562,10 +565,13 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                     ),
                   ),
                 ),
-                Text(
-                  'Candidate Map',
-                  textAlign: TextAlign.center,
-                  style: FlutterFlowTheme.of(context).bodyMedium,
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                  child: Text(
+                    'Candidate Map',
+                    textAlign: TextAlign.center,
+                    style: FlutterFlowTheme.of(context).bodyMedium,
+                  ),
                 ),
                 Expanded(
                   child: Builder(
@@ -624,213 +630,159 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                             ),
                             Align(
                               alignment: const AlignmentDirectional(0.0, 1.0),
-                              child: Builder(
-                                builder: (context) {
-                                  final candidate =
-                                      _model.candidateList.toList();
-                                  return Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: List.generate(candidate.length,
-                                            (candidateIndex) {
-                                      final candidateItem =
-                                          candidate[candidateIndex];
-                                      return InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {},
-                                        child: Container(
-                                          width: 208.0,
-                                          constraints: const BoxConstraints(
-                                            minHeight: 180.0,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            borderRadius:
-                                                BorderRadius.circular(10.0),
-                                            border: Border.all(
-                                              color: const Color(0xFFCFD9DE),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 23.0),
+                                child: Builder(
+                                  builder: (context) {
+                                    final candidate =
+                                        _model.candidateList.toList();
+                                    return Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: List.generate(candidate.length,
+                                              (candidateIndex) {
+                                        final candidateItem =
+                                            candidate[candidateIndex];
+                                        return InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {},
+                                          child: Container(
+                                            width: 208.0,
+                                            constraints: const BoxConstraints(
+                                              minHeight: 180.0,
                                             ),
-                                          ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(12.0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceAround,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  candidateItem.displayName,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium,
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 4.0, 0.0, 0.0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.min,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      SvgPicture.asset(
-                                                        'assets/images/cap.svg',
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                      Expanded(
-                                                        child: Builder(
-                                                          builder: (context) {
-                                                            final education =
-                                                                candidateItem
-                                                                    .education
-                                                                    .toList();
-                                                            return Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: List.generate(
-                                                                  education
-                                                                      .length,
-                                                                  (educationIndex) {
-                                                                final educationItem =
-                                                                    education[
-                                                                        educationIndex];
-                                                                return Padding(
-                                                                  padding: const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          2.0,
-                                                                          0.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child: Text(
-                                                                    educationItem
-                                                                        .educationType,
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Sora',
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primaryText,
-                                                                          fontSize:
-                                                                              12.0,
-                                                                          fontWeight:
-                                                                              FontWeight.w300,
-                                                                        ),
-                                                                  ),
-                                                                );
-                                                              }),
-                                                            );
-                                                          },
-                                                        ),
-                                                      ),
-                                                    ],
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                              border: Border.all(
+                                                color: const Color(0xFFCFD9DE),
+                                              ),
+                                            ),
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(12.0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceAround,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    candidateItem.displayName,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium,
                                                   ),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 4.0, 0.0, 0.0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.min,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      SvgPicture.asset(
-                                                        'assets/images/Location1.svg',
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                      Expanded(
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      2.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            '${candidateItem.address.city} ${candidateItem.address.state}',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Sora',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText,
-                                                                  fontSize:
-                                                                      12.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w300,
-                                                                ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 4.0,
+                                                                0.0, 0.0),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        SvgPicture.asset(
+                                                          'assets/images/cap.svg',
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                        Expanded(
+                                                          child: Builder(
+                                                            builder: (context) {
+                                                              final education =
+                                                                  candidateItem
+                                                                      .education
+                                                                      .toList();
+                                                              return Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: List.generate(
+                                                                    education
+                                                                        .length,
+                                                                    (educationIndex) {
+                                                                  final educationItem =
+                                                                      education[
+                                                                          educationIndex];
+                                                                  return Padding(
+                                                                    padding: const EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            2.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                    child: Text(
+                                                                      educationItem
+                                                                          .educationType,
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Sora',
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).primaryText,
+                                                                            fontSize:
+                                                                                12.0,
+                                                                            fontWeight:
+                                                                                FontWeight.w300,
+                                                                          ),
+                                                                    ),
+                                                                  );
+                                                                }),
+                                                              );
+                                                            },
                                                           ),
                                                         ),
-                                                      ),
-                                                    ],
+                                                      ],
+                                                    ),
                                                   ),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 7.0, 0.0, 7.0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.min,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Container(
-                                                        constraints:
-                                                            const BoxConstraints(
-                                                          minWidth: 63.0,
-                                                          minHeight: 30.0,
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 4.0,
+                                                                0.0, 0.0),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        SvgPicture.asset(
+                                                          'assets/images/Location1.svg',
+                                                          fit: BoxFit.cover,
                                                         ),
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      20.0),
-                                                          border: Border.all(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .accent3,
-                                                          ),
-                                                        ),
-                                                        child: Align(
-                                                          alignment:
-                                                              const AlignmentDirectional(
-                                                                  0.0, 0.0),
+                                                        Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsets.all(
-                                                                    8.0),
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        2.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
                                                             child: Text(
-                                                              candidateItem
-                                                                  .gender!.name,
+                                                              '${candidateItem.address.city} ${candidateItem.address.state}',
                                                               style: FlutterFlowTheme
                                                                       .of(context)
                                                                   .bodyMedium
                                                                   .override(
                                                                     fontFamily:
                                                                         'Sora',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .primaryText,
                                                                     fontSize:
                                                                         12.0,
                                                                     fontWeight:
@@ -840,16 +792,22 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                                                             ),
                                                           ),
                                                         ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    4.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Container(
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 7.0,
+                                                                0.0, 7.0),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Container(
                                                           constraints:
                                                               const BoxConstraints(
                                                             minWidth: 63.0,
@@ -878,248 +836,311 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                                                               padding:
                                                                   const EdgeInsets
                                                                       .all(8.0),
-                                                              child:
-                                                                  AuthUserStreamWidget(
-                                                                builder:
-                                                                    (context) =>
-                                                                        Text(
-                                                                  'Age ${functions.dateStringAgeCalculator(currentUserDocument!.dob!.toString()).toString()}',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Sora',
-                                                                        fontSize:
-                                                                            12.0,
-                                                                        fontWeight:
-                                                                            FontWeight.w300,
-                                                                      ),
+                                                              child: Text(
+                                                                candidateItem
+                                                                    .gender!
+                                                                    .name,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Sora',
+                                                                      fontSize:
+                                                                          12.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w300,
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      4.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Container(
+                                                            constraints:
+                                                                const BoxConstraints(
+                                                              minWidth: 63.0,
+                                                              minHeight: 30.0,
+                                                            ),
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryBackground,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          20.0),
+                                                              border:
+                                                                  Border.all(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .accent3,
+                                                              ),
+                                                            ),
+                                                            child: Align(
+                                                              alignment:
+                                                                  const AlignmentDirectional(
+                                                                      0.0, 0.0),
+                                                              child: Padding(
+                                                                padding:
+                                                                    const EdgeInsets
+                                                                        .all(
+                                                                            8.0),
+                                                                child:
+                                                                    AuthUserStreamWidget(
+                                                                  builder:
+                                                                      (context) =>
+                                                                          Text(
+                                                                    'Age ${functions.dateStringAgeCalculator(currentUserDocument!.dob!.toString()).toString()}',
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Sora',
+                                                                          fontSize:
+                                                                              12.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w300,
+                                                                        ),
+                                                                  ),
                                                                 ),
                                                               ),
                                                             ),
                                                           ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    children: [
+                                                      FFButtonWidget(
+                                                        onPressed: () async {
+                                                          _model.alldocs =
+                                                              await queryChatsRecordOnce(
+                                                            queryBuilder:
+                                                                (chatsRecord) =>
+                                                                    chatsRecord
+                                                                        .where(
+                                                              'users',
+                                                              arrayContains:
+                                                                  getChatUserFirestoreData(
+                                                                ChatUserStruct(
+                                                                  userRef:
+                                                                      currentUserReference,
+                                                                  userName:
+                                                                      currentUserDisplayName,
+                                                                  userEmail:
+                                                                      currentUserEmail,
+                                                                ),
+                                                                true,
+                                                              ),
+                                                            ),
+                                                          );
+                                                          if (_model.alldocs!
+                                                              .where((e) => e
+                                                                  .users
+                                                                  .where((e) =>
+                                                                      e.userRef ==
+                                                                      candidateItem
+                                                                          .reference)
+                                                                  .toList()
+                                                                  .isNotEmpty)
+                                                              .toList()
+                                                              .isNotEmpty) {
+                                                            context.pushNamed(
+                                                              'chatMessages',
+                                                              queryParameters: {
+                                                                'chatDoc':
+                                                                    serializeParam(
+                                                                  _model.alldocs
+                                                                      ?.where((e) => e
+                                                                          .users
+                                                                          .where((e) =>
+                                                                              e.userRef ==
+                                                                              candidateItem.reference)
+                                                                          .toList()
+                                                                          .isNotEmpty)
+                                                                      .toList()
+                                                                      .first
+                                                                      .reference,
+                                                                  ParamType
+                                                                      .DocumentReference,
+                                                                ),
+                                                              }.withoutNulls,
+                                                            );
+                                                          } else {
+                                                            var chatsRecordReference =
+                                                                ChatsRecord
+                                                                    .collection
+                                                                    .doc();
+                                                            await chatsRecordReference
+                                                                .set({
+                                                              ...mapToFirestore(
+                                                                {
+                                                                  'users': [
+                                                                    getChatUserFirestoreData(
+                                                                      createChatUserStruct(
+                                                                        userRef:
+                                                                            currentUserReference,
+                                                                        userName:
+                                                                            currentUserDisplayName,
+                                                                        userEmail:
+                                                                            currentUserEmail,
+                                                                        clearUnsetFields:
+                                                                            false,
+                                                                        create:
+                                                                            true,
+                                                                      ),
+                                                                      true,
+                                                                    )
+                                                                  ],
+                                                                },
+                                                              ),
+                                                            });
+                                                            _model.createdChat =
+                                                                ChatsRecord
+                                                                    .getDocumentFromData({
+                                                              ...mapToFirestore(
+                                                                {
+                                                                  'users': [
+                                                                    getChatUserFirestoreData(
+                                                                      createChatUserStruct(
+                                                                        userRef:
+                                                                            currentUserReference,
+                                                                        userName:
+                                                                            currentUserDisplayName,
+                                                                        userEmail:
+                                                                            currentUserEmail,
+                                                                        clearUnsetFields:
+                                                                            false,
+                                                                        create:
+                                                                            true,
+                                                                      ),
+                                                                      true,
+                                                                    )
+                                                                  ],
+                                                                },
+                                                              ),
+                                                            }, chatsRecordReference);
+
+                                                            await _model
+                                                                .createdChat!
+                                                                .reference
+                                                                .update({
+                                                              ...mapToFirestore(
+                                                                {
+                                                                  'users':
+                                                                      FieldValue
+                                                                          .arrayUnion([
+                                                                    getChatUserFirestoreData(
+                                                                      updateChatUserStruct(
+                                                                        ChatUserStruct(
+                                                                          userRef:
+                                                                              candidateItem.reference,
+                                                                          userName:
+                                                                              candidateItem.displayName,
+                                                                          userEmail:
+                                                                              candidateItem.email,
+                                                                        ),
+                                                                        clearUnsetFields:
+                                                                            false,
+                                                                      ),
+                                                                      true,
+                                                                    )
+                                                                  ]),
+                                                                },
+                                                              ),
+                                                            });
+
+                                                            context.pushNamed(
+                                                              'chatMessages',
+                                                              queryParameters: {
+                                                                'chatDoc':
+                                                                    serializeParam(
+                                                                  _model
+                                                                      .createdChat
+                                                                      ?.reference,
+                                                                  ParamType
+                                                                      .DocumentReference,
+                                                                ),
+                                                              }.withoutNulls,
+                                                            );
+                                                          }
+
+                                                          setState(() {});
+                                                        },
+                                                        text: 'Send Message',
+                                                        options:
+                                                            FFButtonOptions(
+                                                          height: 35.0,
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      24.0,
+                                                                      0.0,
+                                                                      24.0,
+                                                                      0.0),
+                                                          iconPadding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .tertiary,
+                                                          textStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .titleSmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Sora',
+                                                                    color: Colors
+                                                                        .white,
+                                                                    fontSize:
+                                                                        10.0,
+                                                                  ),
+                                                          elevation: 3.0,
+                                                          borderSide:
+                                                              const BorderSide(
+                                                            color: Colors
+                                                                .transparent,
+                                                            width: 1.0,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      24.0),
                                                         ),
                                                       ),
                                                     ],
                                                   ),
-                                                ),
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  children: [
-                                                    FFButtonWidget(
-                                                      onPressed: () async {
-                                                        _model.alldocs =
-                                                            await queryChatsRecordOnce(
-                                                          queryBuilder:
-                                                              (chatsRecord) =>
-                                                                  chatsRecord
-                                                                      .where(
-                                                            'users',
-                                                            arrayContains:
-                                                                getChatUserFirestoreData(
-                                                              ChatUserStruct(
-                                                                userRef:
-                                                                    currentUserReference,
-                                                                userName:
-                                                                    currentUserDisplayName,
-                                                                userEmail:
-                                                                    currentUserEmail,
-                                                              ),
-                                                              true,
-                                                            ),
-                                                          ),
-                                                        );
-                                                        if (_model.alldocs!
-                                                            .where((e) => e
-                                                                .users
-                                                                .where((e) =>
-                                                                    e.userRef ==
-                                                                    candidateItem
-                                                                        .reference)
-                                                                .toList()
-                                                                .isNotEmpty)
-                                                            .toList()
-                                                            .isNotEmpty) {
-                                                          context.pushNamed(
-                                                            'chatMessages',
-                                                            queryParameters: {
-                                                              'chatDoc':
-                                                                  serializeParam(
-                                                                _model.alldocs
-                                                                    ?.where((e) => e
-                                                                        .users
-                                                                        .where((e) =>
-                                                                            e.userRef ==
-                                                                            candidateItem.reference)
-                                                                        .toList()
-                                                                        .isNotEmpty)
-                                                                    .toList()
-                                                                    .first
-                                                                    .reference,
-                                                                ParamType
-                                                                    .DocumentReference,
-                                                              ),
-                                                            }.withoutNulls,
-                                                          );
-                                                        } else {
-                                                          var chatsRecordReference =
-                                                              ChatsRecord
-                                                                  .collection
-                                                                  .doc();
-                                                          await chatsRecordReference
-                                                              .set({
-                                                            ...mapToFirestore(
-                                                              {
-                                                                'users': [
-                                                                  getChatUserFirestoreData(
-                                                                    createChatUserStruct(
-                                                                      userRef:
-                                                                          currentUserReference,
-                                                                      userName:
-                                                                          currentUserDisplayName,
-                                                                      userEmail:
-                                                                          currentUserEmail,
-                                                                      clearUnsetFields:
-                                                                          false,
-                                                                      create:
-                                                                          true,
-                                                                    ),
-                                                                    true,
-                                                                  )
-                                                                ],
-                                                              },
-                                                            ),
-                                                          });
-                                                          _model.createdChat =
-                                                              ChatsRecord
-                                                                  .getDocumentFromData({
-                                                            ...mapToFirestore(
-                                                              {
-                                                                'users': [
-                                                                  getChatUserFirestoreData(
-                                                                    createChatUserStruct(
-                                                                      userRef:
-                                                                          currentUserReference,
-                                                                      userName:
-                                                                          currentUserDisplayName,
-                                                                      userEmail:
-                                                                          currentUserEmail,
-                                                                      clearUnsetFields:
-                                                                          false,
-                                                                      create:
-                                                                          true,
-                                                                    ),
-                                                                    true,
-                                                                  )
-                                                                ],
-                                                              },
-                                                            ),
-                                                          }, chatsRecordReference);
-
-                                                          await _model
-                                                              .createdChat!
-                                                              .reference
-                                                              .update({
-                                                            ...mapToFirestore(
-                                                              {
-                                                                'users': FieldValue
-                                                                    .arrayUnion([
-                                                                  getChatUserFirestoreData(
-                                                                    updateChatUserStruct(
-                                                                      ChatUserStruct(
-                                                                        userRef:
-                                                                            candidateItem.reference,
-                                                                        userName:
-                                                                            candidateItem.displayName,
-                                                                        userEmail:
-                                                                            candidateItem.email,
-                                                                      ),
-                                                                      clearUnsetFields:
-                                                                          false,
-                                                                    ),
-                                                                    true,
-                                                                  )
-                                                                ]),
-                                                              },
-                                                            ),
-                                                          });
-
-                                                          context.pushNamed(
-                                                            'chatMessages',
-                                                            queryParameters: {
-                                                              'chatDoc':
-                                                                  serializeParam(
-                                                                _model
-                                                                    .createdChat
-                                                                    ?.reference,
-                                                                ParamType
-                                                                    .DocumentReference,
-                                                              ),
-                                                            }.withoutNulls,
-                                                          );
-                                                        }
-
-                                                        setState(() {});
-                                                      },
-                                                      text: 'Send Message',
-                                                      options: FFButtonOptions(
-                                                        height: 35.0,
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    24.0,
-                                                                    0.0,
-                                                                    24.0,
-                                                                    0.0),
-                                                        iconPadding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .tertiary,
-                                                        textStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleSmall
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Sora',
-                                                                  color: Colors
-                                                                      .white,
-                                                                  fontSize:
-                                                                      10.0,
-                                                                ),
-                                                        elevation: 3.0,
-                                                        borderSide: const BorderSide(
-                                                          color: Colors
-                                                              .transparent,
-                                                          width: 1.0,
-                                                        ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(24.0),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
+                                                ],
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      );
-                                    })
-                                        .divide(const SizedBox(width: 10.0))
-                                        .addToStart(const SizedBox(width: 20.0))
-                                        .addToEnd(const SizedBox(width: 20.0)),
-                                  );
-                                },
+                                        );
+                                      })
+                                          .divide(const SizedBox(width: 10.0))
+                                          .addToStart(const SizedBox(width: 20.0))
+                                          .addToEnd(const SizedBox(width: 20.0)),
+                                    );
+                                  },
+                                ),
                               ),
                             ),
                           ],
@@ -1159,9 +1180,7 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                     accounts: false,
                   ),
                 ),
-              ]
-                  .divide(const SizedBox(height: 12.0))
-                  .addToStart(const SizedBox(height: 12.0)),
+              ].addToStart(const SizedBox(height: 12.0)),
             ),
           ),
         );
