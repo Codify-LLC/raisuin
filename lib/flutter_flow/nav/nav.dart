@@ -108,9 +108,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'mapView',
           path: '/mapView',
           requireAuth: true,
-          builder: (context, params) => MapViewWidget(
-            gender: params.getParam('gender', ParamType.String),
-          ),
+          builder: (context, params) => const MapViewWidget(),
         ),
         FFRoute(
           name: 'postAd',

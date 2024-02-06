@@ -79,6 +79,10 @@ String returnEmptyVideoPath() {
   return '';
 }
 
+List<String> enumGenderToStringList(List<Gender> input) {
+  return input.map((type) => type.name).toList();
+}
+
 List<String> removeImageFromIndex(
   List<String> images,
   int index,
@@ -133,7 +137,7 @@ List<String> getSearchParameterList(List<ChatsRecord> chats) {
   return searchParameters;
 }
 
-List<String> enumToStringList(List<ProfileType> input) {
+List<String> enumProfileTypeToStringList(List<ProfileType> input) {
   return input.map((type) => type.name).toList();
 }
 
@@ -141,7 +145,7 @@ ProfileType stringToEnumProfileType(String input) {
   return ProfileType.values.byName(input);
 }
 
-String enumToString(Gender gender) {
+String enumGenderToString(Gender gender) {
   return gender.name;
 }
 

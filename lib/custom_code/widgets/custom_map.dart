@@ -23,6 +23,7 @@ class CustomMap extends StatefulWidget {
     required this.initialCenter,
     required this.userDocs,
     required this.onMarkerTap,
+    required this.updateCandidateList,
   });
 
   final double? width;
@@ -30,6 +31,7 @@ class CustomMap extends StatefulWidget {
   final LatLng initialCenter;
   final List<UsersRecord> userDocs;
   final Future Function(UsersRecord userDoc) onMarkerTap;
+  final Future Function(List<UsersRecord> candidateList) updateCandidateList;
 
   @override
   State<CustomMap> createState() => _CustomMapState();

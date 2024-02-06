@@ -1407,8 +1407,8 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                                 fit: BoxFit.cover,
                                               ),
                                               Text(
-                                                functions
-                                                    .enumToString(Gender.Male),
+                                                functions.enumGenderToString(
+                                                    Gender.Male),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -1458,7 +1458,7 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                                 fit: BoxFit.cover,
                                               ),
                                               Text(
-                                                functions.enumToString(
+                                                functions.enumGenderToString(
                                                     Gender.Female),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -1511,8 +1511,8 @@ class _UpdateAdWidgetState extends State<UpdateAdWidget> {
                                               fit: BoxFit.cover,
                                             ),
                                             Text(
-                                              functions
-                                                  .enumToString(Gender.Neutral),
+                                              functions.enumGenderToString(
+                                                  Gender.Neutral),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium

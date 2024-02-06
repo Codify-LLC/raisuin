@@ -390,7 +390,7 @@ class _SearchCandidatesWidgetState extends State<SearchCandidatesWidget> {
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: Text(
-                                            functions.enumToString(
+                                            functions.enumGenderToString(
                                                 searchresultItem.gender!),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium

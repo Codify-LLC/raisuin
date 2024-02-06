@@ -3,12 +3,15 @@ import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
 import '/components/navigation/navigation_widget.dart';
 import '/components/video_player/video_player_widget.dart';
+import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:badges/badges.dart' as badges;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -111,35 +114,89 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 alignment: const Alignment(0.0, 1.0),
               ),
               actions: [
-                Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
-                  child: Padding(
-                    padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
-                    child: FlutterFlowIconButton(
-                      borderColor: Colors.transparent,
-                      borderRadius: 30.0,
-                      borderWidth: 1.0,
-                      buttonSize: 35.0,
-                      fillColor: FlutterFlowTheme.of(context).primaryText,
-                      icon: Icon(
-                        Icons.search,
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        size: 15.0,
-                      ),
-                      onPressed: () async {
-                        context.pushNamed(
-                          'SearchCandidates',
-                          extra: <String, dynamic>{
-                            kTransitionInfoKey: const TransitionInfo(
-                              hasTransition: true,
-                              transitionType: PageTransitionType.fade,
-                              duration: Duration(milliseconds: 0),
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 24.0, 0.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Align(
+                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 10.0, 0.0),
+                          child: FlutterFlowIconButton(
+                            borderColor: Colors.transparent,
+                            borderRadius: 30.0,
+                            borderWidth: 1.0,
+                            buttonSize: 40.0,
+                            fillColor: FlutterFlowTheme.of(context).primaryText,
+                            icon: Icon(
+                              Icons.search,
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              size: 24.0,
                             ),
+                            onPressed: () async {
+                              context.pushNamed(
+                                'SearchCandidates',
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: const TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 0),
+                                  ),
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                      badges.Badge(
+                        badgeContent: Text(
+                          '1',
+                          style:
+                              FlutterFlowTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Sora',
+                                    color: Colors.white,
+                                    fontSize: 12.0,
+                                  ),
+                        ),
+                        showBadge: true,
+                        shape: badges.BadgeShape.circle,
+                        badgeColor: const Color(0xFFD85E87),
+                        elevation: 0.0,
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
+                        position: badges.BadgePosition.topEnd(),
+                        animationType: badges.BadgeAnimationType.scale,
+                        toAnimate: true,
+                        child: FlutterFlowIconButton(
+                          borderColor: Colors.transparent,
+                          borderRadius: 30.0,
+                          borderWidth: 1.0,
+                          buttonSize: 40.0,
+                          fillColor: FlutterFlowTheme.of(context).primaryText,
+                          icon: Icon(
+                            Icons.sort,
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            size: 24.0,
+                          ),
+                          onPressed: () async {
+                            context.pushNamed(
+                              'SearchCandidates',
+                              extra: <String, dynamic>{
+                                kTransitionInfoKey: const TransitionInfo(
+                                  hasTransition: true,
+                                  transitionType: PageTransitionType.fade,
+                                  duration: Duration(milliseconds: 0),
+                                ),
+                              },
+                            );
                           },
-                        );
-                      },
-                    ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -206,15 +263,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   alignment: const AlignmentDirectional(-1.0, 1.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
-                                      context.pushNamed(
-                                        'mapView',
-                                        queryParameters: {
-                                          'gender': serializeParam(
-                                            '',
-                                            ParamType.String,
-                                          ),
-                                        }.withoutNulls,
-                                      );
+                                      context.pushNamed('mapView');
                                     },
                                     text: 'Map View',
                                     icon: const Icon(
@@ -1283,6 +1332,118 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               ),
                             );
                           },
+                        ),
+                        Column(
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 23.0, 20.0, 10.0),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.pushNamed('listCandidates');
+                                },
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Text(
+                                      'Search by subjects',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Sora',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            fontWeight: FontWeight.w600,
+                                          ),
+                                    ),
+                                    Icon(
+                                      Icons.keyboard_arrow_right,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      size: 24.0,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  21.0, 0.0, 21.0, 0.0),
+                              child: FlutterFlowChoiceChips(
+                                options: const [
+                                  ChipData('English'),
+                                  ChipData('Math'),
+                                  ChipData('Art'),
+                                  ChipData('Science'),
+                                  ChipData('History'),
+                                  ChipData('Geography'),
+                                  ChipData('Music'),
+                                  ChipData('Physical Education'),
+                                  ChipData('Drama'),
+                                  ChipData('Biology'),
+                                  ChipData('Chemistry')
+                                ],
+                                onChanged: (val) => setState(
+                                    () => _model.experiencechipsValues = val),
+                                selectedChipStyle: ChipStyle(
+                                  backgroundColor: const Color(0xFFF3F5F7),
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Sora',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        fontSize: 13.0,
+                                      ),
+                                  iconColor:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  iconSize: 18.0,
+                                  labelPadding: const EdgeInsetsDirectional.fromSTEB(
+                                      14.0, 6.0, 14.0, 8.0),
+                                  elevation: 0.0,
+                                  borderColor: const Color(0xFF001451),
+                                  borderWidth: 1.0,
+                                ),
+                                unselectedChipStyle: ChipStyle(
+                                  backgroundColor: const Color(0xFFF3F5F7),
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: 'Sora',
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        fontSize: 13.0,
+                                      ),
+                                  iconColor:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  iconSize: 18.0,
+                                  labelPadding: const EdgeInsetsDirectional.fromSTEB(
+                                      14.0, 6.0, 14.0, 8.0),
+                                  elevation: 0.0,
+                                  borderColor: const Color(0xFF001451),
+                                  borderWidth: 1.0,
+                                ),
+                                chipSpacing: 5.0,
+                                rowSpacing: 10.0,
+                                multiselect: true,
+                                initialized:
+                                    _model.experiencechipsValues != null,
+                                alignment: WrapAlignment.start,
+                                controller:
+                                    _model.experiencechipsValueController ??=
+                                        FormFieldController<List<String>>(
+                                  [],
+                                ),
+                                wrapped: false,
+                              ),
+                            ),
+                          ],
                         ),
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(

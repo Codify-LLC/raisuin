@@ -62,8 +62,8 @@ class _PostAdWidgetState extends State<PostAdWidget>
     _model.subjectController2 ??= TextEditingController();
     _model.subjectFocusNode2 ??= FocusNode();
 
-    _model.totalVacanciesController ??= TextEditingController();
-    _model.totalVacanciesFocusNode ??= FocusNode();
+    _model.othernotesController ??= TextEditingController();
+    _model.othernotesFocusNode ??= FocusNode();
   }
 
   @override
@@ -1886,7 +1886,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             crossAxisAlignment:
-                                                CrossAxisAlignment.stretch,
+                                                CrossAxisAlignment.start,
                                             children: [
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
@@ -1903,25 +1903,172 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                       ),
                                                 ),
                                               ),
-                                              SingleChildScrollView(
-                                                scrollDirection:
-                                                    Axis.horizontal,
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceEvenly,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  10.0,
-                                                                  0.0),
-                                                      child: InkWell(
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        21.0, 0.0, 0.0, 0.0),
+                                                child: SingleChildScrollView(
+                                                  scrollDirection:
+                                                      Axis.horizontal,
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceEvenly,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    10.0,
+                                                                    0.0),
+                                                        child: InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
+                                                          onTap: () async {
+                                                            setState(() {
+                                                              _model.addToGender(
+                                                                  Gender.Male);
+                                                            });
+                                                          },
+                                                          child: Container(
+                                                            width: 100.0,
+                                                            height: 100.0,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: const Color(
+                                                                  0xFFF3F5F7),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          5.0),
+                                                            ),
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(5.0),
+                                                              child: Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
+                                                                children: [
+                                                                  Image.asset(
+                                                                    'assets/images/male.png',
+                                                                    width: 40.0,
+                                                                    height:
+                                                                        40.0,
+                                                                    fit: BoxFit
+                                                                        .cover,
+                                                                  ),
+                                                                  Text(
+                                                                    functions.enumGenderToString(
+                                                                        Gender
+                                                                            .Male),
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Sora',
+                                                                          fontSize:
+                                                                              12.0,
+                                                                        ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    10.0,
+                                                                    0.0),
+                                                        child: InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
+                                                          onTap: () async {
+                                                            setState(() {
+                                                              _model.addToGender(
+                                                                  Gender
+                                                                      .Female);
+                                                            });
+                                                          },
+                                                          child: Container(
+                                                            width: 100.0,
+                                                            height: 100.0,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: const Color(
+                                                                  0xFFF3F5F7),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          5.0),
+                                                            ),
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .all(5.0),
+                                                              child: Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
+                                                                children: [
+                                                                  Image.asset(
+                                                                    'assets/images/female.png',
+                                                                    width: 40.0,
+                                                                    height:
+                                                                        40.0,
+                                                                    fit: BoxFit
+                                                                        .cover,
+                                                                  ),
+                                                                  Text(
+                                                                    functions.enumGenderToString(
+                                                                        Gender
+                                                                            .Female),
+                                                                    style: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Sora',
+                                                                          fontSize:
+                                                                              12.0,
+                                                                        ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      InkWell(
                                                         splashColor:
                                                             Colors.transparent,
                                                         focusColor:
@@ -1933,7 +2080,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                         onTap: () async {
                                                           setState(() {
                                                             _model.addToGender(
-                                                                Gender.Male);
+                                                                Gender.Neutral);
                                                           });
                                                         },
                                                         child: Container(
@@ -1941,205 +2088,61 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                           height: 100.0,
                                                           decoration:
                                                               BoxDecoration(
-                                                            color: const Color(
-                                                                0xFFF3F5F7),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        5.0),
-                                                          ),
-                                                          child: Padding(
-                                                            padding:
-                                                                const EdgeInsets.all(
-                                                                    5.0),
-                                                            child: Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .center,
-                                                              children: [
-                                                                Image.asset(
-                                                                  'assets/images/male.png',
-                                                                  width: 40.0,
-                                                                  height: 40.0,
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                ),
-                                                                Text(
-                                                                  functions
-                                                                      .enumToString(
-                                                                          Gender
-                                                                              .Male),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Sora',
-                                                                        fontSize:
-                                                                            12.0,
-                                                                      ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  10.0,
-                                                                  0.0),
-                                                      child: InkWell(
-                                                        splashColor:
-                                                            Colors.transparent,
-                                                        focusColor:
-                                                            Colors.transparent,
-                                                        hoverColor:
-                                                            Colors.transparent,
-                                                        highlightColor:
-                                                            Colors.transparent,
-                                                        onTap: () async {
-                                                          setState(() {
-                                                            _model.addToGender(
-                                                                Gender.Female);
-                                                          });
-                                                        },
-                                                        child: Container(
-                                                          width: 100.0,
-                                                          height: 100.0,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: const Color(
-                                                                0xFFF3F5F7),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        5.0),
-                                                          ),
-                                                          child: Padding(
-                                                            padding:
-                                                                const EdgeInsets.all(
-                                                                    5.0),
-                                                            child: Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .center,
-                                                              children: [
-                                                                Image.asset(
-                                                                  'assets/images/female.png',
-                                                                  width: 40.0,
-                                                                  height: 40.0,
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                ),
-                                                                Text(
-                                                                  functions
-                                                                      .enumToString(
-                                                                          Gender
-                                                                              .Female),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Sora',
-                                                                        fontSize:
-                                                                            12.0,
-                                                                      ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    InkWell(
-                                                      splashColor:
-                                                          Colors.transparent,
-                                                      focusColor:
-                                                          Colors.transparent,
-                                                      hoverColor:
-                                                          Colors.transparent,
-                                                      highlightColor:
-                                                          Colors.transparent,
-                                                      onTap: () async {
-                                                        setState(() {
-                                                          _model.addToGender(
-                                                              Gender.Neutral);
-                                                        });
-                                                      },
-                                                      child: Container(
-                                                        width: 100.0,
-                                                        height: 100.0,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      5.0),
-                                                          border: Border.all(
                                                             color: FlutterFlowTheme
                                                                     .of(context)
-                                                                .primaryText,
+                                                                .secondaryBackground,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5.0),
+                                                            border: Border.all(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primaryText,
+                                                            ),
                                                           ),
-                                                        ),
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets.all(
-                                                                  5.0),
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            children: [
-                                                              Image.asset(
-                                                                'assets/images/both.png',
-                                                                width: 40.0,
-                                                                height: 40.0,
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                              ),
-                                                              Text(
-                                                                functions
-                                                                    .enumToString(
-                                                                        Gender
-                                                                            .Neutral),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Sora',
-                                                                      fontSize:
-                                                                          12.0,
-                                                                    ),
-                                                              ),
-                                                            ],
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsets.all(
+                                                                    5.0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .center,
+                                                              children: [
+                                                                Image.asset(
+                                                                  'assets/images/both.png',
+                                                                  width: 40.0,
+                                                                  height: 40.0,
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                                Text(
+                                                                  functions
+                                                                      .enumGenderToString(
+                                                                          Gender
+                                                                              .Neutral),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Sora',
+                                                                        fontSize:
+                                                                            12.0,
+                                                                      ),
+                                                                ),
+                                                              ],
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ]
-                                                      .addToStart(
-                                                          const SizedBox(width: 21.0))
-                                                      .addToEnd(const SizedBox(
-                                                          width: 21.0)),
+                                                    ].divide(
+                                                        const SizedBox(width: 10.0)),
+                                                  ),
                                                 ),
                                               ),
                                               Padding(
@@ -2160,7 +2163,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        20.0, 0.0, 20.0, 0.0),
+                                                        21.0, 0.0, 21.0, 0.0),
                                                 child: TextFormField(
                                                   controller:
                                                       _model.subjectController1,
@@ -2275,7 +2278,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        20.0, 0.0, 20.0, 0.0),
+                                                        21.0, 0.0, 21.0, 0.0),
                                                 child: TextFormField(
                                                   controller:
                                                       _model.subjectController2,
@@ -2375,12 +2378,23 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        20.0, 0.0, 20.0, 0.0),
+                                                        21.0, 0.0, 21.0, 0.0),
                                                 child: FlutterFlowChoiceChips(
                                                   options: const [
                                                     ChipData('Any'),
-                                                    ChipData('Freshers'),
-                                                    ChipData('Experienced')
+                                                    ChipData('+ English'),
+                                                    ChipData('+ Math'),
+                                                    ChipData('+ Art'),
+                                                    ChipData('+ Science'),
+                                                    ChipData('+ History'),
+                                                    ChipData('+ Geography'),
+                                                    ChipData('+ Music'),
+                                                    ChipData(
+                                                        '+ Physical Education'),
+                                                    ChipData('+ Drama'),
+                                                    ChipData('+ Biology'),
+                                                    ChipData('+ Chemistry'),
+                                                    ChipData('More')
                                                   ],
                                                   onChanged: (val) => setState(
                                                       () => _model
@@ -2388,9 +2402,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                           val?.first),
                                                   selectedChipStyle: ChipStyle(
                                                     backgroundColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .primaryText,
+                                                        const Color(0xFFF3F5F7),
                                                     textStyle: FlutterFlowTheme
                                                             .of(context)
                                                         .bodyMedium
@@ -2398,7 +2410,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                           fontFamily: 'Sora',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryBackground,
+                                                              .primaryText,
                                                           fontSize: 13.0,
                                                         ),
                                                     iconColor:
@@ -2423,7 +2435,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                           fontFamily: 'Sora',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryText,
+                                                              .primaryText,
                                                           fontSize: 13.0,
                                                         ),
                                                     iconColor:
@@ -2438,7 +2450,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                     elevation: 0.0,
                                                   ),
                                                   chipSpacing: 5.0,
-                                                  rowSpacing: 17.0,
+                                                  rowSpacing: 10.0,
                                                   multiselect: false,
                                                   initialized: _model
                                                           .experiencechipsValue1 !=
@@ -2457,7 +2469,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        20.0, 0.0, 0.0, 0.0),
+                                                        21.0, 0.0, 0.0, 0.0),
                                                 child: Text(
                                                   'Experience Required *',
                                                   style: FlutterFlowTheme.of(
@@ -2472,7 +2484,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        20.0, 0.0, 20.0, 0.0),
+                                                        21.0, 0.0, 0.0, 0.0),
                                                 child: FlutterFlowChoiceChips(
                                                   options: const [
                                                     ChipData('Any'),
@@ -2554,7 +2566,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        20.0, 0.0, 0.0, 0.0),
+                                                        21.0, 0.0, 0.0, 0.0),
                                                 child: Text(
                                                   'English Level *',
                                                   style: FlutterFlowTheme.of(
@@ -2569,7 +2581,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        20.0, 0.0, 20.0, 0.0),
+                                                        21.0, 0.0, 0.0, 0.0),
                                                 child: FlutterFlowChoiceChips(
                                                   options: const [
                                                     ChipData('No'),
@@ -2654,7 +2666,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        20.0, 0.0, 0.0, 0.0),
+                                                        21.0, 0.0, 0.0, 0.0),
                                                 child: Text(
                                                   'Regional Language *',
                                                   style: FlutterFlowTheme.of(
@@ -2669,7 +2681,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        20.0, 0.0, 20.0, 0.0),
+                                                        21.0, 0.0, 0.0, 21.0),
                                                 child: FlutterFlowChoiceChips(
                                                   options: const [
                                                     ChipData('Other'),
@@ -2765,6 +2777,8 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                         ),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
                                             Align(
                                               alignment: const AlignmentDirectional(
@@ -2772,7 +2786,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                               child: Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        20.0, 0.0, 0.0, 0.0),
+                                                        21.0, 39.0, 0.0, 10.0),
                                                 child: Text(
                                                   'Interview Type*',
                                                   style: FlutterFlowTheme.of(
@@ -2785,253 +2799,263 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                 ),
                                               ),
                                             ),
-                                            SingleChildScrollView(
-                                              scrollDirection: Axis.horizontal,
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceEvenly,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                10.0, 0.0),
-                                                    child: InkWell(
-                                                      splashColor:
-                                                          Colors.transparent,
-                                                      focusColor:
-                                                          Colors.transparent,
-                                                      hoverColor:
-                                                          Colors.transparent,
-                                                      highlightColor:
-                                                          Colors.transparent,
-                                                      onTap: () async {
-                                                        setState(() {
-                                                          _model.interviewType =
-                                                              InterviewMode
-                                                                  .DIRECT;
-                                                        });
-                                                      },
-                                                      child: Container(
-                                                        width: 100.0,
-                                                        height: 100.0,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: _model.interviewType ==
-                                                                  InterviewMode
-                                                                      .DIRECT
-                                                              ? FlutterFlowTheme
-                                                                      .of(
-                                                                          context)
-                                                                  .secondaryBackground
-                                                              : const Color(
-                                                                  0xFFF3F5F7),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      5.0),
-                                                          border: Border.all(
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      21.0, 0.0, 0.0, 23.0),
+                                              child: SingleChildScrollView(
+                                                scrollDirection:
+                                                    Axis.horizontal,
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          setState(() {
+                                                            _model.interviewType =
+                                                                InterviewMode
+                                                                    .DIRECT;
+                                                          });
+                                                        },
+                                                        child: Container(
+                                                          width: 100.0,
+                                                          height: 100.0,
+                                                          decoration:
+                                                              BoxDecoration(
                                                             color: _model
                                                                         .interviewType ==
                                                                     InterviewMode
                                                                         .DIRECT
                                                                 ? FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primaryText
+                                                                    .secondaryBackground
                                                                 : const Color(
                                                                     0xFFF3F5F7),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5.0),
+                                                            border: Border.all(
+                                                              color: _model
+                                                                          .interviewType ==
+                                                                      InterviewMode
+                                                                          .DIRECT
+                                                                  ? FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText
+                                                                  : const Color(
+                                                                      0xFFF3F5F7),
+                                                            ),
                                                           ),
-                                                        ),
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets.all(
-                                                                  5.0),
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            children: [
-                                                              Image.asset(
-                                                                'assets/images/male.png',
-                                                                width: 40.0,
-                                                                height: 40.0,
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                              ),
-                                                              Text(
-                                                                'DIRECT',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Sora',
-                                                                      fontSize:
-                                                                          12.0,
-                                                                    ),
-                                                              ),
-                                                            ],
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsets.all(
+                                                                    5.0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .center,
+                                                              children: [
+                                                                Image.asset(
+                                                                  'assets/images/male.png',
+                                                                  width: 40.0,
+                                                                  height: 40.0,
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                                Text(
+                                                                  'DIRECT',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Sora',
+                                                                        fontSize:
+                                                                            12.0,
+                                                                      ),
+                                                                ),
+                                                              ],
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
                                                     ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                10.0, 0.0),
-                                                    child: InkWell(
-                                                      splashColor:
-                                                          Colors.transparent,
-                                                      focusColor:
-                                                          Colors.transparent,
-                                                      hoverColor:
-                                                          Colors.transparent,
-                                                      highlightColor:
-                                                          Colors.transparent,
-                                                      onTap: () async {
-                                                        setState(() {
-                                                          _model.interviewType =
-                                                              InterviewMode
-                                                                  .PHONE;
-                                                        });
-                                                      },
-                                                      child: Container(
-                                                        width: 100.0,
-                                                        height: 100.0,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: _model
-                                                                      .interviewType ==
-                                                                  InterviewMode
-                                                                      .PHONE
-                                                              ? FlutterFlowTheme
-                                                                      .of(
-                                                                          context)
-                                                                  .secondaryBackground
-                                                              : const Color(
-                                                                  0xFFF3F5F7),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      5.0),
-                                                          border: Border.all(
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          setState(() {
+                                                            _model.interviewType =
+                                                                InterviewMode
+                                                                    .PHONE;
+                                                          });
+                                                        },
+                                                        child: Container(
+                                                          width: 100.0,
+                                                          height: 100.0,
+                                                          decoration:
+                                                              BoxDecoration(
                                                             color: _model.interviewType ==
                                                                     InterviewMode
                                                                         .PHONE
                                                                 ? FlutterFlowTheme.of(
                                                                         context)
-                                                                    .primaryText
+                                                                    .secondaryBackground
                                                                 : const Color(
                                                                     0xFFF3F5F7),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5.0),
+                                                            border: Border.all(
+                                                              color: _model
+                                                                          .interviewType ==
+                                                                      InterviewMode
+                                                                          .PHONE
+                                                                  ? FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText
+                                                                  : const Color(
+                                                                      0xFFF3F5F7),
+                                                            ),
                                                           ),
-                                                        ),
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets.all(
-                                                                  5.0),
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            mainAxisAlignment:
-                                                                MainAxisAlignment
-                                                                    .center,
-                                                            children: [
-                                                              Image.asset(
-                                                                'assets/images/female.png',
-                                                                width: 40.0,
-                                                                height: 40.0,
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                              ),
-                                                              Text(
-                                                                'PHONE',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Sora',
-                                                                      fontSize:
-                                                                          12.0,
-                                                                    ),
-                                                              ),
-                                                            ],
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsets.all(
+                                                                    5.0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .center,
+                                                              children: [
+                                                                Image.asset(
+                                                                  'assets/images/female.png',
+                                                                  width: 40.0,
+                                                                  height: 40.0,
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                                Text(
+                                                                  'PHONE',
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Sora',
+                                                                        fontSize:
+                                                                            12.0,
+                                                                      ),
+                                                                ),
+                                                              ],
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
                                                     ),
-                                                  ),
-                                                  Container(
-                                                    width: 100.0,
-                                                    height: 100.0,
-                                                    decoration: BoxDecoration(
-                                                      color: _model
-                                                                  .interviewType ==
-                                                              InterviewMode
-                                                                  .VIDEO
-                                                          ? FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryBackground
-                                                          : const Color(0xFFF3F5F7),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5.0),
-                                                      border: Border.all(
+                                                    Container(
+                                                      width: 100.0,
+                                                      height: 100.0,
+                                                      decoration: BoxDecoration(
                                                         color: _model
                                                                     .interviewType ==
                                                                 InterviewMode
                                                                     .VIDEO
                                                             ? FlutterFlowTheme
                                                                     .of(context)
-                                                                .primaryText
+                                                                .secondaryBackground
                                                             : const Color(0xFFF3F5F7),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                        border: Border.all(
+                                                          color: _model
+                                                                      .interviewType ==
+                                                                  InterviewMode
+                                                                      .VIDEO
+                                                              ? FlutterFlowTheme
+                                                                      .of(
+                                                                          context)
+                                                                  .primaryText
+                                                              : const Color(
+                                                                  0xFFF3F5F7),
+                                                        ),
+                                                      ),
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsets.all(5.0),
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Image.asset(
+                                                              'assets/images/both.png',
+                                                              width: 40.0,
+                                                              height: 40.0,
+                                                              fit: BoxFit.cover,
+                                                            ),
+                                                            Text(
+                                                              'VIDEO',
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Sora',
+                                                                    fontSize:
+                                                                        12.0,
+                                                                  ),
+                                                            ),
+                                                          ],
+                                                        ),
                                                       ),
                                                     ),
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(5.0),
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          Image.asset(
-                                                            'assets/images/both.png',
-                                                            width: 40.0,
-                                                            height: 40.0,
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                          Text(
-                                                            'VIDEO',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Sora',
-                                                                  fontSize:
-                                                                      12.0,
-                                                                ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ]
-                                                    .addToStart(
-                                                        const SizedBox(width: 20.0))
-                                                    .addToEnd(
-                                                        const SizedBox(width: 20.0)),
+                                                  ].divide(
+                                                      const SizedBox(width: 10.0)),
+                                                ),
                                               ),
                                             ),
                                             Align(
@@ -3040,7 +3064,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                               child: Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        20.0, 0.0, 0.0, 0.0),
+                                                        21.0, 0.0, 0.0, 10.0),
                                                 child: Text(
                                                   'Interview Date*',
                                                   style: FlutterFlowTheme.of(
@@ -3059,7 +3083,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                               child: Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        20.0, 0.0, 20.0, 0.0),
+                                                        20.0, 0.0, 20.0, 10.0),
                                                 child: FlutterFlowChoiceChips(
                                                   options: const [
                                                     ChipData('Anytime'),
@@ -3140,7 +3164,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      20.0, 0.0, 20.0, 0.0),
+                                                      21.0, 0.0, 21.0, 10.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
@@ -3614,9 +3638,9 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                               child: Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        20.0, 0.0, 0.0, 0.0),
+                                                        20.0, 0.0, 0.0, 10.0),
                                                 child: Text(
-                                                  'Total Vancancies *',
+                                                  'Other Notes',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -3630,36 +3654,42 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      20.0, 0.0, 20.0, 0.0),
+                                                      21.0, 0.0, 21.0, 0.0),
                                               child: TextFormField(
-                                                controller: _model
-                                                    .totalVacanciesController,
-                                                focusNode: _model
-                                                    .totalVacanciesFocusNode,
+                                                controller:
+                                                    _model.othernotesController,
+                                                focusNode:
+                                                    _model.othernotesFocusNode,
                                                 autofocus: true,
-                                                textCapitalization:
-                                                    TextCapitalization.none,
-                                                textInputAction:
-                                                    TextInputAction.send,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
-                                                  labelText: 'Total Vancancies',
-                                                  labelStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium,
-                                                  hintText: 'Total Vancancies',
-                                                  hintStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .labelMedium,
+                                                  labelStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Sora',
+                                                        color:
+                                                            const Color(0x7F001451),
+                                                        fontSize: 13.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                                  hintText:
+                                                      'Any missing notes..',
+                                                  hintStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Sora',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                      ),
                                                   enabledBorder:
                                                       OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
+                                                    borderSide: const BorderSide(
+                                                      color: Color(0xFFCFD9DE),
                                                       width: 1.0,
                                                     ),
                                                     borderRadius:
@@ -3708,21 +3738,21 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                                keyboardType:
-                                                    TextInputType.number,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Sora',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                        ),
+                                                maxLines: null,
+                                                minLines: 4,
                                                 validator: _model
-                                                    .totalVacanciesControllerValidator
+                                                    .othernotesControllerValidator
                                                     .asValidator(context),
-                                                inputFormatters: [
-                                                  FilteringTextInputFormatter
-                                                      .allow(RegExp('[0-9]'))
-                                                ],
                                               ),
                                             ),
-                                          ]
-                                              .divide(const SizedBox(height: 10.0))
-                                              .around(const SizedBox(height: 10.0)),
+                                          ],
                                         ),
                                       ),
                                     ),
@@ -3898,8 +3928,6 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                             clearUnsetFields: false,
                                             create: true,
                                           ),
-                                          totalVacancy: int.tryParse(_model
-                                              .totalVacanciesController.text),
                                         ),
                                         ...mapToFirestore(
                                           {
@@ -4004,8 +4032,6 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                             clearUnsetFields: false,
                                             create: true,
                                           ),
-                                          totalVacancy: int.tryParse(_model
-                                              .totalVacanciesController.text),
                                         ),
                                         ...mapToFirestore(
                                           {

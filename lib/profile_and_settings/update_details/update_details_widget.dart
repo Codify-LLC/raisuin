@@ -335,7 +335,7 @@ class _UpdateDetailsWidgetState extends State<UpdateDetailsWidget> {
                           const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 16.0),
                       child: FlutterFlowChoiceChips(
                         options: functions
-                            .enumToStringList(ProfileType.values
+                            .enumProfileTypeToStringList(ProfileType.values
                                 .where((e) => e != ProfileType.Candidate)
                                 .toList())
                             .map((label) => ChipData(label))

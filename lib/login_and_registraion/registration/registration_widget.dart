@@ -461,7 +461,8 @@ class _RegistrationWidgetState extends State<RegistrationWidget> {
                                       22.0, 10.0, 24.0, 0.0),
                                   child: FlutterFlowChoiceChips(
                                     options: functions
-                                        .enumToStringList(ProfileType.values
+                                        .enumProfileTypeToStringList(ProfileType
+                                            .values
                                             .where((e) =>
                                                 e != ProfileType.Candidate)
                                             .toList())

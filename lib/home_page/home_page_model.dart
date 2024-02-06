@@ -1,6 +1,7 @@
 import '/backend/backend.dart';
 import '/components/navigation/navigation_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'home_page_widget.dart' show HomePageWidget;
 import 'package:flutter/material.dart';
 
@@ -29,6 +30,9 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   List<ChatsRecord>? alldocs;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   ChatsRecord? createdChat;
+  // State field(s) for experiencechips widget.
+  List<String>? experiencechipsValues;
+  FormFieldController<List<String>>? experiencechipsValueController;
   // Model for navigation component.
   late NavigationModel navigationModel;
 

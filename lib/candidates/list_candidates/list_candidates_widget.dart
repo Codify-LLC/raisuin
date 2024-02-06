@@ -678,9 +678,10 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                 child: Padding(
                                                   padding: const EdgeInsets.all(8.0),
                                                   child: Text(
-                                                    functions.enumToString(
-                                                        listViewUsersRecord
-                                                            .gender!),
+                                                    functions
+                                                        .enumGenderToString(
+                                                            listViewUsersRecord
+                                                                .gender!),
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -1140,9 +1141,10 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                                 child: Padding(
                                                   padding: const EdgeInsets.all(8.0),
                                                   child: Text(
-                                                    functions.enumToString(
-                                                        searchresultItem
-                                                            .gender!),
+                                                    functions
+                                                        .enumGenderToString(
+                                                            searchresultItem
+                                                                .gender!),
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -1627,7 +1629,7 @@ class _ListCandidatesWidgetState extends State<ListCandidatesWidget> {
                                             child: Padding(
                                               padding: const EdgeInsets.all(8.0),
                                               child: Text(
-                                                functions.enumToString(
+                                                functions.enumGenderToString(
                                                     listViewUsersRecord
                                                         .gender!),
                                                 style:
