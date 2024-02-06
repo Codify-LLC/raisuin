@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/backend/firebase_storage/storage.dart';
 import '/backend/schema/enums/enums.dart';
+import '/components/sqaure_choice_chips_widget.dart';
 import '/components/upload_ad_image_widget.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
@@ -13,8 +14,8 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:ui';
-import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/random_data_util.dart' as random_data;
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -177,7 +178,9 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                           alignment:
                                               const AlignmentDirectional(1.0, 0.0),
                                           child: Text(
-                                            'Skip',
+                                            _model.tabBarCurrentIndex == 0
+                                                ? 'Skip'
+                                                : 'Back',
                                             textAlign: TextAlign.end,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium,
@@ -1886,7 +1889,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                                CrossAxisAlignment.stretch,
                                             children: [
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
@@ -1903,247 +1906,97 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                       ),
                                                 ),
                                               ),
-                                              Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        21.0, 0.0, 0.0, 0.0),
-                                                child: SingleChildScrollView(
-                                                  scrollDirection:
-                                                      Axis.horizontal,
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceEvenly,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    10.0,
-                                                                    0.0),
-                                                        child: InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            setState(() {
-                                                              _model.addToGender(
-                                                                  Gender.Male);
-                                                            });
-                                                          },
-                                                          child: Container(
-                                                            width: 100.0,
-                                                            height: 100.0,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: const Color(
-                                                                  0xFFF3F5F7),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          5.0),
-                                                            ),
-                                                            child: Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .all(5.0),
-                                                              child: Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .center,
-                                                                children: [
-                                                                  Image.asset(
-                                                                    'assets/images/male.png',
-                                                                    width: 40.0,
-                                                                    height:
-                                                                        40.0,
-                                                                    fit: BoxFit
-                                                                        .cover,
-                                                                  ),
-                                                                  Text(
-                                                                    functions.enumGenderToString(
-                                                                        Gender
-                                                                            .Male),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Sora',
-                                                                          fontSize:
-                                                                              12.0,
-                                                                        ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
+                                              Builder(
+                                                builder: (context) {
+                                                  final genderOption = Gender
+                                                      .values
+                                                      .toList()
+                                                      .take(3)
+                                                      .toList();
+                                                  return SingleChildScrollView(
+                                                    scrollDirection:
+                                                        Axis.horizontal,
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceEvenly,
+                                                      children: List.generate(
+                                                              genderOption
+                                                                  .length,
+                                                              (genderOptionIndex) {
+                                                        final genderOptionItem =
+                                                            genderOption[
+                                                                genderOptionIndex];
+                                                        return wrapWithModel(
+                                                          model: _model
+                                                              .sqaureChoiceChipsModels
+                                                              .getModel(
+                                                            genderOptionItem
+                                                                .name,
+                                                            genderOptionIndex,
                                                           ),
-                                                        ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    10.0,
-                                                                    0.0),
-                                                        child: InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            setState(() {
-                                                              _model.addToGender(
+                                                          updateCallback: () =>
+                                                              setState(() {}),
+                                                          updateOnChange: true,
+                                                          child:
+                                                              SqaureChoiceChipsWidget(
+                                                            key: Key(
+                                                              'Keyv3f_${genderOptionItem.name}',
+                                                            ),
+                                                            value:
+                                                                genderOptionItem
+                                                                    .name,
+                                                            selected: _model
+                                                                .gender
+                                                                .where((e) =>
+                                                                    e ==
+                                                                    genderOptionItem)
+                                                                .toList()
+                                                                .isNotEmpty,
+                                                            image: () {
+                                                              if (genderOptionItem ==
+                                                                  Gender.Male) {
+                                                                return 'https://static.wixstatic.com/media/83945f_add54d39dbb54951b840c1c9435d97f7~mv2.png/v1/fill/w_95,h_94,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/homem.png';
+                                                              } else if (genderOptionItem ==
                                                                   Gender
-                                                                      .Female);
-                                                            });
-                                                          },
-                                                          child: Container(
-                                                            width: 100.0,
-                                                            height: 100.0,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: const Color(
-                                                                  0xFFF3F5F7),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          5.0),
-                                                            ),
-                                                            child: Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .all(5.0),
-                                                              child: Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .center,
-                                                                children: [
-                                                                  Image.asset(
-                                                                    'assets/images/female.png',
-                                                                    width: 40.0,
-                                                                    height:
-                                                                        40.0,
-                                                                    fit: BoxFit
-                                                                        .cover,
-                                                                  ),
-                                                                  Text(
-                                                                    functions.enumGenderToString(
-                                                                        Gender
-                                                                            .Female),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Sora',
-                                                                          fontSize:
-                                                                              12.0,
-                                                                        ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
+                                                                      .Female) {
+                                                                return 'https://esg.wharton.upenn.edu/wp-content/uploads/2023/03/wharton-women-icon-5.png';
+                                                              } else {
+                                                                return 'https://nrd.irsn.fr/sites/nrd/files/styles/default/public/2023-12/adultes-radiologie-conventionnelle.png?itok=d36HEsc7';
+                                                              }
+                                                            }(),
+                                                            onTap: () async {
+                                                              if (_model.gender
+                                                                  .where((e) =>
+                                                                      e ==
+                                                                      genderOptionItem)
+                                                                  .toList()
+                                                                  .isNotEmpty) {
+                                                                setState(() {
+                                                                  _model.removeFromGender(
+                                                                      genderOptionItem);
+                                                                });
+                                                              } else {
+                                                                setState(() {
+                                                                  _model.addToGender(
+                                                                      genderOptionItem);
+                                                                });
+                                                              }
+                                                            },
                                                           ),
-                                                        ),
-                                                      ),
-                                                      InkWell(
-                                                        splashColor:
-                                                            Colors.transparent,
-                                                        focusColor:
-                                                            Colors.transparent,
-                                                        hoverColor:
-                                                            Colors.transparent,
-                                                        highlightColor:
-                                                            Colors.transparent,
-                                                        onTap: () async {
-                                                          setState(() {
-                                                            _model.addToGender(
-                                                                Gender.Neutral);
-                                                          });
-                                                        },
-                                                        child: Container(
-                                                          width: 100.0,
-                                                          height: 100.0,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        5.0),
-                                                            border: Border.all(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryText,
-                                                            ),
-                                                          ),
-                                                          child: Padding(
-                                                            padding:
-                                                                const EdgeInsets.all(
-                                                                    5.0),
-                                                            child: Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .center,
-                                                              children: [
-                                                                Image.asset(
-                                                                  'assets/images/both.png',
-                                                                  width: 40.0,
-                                                                  height: 40.0,
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                ),
-                                                                Text(
-                                                                  functions
-                                                                      .enumGenderToString(
-                                                                          Gender
-                                                                              .Neutral),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Sora',
-                                                                        fontSize:
-                                                                            12.0,
-                                                                      ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ].divide(
-                                                        const SizedBox(width: 10.0)),
-                                                  ),
-                                                ),
+                                                        );
+                                                      })
+                                                          .divide(const SizedBox(
+                                                              width: 10.0))
+                                                          .addToStart(const SizedBox(
+                                                              width: 21.0))
+                                                          .addToEnd(const SizedBox(
+                                                              width: 25.0)),
+                                                    ),
+                                                  );
+                                                },
                                               ),
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
@@ -2420,8 +2273,8 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                     iconSize: 18.0,
                                                     labelPadding:
                                                         const EdgeInsetsDirectional
-                                                            .fromSTEB(14.0, 6.0,
-                                                                14.0, 8.0),
+                                                            .fromSTEB(14.0, 4.0,
+                                                                14.0, 4.0),
                                                     elevation: 0.0,
                                                   ),
                                                   unselectedChipStyle:
@@ -2445,8 +2298,8 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                     iconSize: 18.0,
                                                     labelPadding:
                                                         const EdgeInsetsDirectional
-                                                            .fromSTEB(14.0, 6.0,
-                                                                14.0, 8.0),
+                                                            .fromSTEB(14.0, 4.0,
+                                                                14.0, 4.0),
                                                     elevation: 0.0,
                                                   ),
                                                   chipSpacing: 5.0,
@@ -2517,8 +2370,8 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                     iconSize: 18.0,
                                                     labelPadding:
                                                         const EdgeInsetsDirectional
-                                                            .fromSTEB(14.0, 6.0,
-                                                                14.0, 8.0),
+                                                            .fromSTEB(14.0, 4.0,
+                                                                14.0, 4.0),
                                                     elevation: 0.0,
                                                   ),
                                                   unselectedChipStyle:
@@ -2542,8 +2395,8 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                     iconSize: 18.0,
                                                     labelPadding:
                                                         const EdgeInsetsDirectional
-                                                            .fromSTEB(14.0, 6.0,
-                                                                14.0, 8.0),
+                                                            .fromSTEB(14.0, 4.0,
+                                                                14.0, 4.0),
                                                     elevation: 0.0,
                                                   ),
                                                   chipSpacing: 5.0,
@@ -2615,8 +2468,8 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                     iconSize: 18.0,
                                                     labelPadding:
                                                         const EdgeInsetsDirectional
-                                                            .fromSTEB(14.0, 6.0,
-                                                                14.0, 8.0),
+                                                            .fromSTEB(14.0, 4.0,
+                                                                14.0, 4.0),
                                                     elevation: 0.0,
                                                   ),
                                                   unselectedChipStyle:
@@ -2642,8 +2495,8 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                     iconSize: 18.0,
                                                     labelPadding:
                                                         const EdgeInsetsDirectional
-                                                            .fromSTEB(14.0, 6.0,
-                                                                14.0, 8.0),
+                                                            .fromSTEB(14.0, 4.0,
+                                                                14.0, 4.0),
                                                     elevation: 0.0,
                                                   ),
                                                   chipSpacing: 5.0,
@@ -2715,8 +2568,8 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                     iconSize: 18.0,
                                                     labelPadding:
                                                         const EdgeInsetsDirectional
-                                                            .fromSTEB(14.0, 6.0,
-                                                                14.0, 8.0),
+                                                            .fromSTEB(14.0, 4.0,
+                                                                14.0, 4.0),
                                                     elevation: 0.0,
                                                   ),
                                                   unselectedChipStyle:
@@ -2740,8 +2593,8 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                     iconSize: 18.0,
                                                     labelPadding:
                                                         const EdgeInsetsDirectional
-                                                            .fromSTEB(14.0, 6.0,
-                                                                14.0, 8.0),
+                                                            .fromSTEB(14.0, 4.0,
+                                                                14.0, 4.0),
                                                     elevation: 0.0,
                                                   ),
                                                   chipSpacing: 5.0,
@@ -2778,7 +2631,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                              CrossAxisAlignment.stretch,
                                           children: [
                                             Align(
                                               alignment: const AlignmentDirectional(
@@ -2786,7 +2639,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                               child: Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        21.0, 39.0, 0.0, 10.0),
+                                                        21.0, 22.0, 0.0, 10.0),
                                                 child: Text(
                                                   'Interview Type*',
                                                   style: FlutterFlowTheme.of(
@@ -2802,7 +2655,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      21.0, 0.0, 0.0, 23.0),
+                                                      21.0, 0.0, 25.0, 23.0),
                                               child: SingleChildScrollView(
                                                 scrollDirection:
                                                     Axis.horizontal,
@@ -2866,39 +2719,34 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                                       0xFFF3F5F7),
                                                             ),
                                                           ),
-                                                          child: Padding(
-                                                            padding:
-                                                                const EdgeInsets.all(
-                                                                    5.0),
-                                                            child: Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .center,
-                                                              children: [
-                                                                Image.asset(
-                                                                  'assets/images/male.png',
-                                                                  width: 40.0,
-                                                                  height: 40.0,
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                ),
-                                                                Text(
-                                                                  'DIRECT',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Sora',
-                                                                        fontSize:
-                                                                            12.0,
-                                                                      ),
-                                                                ),
-                                                              ],
-                                                            ),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              Image.asset(
+                                                                'assets/images/male.png',
+                                                                width: 40.0,
+                                                                height: 40.0,
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
+                                                              Text(
+                                                                'DIRECT',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Sora',
+                                                                      fontSize:
+                                                                          12.0,
+                                                                    ),
+                                                              ),
+                                                            ],
                                                           ),
                                                         ),
                                                       ),
@@ -2956,39 +2804,34 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                                       0xFFF3F5F7),
                                                             ),
                                                           ),
-                                                          child: Padding(
-                                                            padding:
-                                                                const EdgeInsets.all(
-                                                                    5.0),
-                                                            child: Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .center,
-                                                              children: [
-                                                                Image.asset(
-                                                                  'assets/images/female.png',
-                                                                  width: 40.0,
-                                                                  height: 40.0,
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                ),
-                                                                Text(
-                                                                  'PHONE',
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Sora',
-                                                                        fontSize:
-                                                                            12.0,
-                                                                      ),
-                                                                ),
-                                                              ],
-                                                            ),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              Image.asset(
+                                                                'assets/images/female.png',
+                                                                width: 40.0,
+                                                                height: 40.0,
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
+                                                              Text(
+                                                                'PHONE',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Sora',
+                                                                      fontSize:
+                                                                          12.0,
+                                                                    ),
+                                                              ),
+                                                            ],
                                                           ),
                                                         ),
                                                       ),
@@ -3021,36 +2864,32 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                                   0xFFF3F5F7),
                                                         ),
                                                       ),
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsets.all(5.0),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          children: [
-                                                            Image.asset(
-                                                              'assets/images/both.png',
-                                                              width: 40.0,
-                                                              height: 40.0,
-                                                              fit: BoxFit.cover,
-                                                            ),
-                                                            Text(
-                                                              'VIDEO',
-                                                              style: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .bodyMedium
-                                                                  .override(
-                                                                    fontFamily:
-                                                                        'Sora',
-                                                                    fontSize:
-                                                                        12.0,
-                                                                  ),
-                                                            ),
-                                                          ],
-                                                        ),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Image.asset(
+                                                            'assets/images/both.png',
+                                                            width: 40.0,
+                                                            height: 40.0,
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                          Text(
+                                                            'VIDEO',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Sora',
+                                                                  fontSize:
+                                                                      12.0,
+                                                                ),
+                                                          ),
+                                                        ],
                                                       ),
                                                     ),
                                                   ].divide(
@@ -3115,8 +2954,8 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                     iconSize: 18.0,
                                                     labelPadding:
                                                         const EdgeInsetsDirectional
-                                                            .fromSTEB(10.0, 6.0,
-                                                                10.0, 6.0),
+                                                            .fromSTEB(14.0, 4.0,
+                                                                14.0, 4.0),
                                                     elevation: 0.0,
                                                   ),
                                                   unselectedChipStyle:
@@ -3138,6 +2977,10 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                                 context)
                                                             .primaryText,
                                                     iconSize: 18.0,
+                                                    labelPadding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(14.0, 4.0,
+                                                                14.0, 4.0),
                                                     elevation: 0.0,
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -3161,110 +3004,70 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                 ),
                                               ),
                                             ),
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      21.0, 0.0, 21.0, 10.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: [
-                                                  InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    focusColor:
-                                                        Colors.transparent,
-                                                    hoverColor:
-                                                        Colors.transparent,
-                                                    highlightColor:
-                                                        Colors.transparent,
-                                                    onTap: () async {
-                                                      final datePicked1Date =
-                                                          await showDatePicker(
-                                                        context: context,
-                                                        initialDate:
-                                                            getCurrentTimestamp,
-                                                        firstDate:
-                                                            getCurrentTimestamp,
-                                                        lastDate:
-                                                            DateTime(2050),
-                                                        builder:
-                                                            (context, child) {
-                                                          return wrapInMaterialDatePickerTheme(
-                                                            context,
-                                                            child!,
-                                                            headerBackgroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                            headerForegroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .info,
-                                                            headerTextStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineLarge
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Sora',
-                                                                      fontSize:
-                                                                          32.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                    ),
-                                                            pickerBackgroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                            pickerForegroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                            selectedDateTimeBackgroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                            selectedDateTimeForegroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .info,
-                                                            actionButtonForegroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                            iconSize: 24.0,
-                                                          );
-                                                        },
-                                                      );
-
-                                                      TimeOfDay?
-                                                          datePicked1Time;
-                                                      if (datePicked1Date !=
-                                                          null) {
-                                                        datePicked1Time =
-                                                            await showTimePicker(
-                                                          context: context,
-                                                          initialTime: TimeOfDay
-                                                              .fromDateTime(
-                                                                  getCurrentTimestamp),
-                                                          builder:
-                                                              (context, child) {
-                                                            return wrapInMaterialTimePickerTheme(
-                                                              context,
-                                                              child!,
-                                                              headerBackgroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                              headerForegroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .info,
-                                                              headerTextStyle:
-                                                                  FlutterFlowTheme.of(
+                                            if (_model.timeChoiceChipValue ==
+                                                'Custom')
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        21.0, 0.0, 25.0, 0.0),
+                                                child: Container(
+                                                  height: 46.0,
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10.0),
+                                                    border: Border.all(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .accent3,
+                                                    ),
+                                                  ),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .stretch,
+                                                    children: [
+                                                      Expanded(
+                                                        child: InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
+                                                          onTap: () async {
+                                                            final datePicked1Date =
+                                                                await showDatePicker(
+                                                              context: context,
+                                                              initialDate:
+                                                                  getCurrentTimestamp,
+                                                              firstDate:
+                                                                  getCurrentTimestamp,
+                                                              lastDate:
+                                                                  DateTime(
+                                                                      2050),
+                                                              builder: (context,
+                                                                  child) {
+                                                                return wrapInMaterialDatePickerTheme(
+                                                                  context,
+                                                                  child!,
+                                                                  headerBackgroundColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                  headerForegroundColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .info,
+                                                                  headerTextStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .headlineLarge
                                                                       .override(
@@ -3275,236 +3078,250 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                                         fontWeight:
                                                                             FontWeight.w600,
                                                                       ),
-                                                              pickerBackgroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                              pickerForegroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText,
-                                                              selectedDateTimeBackgroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                              selectedDateTimeForegroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .info,
-                                                              actionButtonForegroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText,
-                                                              iconSize: 24.0,
+                                                                  pickerBackgroundColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
+                                                                  pickerForegroundColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                  selectedDateTimeBackgroundColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                  selectedDateTimeForegroundColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .info,
+                                                                  actionButtonForegroundColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                  iconSize:
+                                                                      24.0,
+                                                                );
+                                                              },
                                                             );
-                                                          },
-                                                        );
-                                                      }
 
-                                                      if (datePicked1Date !=
-                                                              null &&
-                                                          datePicked1Time !=
-                                                              null) {
-                                                        safeSetState(() {
-                                                          _model.datePicked1 =
-                                                              DateTime(
-                                                            datePicked1Date
-                                                                .year,
-                                                            datePicked1Date
-                                                                .month,
-                                                            datePicked1Date
-                                                                .day,
-                                                            datePicked1Time!
-                                                                .hour,
-                                                            datePicked1Time
-                                                                .minute,
-                                                          );
-                                                        });
-                                                      }
-                                                    },
-                                                    child: Container(
-                                                      width: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .width *
-                                                          0.4,
-                                                      height: 55.0,
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            const BorderRadius.only(
-                                                          bottomLeft:
-                                                              Radius.circular(
-                                                                  10.0),
-                                                          bottomRight:
-                                                              Radius.circular(
-                                                                  0.0),
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  10.0),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  0.0),
-                                                        ),
-                                                        border: Border.all(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .accent3,
-                                                          width: 2.0,
-                                                        ),
-                                                      ),
-                                                      child: Align(
-                                                        alignment:
-                                                            const AlignmentDirectional(
-                                                                -1.0, 0.0),
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      10.0,
-                                                                      0.0,
-                                                                      0.0,
+                                                            TimeOfDay?
+                                                                datePicked1Time;
+                                                            if (datePicked1Date !=
+                                                                null) {
+                                                              datePicked1Time =
+                                                                  await showTimePicker(
+                                                                context:
+                                                                    context,
+                                                                initialTime: TimeOfDay
+                                                                    .fromDateTime(
+                                                                        getCurrentTimestamp),
+                                                                builder:
+                                                                    (context,
+                                                                        child) {
+                                                                  return wrapInMaterialTimePickerTheme(
+                                                                    context,
+                                                                    child!,
+                                                                    headerBackgroundColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                    headerForegroundColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .info,
+                                                                    headerTextStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineLarge
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Sora',
+                                                                          fontSize:
+                                                                              32.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w600,
+                                                                        ),
+                                                                    pickerBackgroundColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .secondaryBackground,
+                                                                    pickerForegroundColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .primaryText,
+                                                                    selectedDateTimeBackgroundColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                    selectedDateTimeForegroundColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .info,
+                                                                    actionButtonForegroundColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .primaryText,
+                                                                    iconSize:
+                                                                        24.0,
+                                                                  );
+                                                                },
+                                                              );
+                                                            }
+
+                                                            if (datePicked1Date !=
+                                                                    null &&
+                                                                datePicked1Time !=
+                                                                    null) {
+                                                              safeSetState(() {
+                                                                _model.datePicked1 =
+                                                                    DateTime(
+                                                                  datePicked1Date
+                                                                      .year,
+                                                                  datePicked1Date
+                                                                      .month,
+                                                                  datePicked1Date
+                                                                      .day,
+                                                                  datePicked1Time!
+                                                                      .hour,
+                                                                  datePicked1Time
+                                                                      .minute,
+                                                                );
+                                                              });
+                                                            }
+                                                          },
+                                                          child: Container(
+                                                            width: MediaQuery
+                                                                        .sizeOf(
+                                                                            context)
+                                                                    .width *
+                                                                0.4,
+                                                            height: 55.0,
+                                                            decoration:
+                                                                const BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .only(
+                                                                bottomLeft: Radius
+                                                                    .circular(
+                                                                        10.0),
+                                                                bottomRight: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        10.0),
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                              ),
+                                                            ),
+                                                            child: Align(
+                                                              alignment:
+                                                                  const AlignmentDirectional(
+                                                                      -1.0,
                                                                       0.0),
-                                                          child: Text(
-                                                            _model.datePicked1 !=
-                                                                    null
-                                                                ? dateTimeFormat(
-                                                                    'MMMMEEEdjm',
-                                                                    _model
-                                                                        .datePicked1)
-                                                                : 'Start Time',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Sora',
-                                                                  fontSize:
-                                                                      12.0,
+                                                              child: Padding(
+                                                                padding:
+                                                                    const EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child:
+                                                                    AutoSizeText(
+                                                                  _model.datePicked1 !=
+                                                                          null
+                                                                      ? dateTimeFormat(
+                                                                          'MMMMEEEdjm',
+                                                                          _model
+                                                                              .datePicked1)
+                                                                      : 'Start Time',
+                                                                  maxLines: 1,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Sora',
+                                                                        fontSize:
+                                                                            12.0,
+                                                                      ),
                                                                 ),
+                                                              ),
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ),
-                                                  Align(
-                                                    alignment:
-                                                        const AlignmentDirectional(
-                                                            0.0, 0.0),
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  10.0,
-                                                                  0.0,
-                                                                  10.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        'TO',
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Sora',
-                                                              fontSize: 13.0,
+                                                      Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .accent4,
+                                                          border: Border.all(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .accent3,
+                                                          ),
+                                                        ),
+                                                        child: Align(
+                                                          alignment:
+                                                              const AlignmentDirectional(
+                                                                  0.0, 0.0),
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        0.0,
+                                                                        10.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              'TO',
+                                                              textAlign:
+                                                                  TextAlign
+                                                                      .center,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Sora',
+                                                                    fontSize:
+                                                                        13.0,
+                                                                  ),
                                                             ),
+                                                          ),
+                                                        ),
                                                       ),
-                                                    ),
-                                                  ),
-                                                  InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    focusColor:
-                                                        Colors.transparent,
-                                                    hoverColor:
-                                                        Colors.transparent,
-                                                    highlightColor:
-                                                        Colors.transparent,
-                                                    onTap: () async {
-                                                      final datePicked2Date =
-                                                          await showDatePicker(
-                                                        context: context,
-                                                        initialDate:
-                                                            getCurrentTimestamp,
-                                                        firstDate:
-                                                            getCurrentTimestamp,
-                                                        lastDate:
-                                                            DateTime(2050),
-                                                        builder:
-                                                            (context, child) {
-                                                          return wrapInMaterialDatePickerTheme(
-                                                            context,
-                                                            child!,
-                                                            headerBackgroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                            headerForegroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .info,
-                                                            headerTextStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .headlineLarge
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Sora',
-                                                                      fontSize:
-                                                                          32.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600,
-                                                                    ),
-                                                            pickerBackgroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                            pickerForegroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                            selectedDateTimeBackgroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                            selectedDateTimeForegroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .info,
-                                                            actionButtonForegroundColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                            iconSize: 24.0,
-                                                          );
-                                                        },
-                                                      );
-
-                                                      TimeOfDay?
-                                                          datePicked2Time;
-                                                      if (datePicked2Date !=
-                                                          null) {
-                                                        datePicked2Time =
-                                                            await showTimePicker(
-                                                          context: context,
-                                                          initialTime: TimeOfDay
-                                                              .fromDateTime(
-                                                                  getCurrentTimestamp),
-                                                          builder:
-                                                              (context, child) {
-                                                            return wrapInMaterialTimePickerTheme(
-                                                              context,
-                                                              child!,
-                                                              headerBackgroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                              headerForegroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .info,
-                                                              headerTextStyle:
-                                                                  FlutterFlowTheme.of(
+                                                      Expanded(
+                                                        child: InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
+                                                          onTap: () async {
+                                                            final datePicked2Date =
+                                                                await showDatePicker(
+                                                              context: context,
+                                                              initialDate:
+                                                                  getCurrentTimestamp,
+                                                              firstDate:
+                                                                  getCurrentTimestamp,
+                                                              lastDate:
+                                                                  DateTime(
+                                                                      2050),
+                                                              builder: (context,
+                                                                  child) {
+                                                                return wrapInMaterialDatePickerTheme(
+                                                                  context,
+                                                                  child!,
+                                                                  headerBackgroundColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                  headerForegroundColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .info,
+                                                                  headerTextStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .headlineLarge
                                                                       .override(
@@ -3515,130 +3332,187 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                                         fontWeight:
                                                                             FontWeight.w600,
                                                                       ),
-                                                              pickerBackgroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                              pickerForegroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText,
-                                                              selectedDateTimeBackgroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                              selectedDateTimeForegroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .info,
-                                                              actionButtonForegroundColor:
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primaryText,
-                                                              iconSize: 24.0,
+                                                                  pickerBackgroundColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryBackground,
+                                                                  pickerForegroundColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                  selectedDateTimeBackgroundColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                  selectedDateTimeForegroundColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .info,
+                                                                  actionButtonForegroundColor:
+                                                                      FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primaryText,
+                                                                  iconSize:
+                                                                      24.0,
+                                                                );
+                                                              },
                                                             );
-                                                          },
-                                                        );
-                                                      }
 
-                                                      if (datePicked2Date !=
-                                                              null &&
-                                                          datePicked2Time !=
-                                                              null) {
-                                                        safeSetState(() {
-                                                          _model.datePicked2 =
-                                                              DateTime(
-                                                            datePicked2Date
-                                                                .year,
-                                                            datePicked2Date
-                                                                .month,
-                                                            datePicked2Date
-                                                                .day,
-                                                            datePicked2Time!
-                                                                .hour,
-                                                            datePicked2Time
-                                                                .minute,
-                                                          );
-                                                        });
-                                                      }
-                                                    },
-                                                    child: Container(
-                                                      width: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .width *
-                                                          0.4,
-                                                      height: 55.0,
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            const BorderRadius.only(
-                                                          bottomLeft:
-                                                              Radius.circular(
-                                                                  0.0),
-                                                          bottomRight:
-                                                              Radius.circular(
-                                                                  10.0),
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  0.0),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  10.0),
-                                                        ),
-                                                        border: Border.all(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .accent3,
-                                                          width: 2.0,
-                                                        ),
-                                                      ),
-                                                      child: Align(
-                                                        alignment:
-                                                            const AlignmentDirectional(
-                                                                -1.0, 0.0),
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      10.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            valueOrDefault<
-                                                                String>(
-                                                              _model.datePicked2 !=
-                                                                      null
-                                                                  ? dateTimeFormat(
-                                                                      'MMMMEEEdjm',
-                                                                      _model
-                                                                          .datePicked2)
-                                                                  : 'End Time',
-                                                              '00',
+                                                            TimeOfDay?
+                                                                datePicked2Time;
+                                                            if (datePicked2Date !=
+                                                                null) {
+                                                              datePicked2Time =
+                                                                  await showTimePicker(
+                                                                context:
+                                                                    context,
+                                                                initialTime: TimeOfDay
+                                                                    .fromDateTime(
+                                                                        getCurrentTimestamp),
+                                                                builder:
+                                                                    (context,
+                                                                        child) {
+                                                                  return wrapInMaterialTimePickerTheme(
+                                                                    context,
+                                                                    child!,
+                                                                    headerBackgroundColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                    headerForegroundColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .info,
+                                                                    headerTextStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .headlineLarge
+                                                                        .override(
+                                                                          fontFamily:
+                                                                              'Sora',
+                                                                          fontSize:
+                                                                              32.0,
+                                                                          fontWeight:
+                                                                              FontWeight.w600,
+                                                                        ),
+                                                                    pickerBackgroundColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .secondaryBackground,
+                                                                    pickerForegroundColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .primaryText,
+                                                                    selectedDateTimeBackgroundColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .primary,
+                                                                    selectedDateTimeForegroundColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .info,
+                                                                    actionButtonForegroundColor:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .primaryText,
+                                                                    iconSize:
+                                                                        24.0,
+                                                                  );
+                                                                },
+                                                              );
+                                                            }
+
+                                                            if (datePicked2Date !=
+                                                                    null &&
+                                                                datePicked2Time !=
+                                                                    null) {
+                                                              safeSetState(() {
+                                                                _model.datePicked2 =
+                                                                    DateTime(
+                                                                  datePicked2Date
+                                                                      .year,
+                                                                  datePicked2Date
+                                                                      .month,
+                                                                  datePicked2Date
+                                                                      .day,
+                                                                  datePicked2Time!
+                                                                      .hour,
+                                                                  datePicked2Time
+                                                                      .minute,
+                                                                );
+                                                              });
+                                                            }
+                                                          },
+                                                          child: Container(
+                                                            width: MediaQuery
+                                                                        .sizeOf(
+                                                                            context)
+                                                                    .width *
+                                                                0.4,
+                                                            height: 55.0,
+                                                            decoration:
+                                                                const BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .only(
+                                                                bottomLeft: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                                bottomRight: Radius
+                                                                    .circular(
+                                                                        10.0),
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        10.0),
+                                                              ),
                                                             ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Sora',
-                                                                  fontSize:
-                                                                      12.0,
+                                                            child: Align(
+                                                              alignment:
+                                                                  const AlignmentDirectional(
+                                                                      -1.0,
+                                                                      0.0),
+                                                              child: Padding(
+                                                                padding:
+                                                                    const EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child:
+                                                                    AutoSizeText(
+                                                                  valueOrDefault<
+                                                                      String>(
+                                                                    _model.datePicked2 !=
+                                                                            null
+                                                                        ? dateTimeFormat(
+                                                                            'MMMMEEEdjm',
+                                                                            _model.datePicked2)
+                                                                        : 'End Time',
+                                                                    '00',
+                                                                  ),
+                                                                  maxLines: 1,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Sora',
+                                                                        fontSize:
+                                                                            12.0,
+                                                                      ),
                                                                 ),
+                                                              ),
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
-                                                    ),
+                                                    ],
                                                   ),
-                                                ],
+                                                ),
                                               ),
-                                            ),
                                             Align(
                                               alignment: const AlignmentDirectional(
                                                   -1.0, 0.0),
                                               child: Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
-                                                        20.0, 0.0, 0.0, 10.0),
+                                                        20.0, 23.0, 0.0, 10.0),
                                                 child: Text(
                                                   'Other Notes',
                                                   style: FlutterFlowTheme.of(
@@ -3654,7 +3528,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                             Padding(
                                               padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      21.0, 0.0, 21.0, 0.0),
+                                                      21.0, 0.0, 25.0, 0.0),
                                               child: TextFormField(
                                                 controller:
                                                     _model.othernotesController,
@@ -3694,7 +3568,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                            8.0),
+                                                            10.0),
                                                   ),
                                                   focusedBorder:
                                                       OutlineInputBorder(
@@ -3707,7 +3581,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                            8.0),
+                                                            10.0),
                                                   ),
                                                   errorBorder:
                                                       OutlineInputBorder(
@@ -3720,7 +3594,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                            8.0),
+                                                            10.0),
                                                   ),
                                                   focusedErrorBorder:
                                                       OutlineInputBorder(
@@ -3733,7 +3607,7 @@ class _PostAdWidgetState extends State<PostAdWidget>
                                                     ),
                                                     borderRadius:
                                                         BorderRadius.circular(
-                                                            8.0),
+                                                            10.0),
                                                   ),
                                                 ),
                                                 style:

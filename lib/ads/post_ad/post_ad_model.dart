@@ -1,5 +1,6 @@
 import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
+import '/components/sqaure_choice_chips_widget.dart';
 import '/components/upload_ad_image_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
@@ -111,6 +112,8 @@ class PostAdModel extends FlutterFlowModel<PostAdWidget> {
   var jobLocationValue = const FFPlace();
   // State field(s) for PlacePicker widget.
   var placePickerValue = const FFPlace();
+  // Models for sqaureChoiceChips dynamic component.
+  late FlutterFlowDynamicModels<SqaureChoiceChipsModel> sqaureChoiceChipsModels;
   // State field(s) for Subject widget.
   FocusNode? subjectFocusNode1;
   TextEditingController? subjectController1;
@@ -152,6 +155,8 @@ class PostAdModel extends FlutterFlowModel<PostAdWidget> {
     uploadAdImageModels = FlutterFlowDynamicModels(() => UploadAdImageModel());
     fromControllerValidator = _fromControllerValidator;
     toControllerValidator = _toControllerValidator;
+    sqaureChoiceChipsModels =
+        FlutterFlowDynamicModels(() => SqaureChoiceChipsModel());
   }
 
   @override
@@ -171,6 +176,7 @@ class PostAdModel extends FlutterFlowModel<PostAdWidget> {
     toFocusNode?.dispose();
     toController?.dispose();
 
+    sqaureChoiceChipsModels.dispose();
     subjectFocusNode1?.dispose();
     subjectController1?.dispose();
 
