@@ -636,7 +636,7 @@ class _MapViewWidgetState extends State<MapViewWidget> {
                               alignment: const AlignmentDirectional(0.0, 1.0),
                               child: Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 23.0),
+                                    0.0, 0.0, 0.0, 12.0),
                                 child: Builder(
                                   builder: (context) {
                                     final candidate =
