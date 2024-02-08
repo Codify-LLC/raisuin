@@ -68,9 +68,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       _model.instantTimer = InstantTimer.periodic(
         duration: const Duration(milliseconds: 600),
         callback: (timer) async {
-          setState(() {
-            FFAppState().location = _model.placePickerValue.latLng;
-          });
+          FFAppState().location = _model.placePickerValue.latLng;
                 },
         startImmediately: true,
       );
@@ -304,8 +302,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       MainAxisSize.max,
                                                   children: [
                                                     Icon(
-                                                      FFIcons
-                                                          .kproperty1Outline5,
+                                                      Icons.location_pin,
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)

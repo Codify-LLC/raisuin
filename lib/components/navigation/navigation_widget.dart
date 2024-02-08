@@ -86,7 +86,7 @@ class _NavigationWidgetState extends State<NavigationWidget> {
                     Colors.transparent,
                   ),
                   icon: Icon(
-                    FFIcons.kproperty1Outline8,
+                    Icons.home_filled,
                     color: widget.home
                         ? FlutterFlowTheme.of(context).primaryBackground
                         : FlutterFlowTheme.of(context).secondaryText,
@@ -106,7 +106,7 @@ class _NavigationWidgetState extends State<NavigationWidget> {
                     Colors.transparent,
                   ),
                   icon: Icon(
-                    FFIcons.kproperty1Outline6,
+                    Icons.list_rounded,
                     color: widget.search
                         ? FlutterFlowTheme.of(context).primaryBackground
                         : FlutterFlowTheme.of(context).secondaryText,
@@ -127,7 +127,7 @@ class _NavigationWidgetState extends State<NavigationWidget> {
                     Colors.transparent,
                   ),
                   icon: Icon(
-                    FFIcons.kproperty1Outline8,
+                    Icons.add_box_rounded,
                     color: widget.ads
                         ? FlutterFlowTheme.of(context).primaryBackground
                         : FlutterFlowTheme.of(context).secondaryText,
@@ -148,7 +148,7 @@ class _NavigationWidgetState extends State<NavigationWidget> {
                     Colors.transparent,
                   ),
                   icon: Icon(
-                    FFIcons.kproperty1Outline9,
+                    Icons.chat_rounded,
                     color: widget.messages
                         ? FlutterFlowTheme.of(context).primaryBackground
                         : FlutterFlowTheme.of(context).secondaryText,
@@ -169,7 +169,7 @@ class _NavigationWidgetState extends State<NavigationWidget> {
                     Colors.transparent,
                   ),
                   icon: Icon(
-                    FFIcons.kproperty1Outline,
+                    Icons.person_rounded,
                     color: widget.accounts
                         ? FlutterFlowTheme.of(context).primaryBackground
                         : FlutterFlowTheme.of(context).secondaryText,

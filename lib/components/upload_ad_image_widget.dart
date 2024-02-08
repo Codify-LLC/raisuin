@@ -49,7 +49,7 @@ class _UploadAdImageWidgetState extends State<UploadAdImageWidget> {
         builder: (context) {
           if (_model.uploadedFileUrl != '') {
             return Image.network(
-              'https://picsum.photos/seed/843/600',
+              _model.uploadedFileUrl,
               width: 103.0,
               height: 103.0,
               fit: BoxFit.cover,
