@@ -1,3 +1,4 @@
+import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'filter_widget.dart' show FilterWidget;
@@ -6,13 +7,13 @@ import 'package:flutter/material.dart';
 class FilterModel extends FlutterFlowModel<FilterWidget> {
   ///  Local state fields for this component.
 
-  List<String> gender = [];
-  void addToGender(String item) => gender.add(item);
-  void removeFromGender(String item) => gender.remove(item);
+  List<Gender> gender = [];
+  void addToGender(Gender item) => gender.add(item);
+  void removeFromGender(Gender item) => gender.remove(item);
   void removeAtIndexFromGender(int index) => gender.removeAt(index);
-  void insertAtIndexInGender(int index, String item) =>
+  void insertAtIndexInGender(int index, Gender item) =>
       gender.insert(index, item);
-  void updateGenderAtIndex(int index, Function(String) updateFn) =>
+  void updateGenderAtIndex(int index, Function(Gender) updateFn) =>
       gender[index] = updateFn(gender[index]);
 
   bool jobtype = false;
@@ -31,14 +32,13 @@ class FilterModel extends FlutterFlowModel<FilterWidget> {
   // State field(s) for subject widget.
   String? subjectValue;
   FormFieldController<String>? subjectValueController;
-  // State field(s) for expfrom widget.
-  FocusNode? expfromFocusNode;
-  TextEditingController? expfromController;
-  String? Function(BuildContext, String?)? expfromControllerValidator;
-  // State field(s) for expto widget.
-  FocusNode? exptoFocusNode;
-  TextEditingController? exptoController;
-  String? Function(BuildContext, String?)? exptoControllerValidator;
+  // State field(s) for PlacePicker widget.
+  var placePickerValue = const FFPlace();
+  // State field(s) for Age widget.
+  double? ageValue;
+  // State field(s) for requirementFor widget.
+  String? requirementForValue;
+  FormFieldController<List<String>>? requirementForValueController;
   // State field(s) for salarymin widget.
   FocusNode? salaryminFocusNode;
   TextEditingController? salaryminController;
@@ -47,6 +47,12 @@ class FilterModel extends FlutterFlowModel<FilterWidget> {
   FocusNode? salarytillFocusNode;
   TextEditingController? salarytillController;
   String? Function(BuildContext, String?)? salarytillControllerValidator;
+  // State field(s) for regionalLanguage widget.
+  List<String>? regionalLanguageValues;
+  FormFieldController<List<String>>? regionalLanguageValueController;
+  // State field(s) for englishLevel widget.
+  String? englishLevelValue;
+  FormFieldController<List<String>>? englishLevelValueController;
 
   /// Initialization and disposal methods.
 
@@ -55,12 +61,6 @@ class FilterModel extends FlutterFlowModel<FilterWidget> {
 
   @override
   void dispose() {
-    expfromFocusNode?.dispose();
-    expfromController?.dispose();
-
-    exptoFocusNode?.dispose();
-    exptoController?.dispose();
-
     salaryminFocusNode?.dispose();
     salaryminController?.dispose();
 

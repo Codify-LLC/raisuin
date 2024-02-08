@@ -107,9 +107,12 @@ class _NavigationWidgetState extends State<NavigationWidget> {
                   ),
                   icon: Icon(
                     Icons.list_rounded,
-                    color: widget.search
-                        ? FlutterFlowTheme.of(context).primaryBackground
-                        : FlutterFlowTheme.of(context).secondaryText,
+                    color: valueOrDefault<Color>(
+                      widget.search
+                          ? FlutterFlowTheme.of(context).primaryBackground
+                          : FlutterFlowTheme.of(context).secondaryText,
+                      FlutterFlowTheme.of(context).secondaryText,
+                    ),
                     size: 24.0,
                   ),
                   onPressed: () async {
@@ -128,9 +131,12 @@ class _NavigationWidgetState extends State<NavigationWidget> {
                   ),
                   icon: Icon(
                     Icons.add_box_rounded,
-                    color: widget.ads
-                        ? FlutterFlowTheme.of(context).primaryBackground
-                        : FlutterFlowTheme.of(context).secondaryText,
+                    color: valueOrDefault<Color>(
+                      widget.ads
+                          ? FlutterFlowTheme.of(context).primaryBackground
+                          : FlutterFlowTheme.of(context).secondaryText,
+                      FlutterFlowTheme.of(context).secondaryText,
+                    ),
                     size: 24.0,
                   ),
                   onPressed: () async {
@@ -149,9 +155,12 @@ class _NavigationWidgetState extends State<NavigationWidget> {
                   ),
                   icon: Icon(
                     Icons.chat_rounded,
-                    color: widget.messages
-                        ? FlutterFlowTheme.of(context).primaryBackground
-                        : FlutterFlowTheme.of(context).secondaryText,
+                    color: valueOrDefault<Color>(
+                      widget.messages
+                          ? FlutterFlowTheme.of(context).primaryBackground
+                          : FlutterFlowTheme.of(context).secondaryText,
+                      FlutterFlowTheme.of(context).secondaryText,
+                    ),
                     size: 24.0,
                   ),
                   onPressed: () async {
@@ -170,9 +179,12 @@ class _NavigationWidgetState extends State<NavigationWidget> {
                   ),
                   icon: Icon(
                     Icons.person_rounded,
-                    color: widget.accounts
-                        ? FlutterFlowTheme.of(context).primaryBackground
-                        : FlutterFlowTheme.of(context).secondaryText,
+                    color: valueOrDefault<Color>(
+                      widget.accounts
+                          ? FlutterFlowTheme.of(context).primaryBackground
+                          : FlutterFlowTheme.of(context).secondaryText,
+                      FlutterFlowTheme.of(context).secondaryText,
+                    ),
                     size: 24.0,
                   ),
                   onPressed: () async {

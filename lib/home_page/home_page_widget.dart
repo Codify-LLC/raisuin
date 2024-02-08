@@ -2,6 +2,7 @@ import '/auth/firebase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/enums/enums.dart';
+import '/components/filter/filter_widget.dart';
 import '/components/navigation/navigation_widget.dart';
 import '/components/video_player/video_player_widget.dart';
 import '/flutter_flow/flutter_flow_choice_chips.dart';
@@ -239,16 +240,32 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 size: 16.0,
                               ),
                               onPressed: () async {
-                                context.pushNamed(
-                                  'SearchCandidates',
-                                  extra: <String, dynamic>{
-                                    kTransitionInfoKey: const TransitionInfo(
-                                      hasTransition: true,
-                                      transitionType: PageTransitionType.fade,
-                                      duration: Duration(milliseconds: 0),
-                                    ),
+                                await showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  isDismissible: false,
+                                  enableDrag: false,
+                                  context: context,
+                                  builder: (context) {
+                                    return GestureDetector(
+                                      onTap: () => _model
+                                              .unfocusNode.canRequestFocus
+                                          ? FocusScope.of(context)
+                                              .requestFocus(_model.unfocusNode)
+                                          : FocusScope.of(context).unfocus(),
+                                      child: Padding(
+                                        padding:
+                                            MediaQuery.viewInsetsOf(context),
+                                        child: SizedBox(
+                                          height: MediaQuery.sizeOf(context)
+                                                  .height *
+                                              1.0,
+                                          child: const FilterWidget(),
+                                        ),
+                                      ),
+                                    );
                                   },
-                                );
+                                ).then((value) => safeSetState(() {}));
                               },
                             ),
                           ),
@@ -2409,12 +2426,20 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             wrapWithModel(
                               model: _model.navigationModel,
                               updateCallback: () => setState(() {}),
-                              child: const NavigationWidget(
-                                home: true,
-                                search: false,
-                                ads: false,
-                                messages: false,
-                                accounts: false,
+                              updateOnChange: true,
+                              child: const Hero(
+                                tag: 'BottomNavBar',
+                                transitionOnUserGestures: true,
+                                child: Material(
+                                  color: Colors.transparent,
+                                  child: NavigationWidget(
+                                    home: true,
+                                    search: false,
+                                    ads: false,
+                                    messages: false,
+                                    accounts: false,
+                                  ),
+                                ),
                               ),
                             ),
                           ],
