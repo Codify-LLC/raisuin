@@ -570,11 +570,10 @@ class _FilterWidgetState extends State<FilterWidget> {
                           chipSpacing: 5.0,
                           rowSpacing: 17.0,
                           multiselect: false,
-                          initialized: _model.requirementForValue != null,
                           alignment: WrapAlignment.start,
                           controller: _model.requirementForValueController ??=
                               FormFieldController<List<String>>(
-                            ['College'],
+                            [],
                           ),
                           wrapped: true,
                         ),
@@ -925,11 +924,10 @@ class _FilterWidgetState extends State<FilterWidget> {
                           chipSpacing: 5.0,
                           rowSpacing: 17.0,
                           multiselect: false,
-                          initialized: _model.englishLevelValue != null,
                           alignment: WrapAlignment.start,
                           controller: _model.englishLevelValueController ??=
                               FormFieldController<List<String>>(
-                            ['No'],
+                            [],
                           ),
                           wrapped: true,
                         ),
