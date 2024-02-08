@@ -5,7 +5,6 @@ export '/login_and_registraion/registration/registration_widget.dart'
 export '/subscriptions/subscription/subscription_widget.dart'
     show SubscriptionWidget;
 export '/home_page/home_page_widget.dart' show HomePageWidget;
-export '/map_view/map_view_widget.dart' show MapViewWidget;
 export '/ads/post_ad/post_ad_widget.dart' show PostAdWidget;
 export '/candidates/list_candidates/list_candidates_widget.dart'
     show ListCandidatesWidget;

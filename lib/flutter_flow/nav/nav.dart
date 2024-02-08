@@ -105,12 +105,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const HomePageWidget(),
         ),
         FFRoute(
-          name: 'mapView',
-          path: '/mapView',
-          requireAuth: true,
-          builder: (context, params) => const MapViewWidget(),
-        ),
-        FFRoute(
           name: 'postAd',
           path: '/postAd',
           requireAuth: true,
